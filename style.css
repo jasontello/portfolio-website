@@ -50,6 +50,68 @@ nav .nav-links li {
   margin-bottom: 25px;
 }
 
+.nav-link-fx {
+  --hover-ease: cubic-bezier(0.11, 0.82, 0.39, 0.92);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 18px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-link-fx::before,
+.nav-link-fx::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.45s var(--hover-ease);
+}
+
+.nav-link-fx::before {
+  content: "[";
+  left: 6px;
+}
+
+.nav-link-fx::after {
+  content: "]";
+  right: 6px;
+}
+
+.nav-link-fx:hover::before {
+  left: 0;
+}
+
+.nav-link-fx:hover::after {
+  right: 0;
+}
+
+.nav-word {
+  display: flex;
+}
+
+.nav-word--clone {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  transform: translateY(100%);
+}
+
+.nav-link-fx .char {
+  display: inline-block;
+  transition: transform 0.5s var(--hover-ease);
+  transition-delay: calc(var(--char-index) * 0.02s);
+}
+
+.nav-link-fx:hover .nav-word--original .char,
+.nav-link-fx:hover .nav-word--clone .char {
+  transform: translateY(-100%);
+}
+
 .main-navigation {
   z-index: 2;
   width: 40vw;
@@ -92,17 +154,32 @@ nav .nav-links li {
   height: 100vh;
   overflow-y: auto;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   padding: 2vw 2vw 2vw;
 
 }
 
 .headerright-section {
   display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.workinprogress {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #topright-corner {
   display: block;
   height: auto;
+}
+
+.triangle {
+  width: 10px;
 }
