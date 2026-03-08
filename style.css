@@ -56,38 +56,11 @@ nav .nav-links li {
   display: inline-flex;
   align-items: center;
   overflow: hidden;
-  padding: 0 18px;
+  padding: 0;
   line-height: 1;
-  text-transform: uppercase;
   letter-spacing: 0.04em;
   text-decoration: none;
   cursor: pointer;
-}
-
-.nav-link-fx::before,
-.nav-link-fx::after {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: 0.45s var(--hover-ease);
-}
-
-.nav-link-fx::before {
-  content: "[";
-  left: 6px;
-}
-
-.nav-link-fx::after {
-  content: "]";
-  right: 6px;
-}
-
-.nav-link-fx:hover::before {
-  left: 0;
-}
-
-.nav-link-fx:hover::after {
-  right: 0;
 }
 
 .nav-word {
@@ -97,7 +70,7 @@ nav .nav-links li {
 .nav-word--clone {
   position: absolute;
   top: 0;
-  left: 18px;
+  left: 0;
   transform: translateY(100%);
 }
 
