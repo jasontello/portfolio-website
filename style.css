@@ -4,6 +4,7 @@ html, body {
 
 :root {
   --text-primary: #000;
+  --text-links: #777;
   --font-size-base: 16px;
   --font-weight-h1: 700;
   --font-weight-li: 400;
@@ -31,8 +32,12 @@ body::before {
   z-index: -1;
 }
 
-h1, p, a {
+h1, p  {
   color: var(--text-primary);
+}
+
+.about >  p > a {
+color: var(--text-links);
 }
 
  
@@ -58,7 +63,6 @@ nav .nav-links li {
   overflow: hidden;
   padding: 0;
   line-height: 1;
-  letter-spacing: 0.04em;
   text-decoration: none;
   cursor: pointer;
 }
