@@ -1,3 +1,4 @@
+document.body.classList.add("page-loaded");
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".nav-link-fx");
 
