@@ -100,39 +100,10 @@ body.page-loaded .intro-loader {
   pointer-events: none;
 }
 
-.boot-loader__logo {
-  position: absolute;
-  top: 39%;
-  left: 57%;
-  width: 48px;
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  border: 1px solid currentColor;
-  border-radius: 3px;
-}
-
-.boot-loader__logo::before,
-.boot-loader__logo::after {
-  content: "";
-  position: absolute;
-  background: currentColor;
-}
-
-.boot-loader__logo::before {
-  width: 18px;
-  height: 1px;
-}
-
-.boot-loader__logo::after {
-  width: 1px;
-  height: 18px;
-}
-
 .boot-loader__ring {
   position: absolute;
-  top: 42%;
-  left: 59%;
+  top: 50%;
+  left: 50%;
   width: min(34vw, 280px);
   aspect-ratio: 1;
   border-radius: 50%;
@@ -170,7 +141,6 @@ body.page-loaded .intro-loader {
 }
 
 .boot-loader__screen,
-.boot-loader__logo,
 .boot-loader__ring,
 .boot-loader__panel {
   will-change: transform, opacity;
@@ -206,8 +176,6 @@ body.page-loaded .intro-loader {
   }
 
   .boot-loader__ring {
-    top: 42%;
-    left: 57%;
     width: 190px;
   }
 

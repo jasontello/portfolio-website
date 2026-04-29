@@ -48,7 +48,6 @@ function runBootIntro() {
     scaleY: 0.72,
     transformOrigin: "center"
   });
-  gsap.set(".boot-loader__logo", { autoAlpha: 0, y: 20, scale: 0.74 });
   gsap.set(".boot-loader__ring", {
     xPercent: -50,
     yPercent: -50,
@@ -72,7 +71,6 @@ function runBootIntro() {
     .addLabel("boot")
     .to(".boot-loader__screen", { autoAlpha: 1, duration: 0.45 }, "boot")
     .to(".boot-loader__frame", { autoAlpha: 1, scaleX: 1, scaleY: 1, duration: 0.55 }, "boot+=0.12")
-    .to(".boot-loader__logo", { autoAlpha: 1, y: 0, scale: 1, duration: 0.34 }, "boot+=0.32")
     .to(".boot-loader__ring", {
       autoAlpha: 1,
       scale: 1,
