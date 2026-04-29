@@ -78,7 +78,17 @@ function runBootIntro() {
       duration: 0.9,
       ease: "expo.out"
     }, "boot+=0.34")
-    .addLabel("system", "+=0.95")
+    .to(".boot-loader__ring", {
+      rotation: "+=1080",
+      duration: 1.25,
+      ease: "none"
+    })
+    .to(".boot-loader__ring", {
+      rotation: "+=150",
+      duration: 0.55,
+      ease: "power3.out"
+    })
+    .addLabel("system", "+=0.2")
     .to(".boot-loader__panel", {
       autoAlpha: 1,
       clipPath: "inset(0 0% 0 0)",
