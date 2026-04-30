@@ -326,6 +326,17 @@ nav .nav-links li {
   align-self: flex-start;
 }
 
+.name-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.name-face {
+  width: 22px;
+  height: auto;
+  display: block;
+}
 
 .about h1 {
   font-size: var(--font-size-base);
