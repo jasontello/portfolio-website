@@ -55,6 +55,13 @@ function runBootIntro() {
     scale: 0.55,
     rotation: -90
   });
+  gsap.set(".boot-loader__gif", {
+    xPercent: -50,
+    yPercent: -50,
+    autoAlpha: 0,
+    y: 12,
+    scale: 0.92
+  });
   gsap.set(".boot-loader__panel", {
     autoAlpha: 0,
     clipPath: "inset(0 100% 0 0)"
@@ -78,6 +85,13 @@ function runBootIntro() {
       duration: 0.9,
       ease: "expo.out"
     }, "boot+=0.34")
+    .to(".boot-loader__gif", {
+      autoAlpha: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.45,
+      ease: "power3.out"
+    }, "boot+=0.42")
     .to(".boot-loader__ring", {
       rotation: "+=1080",
       duration: 1.25,
@@ -103,7 +117,7 @@ function runBootIntro() {
       ease: "none"
     }, "system+=0.52")
     .to(".boot-loader__panel", {
-      backgroundColor: "#050505",
+      backgroundColor: "#000",
       color: "#edf5f1",
       duration: 0.18,
       ease: "none"

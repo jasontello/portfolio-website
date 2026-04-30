@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  overflow: hidden;
 }
 
 :root {
@@ -20,6 +21,7 @@ body {
   min-height: 100vh;
   margin: 0;
   display: flex;
+  overflow: hidden;
 }
 
 .main-navigation,
@@ -43,7 +45,7 @@ body.page-loaded .main-content {
   z-index: 999;
   display: grid;
   place-items: center;
-  background: #7b7b7b;
+  background: #000;
   color: #edf5f1;
   transition: opacity 500ms ease, visibility 500ms ease;
 }
@@ -69,27 +71,11 @@ body.page-loaded .intro-loader {
   width: 100vw;
   height: 100vh;
   min-height: 100vh;
-  background: #050505;
+  background: #000;
   border-radius: 0;
   overflow: hidden;
   box-shadow: none;
   isolation: isolate;
-}
-
-.boot-loader__screen::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.05) 0,
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px,
-      transparent 8px
-    );
-  opacity: 0.35;
 }
 
 .boot-loader__frame {
@@ -129,12 +115,27 @@ body.page-loaded .intro-loader {
   border-left-color: rgba(237, 245, 241, 0.4);
 }
 
+.boot-loader__gif {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: min(38vw, 220px);
+  width: auto;
+  max-height: 78%;
+  max-width: 70%;
+  display: block;
+  opacity: 0;
+  filter: invert(1);
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
 .boot-loader__panel {
   position: absolute;
   inset: 120px 42px 44px;
   display: grid;
   place-items: center;
-  background: #050505;
+  background: #000;
   border: 1px solid currentColor;
   color: #edf5f1;
   clip-path: inset(0 100% 0 0);
@@ -142,6 +143,7 @@ body.page-loaded .intro-loader {
 
 .boot-loader__screen,
 .boot-loader__ring,
+.boot-loader__gif,
 .boot-loader__panel {
   will-change: transform, opacity;
 }
@@ -177,6 +179,10 @@ body.page-loaded .intro-loader {
 
   .boot-loader__ring {
     width: 190px;
+  }
+
+  .boot-loader__gif {
+    height: min(48vw, 150px);
   }
 
   .boot-loader__panel {
@@ -291,12 +297,13 @@ nav .nav-links li {
   flex: 1;
   min-width: 0;
   height: 100vh;
-  overflow-y: auto;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   padding: 2vw 2vw 2vw;
+  box-sizing: border-box;
 
 }
 
