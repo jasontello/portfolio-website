@@ -37,7 +37,7 @@ function runBootIntro() {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (!loader || !gsap || reduceMotion) {
-    document.body.classList.add("page-loaded");
+    document.body.classList.add("site-visible", "page-loaded");
     return;
   }
 
@@ -62,9 +62,11 @@ function runBootIntro() {
     y: 12,
     scale: 0.92
   });
-  gsap.set(".boot-loader__panel", {
+  gsap.set(".boot-loader__ambient", {
     autoAlpha: 0,
-    clipPath: "inset(0 100% 0 0)"
+    y: 24,
+    scale: 0.78,
+    rotation: -2
   });
 
   const timeline = gsap.timeline({
@@ -92,40 +94,40 @@ function runBootIntro() {
       duration: 0.45,
       ease: "power3.out"
     }, "boot+=0.42")
+    .addLabel("loading", "boot+=0.98")
+    .to(".boot-loader__ambient", {
+      autoAlpha: 0.74,
+      y: 0,
+      scale: 1,
+      rotation: 0,
+      duration: 0.36,
+      stagger: {
+        each: 0.32,
+        from: "start"
+      },
+      ease: "back.out(1.8)"
+    }, "loading")
     .to(".boot-loader__ring", {
-      rotation: "+=1080",
-      duration: 1.25,
+      rotation: "+=1440",
+      duration: 2.05,
       ease: "none"
-    })
+    }, "loading")
+    .to(".boot-loader__ambient--rabbit", { x: -24, y: 12, duration: 1.9, ease: "sine.inOut" }, "loading+=1.05")
+    .to(".boot-loader__ambient--horse", { x: 34, y: -8, duration: 2, ease: "sine.inOut" }, "loading+=1.05")
+    .to(".boot-loader__ambient--wave", { x: 18, y: -12, duration: 1.85, ease: "sine.inOut" }, "loading+=1.05")
+    .to(".boot-loader__ambient--bloom", { x: -16, y: 14, duration: 2, ease: "sine.inOut" }, "loading+=1.05")
     .to(".boot-loader__ring", {
       rotation: "+=150",
       duration: 0.55,
       ease: "power3.out"
-    })
-    .addLabel("system", "+=0.2")
-    .to(".boot-loader__panel", {
-      autoAlpha: 1,
-      clipPath: "inset(0 0% 0 0)",
-      duration: 0.55,
-      ease: "power2.inOut"
-    }, "system")
-    .to(".boot-loader__ring", { rotation: "+=220", duration: 0.55, ease: "power2.inOut" }, "system")
-    .to(".boot-loader__screen", {
-      backgroundColor: "#f4f4f1",
-      color: "#080808",
-      duration: 0.18,
-      ease: "none"
-    }, "system+=0.52")
-    .to(".boot-loader__panel", {
-      backgroundColor: "#000",
-      color: "#edf5f1",
-      duration: 0.18,
-      ease: "none"
-    }, "system+=0.52")
-    .to(".boot-loader__screen", {
-      autoAlpha: 0,
-      y: -20,
-      duration: 0.55,
-      ease: "power2.in"
-    }, "+=0.65");
+    }, "loading+=2.05")
+    .addLabel("reveal", "+=0.2")
+    .add(() => {
+      document.body.classList.add("site-visible");
+    }, "reveal")
+    .to(loader, {
+      xPercent: 100,
+      duration: 0.9,
+      ease: "power3.inOut"
+    }, "reveal+=0.05");
 }

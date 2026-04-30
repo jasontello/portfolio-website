@@ -29,8 +29,8 @@ body {
   opacity: 0;
 }
 
-body.page-loaded .main-navigation,
-body.page-loaded .main-content {
+body.site-visible .main-navigation,
+body.site-visible .main-content {
   animation: pageFadeIn 600ms ease-out forwards;
 }
 
@@ -48,6 +48,7 @@ body.page-loaded .main-content {
   background: #000;
   color: #edf5f1;
   transition: opacity 500ms ease, visibility 500ms ease;
+  will-change: transform, opacity;
 }
 
 body.page-loaded .intro-loader {
@@ -115,6 +116,40 @@ body.page-loaded .intro-loader {
   border-left-color: rgba(237, 245, 241, 0.4);
 }
 
+.boot-loader__ambient {
+  position: absolute;
+  display: block;
+  width: auto;
+  opacity: 0;
+  filter: invert(1);
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.boot-loader__ambient--rabbit {
+  right: 7%;
+  top: 12%;
+  height: min(18vw, 160px);
+}
+
+.boot-loader__ambient--horse {
+  left: 7%;
+  bottom: 10%;
+  height: min(20vw, 170px);
+}
+
+.boot-loader__ambient--wave {
+  left: 9%;
+  top: 13%;
+  width: min(34vw, 380px);
+}
+
+.boot-loader__ambient--bloom {
+  right: 13%;
+  bottom: 12%;
+  height: min(22vw, 220px);
+}
+
 .boot-loader__gif {
   position: absolute;
   top: 50%;
@@ -130,29 +165,18 @@ body.page-loaded .intro-loader {
   pointer-events: none;
 }
 
-.boot-loader__panel {
-  position: absolute;
-  inset: 120px 42px 44px;
-  display: grid;
-  place-items: center;
-  background: #000;
-  border: 1px solid currentColor;
-  color: #edf5f1;
-  clip-path: inset(0 100% 0 0);
-}
-
 .boot-loader__screen,
 .boot-loader__ring,
-.boot-loader__gif,
-.boot-loader__panel {
+.boot-loader__ambient,
+.boot-loader__gif {
   will-change: transform, opacity;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .main-navigation,
   .main-content,
-  body.page-loaded .main-navigation,
-  body.page-loaded .main-content {
+  body.site-visible .main-navigation,
+  body.site-visible .main-content {
     opacity: 1;
     animation: none;
   }
@@ -181,13 +205,34 @@ body.page-loaded .intro-loader {
     width: 190px;
   }
 
+  .boot-loader__ambient--rabbit {
+    right: -10%;
+    top: 16%;
+    height: 100px;
+  }
+
+  .boot-loader__ambient--horse {
+    left: -18%;
+    bottom: 14%;
+    height: 100px;
+  }
+
+  .boot-loader__ambient--wave {
+    left: -24%;
+    top: 11%;
+    width: 220px;
+  }
+
+  .boot-loader__ambient--bloom {
+    right: 6%;
+    bottom: 10%;
+    height: 120px;
+  }
+
   .boot-loader__gif {
     height: min(48vw, 150px);
   }
 
-  .boot-loader__panel {
-    inset: 112px 28px 36px;
-  }
 }
 
 body::before {
