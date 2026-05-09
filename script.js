@@ -67,11 +67,24 @@ function runBootIntro() {
     y: 12,
     scale: 0.92
   });
-  gsap.set(".boot-loader__iris", {
-    xPercent: -50,
-    yPercent: -50,
-    autoAlpha: 0,
-    scale: 0.72
+
+  const isSmallScreen = window.matchMedia("(max-width: 700px)").matches;
+  const segmentColumns = isSmallScreen ? 5 : 7;
+  const segmentRows = isSmallScreen ? 7 : 5;
+  const revealSegments = createRevealSegments(
+    loader.querySelector(".boot-loader__segments"),
+    segmentColumns,
+    segmentRows
+  );
+
+  gsap.set(".boot-loader__segments", { autoAlpha: 0 });
+  gsap.set(revealSegments, {
+    autoAlpha: 1,
+    x: 0,
+    y: 0,
+    scale: 1,
+    rotation: 0,
+    transformOrigin: "50% 50%"
   });
 
   const timeline = gsap.timeline({
@@ -130,25 +143,63 @@ function runBootIntro() {
     .to(".boot-loader__ring, .boot-loader__gif, .boot-loader__ambient", {
       autoAlpha: 0,
       scale: 0.84,
-      duration: 0.22,
+      duration: 0.18,
       ease: "power2.out"
     }, "reveal")
-    .to(".boot-loader__iris", {
-      autoAlpha: 1,
-      scale: 0.78,
-      duration: 0.01,
-      ease: "none"
-    }, "reveal")
-    .to(".boot-loader__iris", {
-      scale: 12,
+    .set(".intro-loader, .boot-loader__screen", {
+      backgroundColor: "rgba(0, 0, 0, 0)"
+    }, "reveal+=0.16")
+    .set(".boot-loader__segments", {
+      autoAlpha: 1
+    }, "reveal+=0.16")
+    .to(revealSegments, {
+      autoAlpha: 0,
+      x: (index, target) => {
+        const column = Number(target.dataset.column);
+        return (column - (segmentColumns - 1) / 2) * 18;
+      },
+      y: (index, target) => {
+        const row = Number(target.dataset.row);
+        return (row - (segmentRows - 1) / 2) * 18;
+      },
+      scaleX: () => gsap.utils.random(0.72, 0.94),
+      scaleY: () => gsap.utils.random(0.72, 0.94),
+      rotation: () => gsap.utils.random(-2.5, 2.5),
       duration: 0.82,
+      stagger: {
+        amount: 0.68,
+        from: "random"
+      },
       ease: "power3.inOut"
-    }, "reveal+=0.05")
+    }, "reveal+=0.18")
     .to(loader, {
       autoAlpha: 0,
       duration: 0.2,
       ease: "none"
-    }, "reveal+=0.68");
+    }, "reveal+=1.05");
+}
+
+function createRevealSegments(container, columns, rows) {
+  if (!container) {
+    return [];
+  }
+
+  container.textContent = "";
+  container.style.setProperty("--segment-columns", String(columns));
+  container.style.setProperty("--segment-rows", String(rows));
+
+  const fragment = document.createDocumentFragment();
+
+  for (let index = 0; index < columns * rows; index += 1) {
+    const segment = document.createElement("span");
+    segment.className = "boot-loader__segment";
+    segment.dataset.column = String(index % columns);
+    segment.dataset.row = String(Math.floor(index / columns));
+    fragment.appendChild(segment);
+  }
+
+  container.appendChild(fragment);
+  return Array.from(container.children);
 }
 
 function getSessionFlag(key) {

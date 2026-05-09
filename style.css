@@ -90,6 +90,7 @@ body.page-loaded .intro-loader {
   aspect-ratio: 1;
   border-radius: 50%;
   pointer-events: none;
+  z-index: 2;
 }
 
 .boot-loader__ring::before,
@@ -119,6 +120,7 @@ body.page-loaded .intro-loader {
   filter: invert(1);
   image-rendering: pixelated;
   pointer-events: none;
+  z-index: 1;
 }
 
 .boot-loader__ambient--rabbit {
@@ -140,24 +142,31 @@ body.page-loaded .intro-loader {
   filter: invert(1);
   image-rendering: pixelated;
   pointer-events: none;
+  z-index: 3;
 }
 
-.boot-loader__iris {
+.boot-loader__segments {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(34vw, 280px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: #000;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: repeat(var(--segment-columns, 7), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--segment-rows, 5), minmax(0, 1fr));
+  opacity: 0;
   pointer-events: none;
+}
+
+.boot-loader__segment {
+  display: block;
+  background: #000;
+  will-change: transform, opacity;
 }
 
 .boot-loader__screen,
 .boot-loader__ring,
 .boot-loader__ambient,
 .boot-loader__gif,
-.boot-loader__iris {
+.boot-loader__segments {
   will-change: transform, opacity;
 }
 
@@ -198,10 +207,6 @@ body.page-loaded .intro-loader {
 
   .boot-loader__gif {
     height: min(48vw, 150px);
-  }
-
-  .boot-loader__iris {
-    width: 190px;
   }
 
 }
