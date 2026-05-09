@@ -32,28 +32,33 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function runBootIntro() {
+  const introStorageKey = "portfolioIntroPlayed";
   const loader = document.querySelector(".intro-loader");
   const gsap = window.gsap;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const introAlreadyPlayed = getSessionFlag(introStorageKey);
 
-  if (!loader || !gsap || reduceMotion) {
+  if (!loader || !gsap || reduceMotion || introAlreadyPlayed) {
     document.body.classList.add("site-visible", "page-loaded");
+    if (loader) {
+      loader.style.display = "none";
+    }
     return;
   }
 
   gsap.set(".boot-loader__screen", { autoAlpha: 0 });
-  gsap.set(".boot-loader__frame", {
-    autoAlpha: 0,
-    scaleX: 0.82,
-    scaleY: 0.72,
-    transformOrigin: "center"
-  });
   gsap.set(".boot-loader__ring", {
     xPercent: -50,
     yPercent: -50,
     autoAlpha: 0,
     scale: 0.55,
     rotation: -90
+  });
+  gsap.set(".boot-loader__ambient", {
+    autoAlpha: 0,
+    y: 24,
+    scale: 0.78,
+    rotation: -2
   });
   gsap.set(".boot-loader__gif", {
     xPercent: -50,
@@ -62,16 +67,17 @@ function runBootIntro() {
     y: 12,
     scale: 0.92
   });
-  gsap.set(".boot-loader__ambient", {
+  gsap.set(".boot-loader__iris", {
+    xPercent: -50,
+    yPercent: -50,
     autoAlpha: 0,
-    y: 24,
-    scale: 0.78,
-    rotation: -2
+    scale: 0.72
   });
 
   const timeline = gsap.timeline({
     defaults: { ease: "power3.out" },
     onComplete: () => {
+      setSessionFlag(introStorageKey);
       document.body.classList.add("page-loaded");
     }
   });
@@ -79,7 +85,6 @@ function runBootIntro() {
   timeline
     .addLabel("boot")
     .to(".boot-loader__screen", { autoAlpha: 1, duration: 0.45 }, "boot")
-    .to(".boot-loader__frame", { autoAlpha: 1, scaleX: 1, scaleY: 1, duration: 0.55 }, "boot+=0.12")
     .to(".boot-loader__ring", {
       autoAlpha: 1,
       scale: 1,
@@ -113,9 +118,6 @@ function runBootIntro() {
       ease: "none"
     }, "loading")
     .to(".boot-loader__ambient--rabbit", { x: -24, y: 12, duration: 1.9, ease: "sine.inOut" }, "loading+=1.05")
-    .to(".boot-loader__ambient--horse", { x: 34, y: -8, duration: 2, ease: "sine.inOut" }, "loading+=1.05")
-    .to(".boot-loader__ambient--wave", { x: 18, y: -12, duration: 1.85, ease: "sine.inOut" }, "loading+=1.05")
-    .to(".boot-loader__ambient--bloom", { x: -16, y: 14, duration: 2, ease: "sine.inOut" }, "loading+=1.05")
     .to(".boot-loader__ring", {
       rotation: "+=150",
       duration: 0.55,
@@ -125,9 +127,42 @@ function runBootIntro() {
     .add(() => {
       document.body.classList.add("site-visible");
     }, "reveal")
-    .to(loader, {
-      xPercent: 100,
-      duration: 0.9,
+    .to(".boot-loader__ring, .boot-loader__gif, .boot-loader__ambient", {
+      autoAlpha: 0,
+      scale: 0.84,
+      duration: 0.22,
+      ease: "power2.out"
+    }, "reveal")
+    .to(".boot-loader__iris", {
+      autoAlpha: 1,
+      scale: 0.78,
+      duration: 0.01,
+      ease: "none"
+    }, "reveal")
+    .to(".boot-loader__iris", {
+      scale: 12,
+      duration: 0.82,
       ease: "power3.inOut"
-    }, "reveal+=0.05");
+    }, "reveal+=0.05")
+    .to(loader, {
+      autoAlpha: 0,
+      duration: 0.2,
+      ease: "none"
+    }, "reveal+=0.68");
+}
+
+function getSessionFlag(key) {
+  try {
+    return window.sessionStorage.getItem(key) === "true";
+  } catch {
+    return false;
+  }
+}
+
+function setSessionFlag(key) {
+  try {
+    window.sessionStorage.setItem(key, "true");
+  } catch {
+    // Storage can be blocked in private browsing; the intro can still run safely.
+  }
 }

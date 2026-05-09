@@ -10,19 +10,16 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="intro-loader" aria-label="Loading portfolio" role="status" aria-live="polite">
       <section class="boot-loader" aria-hidden="true">
         <div class="boot-loader__screen">
-          <div class="boot-loader__frame"></div>
           <img class="boot-loader__ambient boot-loader__ambient--rabbit" src="./images/intro-ascii-rabbit.gif" alt="">
-          <img class="boot-loader__ambient boot-loader__ambient--horse" src="./images/intro-ascii-horse.gif" alt="">
-          <img class="boot-loader__ambient boot-loader__ambient--wave" src="./images/intro-ascii-wave.gif" alt="">
-          <img class="boot-loader__ambient boot-loader__ambient--bloom" src="./images/intro-ascii-bloom.gif" alt="">
           <div class="boot-loader__ring"></div>
           <img class="boot-loader__gif" src="./images/intro-ascii.gif" alt="">
+          <div class="boot-loader__iris"></div>
         </div>
       </section>
     </div>
@@ -57,9 +54,51 @@
       <div class="headerright-section">
         <img id="topright-corner" class="triangle" src="./images/topright-cornertriangle.svg" alt="corner image">
       </div>
-      <div class="workinprogress">
-        <img id="sign" src="./images/dithered_ascii 2.svg">
-      </div>
+      <section class="work-gallery" aria-label="Portfolio work">
+        <div class="work-gallery__header">
+          <h2>Work</h2>
+          <span>1 +</span>
+        </div>
+
+        <div class="work-grid">
+          <a class="work-card work-card--rainbow" href="https://jasontello.github.io/rainbow-square-lab/" target="_blank" rel="noreferrer" aria-label="Open Rainbow Lab project">
+            <span class="work-card__preview" aria-hidden="true">
+              <span class="rainbow-thumb__brand">
+                <span class="rainbow-thumb__logo">
+                  <span class="rainbow-thumb__tile rainbow-thumb__tile--cyan"></span>
+                  <span class="rainbow-thumb__tile rainbow-thumb__tile--yellow"></span>
+                  <span class="rainbow-thumb__tile rainbow-thumb__tile--magenta"></span>
+                </span>
+                <span class="rainbow-thumb__word">
+                  <span>R</span><span>A</span><span>I</span><span>N</span><span>B</span><span>O</span><span>W</span>
+                  <span class="rainbow-thumb__space"></span>
+                  <span>L</span><span>A</span><span>B</span>
+                </span>
+              </span>
+            </span>
+            <span class="work-card__meta">
+              <strong>Rainbow Lab</strong>
+              <span>Color tool, in progress</span>
+            </span>
+          </a>
+
+          <article class="work-card work-card--placeholder" aria-label="Future project placeholder">
+            <span class="work-card__preview" aria-hidden="true"></span>
+            <span class="work-card__meta">
+              <strong>Interface Study</strong>
+              <span>Coming soon</span>
+            </span>
+          </article>
+
+          <article class="work-card work-card--placeholder" aria-label="Future project placeholder">
+            <span class="work-card__preview" aria-hidden="true"></span>
+            <span class="work-card__meta">
+              <strong>Project Archive</strong>
+              <span>Coming soon</span>
+            </span>
+          </article>
+        </div>
+      </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="./script.js"></script>
