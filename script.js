@@ -28,8 +28,85 @@ document.addEventListener("DOMContentLoaded", () => {
     link.appendChild(clone);
   });
 
+  initResumeModal();
   runBootIntro();
 });
+
+function initResumeModal() {
+  const trigger = document.querySelector(".resume-trigger");
+  const modal = document.querySelector(".resume-modal");
+  const panel = document.querySelector(".resume-modal__panel");
+  const closeButtons = document.querySelectorAll("[data-resume-close]");
+  const gsap = window.gsap;
+
+  if (!trigger || !modal || !panel) {
+    return;
+  }
+
+  const openModal = () => {
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    trigger.setAttribute("aria-expanded", "true");
+
+    if (gsap) {
+      gsap.fromTo(
+        panel,
+        { autoAlpha: 0, y: 24, scale: 0.98 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }
+      );
+      gsap.fromTo(
+        ".resume-modal__backdrop",
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.28, ease: "none" }
+      );
+    }
+
+    const closeButton = modal.querySelector(".resume-modal__close");
+    if (closeButton) {
+      closeButton.focus();
+    }
+  };
+
+  const closeModal = () => {
+    const finishClose = () => {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      trigger.setAttribute("aria-expanded", "false");
+      trigger.focus();
+    };
+
+    if (gsap && modal.classList.contains("is-open")) {
+      gsap.to(panel, {
+        autoAlpha: 0,
+        y: 18,
+        scale: 0.985,
+        duration: 0.24,
+        ease: "power2.in",
+        onComplete: finishClose
+      });
+      gsap.to(".resume-modal__backdrop", {
+        autoAlpha: 0,
+        duration: 0.18,
+        ease: "none"
+      });
+      return;
+    }
+
+    finishClose();
+  };
+
+  trigger.addEventListener("click", openModal);
+
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+}
 
 function runBootIntro() {
   const introStorageKey = "portfolioIntroPlayed";

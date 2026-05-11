@@ -256,6 +256,14 @@ nav .nav-links li {
   cursor: pointer;
 }
 
+button.nav-link-fx {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
 .nav-word {
   display: flex;
 }
@@ -596,6 +604,112 @@ nav .nav-links li {
   height: auto;
 }
 
+.resume-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: clamp(18px, 3vw, 46px);
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.resume-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.resume-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(5px);
+}
+
+.resume-modal__panel {
+  position: relative;
+  width: min(860px, 100%);
+  height: min(88vh, 900px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f7f7f3;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+  transform: translateY(18px) scale(0.985);
+}
+
+.resume-modal.is-open .resume-modal__panel {
+  transform: translateY(0) scale(1);
+}
+
+.resume-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.resume-modal__eyebrow,
+.resume-modal__header h2 {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.resume-modal__eyebrow {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.resume-modal__header h2 {
+  margin-top: 2px;
+  font-size: var(--font-size-base);
+  font-weight: 700;
+}
+
+.resume-modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resume-modal__download,
+.resume-modal__close {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  background: transparent;
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.resume-modal__download:hover,
+.resume-modal__close:hover {
+  background: #000;
+  color: #fff;
+}
+
+.resume-modal__frame {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  background: #fff;
+}
+
 .triangle {
   width: 10px;
 }
@@ -644,5 +758,28 @@ nav .nav-links li {
   .work-card__meta {
     opacity: 1;
     transform: none;
+  }
+
+  .resume-modal {
+    padding: 14px;
+  }
+
+  .resume-modal__panel {
+    height: 86vh;
+  }
+
+  .resume-modal__header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .resume-modal__actions {
+    width: 100%;
+  }
+
+  .resume-modal__download,
+  .resume-modal__close {
+    flex: 1;
+    justify-content: center;
   }
 }

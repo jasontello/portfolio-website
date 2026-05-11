@@ -30,19 +30,16 @@
             <h1 id="name">Jason Tello</h1>
             <img class="name-face" src="./images/face.png" alt="">
           </div>
-          <p>I’m a recent CS graduate based in the Bay Area in California.</p>
-          <p>I design and build minimal websites focused on aesthetic, clarity, and brand identity.</p>
-          <p>You can reach me on <a href="https://www.linkedin.com/in/jason-tello-123888235/" target="_blank" >LinkedIn</a> or email me at jasontello2003@gmail.com.</p>
+          <p>I’m a Bay Area based designer/developer exploring the space between UI/UX, front-end code, and visual systems.</p>
+          <p>I make interactive web projects with a focus on layout, motion, and the small details that make interfaces feel alive.</p>
+          <p>Open to junior UI/UX, product design, and front-end opportunities. You can reach me on <a href="https://www.linkedin.com/in/jason-tello-123888235/" target="_blank" >LinkedIn</a> or at jasontello2003@gmail.com.</p>
         </div>
         <ul class="nav-links">
-          <li class="project-section">
-            <a class="nav-link-fx">Projects</a>
-          </li>
           <li class="playground-section">
             <a class="nav-link-fx">Sandbox</a>
           </li>
           <li class="resume-section">
-            <a class="nav-link-fx">Resume</a>
+            <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
           </li>
         </ul>
       </header>
@@ -100,6 +97,22 @@
         </div>
       </section>
     </div>
+    <section class="resume-modal" id="resume-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+      <div class="resume-modal__backdrop" data-resume-close></div>
+      <div class="resume-modal__panel">
+        <header class="resume-modal__header">
+          <div>
+            <p class="resume-modal__eyebrow">Resume</p>
+            <h2 id="resume-modal-title">Jason Tello</h2>
+          </div>
+          <div class="resume-modal__actions">
+            <a class="resume-modal__download" href="./documents/Jason_Tello_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            <button class="resume-modal__close" type="button" aria-label="Close resume" data-resume-close>Close</button>
+          </div>
+        </header>
+        <iframe class="resume-modal__frame" src="./documents/Jason_Tello_Resume.pdf#view=FitH" title="Jason Tello resume"></iframe>
+      </div>
+    </section>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="./script.js"></script>
   </body>
