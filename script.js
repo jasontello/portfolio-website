@@ -44,6 +44,7 @@ function initResumeModal() {
   }
 
   const openModal = () => {
+    modal.hidden = false;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     trigger.setAttribute("aria-expanded", "true");
@@ -71,6 +72,7 @@ function initResumeModal() {
     const finishClose = () => {
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
+      modal.hidden = true;
       trigger.setAttribute("aria-expanded", "false");
       trigger.focus();
     };
