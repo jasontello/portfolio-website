@@ -59,7 +59,7 @@ function initBizznestThumbAnimation() {
     xPercent: -50,
     yPercent: -50,
     x: () => thumb.clientWidth * -0.48,
-    rotation: -28
+    rotation: 0
   });
 
   gsap.timeline({
@@ -86,7 +86,8 @@ function initBizznestThumbAnimation() {
     })
     .set(circles, {
       x: () => thumb.clientWidth * -0.48,
-      rotation: -28
+      yPercent: -50,
+      rotation: 0
     })
     .to(circles, {
       autoAlpha: 1,
@@ -95,7 +96,6 @@ function initBizznestThumbAnimation() {
     })
     .to(circles, {
       x: () => thumb.clientWidth * 0.48,
-      rotation: 390,
       duration: 1.45,
       ease: "power2.inOut"
     }, "<")
