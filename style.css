@@ -475,7 +475,41 @@ button.nav-link-fx {
   display: block;
   opacity: 0;
   transform: scale(0.9);
-  animation: bizznestLogoPulse 4.6s ease infinite;
+  animation: bizznestLogoPulse 5.4s ease infinite;
+}
+
+.bizznest-thumb__circles {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translate(-46%, -50%) rotate(-10deg);
+  animation: bizznestCirclesRoll 5.4s ease-in-out infinite;
+}
+
+.bizznest-thumb__circle {
+  width: clamp(28px, 4vw, 48px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+}
+
+.bizznest-thumb__circle + .bizznest-thumb__circle {
+  margin-left: calc(clamp(28px, 4vw, 48px) * -0.42);
+}
+
+.bizznest-thumb__circle--cyan {
+  background: rgba(0, 174, 239, 0.78);
+}
+
+.bizznest-thumb__circle--magenta {
+  background: rgba(236, 0, 140, 0.76);
+}
+
+.bizznest-thumb__circle--yellow {
+  background: rgba(255, 222, 0, 0.82);
 }
 
 .rainbow-thumb__brand {
@@ -597,19 +631,39 @@ button.nav-link-fx {
 
 @keyframes bizznestLogoPulse {
   0%,
-  10% {
+  8% {
     opacity: 0;
     transform: scale(0.9);
   }
-  24%,
-  68% {
+  18%,
+  42% {
     opacity: 1;
     transform: scale(1);
   }
-  84%,
+  54%,
   100% {
     opacity: 0;
     transform: scale(0.96);
+  }
+}
+
+@keyframes bizznestCirclesRoll {
+  0%,
+  48% {
+    opacity: 0;
+    transform: translate(-46%, -50%) rotate(-10deg);
+  }
+  58% {
+    opacity: 1;
+  }
+  76% {
+    opacity: 1;
+    transform: translate(86%, -50%) rotate(14deg);
+  }
+  88%,
+  100% {
+    opacity: 0;
+    transform: translate(150%, -50%) rotate(26deg);
   }
 }
 
