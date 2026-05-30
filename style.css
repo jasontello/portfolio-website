@@ -490,14 +490,42 @@ button.nav-link-fx {
 }
 
 .bizznest-thumb__circle {
+  position: relative;
   width: clamp(28px, 4vw, 48px);
   aspect-ratio: 1;
   border-radius: 50%;
   mix-blend-mode: multiply;
+  overflow: hidden;
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 
 .bizznest-thumb__circle + .bizznest-thumb__circle {
   margin-left: calc(clamp(28px, 4vw, 48px) * -0.42);
+}
+
+.bizznest-thumb__circle::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 12%;
+  width: 2px;
+  height: 39%;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.34);
+  transform: translateX(-50%);
+}
+
+.bizznest-thumb__circle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 42%;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -50%);
 }
 
 .bizznest-thumb__circle--cyan {

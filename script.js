@@ -37,6 +37,7 @@ function initBizznestThumbAnimation() {
   const thumb = document.querySelector(".bizznest-thumb");
   const logo = document.querySelector(".bizznest-thumb__logo");
   const circles = document.querySelector(".bizznest-thumb__circles");
+  const circleItems = document.querySelectorAll(".bizznest-thumb__circle");
   const gsap = window.gsap;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -59,6 +60,9 @@ function initBizznestThumbAnimation() {
     xPercent: -50,
     yPercent: -50,
     x: () => thumb.clientWidth * -0.48,
+    rotation: 0
+  });
+  gsap.set(circleItems, {
     rotation: 0
   });
 
@@ -89,6 +93,9 @@ function initBizznestThumbAnimation() {
       yPercent: -50,
       rotation: 0
     })
+    .set(circleItems, {
+      rotation: 0
+    }, "<")
     .to(circles, {
       autoAlpha: 1,
       duration: 0.16,
@@ -96,6 +103,11 @@ function initBizznestThumbAnimation() {
     })
     .to(circles, {
       x: () => thumb.clientWidth * 0.48,
+      duration: 1.45,
+      ease: "power2.inOut"
+    }, "<")
+    .to(circleItems, {
+      rotation: 720,
       duration: 1.45,
       ease: "power2.inOut"
     }, "<")
