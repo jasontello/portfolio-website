@@ -465,102 +465,17 @@ button.nav-link-fx {
 }
 
 .bizznest-thumb {
-  color: #050505;
-}
-
-.bizznest-thumb__mark {
-  position: absolute;
-  left: 13%;
-  top: 16%;
-  width: clamp(26px, 3.2vw, 42px);
-  aspect-ratio: 1;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  background: #3be75b;
 }
 
-.bizznest-thumb__asterisk,
-.bizznest-thumb__asterisk::before,
-.bizznest-thumb__asterisk::after {
-  width: 48%;
-  height: 16%;
-  background: #000;
-}
-
-.bizznest-thumb__asterisk {
-  position: relative;
-  display: block;
-}
-
-.bizznest-thumb__asterisk::before,
-.bizznest-thumb__asterisk::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-}
-
-.bizznest-thumb__asterisk::before {
-  transform: rotate(60deg);
-}
-
-.bizznest-thumb__asterisk::after {
-  transform: rotate(-60deg);
-}
-
-.bizznest-thumb__identity {
-  position: absolute;
-  left: 23%;
-  top: 34%;
-  display: inline-flex;
-  align-items: center;
-  gap: clamp(4px, 0.65vw, 8px);
-  max-width: 68%;
-}
-
-.bizznest-thumb__name {
-  display: block;
-  font-size: clamp(18px, 2vw, 27px);
-  font-weight: 700;
-  line-height: 0.82;
-  letter-spacing: -0.06em;
-}
-
-.bizznest-thumb__face {
-  width: clamp(17px, 2.35vw, 31px);
+.bizznest-thumb__logo {
+  width: clamp(54px, 7.8vw, 92px);
   height: auto;
   display: block;
-}
-
-.bizznest-thumb__circles {
-  position: absolute;
-  right: 12%;
-  bottom: 19%;
-  display: flex;
-  align-items: center;
-}
-
-.bizznest-thumb__circle {
-  width: clamp(19px, 2.75vw, 36px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  mix-blend-mode: multiply;
-}
-
-.bizznest-thumb__circle + .bizznest-thumb__circle {
-  margin-left: calc(clamp(19px, 2.75vw, 36px) * -0.42);
-}
-
-.bizznest-thumb__circle--cyan {
-  background: rgba(0, 174, 239, 0.78);
-}
-
-.bizznest-thumb__circle--magenta {
-  background: rgba(236, 0, 140, 0.76);
-}
-
-.bizznest-thumb__circle--yellow {
-  background: rgba(255, 222, 0, 0.82);
+  opacity: 0;
+  transform: scale(0.9);
+  animation: bizznestLogoPulse 4.6s ease infinite;
 }
 
 .rainbow-thumb__brand {
@@ -677,6 +592,24 @@ button.nav-link-fx {
   100% {
     opacity: 0;
     transform: translateY(-4px);
+  }
+}
+
+@keyframes bizznestLogoPulse {
+  0%,
+  10% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  24%,
+  68% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  84%,
+  100% {
+    opacity: 0;
+    transform: scale(0.96);
   }
 }
 
