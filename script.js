@@ -34,14 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initBizznestThumbAnimation() {
-  const thumb = document.querySelector(".bizznest-thumb");
   const logo = document.querySelector(".bizznest-thumb__logo");
-  const circles = document.querySelector(".bizznest-thumb__circles");
-  const circleItems = document.querySelectorAll(".bizznest-thumb__circle");
   const gsap = window.gsap;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  if (!thumb || !logo || !circles) {
+  if (!logo) {
     return;
   }
 
@@ -54,16 +51,6 @@ function initBizznestThumbAnimation() {
   gsap.set(logo, {
     autoAlpha: 0,
     scale: 0.9
-  });
-  gsap.set(circles, {
-    autoAlpha: 0,
-    xPercent: -50,
-    yPercent: -50,
-    x: () => thumb.clientWidth * -0.48,
-    rotation: 0
-  });
-  gsap.set(circleItems, {
-    rotation: 0
   });
 
   gsap.timeline({
@@ -88,34 +75,6 @@ function initBizznestThumbAnimation() {
       duration: 0.42,
       ease: "power2.in"
     })
-    .set(circles, {
-      x: () => thumb.clientWidth * -0.48,
-      yPercent: -50,
-      rotation: 0
-    })
-    .set(circleItems, {
-      rotation: 0
-    }, "<")
-    .to(circles, {
-      autoAlpha: 1,
-      duration: 0.16,
-      ease: "none"
-    })
-    .to(circles, {
-      x: () => thumb.clientWidth * 0.48,
-      duration: 1.45,
-      ease: "power2.inOut"
-    }, "<")
-    .to(circleItems, {
-      rotation: 720,
-      duration: 1.45,
-      ease: "power2.inOut"
-    }, "<")
-    .to(circles, {
-      autoAlpha: 0,
-      duration: 0.26,
-      ease: "none"
-    }, "-=0.24")
     .to({}, { duration: 0.48 });
 }
 
