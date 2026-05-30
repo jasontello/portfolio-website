@@ -475,18 +475,18 @@ button.nav-link-fx {
   display: block;
   opacity: 0;
   transform: scale(0.9);
-  animation: bizznestLogoPulse 5.4s ease infinite;
 }
 
 .bizznest-thumb__circles {
   position: absolute;
-  left: 0;
+  left: 50%;
   top: 50%;
   display: flex;
   align-items: center;
   opacity: 0;
-  transform: translate(-46%, -50%) rotate(-10deg);
-  animation: bizznestCirclesRoll 5.4s ease-in-out infinite;
+  transform: translate(-50%, -50%);
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
 }
 
 .bizznest-thumb__circle {
@@ -626,44 +626,6 @@ button.nav-link-fx {
   100% {
     opacity: 0;
     transform: translateY(-4px);
-  }
-}
-
-@keyframes bizznestLogoPulse {
-  0%,
-  8% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  18%,
-  42% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  54%,
-  100% {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-}
-
-@keyframes bizznestCirclesRoll {
-  0%,
-  48% {
-    opacity: 0;
-    transform: translate(-46%, -50%) rotate(-10deg);
-  }
-  58% {
-    opacity: 1;
-  }
-  76% {
-    opacity: 1;
-    transform: translate(86%, -50%) rotate(14deg);
-  }
-  88%,
-  100% {
-    opacity: 0;
-    transform: translate(150%, -50%) rotate(26deg);
   }
 }
 

@@ -29,8 +29,83 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   initResumeModal();
+  initBizznestThumbAnimation();
   runBootIntro();
 });
+
+function initBizznestThumbAnimation() {
+  const thumb = document.querySelector(".bizznest-thumb");
+  const logo = document.querySelector(".bizznest-thumb__logo");
+  const circles = document.querySelector(".bizznest-thumb__circles");
+  const gsap = window.gsap;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!thumb || !logo || !circles) {
+    return;
+  }
+
+  if (!gsap || reduceMotion) {
+    logo.style.opacity = "1";
+    logo.style.transform = "scale(1)";
+    return;
+  }
+
+  gsap.set(logo, {
+    autoAlpha: 0,
+    scale: 0.9
+  });
+  gsap.set(circles, {
+    autoAlpha: 0,
+    xPercent: -50,
+    yPercent: -50,
+    x: () => thumb.clientWidth * -0.48,
+    rotation: -28
+  });
+
+  gsap.timeline({
+    repeat: -1,
+    repeatDelay: 0.25,
+    defaults: { ease: "power3.out" }
+  })
+    .to(logo, {
+      autoAlpha: 1,
+      scale: 1,
+      duration: 0.55
+    })
+    .to(logo, {
+      autoAlpha: 1,
+      scale: 1,
+      duration: 1.15,
+      ease: "none"
+    })
+    .to(logo, {
+      autoAlpha: 0,
+      scale: 0.96,
+      duration: 0.42,
+      ease: "power2.in"
+    })
+    .set(circles, {
+      x: () => thumb.clientWidth * -0.48,
+      rotation: -28
+    })
+    .to(circles, {
+      autoAlpha: 1,
+      duration: 0.16,
+      ease: "none"
+    })
+    .to(circles, {
+      x: () => thumb.clientWidth * 0.48,
+      rotation: 390,
+      duration: 1.45,
+      ease: "power2.inOut"
+    }, "<")
+    .to(circles, {
+      autoAlpha: 0,
+      duration: 0.26,
+      ease: "none"
+    }, "-=0.24")
+    .to({}, { duration: 0.48 });
+}
 
 function initResumeModal() {
   const trigger = document.querySelector(".resume-trigger");
