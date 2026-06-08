@@ -27,188 +27,22 @@ body {
   overflow: hidden;
 }
 
-.main-navigation,
-.main-content {
-  opacity: 0;
+body.is-page-exiting .main-navigation,
+body.is-page-exiting .main-content {
+  animation: pageFadeOut 420ms ease-in forwards;
 }
 
-body.site-visible .main-navigation,
-body.site-visible .main-content {
-  animation: pageFadeIn 600ms ease-out forwards;
-}
-
-@keyframes pageFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.intro-loader {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: grid;
-  place-items: center;
-  background: #000;
-  color: #edf5f1;
-  transition: opacity 500ms ease, visibility 500ms ease;
-  will-change: transform, opacity;
-}
-
-body.page-loaded .intro-loader {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.boot-loader {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Space Grotesk", sans-serif;
-}
-
-.boot-loader__screen {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  min-height: 100vh;
-  background: #000;
-  border-radius: 0;
-  overflow: hidden;
-  box-shadow: none;
-  isolation: isolate;
-}
-
-.boot-loader__ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(34vw, 280px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.boot-loader__ring::before,
-.boot-loader__ring::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-}
-
-.boot-loader__ring::before {
-  inset: 0;
-  border: 1px solid rgba(237, 245, 241, 0.95);
-}
-
-.boot-loader__ring::after {
-  inset: -7px;
-  border: 1px solid transparent;
-  border-top-color: currentColor;
-  border-left-color: rgba(237, 245, 241, 0.4);
-}
-
-.boot-loader__ambient {
-  position: absolute;
-  display: block;
-  width: auto;
-  opacity: 0;
-  filter: invert(1);
-  image-rendering: pixelated;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.boot-loader__ambient--rabbit {
-  right: 7%;
-  top: 12%;
-  height: min(18vw, 160px);
-}
-
-.boot-loader__gif {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: min(38vw, 220px);
-  width: auto;
-  max-height: 78%;
-  max-width: 70%;
-  display: block;
-  opacity: 0;
-  filter: invert(1);
-  image-rendering: pixelated;
-  pointer-events: none;
-  z-index: 3;
-}
-
-.boot-loader__segments {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  display: grid;
-  grid-template-columns: repeat(var(--segment-columns, 7), minmax(0, 1fr));
-  grid-template-rows: repeat(var(--segment-rows, 5), minmax(0, 1fr));
-  opacity: 0;
-  pointer-events: none;
-}
-
-.boot-loader__segment {
-  display: block;
-  background: #000;
-  will-change: transform, opacity;
-}
-
-.boot-loader__screen,
-.boot-loader__ring,
-.boot-loader__ambient,
-.boot-loader__gif,
-.boot-loader__segments {
-  will-change: transform, opacity;
+@keyframes pageFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .main-navigation,
-  .main-content,
-  body.site-visible .main-navigation,
-  body.site-visible .main-content {
+  body.is-page-exiting .main-navigation,
+  body.is-page-exiting .main-content {
     opacity: 1;
     animation: none;
   }
-
-  .intro-loader {
-    display: none;
-  }
-}
-
-@media (max-width: 700px) {
-  .boot-loader {
-    padding: 0;
-  }
-
-  .boot-loader__screen {
-    height: 100vh;
-    min-height: 100vh;
-    border-radius: 0;
-  }
-
-  .boot-loader__ring {
-    width: 190px;
-  }
-
-  .boot-loader__ambient--rabbit {
-    right: -10%;
-    top: 16%;
-    height: 100px;
-  }
-
-  .boot-loader__gif {
-    height: min(48vw, 150px);
-  }
-
 }
 
 body::before {
@@ -251,6 +85,7 @@ nav .nav-links li {
   align-items: center;
   overflow: hidden;
   padding: 0;
+  color: inherit;
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
@@ -733,6 +568,117 @@ button.nav-link-fx {
   width: 10px;
 }
 
+.sandbox-body {
+  min-height: 100vh;
+  display: block;
+  overflow: hidden;
+  background: #efefea;
+}
+
+.sandbox-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+  color: var(--text-primary);
+}
+
+.sandbox-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: clamp(18px, 3vw, 44px);
+  z-index: 1;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  pointer-events: none;
+}
+
+.ink-symbiote {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  contain: layout paint;
+  overflow: hidden;
+}
+
+.ink-symbiote-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.sandbox-titlebar {
+  position: absolute;
+  left: clamp(22px, 4vw, 56px);
+  bottom: clamp(22px, 4vw, 56px);
+  z-index: 5;
+  display: grid;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.sandbox-titlebar h1,
+.sandbox-titlebar p {
+  margin: 0;
+}
+
+.sandbox-titlebar h1 {
+  font-size: clamp(48px, 11vw, 156px);
+  font-weight: 700;
+  line-height: 0.86;
+  letter-spacing: 0;
+}
+
+.sandbox-titlebar p {
+  max-width: 280px;
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, 0.56);
+}
+
+.sandbox-back {
+  position: fixed;
+  top: clamp(18px, 3vw, 34px);
+  left: clamp(18px, 3vw, 34px);
+  z-index: 8;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  background: rgba(239, 239, 234, 0.72);
+  color: var(--text-primary);
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+}
+
+.sandbox-back:hover,
+.sandbox-back:focus-visible {
+  background: #000;
+  color: #fff;
+}
+
 @media (max-width: 900px) {
   html,
   body {
@@ -800,5 +746,28 @@ button.nav-link-fx {
   .resume-modal__close {
     flex: 1;
     justify-content: center;
+  }
+
+  .sandbox-body {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .sandbox-page {
+    height: 100vh;
+  }
+
+  .sandbox-visual {
+    min-height: 100vh;
+  }
+
+  .hero-visual::before {
+    inset: 14px;
+  }
+
+  .sandbox-titlebar {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
   }
 }
