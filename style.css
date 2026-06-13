@@ -55,6 +55,17 @@ body.is-page-exiting .main-content {
     opacity: 1;
     animation: none;
   }
+
+  .work-card--open-source-sj .work-card__preview {
+    background: #222222;
+    animation: none;
+  }
+
+  .open-source-sj-thumb {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }
 
 body::before {
@@ -261,7 +272,9 @@ button.nav-link-fx {
 }
 
 .work-card[href]:hover .work-card__preview,
-.work-card[href]:focus-visible .work-card__preview {
+.work-card[href]:focus-visible .work-card__preview,
+.work-card:not([href]):hover .work-card__preview,
+.work-card:not([href]):focus-within .work-card__preview {
   border-color: rgba(0, 0, 0, 0.16);
   opacity: 0.86;
   transform: translateY(-3px);
@@ -282,7 +295,9 @@ button.nav-link-fx {
 }
 
 .work-card[href]:hover .work-card__meta,
-.work-card[href]:focus-visible .work-card__meta {
+.work-card[href]:focus-visible .work-card__meta,
+.work-card:not([href]):hover .work-card__meta,
+.work-card:not([href]):focus-within .work-card__meta {
   opacity: 1;
   transform: translateY(0);
 }
@@ -297,6 +312,61 @@ button.nav-link-fx {
   color: var(--text-muted);
   font-size: 12px;
   line-height: 1.2;
+}
+
+.work-card__preview-link {
+  text-decoration: none;
+}
+
+.work-card--open-source-sj .work-card__preview {
+  display: grid;
+  place-items: center;
+  background: #fff;
+  animation: openSourceSjBackground 5.4s ease-in-out infinite;
+}
+
+.open-source-sj-thumb {
+  display: block;
+  width: auto;
+  height: min(76%, 128px);
+  max-width: 72%;
+  object-fit: contain;
+  opacity: 0;
+  transform: translateY(42%);
+  animation: openSourceSjLogo 5.4s cubic-bezier(0.22, 0.8, 0.32, 1) infinite;
+}
+
+@keyframes openSourceSjBackground {
+  0%,
+  24% {
+    background-color: #fff;
+  }
+  42%,
+  78% {
+    background-color: #222222;
+  }
+  94%,
+  100% {
+    background-color: #fff;
+  }
+}
+
+@keyframes openSourceSjLogo {
+  0%,
+  12% {
+    opacity: 0;
+    transform: translateY(42%);
+  }
+  30%,
+  76% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  92%,
+  100% {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
 }
 
 .work-card--rainbow .work-card__preview {
