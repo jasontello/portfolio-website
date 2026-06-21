@@ -52,7 +52,7 @@ const PROJECTS = [
     ],
     image: "./images/projects/rainbow-lab/case-study.jpg",
     imageAlt: "Rainbow Lab interactive color field",
-    video: "./images/projects/rainbow-lab/demo.mp4",
+    video: "./images/projects/rainbow-lab/demo.mp4?v=2",
     live: "https://jasontello.github.io/rainbow-square-lab/",
     github: "https://github.com/jasontello/rainbow-square-lab"
   },
