@@ -52,6 +52,7 @@ const PROJECTS = [
     ],
     image: "./images/projects/rainbow-lab/case-study.jpg",
     imageAlt: "Rainbow Lab interactive color field",
+    video: "./images/projects/rainbow-lab/demo.mp4",
     live: "https://jasontello.github.io/rainbow-square-lab/",
     github: "https://github.com/jasontello/rainbow-square-lab"
   },
@@ -72,6 +73,7 @@ const PROJECTS = [
     ],
     image: "./images/projects/bizznest/case-study.jpg",
     imageAlt: "BizzNEST Linktree assessment homepage",
+    video: "./images/projects/bizznest/demo.mp4",
     live: "https://jasontello.github.io/bizznest-linktree-assessment/",
     github: "https://github.com/jasontello/bizznest-linktree-assessment"
   },
@@ -92,6 +94,7 @@ const PROJECTS = [
     ],
     image: "./images/projects/open-source-san-jose/case-study.png",
     imageAlt: "Open Source San José redesigned homepage",
+    video: "./images/projects/open-source-san-jose/demo.mp4",
     live: "https://jasontello.github.io/BizzNestDesignAssessment/",
     github: "https://github.com/jasontello/BizzNestDesignAssessment"
   }
@@ -119,7 +122,7 @@ function initProjectModal() {
     summary: modal.querySelector("[data-project-summary]"),
     role: modal.querySelector("[data-project-role]"),
     focus: modal.querySelector("[data-project-focus]"),
-    image: modal.querySelector("[data-project-image]"),
+    video: modal.querySelector("[data-project-video]"),
     challenge: modal.querySelector("[data-project-challenge]"),
     approach: modal.querySelector("[data-project-approach]"),
     outcome: modal.querySelector("[data-project-outcome]"),
@@ -137,8 +140,20 @@ function initProjectModal() {
     fields.summary.textContent = project.summary;
     fields.role.textContent = project.role;
     fields.focus.textContent = project.focus;
-    fields.image.src = project.image;
-    fields.image.alt = project.imageAlt;
+    fields.video.pause();
+    fields.video.poster = project.image;
+    fields.video.setAttribute("aria-label", `${project.imageAlt} demonstration`);
+
+    if (fields.video.getAttribute("src") !== project.video) {
+      fields.video.src = project.video;
+      fields.video.load();
+    }
+
+    fields.video.currentTime = 0;
+
+    if (!reduceMotion && modal.classList.contains("is-open")) {
+      fields.video.play().catch(() => {});
+    }
     fields.challenge.textContent = project.challenge;
     fields.approach.textContent = project.approach;
     fields.outcome.textContent = project.outcome;
@@ -170,11 +185,15 @@ function initProjectModal() {
 
     window.requestAnimationFrame(() => {
       modal.classList.add("is-open");
+      if (!reduceMotion) {
+        fields.video.play().catch(() => {});
+      }
       modal.querySelector(".project-modal__close")?.focus();
     });
   };
 
   const closeModal = () => {
+    fields.video.pause();
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("is-project-open");
