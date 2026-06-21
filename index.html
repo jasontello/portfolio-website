@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="./style.css?v=open-source-sj-1" />
+    <link rel="stylesheet" href="./style.css?v=project-stories-1" />
 
     <title>Jason Tello Portfolio</title>
 
@@ -48,7 +48,7 @@
         </div>
 
         <div class="work-grid">
-          <a class="work-card work-card--rainbow" href="https://jasontello.github.io/rainbow-square-lab/" target="_blank" rel="noreferrer" aria-label="Open Rainbow Lab project">
+          <button class="work-card work-card--rainbow" type="button" data-project-open="rainbow-lab" aria-haspopup="dialog" aria-controls="project-modal" aria-label="View Rainbow Lab project story">
             <span class="work-card__preview" aria-hidden="true">
               <span class="rainbow-thumb__brand">
                 <span class="rainbow-thumb__logo">
@@ -67,9 +67,9 @@
               <strong>Rainbow Lab</strong>
               <span>Color tool, in progress</span>
             </span>
-          </a>
+          </button>
 
-          <a class="work-card work-card--bizznest" href="https://jasontello.github.io/bizznest-linktree-assessment/" target="_blank" rel="noreferrer" aria-label="Open BizzNEST Linktree Assessment project">
+          <button class="work-card work-card--bizznest" type="button" data-project-open="bizznest-linktree" aria-haspopup="dialog" aria-controls="project-modal" aria-label="View BizzNEST Linktree Assessment project story">
             <span class="work-card__preview bizznest-thumb" aria-hidden="true">
               <img class="bizznest-thumb__logo" src="./images/projects/bizznest/linktree-logo.png" alt="">
             </span>
@@ -77,20 +77,86 @@
               <strong>BizzNEST Linktree Assessment</strong>
               <span>A responsive Linktree-style personal landing page with a custom list/grid layout toggle.</span>
             </span>
-          </a>
+          </button>
 
-          <article class="work-card work-card--open-source-sj">
-            <a class="work-card__preview work-card__preview-link" href="https://jasontello.github.io/BizzNestDesignAssessment/" target="_blank" rel="noreferrer" aria-label="Open Open Source San José Redesign live site">
+          <button class="work-card work-card--open-source-sj" type="button" data-project-open="open-source-sj" aria-haspopup="dialog" aria-controls="project-modal" aria-label="View Open Source San José Redesign project story">
+            <span class="work-card__preview">
               <img class="open-source-sj-thumb" src="./images/projects/open-source-san-jose/logo.png" alt="Open Source San José">
-            </a>
-            <div class="work-card__meta">
+            </span>
+            <span class="work-card__meta">
               <strong>Open Source San José Redesign</strong>
               <span>A responsive civic-tech homepage redesign with improved navigation, project presentation, and mobile experience.</span>
-            </div>
-          </article>
+            </span>
+          </button>
         </div>
       </section>
     </div>
+    <section class="project-modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" hidden>
+      <div class="project-modal__backdrop" data-project-close></div>
+      <div class="project-modal__panel">
+        <header class="project-modal__topbar">
+          <span class="project-modal__count"><span data-project-index>01</span> / 03</span>
+          <button class="project-modal__close" type="button" aria-label="Close project story" title="Close" data-project-close>&times;</button>
+        </header>
+
+        <div class="project-modal__layout">
+          <aside class="project-modal__rail">
+            <p class="project-modal__label">Selected work</p>
+            <h2 id="project-modal-title" data-project-title></h2>
+            <p class="project-modal__summary" data-project-summary></p>
+
+            <dl class="project-modal__meta">
+              <div>
+                <dt>Role</dt>
+                <dd data-project-role></dd>
+              </div>
+              <div>
+                <dt>Focus</dt>
+                <dd data-project-focus></dd>
+              </div>
+            </dl>
+
+            <div class="project-modal__links">
+              <a data-project-live target="_blank" rel="noreferrer">Live site <span aria-hidden="true">↗</span></a>
+              <a data-project-github target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            </div>
+          </aside>
+
+          <main class="project-modal__story" data-project-story tabindex="0">
+            <figure class="project-modal__hero">
+              <img data-project-image src="" alt="">
+            </figure>
+
+            <div class="project-modal__statements">
+              <section>
+                <p class="project-modal__label">The challenge</p>
+                <h3 data-project-challenge></h3>
+              </section>
+              <section>
+                <p class="project-modal__label">The approach</p>
+                <h3 data-project-approach></h3>
+              </section>
+            </div>
+
+            <section class="project-modal__outcome">
+              <p class="project-modal__label">The result</p>
+              <p data-project-outcome></p>
+            </section>
+
+            <section class="project-modal__details">
+              <p class="project-modal__label">Key details</p>
+              <ul data-project-highlights></ul>
+            </section>
+
+            <footer class="project-modal__pager">
+              <button type="button" data-project-previous aria-label="View previous project"><span aria-hidden="true">←</span> Previous</button>
+              <button type="button" data-project-next aria-label="View next project">Next <span aria-hidden="true">→</span></button>
+            </footer>
+          </main>
+        </div>
+      </div>
+    </section>
+
     <section class="resume-modal" id="resume-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" hidden>
       <div class="resume-modal__backdrop" data-resume-close></div>
       <div class="resume-modal__panel">
@@ -108,6 +174,6 @@
       </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="./script.js?v=no-intro-1"></script>
+    <script src="./script.js?v=project-stories-1"></script>
   </body>
 </html>

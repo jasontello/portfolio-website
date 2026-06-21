@@ -29,9 +29,211 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   initResumeModal();
+  initProjectModal();
   initSandboxTransition();
   initBizznestThumbAnimation();
 });
+
+const PROJECTS = [
+  {
+    id: "rainbow-lab",
+    title: "Rainbow Lab",
+    role: "Interaction design and front-end development",
+    focus: "Color systems, interaction, and visual exploration",
+    summary: "An interactive color tool that makes a large rainbow field useful for inspecting palettes and individual colors.",
+    challenge: "How can a dense color system stay expressive while giving users clear, practical ways to inspect and compare colors?",
+    approach: "I paired the animated color field with a color finder, relationship palettes, a detailed picker, and readable color values.",
+    outcome: "Rainbow Lab turns a visual experiment into a working color reference. Users can explore relationships, adjust a selection, inspect its values, and copy colors without leaving the composition.",
+    highlights: [
+      "Interactive color finder and color-wheel picker",
+      "Monochromatic and relationship palette browsing",
+      "RGB, RGBA, and CMYK color values",
+      "Eyedropper, brightness adjustment, and copyable swatches"
+    ],
+    image: "./images/projects/rainbow-lab/case-study.jpg",
+    imageAlt: "Rainbow Lab interactive color field",
+    live: "https://jasontello.github.io/rainbow-square-lab/",
+    github: "https://github.com/jasontello/rainbow-square-lab"
+  },
+  {
+    id: "bizznest-linktree",
+    title: "BizzNEST Linktree Assessment",
+    role: "UI design and front-end development",
+    focus: "Responsive layout, theming, and interaction",
+    summary: "A responsive personal links page designed and built for the BizzNEST Senior Associate assessment.",
+    challenge: "How can a familiar link-in-bio page become more expressive while staying quick to scan and easy to use?",
+    approach: "I designed two views from one shared content system: a focused vertical list and an editorial bento grid, with light and dark themes.",
+    outcome: "The result is a compact portfolio gateway that adapts to user preference without duplicating content. Layout and theme transitions keep each change clear and deliberate.",
+    highlights: [
+      "List and bento-grid layout modes",
+      "Light and dark theme transition",
+      "Shared data across both presentations",
+      "Responsive desktop and mobile layouts"
+    ],
+    image: "./images/projects/bizznest/case-study.jpg",
+    imageAlt: "BizzNEST Linktree assessment homepage",
+    live: "https://jasontello.github.io/bizznest-linktree-assessment/",
+    github: "https://github.com/jasontello/bizznest-linktree-assessment"
+  },
+  {
+    id: "open-source-sj",
+    title: "Open Source San José Redesign",
+    role: "UI/UX design and front-end development",
+    focus: "Civic tech, accessibility, and responsive design",
+    summary: "A homepage redesign created for the BizzNEST Design Assessment while preserving the organization’s civic-tech identity.",
+    challenge: "How can a content-heavy civic organization feel easier to navigate while keeping its community-first personality visible?",
+    approach: "I rebuilt the hierarchy around clearer navigation, stronger project storytelling, accessible menus, and a mobile-first reading flow.",
+    outcome: "The redesign gives projects, sponsors, events, and location details a clearer rhythm. The final page feels more focused while remaining recognizably Open Source San José.",
+    highlights: [
+      "Accessible desktop and mobile navigation",
+      "Animated code-rain with reduced-motion support",
+      "Interactive project presentation",
+      "Redesigned hero, sponsor, location, and footer sections"
+    ],
+    image: "./images/projects/open-source-san-jose/case-study.png",
+    imageAlt: "Open Source San José redesigned homepage",
+    live: "https://jasontello.github.io/BizzNestDesignAssessment/",
+    github: "https://github.com/jasontello/BizzNestDesignAssessment"
+  }
+];
+
+function initProjectModal() {
+  const modal = document.querySelector(".project-modal");
+  const panel = document.querySelector(".project-modal__panel");
+  const story = document.querySelector("[data-project-story]");
+  const triggers = document.querySelectorAll("[data-project-open]");
+  const closeButtons = document.querySelectorAll("[data-project-close]");
+  const previousButton = document.querySelector("[data-project-previous]");
+  const nextButton = document.querySelector("[data-project-next]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let currentIndex = 0;
+  let lastTrigger = null;
+
+  if (!modal || !panel || !story || !triggers.length) {
+    return;
+  }
+
+  const fields = {
+    index: modal.querySelector("[data-project-index]"),
+    title: modal.querySelector("[data-project-title]"),
+    summary: modal.querySelector("[data-project-summary]"),
+    role: modal.querySelector("[data-project-role]"),
+    focus: modal.querySelector("[data-project-focus]"),
+    image: modal.querySelector("[data-project-image]"),
+    challenge: modal.querySelector("[data-project-challenge]"),
+    approach: modal.querySelector("[data-project-approach]"),
+    outcome: modal.querySelector("[data-project-outcome]"),
+    highlights: modal.querySelector("[data-project-highlights]"),
+    live: modal.querySelector("[data-project-live]"),
+    github: modal.querySelector("[data-project-github]")
+  };
+
+  const renderProject = (index) => {
+    currentIndex = (index + PROJECTS.length) % PROJECTS.length;
+    const project = PROJECTS[currentIndex];
+
+    fields.index.textContent = String(currentIndex + 1).padStart(2, "0");
+    fields.title.textContent = project.title;
+    fields.summary.textContent = project.summary;
+    fields.role.textContent = project.role;
+    fields.focus.textContent = project.focus;
+    fields.image.src = project.image;
+    fields.image.alt = project.imageAlt;
+    fields.challenge.textContent = project.challenge;
+    fields.approach.textContent = project.approach;
+    fields.outcome.textContent = project.outcome;
+    fields.live.href = project.live;
+    fields.github.href = project.github;
+    fields.highlights.replaceChildren(
+      ...project.highlights.map((highlight) => {
+        const item = document.createElement("li");
+        item.textContent = highlight;
+        return item;
+      })
+    );
+
+    story.scrollTop = 0;
+  };
+
+  const openModal = (projectId, trigger) => {
+    const projectIndex = PROJECTS.findIndex((project) => project.id === projectId);
+
+    if (projectIndex === -1) {
+      return;
+    }
+
+    lastTrigger = trigger;
+    renderProject(projectIndex);
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-project-open");
+
+    window.requestAnimationFrame(() => {
+      modal.classList.add("is-open");
+      modal.querySelector(".project-modal__close")?.focus();
+    });
+  };
+
+  const closeModal = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-project-open");
+
+    window.setTimeout(() => {
+      modal.hidden = true;
+      lastTrigger?.focus();
+    }, reduceMotion ? 0 : 280);
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      openModal(trigger.dataset.projectOpen, trigger);
+    });
+  });
+
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", closeModal);
+  });
+
+  previousButton?.addEventListener("click", () => renderProject(currentIndex - 1));
+  nextButton?.addEventListener("click", () => renderProject(currentIndex + 1));
+
+  document.addEventListener("keydown", (event) => {
+    if (!modal.classList.contains("is-open")) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      closeModal();
+      return;
+    }
+
+    if (event.key === "ArrowLeft") {
+      renderProject(currentIndex - 1);
+      return;
+    }
+
+    if (event.key === "ArrowRight") {
+      renderProject(currentIndex + 1);
+      return;
+    }
+
+    if (event.key === "Tab") {
+      const focusable = [...modal.querySelectorAll("button, a[href], [tabindex='0']")]
+        .filter((element) => !element.hasAttribute("disabled"));
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+}
 
 function initSandboxTransition() {
   const trigger = document.querySelector(".sandbox-trigger");
