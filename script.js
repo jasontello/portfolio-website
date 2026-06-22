@@ -97,6 +97,27 @@ const PROJECTS = [
     video: "./images/projects/open-source-san-jose/demo.mp4",
     live: "https://jasontello.github.io/BizzNestDesignAssessment/",
     github: "https://github.com/jasontello/BizzNestDesignAssessment"
+  },
+  {
+    id: "funfetti-events",
+    title: "Funfetti Events Website Redesign",
+    role: "UX and visual redesign, front-end development",
+    focus: "Customer journeys, accessible interaction, and planning tools",
+    summary: "A responsive portfolio redesign concept created with permission for a real Northern California event-planning and party-rental business.",
+    challenge: "How could the company’s useful information become a clearer, more memorable customer journey that still feels right for both playful celebrations and professional events?",
+    approach: "I organized the concept around four customer goals: understand the services, browse previous setups, estimate rental needs, and contact the business for an exact quote.",
+    outcome: "The redesign concept combines a more distinctive visual system with clearer navigation, accessible interactions, and a dedicated estimator. It is a portfolio exploration and does not replace the company’s current official website.",
+    highlights: [
+      "Responsive navigation, custom illustration, and animated gallery",
+      "Accessible lightbox, focus states, and reduced-motion support",
+      "Guided and manual event-rental estimator modes",
+      "Synchronized answers and prepared quote-request email"
+    ],
+    image: "./images/projects/funfetti-events/case-study.png",
+    imageAlt: "Funfetti Events illustrated celebration scene",
+    video: "./images/projects/funfetti-events/demo.mp4",
+    live: "https://jasontello.github.io/funfetti-events-redesign/",
+    github: "https://github.com/jasontello/funfetti-events-redesign"
   }
 ];
 
