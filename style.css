@@ -245,11 +245,14 @@ button.nav-link-fx {
 .work-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(120px, 1fr));
-  gap: clamp(22px, 3.6vw, 54px);
+  column-gap: clamp(22px, 3.6vw, 54px);
+  row-gap: 72px;
+  align-content: start;
   align-items: start;
 }
 
 .work-card {
+  position: relative;
   appearance: none;
   display: grid;
   width: 100%;
@@ -290,6 +293,10 @@ button.nav-link-fx {
 }
 
 .work-card__meta {
+  position: absolute;
+  top: calc(100% + 13px);
+  right: 0;
+  left: 0;
   display: grid;
   gap: 4px;
   opacity: 0;
@@ -312,9 +319,12 @@ button.nav-link-fx {
 }
 
 .work-card__meta span {
+  overflow: hidden;
   color: var(--text-muted);
   font-size: 12px;
   line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .work-card__preview-link {
@@ -1179,8 +1189,15 @@ body.is-project-open {
   }
 
   .work-card__meta {
+    position: static;
     opacity: 1;
     transform: none;
+  }
+
+  .work-card__meta span {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
   }
 
   .project-modal {
