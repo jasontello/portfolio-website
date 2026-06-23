@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css?v=content-fullscreen-3" />
+
+    <title>Music | Jason Tello Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  </head>
+  <body class="music-body">
+    <nav class="main-navigation">
+      <header>
+        <div class="about">
+          <div class="name-row">
+            <h1 id="name">Jason Tello</h1>
+            <img class="name-face" src="./images/face.png" alt="">
+          </div>
+          <p>I’m a designer based in the Bay Area, open to junior design roles and internships.</p>
+          <p>I love all things art, movies, music, NewJeans, and TLOU 2.</p>
+          <p>You can reach me on <a href="https://www.linkedin.com/in/jason-tello-123888235/" target="_blank" >LinkedIn</a> or at jasontello2003@gmail.com.</p>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a class="nav-link-fx" href="./index.html">Work</a>
+          </li>
+          <li class="playground-section">
+            <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
+          </li>
+          <li class="resume-section">
+            <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+          </li>
+          <li class="music-section-link">
+            <a class="nav-link-fx nav-link-fx--active" href="./music.html" aria-current="page">Music</a>
+          </li>
+        </ul>
+      </header>
+      <footer>
+        <img id="bottomleft-corner" class="triangle" src="./images/CornerTriangle.svg" alt="corner image">
+      </footer>
+    </nav>
+
+    <main class="main-content music-page" aria-labelledby="music-title">
+      <div class="headerright-section content-chrome">
+        <button class="fullscreen-toggle" type="button" aria-label="Enter fullscreen layout" aria-pressed="false" data-fullscreen-toggle>
+          <img class="fullscreen-toggle__icon" src="./images/fullscreen-icon.png" alt="" aria-hidden="true">
+        </button>
+        <nav class="content-nav" aria-label="Fullscreen navigation">
+          <a class="nav-link-fx" href="./index.html">Work</a>
+          <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
+          <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+          <a class="nav-link-fx nav-link-fx--active" href="./music.html" aria-current="page">Music</a>
+        </nav>
+        <img id="topright-corner" class="triangle" src="./images/topright-cornertriangle.svg" alt="corner image">
+      </div>
+
+      <section class="music-gallery" aria-label="Music">
+        <div class="music-gallery__header">
+          <div>
+            <h2 id="music-title">Music</h2>
+            <p>A place for album art, current listens, and the sounds sitting behind the work.</p>
+          </div>
+          <span>Foundation</span>
+        </div>
+
+        <div class="music-panel">
+          <section class="music-panel__intro" aria-labelledby="album-covers-title">
+            <p class="music-panel__label">Album covers</p>
+            <h3 id="album-covers-title">Visual references, favorite records, and cover art that shapes the mood.</h3>
+          </section>
+
+          <div class="album-grid" aria-label="Album cover placeholders">
+            <article class="album-card album-card--pulse">
+              <span class="album-card__cover" aria-hidden="true">
+                <span></span>
+              </span>
+              <div>
+                <h4>Cover Study 01</h4>
+                <p>Replace with an album, playlist, or visual reference.</p>
+              </div>
+            </article>
+
+            <article class="album-card album-card--signal">
+              <span class="album-card__cover" aria-hidden="true">
+                <span></span>
+              </span>
+              <div>
+                <h4>Cover Study 02</h4>
+                <p>A second slot for art direction, typography, or color notes.</p>
+              </div>
+            </article>
+
+            <article class="album-card album-card--groove">
+              <span class="album-card__cover" aria-hidden="true">
+                <span></span>
+              </span>
+              <div>
+                <h4>Cover Study 03</h4>
+                <p>Use this for a record that feels connected to your work.</p>
+              </div>
+            </article>
+          </div>
+
+          <section class="listening-board" aria-labelledby="currently-listening-title">
+            <div class="listening-board__top">
+              <div>
+                <p class="music-panel__label">Currently listening</p>
+                <h3 id="currently-listening-title">Tracks on rotation</h3>
+              </div>
+              <span>Update manually for now</span>
+            </div>
+
+            <ul class="track-list">
+              <li>
+                <span>01</span>
+                <div>
+                  <strong>Song title</strong>
+                  <p>Artist name</p>
+                </div>
+                <em>Current mood</em>
+              </li>
+              <li>
+                <span>02</span>
+                <div>
+                  <strong>Another track</strong>
+                  <p>Artist name</p>
+                </div>
+                <em>Design fuel</em>
+              </li>
+              <li>
+                <span>03</span>
+                <div>
+                  <strong>Late-night repeat</strong>
+                  <p>Artist name</p>
+                </div>
+                <em>Loop-worthy</em>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <section class="resume-modal" id="resume-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" hidden>
+      <div class="resume-modal__backdrop" data-resume-close></div>
+      <div class="resume-modal__panel">
+        <header class="resume-modal__header">
+          <div>
+            <p class="resume-modal__eyebrow">Resume</p>
+            <h2 id="resume-modal-title">Jason Tello</h2>
+          </div>
+          <div class="resume-modal__actions">
+            <a class="resume-modal__download" href="./documents/Jason_Tello_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            <button class="resume-modal__close" type="button" aria-label="Close resume" data-resume-close>Close</button>
+          </div>
+        </header>
+        <iframe class="resume-modal__frame" src="./documents/Jason_Tello_Resume.pdf#view=FitH" title="Jason Tello resume"></iframe>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="./script.js?v=content-fullscreen-3"></script>
+  </body>
+</html>

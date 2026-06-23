@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initProjectModal();
   initSandboxTransition();
   initBizznestThumbAnimation();
+  initFullscreenLayout();
 });
 
 const PROJECTS = [
@@ -276,48 +277,191 @@ function initProjectModal() {
 }
 
 function initSandboxTransition() {
-  const trigger = document.querySelector(".sandbox-trigger");
+  const triggers = document.querySelectorAll(".sandbox-trigger");
   const gsap = window.gsap;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let navigating = false;
 
-  if (!trigger) {
+  if (!triggers.length) {
     return;
   }
 
-  trigger.addEventListener("click", (event) => {
-    if (
-      navigating ||
-      event.metaKey ||
-      event.ctrlKey ||
-      event.shiftKey ||
-      event.altKey ||
-      event.button !== 0
-    ) {
-      return;
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      if (
+        navigating ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        event.button !== 0
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+      navigating = true;
+
+      const destination = trigger.href;
+      const navigate = () => {
+        window.location.href = destination;
+      };
+
+      document.body.classList.add("is-page-exiting");
+
+      if (gsap && !reduceMotion) {
+        gsap.to(".main-navigation, .main-content", {
+          autoAlpha: 0,
+          duration: 0.42,
+          ease: "power2.inOut",
+          onComplete: navigate
+        });
+        return;
+      }
+
+      window.setTimeout(navigate, reduceMotion ? 0 : 420);
+    });
+  });
+}
+
+function initFullscreenLayout() {
+  const toggles = document.querySelectorAll("[data-fullscreen-toggle]");
+  const navigation = document.querySelector(".main-navigation");
+  const contentNav = document.querySelector(".content-nav");
+  const desktopQuery = window.matchMedia("(min-width: 901px)");
+  const storageKey = "portfolioContentFullscreen";
+
+  if (!toggles.length || !navigation || !contentNav) {
+    return;
+  }
+
+  localStorage.removeItem("portfolioSidebarWidth");
+
+  const isStoredActive = () => localStorage.getItem(storageKey) === "true";
+
+  const setToggleState = (isActive) => {
+    toggles.forEach((toggle) => {
+      toggle.setAttribute("aria-pressed", String(isActive));
+      toggle.setAttribute("aria-label", isActive ? "Exit fullscreen layout" : "Enter fullscreen layout");
+    });
+  };
+
+  const applyState = (isActive, shouldStore = true) => {
+    const canUseFullscreen = desktopQuery.matches;
+    const nextState = canUseFullscreen && isActive;
+
+    document.body.classList.toggle("is-content-fullscreen", nextState);
+    navigation.toggleAttribute("inert", nextState);
+    navigation.setAttribute("aria-hidden", String(nextState));
+    contentNav.toggleAttribute("inert", !nextState);
+    contentNav.setAttribute("aria-hidden", String(!nextState));
+    setToggleState(nextState);
+
+    if (shouldStore) {
+      localStorage.setItem(storageKey, String(isActive));
+    }
+  };
+
+  toggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const nextState = !document.body.classList.contains("is-content-fullscreen");
+      applyState(nextState);
+    });
+  });
+
+  const syncFromStorage = () => {
+    applyState(isStoredActive(), false);
+  };
+
+  window.addEventListener("resize", syncFromStorage);
+  syncFromStorage();
+}
+
+function initResumeModal() {
+  const triggers = document.querySelectorAll(".resume-trigger");
+  const modal = document.querySelector(".resume-modal");
+  const panel = document.querySelector(".resume-modal__panel");
+  const closeButtons = document.querySelectorAll("[data-resume-close]");
+  const gsap = window.gsap;
+  let lastTrigger = null;
+
+  if (!triggers.length || !modal || !panel) {
+    return;
+  }
+
+  const setExpanded = (value) => {
+    triggers.forEach((trigger) => {
+      trigger.setAttribute("aria-expanded", String(value));
+    });
+  };
+
+  const openModal = (trigger) => {
+    lastTrigger = trigger;
+    modal.hidden = false;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    setExpanded(true);
+
+    if (gsap) {
+      gsap.fromTo(
+        panel,
+        { autoAlpha: 0, y: 24, scale: 0.98 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }
+      );
+      gsap.fromTo(
+        ".resume-modal__backdrop",
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.28, ease: "none" }
+      );
     }
 
-    event.preventDefault();
-    navigating = true;
+    const closeButton = modal.querySelector(".resume-modal__close");
+    if (closeButton) {
+      closeButton.focus();
+    }
+  };
 
-    const destination = trigger.href;
-    const navigate = () => {
-      window.location.href = destination;
+  const closeModal = () => {
+    const finishClose = () => {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      modal.hidden = true;
+      setExpanded(false);
+      lastTrigger?.focus();
     };
 
-    document.body.classList.add("is-page-exiting");
-
-    if (gsap && !reduceMotion) {
-      gsap.to(".main-navigation, .main-content", {
+    if (gsap && modal.classList.contains("is-open")) {
+      gsap.to(panel, {
         autoAlpha: 0,
-        duration: 0.42,
-        ease: "power2.inOut",
-        onComplete: navigate
+        y: 18,
+        scale: 0.985,
+        duration: 0.24,
+        ease: "power2.in",
+        onComplete: finishClose
+      });
+      gsap.to(".resume-modal__backdrop", {
+        autoAlpha: 0,
+        duration: 0.18,
+        ease: "none"
       });
       return;
     }
 
-    window.setTimeout(navigate, reduceMotion ? 0 : 420);
+    finishClose();
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => openModal(trigger));
+  });
+
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
   });
 }
 
@@ -364,82 +508,4 @@ function initBizznestThumbAnimation() {
       ease: "power2.in"
     })
     .to({}, { duration: 0.48 });
-}
-
-function initResumeModal() {
-  const trigger = document.querySelector(".resume-trigger");
-  const modal = document.querySelector(".resume-modal");
-  const panel = document.querySelector(".resume-modal__panel");
-  const closeButtons = document.querySelectorAll("[data-resume-close]");
-  const gsap = window.gsap;
-
-  if (!trigger || !modal || !panel) {
-    return;
-  }
-
-  const openModal = () => {
-    modal.hidden = false;
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    trigger.setAttribute("aria-expanded", "true");
-
-    if (gsap) {
-      gsap.fromTo(
-        panel,
-        { autoAlpha: 0, y: 24, scale: 0.98 },
-        { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }
-      );
-      gsap.fromTo(
-        ".resume-modal__backdrop",
-        { autoAlpha: 0 },
-        { autoAlpha: 1, duration: 0.28, ease: "none" }
-      );
-    }
-
-    const closeButton = modal.querySelector(".resume-modal__close");
-    if (closeButton) {
-      closeButton.focus();
-    }
-  };
-
-  const closeModal = () => {
-    const finishClose = () => {
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
-      modal.hidden = true;
-      trigger.setAttribute("aria-expanded", "false");
-      trigger.focus();
-    };
-
-    if (gsap && modal.classList.contains("is-open")) {
-      gsap.to(panel, {
-        autoAlpha: 0,
-        y: 18,
-        scale: 0.985,
-        duration: 0.24,
-        ease: "power2.in",
-        onComplete: finishClose
-      });
-      gsap.to(".resume-modal__backdrop", {
-        autoAlpha: 0,
-        duration: 0.18,
-        ease: "none"
-      });
-      return;
-    }
-
-    finishClose();
-  };
-
-  trigger.addEventListener("click", openModal);
-
-  closeButtons.forEach((button) => {
-    button.addEventListener("click", closeModal);
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal.classList.contains("is-open")) {
-      closeModal();
-    }
-  });
 }

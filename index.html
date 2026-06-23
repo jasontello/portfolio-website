@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="./style.css?v=funfetti-spacing-1" />
+    <link rel="stylesheet" href="./style.css?v=content-fullscreen-3" />
 
     <title>Jason Tello Portfolio</title>
 
@@ -20,16 +20,22 @@
             <h1 id="name">Jason Tello</h1>
             <img class="name-face" src="./images/face.png" alt="">
           </div>
-          <p>I’m a Bay Area based designer/developer exploring the space between UI/UX, front-end code, and visual systems.</p>
-          <p>I make interactive web projects with a focus on layout, motion, and the small details that make interfaces feel alive.</p>
-          <p>Open to junior UI/UX, product design, and front-end opportunities. You can reach me on <a href="https://www.linkedin.com/in/jason-tello-123888235/" target="_blank" >LinkedIn</a> or at jasontello2003@gmail.com.</p>
+          <p>I’m a designer based in the Bay Area, open to junior design roles and internships.</p>
+          <p>I love all things art, movies, music, NewJeans, and TLOU 2.</p>
+          <p>You can reach me on <a href="https://www.linkedin.com/in/jason-tello-123888235/" target="_blank" >LinkedIn</a> or at jasontello2003@gmail.com.</p>
         </div>
         <ul class="nav-links">
+          <li class="work-section-link">
+            <a class="nav-link-fx nav-link-fx--active" href="./index.html" aria-current="page">Work</a>
+          </li>
           <li class="playground-section">
             <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
           </li>
           <li class="resume-section">
             <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+          </li>
+          <li class="music-section-link">
+            <a class="nav-link-fx" href="./music.html">Music</a>
           </li>
         </ul>
       </header>
@@ -38,7 +44,16 @@
       </footer>
     </nav>
     <div class="main-content">
-      <div class="headerright-section">
+      <div class="headerright-section content-chrome">
+        <button class="fullscreen-toggle" type="button" aria-label="Enter fullscreen layout" aria-pressed="false" data-fullscreen-toggle>
+          <img class="fullscreen-toggle__icon" src="./images/fullscreen-icon.png" alt="" aria-hidden="true">
+        </button>
+        <nav class="content-nav" aria-label="Fullscreen navigation">
+          <a class="nav-link-fx nav-link-fx--active" href="./index.html" aria-current="page">Work</a>
+          <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
+          <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+          <a class="nav-link-fx" href="./music.html">Music</a>
+        </nav>
         <img id="topright-corner" class="triangle" src="./images/topright-cornertriangle.svg" alt="corner image">
       </div>
       <section class="work-gallery" aria-label="Portfolio work">
@@ -101,6 +116,7 @@
           </button>
         </div>
       </section>
+
     </div>
     <section class="project-modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" hidden>
       <div class="project-modal__backdrop" data-project-close></div>
@@ -185,6 +201,6 @@
       </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="./script.js?v=funfetti-project-1"></script>
+    <script src="./script.js?v=content-fullscreen-3"></script>
   </body>
 </html>
