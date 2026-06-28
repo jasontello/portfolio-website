@@ -1416,13 +1416,13 @@ html.case-study-root body.case-study-body {
 }
 
 .case-study-figure--compact-scroll {
-  width: min(100%, 920px);
+  width: min(100%, 820px);
   margin-right: auto;
   margin-left: auto;
 }
 
 .case-study-figure--compact-scroll .case-study-scroll-frame {
-  max-height: 560px;
+  max-height: 500px;
   padding: clamp(14px, 2vw, 24px);
 }
 
