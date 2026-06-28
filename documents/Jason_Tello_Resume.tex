@@ -1,0 +1,163 @@
+%-------------------------
+% Resume in Latex
+% Updated for Jason Tello
+% Tailored for UI/UX, Product Design, and HCI Internships
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-3pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-8pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Jason Tello} \\ \vspace{1pt}
+    \small Fairfield / Rio Vista, CA $|$
+    \href{mailto:jasontello2003@gmail.com}{\underline{jasontello2003@gmail.com}} $|$
+    \href{https://jasontello.com/}{\underline{Portfolio}} $|$
+    \href{https://www.linkedin.com/in/jason-tello-123888235/}{\underline{LinkedIn}}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Georgia Institute of Technology}{Starting Fall 2026}
+    {Master of Science in Computer Science, Human-Computer Interaction Specialization}{Admitted}
+
+  \resumeSubheading
+    {Western Governors University}{Jan. 2026}
+    {Bachelor of Science in Computer Science}{}
+
+  \resumeSubheading
+    {University of California, Merced}{May 2025}
+    {Bachelor of Arts in Biology}{GPA: 3.7}
+
+\resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Funfetti Events Website Redesign}{\href{https://jasontello.com/funfetti-events-case-study.html}{\underline{Case Study}}}
+{Local Business Website Redesign}{}
+\resumeItemListStart
+\resumeItem{Redesigned the website for a local event-planning and party-rental business, improving visual direction, service clarity, and the path to request a quote.}
+\resumeItem{Audited unclear calls to action, low logo readability, generic imagery, and navigation that did not prioritize booking.}
+\resumeItem{Iterated from an early structure prototype into a brighter final direction after stakeholder feedback called for more color and visual energy.}
+\resumeItem{Built a responsive HTML/CSS/JavaScript prototype with service cards, gallery interactions, a quote-request modal, and a finished case study.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Open Source San Jose Homepage Redesign}{\href{https://jasontello.github.io/BizzNestDesignAssessment/}{\underline{Live Demo}}}
+{UI/UX Design Project}{}
+\resumeItemListStart
+\resumeItem{Redesigned a nonprofit homepage to improve visual hierarchy, content organization, and call-to-action placement.}
+\resumeItem{Reorganized key homepage content around mission, community impact, programs, and clearer paths for visitors to get involved.}
+\resumeItem{Proposed responsive UI solutions focused on accessibility, information architecture, readability, and volunteer conversion.}
+\resumeItemListEnd
+
+\resumeSubheading
+{Personal Profile Platform Feature Design}{\href{https://jasontello.github.io/bizznest-linktree-assessment/}{\underline{Live Demo}}}
+{UI/UX and Front-End Project}{}
+\resumeItemListStart
+\resumeItem{Designed and developed a responsive profile-link platform using HTML, CSS, and JavaScript.}
+\resumeItem{Created editable profile states for colors, links, and layout choices so users could personalize the page without changing code.}
+\resumeItem{Implemented interactive customization while refining navigation, responsiveness, and information hierarchy.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{IT Asset Management Coordinator}{Mar. 2026 -- Jun. 2026}
+{ComputerCare}{Stockton, CA}
+\resumeItemListStart
+\resumeItem{Use NetSuite, ShipJunction, FedEx Ship Manager, and Jira to process device workflows, verify orders, and maintain records.}
+\resumeItem{Troubleshoot work-order discrepancies, check system records, and coordinate exception-based workflows with clear documentation.}
+\resumeItemListEnd
+
+\resumeSubheading
+{People Analytics Extern}{Aug. 2025 -- Oct. 2025}
+{Amazon Fulfillment Center Operational Strategy \& People Analytics Externship}{Remote}
+\resumeItemListStart
+\resumeItem{Analyzed employee feedback using Python and AI-assisted workflows to identify pain points, workflow issues, and operational patterns.}
+\resumeItem{Synthesized findings into clear recommendations, strengthening technical communication and user-focused thinking.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------SKILLS-----------
+\section{Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+\small{\item{
+\textbf{Design}{: Figma, visual hierarchy, typography, responsive design, information architecture, accessibility principles, UI design} \\
+\textbf{UX Process}{: user flows, wireframing, usability audits, heuristic review, interaction design, portfolio case studies} \\
+\textbf{Front-End}{: HTML, CSS, JavaScript, responsive layouts, DOM interactions, Git, GitHub, browser debugging, basic SQL} \\
+\textbf{Tools}{: Codex, Jira, Google Workspace, Microsoft Office, NetSuite, ShipJunction, FedEx Ship Manager} \\
+}}
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+      try {
+        if (
+          localStorage.getItem("portfolioContentFullscreen") === "true" &&
+          window.matchMedia("(min-width: 901px)").matches
+        ) {
+          document.documentElement.classList.add("is-content-fullscreen", "is-fullscreen-restoring");
+        }
+      } catch (error) {}
+    </script>
+    <link rel="stylesheet" href="./style.css?v=design-system-6" />
+
+    <title>Style Guide | Jason Tello Portfolio</title>
+
+    <link rel="icon" type="image/png" href="./images/favicon-head.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  </head>
+  <body class="design-system-body">
+    <nav class="main-navigation">
+      <header>
+        <div class="about">
+          <div class="name-row">
+            <h1 id="name">Jason Tello</h1>
+            <img class="name-face" src="./images/face.png" alt="">
+          </div>
+          <p>I’m a designer based in the Bay Area, open to junior design roles and internships.</p>
+          <p>I love all things art, movies, music, NewJeans, and TLOU 2.</p>
+          <p>You can reach me on <a href="https://www.linkedin.com/in/jason-tello-123888235/" target="_blank" >LinkedIn</a> or at jasontello2003@gmail.com.</p>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a class="nav-link-fx" href="./index.html">Work</a>
+          </li>
+          <li class="playground-section">
+            <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
+          </li>
+          <li class="resume-section">
+            <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+          </li>
+          <li class="music-section-link">
+            <a class="nav-link-fx" href="./music.html">Music</a>
+          </li>
+          <li class="style-guide-section-link">
+            <a class="nav-link-fx nav-link-fx--active" href="./design-system.html" aria-current="page">Style Guide</a>
+          </li>
+        </ul>
+      </header>
+      <footer>
+        <img id="bottomleft-corner" class="triangle" src="./images/CornerTriangle.svg" alt="corner image">
+      </footer>
+    </nav>
+
+    <main class="main-content design-system-page" aria-labelledby="system-title">
+      <div class="headerright-section content-chrome">
+        <button class="fullscreen-toggle" type="button" aria-label="Enter fullscreen layout" aria-pressed="false" data-fullscreen-toggle>
+          <img class="fullscreen-toggle__icon" src="./images/fullscreen-icon.png" alt="" aria-hidden="true">
+        </button>
+        <nav class="content-nav" aria-label="Fullscreen navigation">
+          <a class="nav-link-fx" href="./index.html">Work</a>
+          <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
+          <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+          <a class="nav-link-fx" href="./music.html">Music</a>
+          <a class="nav-link-fx nav-link-fx--active" href="./design-system.html" aria-current="page">Style Guide</a>
+        </nav>
+        <img id="topright-corner" class="triangle" src="./images/topright-cornertriangle.svg" alt="corner image">
+      </div>
+
+      <section class="system-gallery" aria-label="Portfolio style guide">
+        <div class="system-gallery__header">
+          <div>
+            <h2 id="system-title">Style Guide</h2>
+            <p>A small reusable system for the portfolio: tokens, components, layout rules, and interaction patterns.</p>
+          </div>
+          <span>v1</span>
+        </div>
+
+        <section class="system-section" aria-labelledby="system-story-title">
+          <p class="system-kicker">Why it exists</p>
+          <h3 id="system-story-title">I organized the portfolio into a lightweight interface system so the same visual decisions can repeat with more intention.</h3>
+          <p class="system-body-copy">The goal is not to turn the site into a large product library. It is to document the reusable parts that already shape the portfolio: quiet navigation, restrained cards, direct labels, modal storytelling, and small motion details.</p>
+        </section>
+
+        <section class="system-section" aria-labelledby="color-title">
+          <div class="system-section__top">
+            <h3 id="color-title">Color Tokens</h3>
+            <p>Neutral by default, with project color living inside the work itself.</p>
+          </div>
+          <div class="token-grid">
+            <article class="token-card">
+              <span class="token-swatch token-swatch--ink"></span>
+              <strong>Text Primary</strong>
+              <code>#000000</code>
+            </article>
+            <article class="token-card">
+              <span class="token-swatch token-swatch--muted"></span>
+              <strong>Text Muted</strong>
+              <code>rgba(0,0,0,.46)</code>
+            </article>
+            <article class="token-card">
+              <span class="token-swatch token-swatch--line"></span>
+              <strong>Line Soft</strong>
+              <code>rgba(0,0,0,.16)</code>
+            </article>
+            <article class="token-card">
+              <span class="token-swatch token-swatch--paper"></span>
+              <strong>Paper</strong>
+              <code>#ffffff</code>
+            </article>
+          </div>
+        </section>
+
+        <section class="system-section" aria-labelledby="type-title">
+          <div class="system-section__top">
+            <h3 id="type-title">Typography</h3>
+            <p>Space Grotesk carries the site voice. DM Mono is reserved for labels, counts, and system notes.</p>
+          </div>
+          <div class="type-samples">
+            <div>
+              <span>Section title</span>
+              <p class="type-sample--title">Work</p>
+            </div>
+            <div>
+              <span>Statement</span>
+              <p class="type-sample--statement">Interfaces should feel alive through layout, motion, and small useful details.</p>
+            </div>
+            <div>
+              <span>Mono label</span>
+              <p class="type-sample--mono">SELECTED WORK / 04</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="system-section" aria-labelledby="components-title">
+          <div class="system-section__top">
+            <h3 id="components-title">Components</h3>
+            <p>Reusable pieces from the live portfolio, shown with the same spacing and interaction logic.</p>
+          </div>
+
+          <div class="component-grid">
+            <article class="component-demo">
+              <div class="component-demo__top">
+                <h4>LinkButton</h4>
+                <span>Navigation</span>
+              </div>
+              <div class="button-row">
+                <a class="link-button" href="./index.html">View Work</a>
+                <button class="link-button link-button--dark" type="button">Open Case</button>
+              </div>
+            </article>
+
+            <article class="component-demo">
+              <div class="component-demo__top">
+                <h4>Tag / Pill</h4>
+                <span>Metadata</span>
+              </div>
+              <div class="pill-row" aria-label="Example tags">
+                <span class="system-pill">UI/UX</span>
+                <span class="system-pill">Front-end</span>
+                <span class="system-pill">Motion</span>
+              </div>
+            </article>
+
+            <article class="component-demo component-demo--card">
+              <div class="component-demo__top">
+                <h4>ProjectCard</h4>
+                <span>Work grid</span>
+              </div>
+              <button class="work-card work-card--rainbow system-card-sample" type="button" aria-label="Project card example">
+                <span class="work-card__preview" aria-hidden="true">
+                  <span class="rainbow-thumb__brand">
+                    <span class="rainbow-thumb__logo">
+                      <span class="rainbow-thumb__tile rainbow-thumb__tile--cyan"></span>
+                      <span class="rainbow-thumb__tile rainbow-thumb__tile--yellow"></span>
+                      <span class="rainbow-thumb__tile rainbow-thumb__tile--magenta"></span>
+                    </span>
+                    <span class="rainbow-thumb__word">
+                      <span>R</span><span>A</span><span>I</span><span>N</span><span>B</span><span>O</span><span>W</span>
+                      <span class="rainbow-thumb__space"></span>
+                      <span>L</span><span>A</span><span>B</span>
+                    </span>
+                  </span>
+                </span>
+                <span class="work-card__meta">
+                  <strong>Rainbow Lab</strong>
+                  <span>Color tool, in progress</span>
+                </span>
+              </button>
+            </article>
+          </div>
+        </section>
+
+        <section class="system-section" aria-labelledby="case-study-title">
+          <div class="system-section__top">
+            <h3 id="case-study-title">Case Study Layout</h3>
+            <p>The modal pattern pairs a fixed project summary with a scrollable story area.</p>
+          </div>
+          <article class="case-study-sample">
+            <aside>
+              <p class="system-kicker">Selected work</p>
+              <h4>Funfetti Events Website Redesign</h4>
+              <p>A responsive redesign concept for an event-planning and party-rental business.</p>
+              <div class="pill-row">
+                <span class="system-pill">Role</span>
+                <span class="system-pill">UX + Front-end</span>
+              </div>
+            </aside>
+            <div class="case-study-sample__story">
+              <figure>
+                <img src="./images/projects/funfetti-events/case-study.png" alt="Funfetti Events illustrated celebration scene">
+              </figure>
+              <div>
+                <p class="system-kicker">The approach</p>
+                <h4>Organize the story around customer goals: understand services, browse setups, estimate needs, and contact the business.</h4>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="system-section" aria-labelledby="tokens-title">
+          <div class="system-section__top">
+            <h3 id="tokens-title">System Notes</h3>
+            <p>Reusable decisions behind the interface.</p>
+          </div>
+          <dl class="system-notes">
+            <div>
+              <dt>Spacing</dt>
+              <dd>Large page padding, compact component gaps, and open space around work previews.</dd>
+            </div>
+            <div>
+              <dt>Radius</dt>
+              <dd>Mostly square and low-radius surfaces so the site stays direct and portfolio-like.</dd>
+            </div>
+            <div>
+              <dt>Motion</dt>
+              <dd>Navigation text rolls, cards lift slightly, modals fade/slide, and fullscreen layout transitions smoothly.</dd>
+            </div>
+          </dl>
+        </section>
+      </section>
+    </main>
+
+    <section class="resume-modal" id="resume-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" hidden>
+      <div class="resume-modal__backdrop" data-resume-close></div>
+      <div class="resume-modal__panel">
+        <header class="resume-modal__header">
+          <div>
+            <p class="resume-modal__eyebrow">Resume</p>
+            <h2 id="resume-modal-title">Jason Tello</h2>
+          </div>
+          <div class="resume-modal__actions">
+            <a class="resume-modal__download" href="./documents/Jason_Tello_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            <button class="resume-modal__close" type="button" aria-label="Close resume" data-resume-close>Close</button>
+          </div>
+        </header>
+        <iframe class="resume-modal__frame" src="./documents/Jason_Tello_Resume.pdf#view=FitH" title="Jason Tello resume"></iframe>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="./script.js?v=design-system-6"></script>
+  </body>
+</html>

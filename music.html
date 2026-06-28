@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./style.css?v=content-fullscreen-3" />
+    <script>
+      try {
+        if (
+          localStorage.getItem("portfolioContentFullscreen") === "true" &&
+          window.matchMedia("(min-width: 901px)").matches
+        ) {
+          document.documentElement.classList.add("is-content-fullscreen", "is-fullscreen-restoring");
+        }
+      } catch (error) {}
+    </script>
+    <link rel="stylesheet" href="./style.css?v=design-system-6" />
 
     <title>Music | Jason Tello Portfolio</title>
 
+    <link rel="icon" type="image/png" href="./images/favicon-head.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
@@ -37,6 +48,9 @@
           <li class="music-section-link">
             <a class="nav-link-fx nav-link-fx--active" href="./music.html" aria-current="page">Music</a>
           </li>
+          <li class="style-guide-section-link">
+            <a class="nav-link-fx" href="./design-system.html">Style Guide</a>
+          </li>
         </ul>
       </header>
       <footer>
@@ -54,6 +68,7 @@
           <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
           <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
           <a class="nav-link-fx nav-link-fx--active" href="./music.html" aria-current="page">Music</a>
+          <a class="nav-link-fx" href="./design-system.html">Style Guide</a>
         </nav>
         <img id="topright-corner" class="triangle" src="./images/topright-cornertriangle.svg" alt="corner image">
       </div>
@@ -163,6 +178,6 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="./script.js?v=content-fullscreen-3"></script>
+    <script src="./script.js?v=design-system-6"></script>
   </body>
 </html>

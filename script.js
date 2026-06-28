@@ -30,9 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initResumeModal();
   initProjectModal();
+  initCurrentPageLinks();
   initSandboxTransition();
   initBizznestThumbAnimation();
   initFullscreenLayout();
+  initCaseStudyReveal();
 });
 
 const PROJECTS = [
@@ -117,6 +119,7 @@ const PROJECTS = [
     image: "./images/projects/funfetti-events/case-study.png",
     imageAlt: "Funfetti Events illustrated celebration scene",
     video: "./images/projects/funfetti-events/demo.mp4",
+    caseStudy: "./funfetti-events-case-study.html",
     live: "https://jasontello.github.io/funfetti-events-redesign/",
     github: "https://github.com/jasontello/funfetti-events-redesign"
   }
@@ -149,6 +152,7 @@ function initProjectModal() {
     approach: modal.querySelector("[data-project-approach]"),
     outcome: modal.querySelector("[data-project-outcome]"),
     highlights: modal.querySelector("[data-project-highlights]"),
+    caseStudy: modal.querySelector("[data-project-case-study]"),
     live: modal.querySelector("[data-project-live]"),
     github: modal.querySelector("[data-project-github]")
   };
@@ -179,6 +183,13 @@ function initProjectModal() {
     fields.challenge.textContent = project.challenge;
     fields.approach.textContent = project.approach;
     fields.outcome.textContent = project.outcome;
+    if (project.caseStudy) {
+      fields.caseStudy.href = project.caseStudy;
+      fields.caseStudy.hidden = false;
+    } else {
+      fields.caseStudy.removeAttribute("href");
+      fields.caseStudy.hidden = true;
+    }
     fields.live.href = project.live;
     fields.github.href = project.github;
     fields.highlights.replaceChildren(
@@ -324,6 +335,43 @@ function initSandboxTransition() {
   });
 }
 
+function initCurrentPageLinks() {
+  const currentLinks = document.querySelectorAll(".nav-link-fx[href]");
+  const currentPath = normalizePath(window.location.pathname);
+
+  currentLinks.forEach((link) => {
+    const linkPath = normalizePath(new URL(link.href, window.location.href).pathname);
+
+    if (linkPath !== currentPath) {
+      return;
+    }
+
+    link.addEventListener("click", (event) => {
+      if (
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        event.button !== 0
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+    });
+  });
+}
+
+function normalizePath(pathname) {
+  const withoutTrailingSlash = pathname.replace(/\/+$/, "");
+
+  if (!withoutTrailingSlash || withoutTrailingSlash === "/index.html") {
+    return "/index.html";
+  }
+
+  return withoutTrailingSlash;
+}
+
 function initFullscreenLayout() {
   const toggles = document.querySelectorAll("[data-fullscreen-toggle]");
   const navigation = document.querySelector(".main-navigation");
@@ -350,6 +398,7 @@ function initFullscreenLayout() {
     const canUseFullscreen = desktopQuery.matches;
     const nextState = canUseFullscreen && isActive;
 
+    document.documentElement.classList.toggle("is-content-fullscreen", nextState);
     document.body.classList.toggle("is-content-fullscreen", nextState);
     navigation.toggleAttribute("inert", nextState);
     navigation.setAttribute("aria-hidden", String(nextState));
@@ -375,6 +424,12 @@ function initFullscreenLayout() {
 
   window.addEventListener("resize", syncFromStorage);
   syncFromStorage();
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      document.documentElement.classList.remove("is-fullscreen-restoring");
+    });
+  });
 }
 
 function initResumeModal() {
@@ -463,6 +518,53 @@ function initResumeModal() {
       closeModal();
     }
   });
+}
+
+function initCaseStudyReveal() {
+  const page = document.querySelector(".case-study-page");
+
+  if (!page) {
+    return;
+  }
+
+  const revealItems = page.querySelectorAll(`
+    .case-study-hero__meta,
+    .case-study-hero__intro,
+    .case-study-figure--wide,
+    .case-study-section,
+    .case-study-media-grid > *,
+    .case-study-feature-grid > *,
+    .case-study-audit-list > *,
+    .case-study-flow-steps > *,
+    .case-study-list > li
+  `);
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!revealItems.length || reduceMotion || !("IntersectionObserver" in window)) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
+
+  revealItems.forEach((item, index) => {
+    item.classList.add("case-study-reveal");
+    item.style.setProperty("--reveal-delay", `${Math.min(index % 4, 3) * 55}ms`);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, {
+    rootMargin: "0px 0px -12% 0px",
+    threshold: 0.12
+  });
+
+  revealItems.forEach((item) => observer.observe(item));
 }
 
 function initBizznestThumbAnimation() {
