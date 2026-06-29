@@ -1,6 +1,37 @@
 {
-  "updatedAt": null,
+  "updatedAt": "2026-06-29T15:02:24.604Z",
   "range": "short_term",
   "source": "spotify",
-  "tracks": []
+  "tracks": [
+    {
+      "id": "5cAsy4oXqZCemP9r7va8Ub",
+      "name": "I Choose You",
+      "artists": [
+        "f5ve"
+      ],
+      "album": "SEQUENCE 01.5 (dreaming of the 2nd 1st impact - consequences of fate redux)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b471c4ec307f664ad34f7394",
+      "spotifyUrl": "https://open.spotify.com/track/5cAsy4oXqZCemP9r7va8Ub"
+    },
+    {
+      "id": "28FSGvQfafhr7oq5vbJOon",
+      "name": "Praying",
+      "artists": [
+        "SEULGI"
+      ],
+      "album": "Accidentally On Purpose - The 2nd Mini Album",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273900b8945b16b4a571bed8f06",
+      "spotifyUrl": "https://open.spotify.com/track/28FSGvQfafhr7oq5vbJOon"
+    },
+    {
+      "id": "5wT0dbK1lgkHIvLRk99arN",
+      "name": "Gone",
+      "artists": [
+        "TWICE"
+      ],
+      "album": "BETWEEN 1&2",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27390b0ec9b2a62d373bcbfd267",
+      "spotifyUrl": "https://open.spotify.com/track/5wT0dbK1lgkHIvLRk99arN"
+    }
+  ]
 }
