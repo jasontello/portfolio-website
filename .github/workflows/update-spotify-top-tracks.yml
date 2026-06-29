@@ -1,0 +1,42 @@
+name: Update Spotify top tracks
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 15 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Fetch Spotify top tracks
+        run: node scripts/update-spotify-top-tracks.mjs
+        env:
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
+
+      - name: Commit updated data
+        run: |
+          if git diff --quiet -- data/spotify-top-tracks.json; then
+            echo "No Spotify top track changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/spotify-top-tracks.json
+          git commit -m "Update Spotify top tracks"
+          git push

@@ -220,10 +220,36 @@ button.nav-link-fx {
   gap: 8px;
 }
 
+.name-face-button {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.name-face-button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 3px;
+}
+
 .name-face {
   width: 30px;
   height: auto;
   display: block;
+  transform-origin: center;
+  transition:
+    opacity 90ms ease,
+    transform 140ms cubic-bezier(0.22, 0.8, 0.32, 1);
+}
+
+.name-face-button.is-reacting .name-face {
+  width: 34px;
+  transform: rotate(-5deg) scale(1.08);
 }
 
 .about h1 {
@@ -389,6 +415,7 @@ html.is-fullscreen-restoring .fullscreen-toggle__icon {
 .is-content-fullscreen .work-gallery {
   width: min(100%, 1240px);
   align-self: center;
+  margin-top: clamp(28px, 4vw, 58px);
 }
 
 .is-content-fullscreen .music-gallery,
@@ -579,6 +606,7 @@ html.is-fullscreen-restoring .fullscreen-toggle__icon {
 .music-gallery__header span,
 .music-panel__label,
 .listening-board__top > span,
+.spotify-board__link,
 .track-list > li > span,
 .track-list em {
   font-family: "DM Mono", monospace;
@@ -727,12 +755,18 @@ html.is-fullscreen-restoring .fullscreen-toggle__icon {
   padding-top: clamp(22px, 3vw, 34px);
 }
 
+.spotify-board {
+  display: grid;
+  gap: 18px;
+  border-top: 1px solid var(--line-soft);
+  padding-top: clamp(22px, 3vw, 34px);
+}
+
 .listening-board__top {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 20px;
-  margin-bottom: 18px;
 }
 
 .listening-board__top > div {
@@ -744,6 +778,123 @@ html.is-fullscreen-restoring .fullscreen-toggle__icon {
 .track-list > li > span,
 .track-list em {
   color: var(--text-muted);
+}
+
+.spotify-board__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line-soft);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.spotify-board__link:hover,
+.spotify-board__link:focus-visible {
+  border-color: rgba(0, 0, 0, 0.34);
+  background: rgba(255, 255, 255, 0.48);
+}
+
+.spotify-board__link:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 3px;
+}
+
+.top-tracks {
+  display: grid;
+  gap: 14px;
+}
+
+.top-tracks__status,
+.top-tracks__meta {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.top-tracks__meta {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.top-tracks__list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line-soft);
+  list-style: none;
+}
+
+.top-track {
+  display: grid;
+  grid-template-columns: 42px 76px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  min-height: 112px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.top-track__number {
+  color: var(--text-muted);
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.top-track__artwork {
+  width: 76px;
+  aspect-ratio: 1;
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  background: #fff;
+}
+
+.top-track__details {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.top-track__title {
+  color: var(--text-primary);
+  font-size: clamp(18px, 2.4vw, 28px);
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.top-track__title:hover,
+.top-track__title:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.top-track__title:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 3px;
+}
+
+.top-track__artist,
+.top-track__album {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.top-track__artist {
+  color: var(--text-primary);
 }
 
 .track-list {
@@ -1340,6 +1491,18 @@ html.case-study-root body.case-study-body {
   gap: 18px;
 }
 
+.case-study-iteration-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.48fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 86px);
+  align-items: start;
+}
+
+.case-study-iteration-media {
+  display: grid;
+  gap: clamp(18px, 3vw, 34px);
+}
+
 .case-study-copy {
   display: grid;
   gap: 18px;
@@ -1387,12 +1550,22 @@ html.case-study-root body.case-study-body {
   gap: 12px;
 }
 
+.case-study-figure--framed {
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  background: rgba(0, 0, 0, 0.035);
+  padding: clamp(18px, 2.8vw, 34px);
+}
+
 .case-study-figure img {
   display: block;
   width: 100%;
   height: auto;
   border: 1px solid rgba(0, 0, 0, 0.09);
   background: #fff;
+}
+
+.case-study-figure--framed img {
+  border: 0;
 }
 
 .case-study-figure--wide img {
@@ -1413,6 +1586,19 @@ html.case-study-root body.case-study-body {
 
 .case-study-scroll-frame img {
   border: 0;
+}
+
+.case-study-figure--zoom-scroll .case-study-scroll-frame {
+  height: min(72vh, 760px);
+  max-height: none;
+  padding: 0;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable both-edges;
+}
+
+.case-study-figure--zoom-scroll .case-study-scroll-frame img {
+  width: max(760px, 170%);
+  max-width: none;
 }
 
 .case-study-figure--compact-scroll {
@@ -1469,6 +1655,14 @@ html.case-study-root body.case-study-body {
 
 .case-study-media-grid--two {
   grid-template-columns: minmax(0, 1fr) minmax(180px, 0.36fr);
+}
+
+.case-study-media-grid--balanced {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.case-study-media-grid--comparison {
+  gap: clamp(24px, 4vw, 48px);
 }
 
 .case-study-media-grid--three {
@@ -2511,6 +2705,16 @@ body.is-project-open {
     flex-direction: column;
   }
 
+  .top-track {
+    grid-template-columns: 32px 64px minmax(0, 1fr);
+    gap: 12px;
+    min-height: 96px;
+  }
+
+  .top-track__artwork {
+    width: 64px;
+  }
+
   .system-section__top p {
     text-align: left;
   }
@@ -2561,7 +2765,9 @@ body.is-project-open {
   .case-study-hero,
   .case-study-section--split,
   .case-study-problem-grid,
+  .case-study-iteration-layout,
   .case-study-media-grid--two,
+  .case-study-media-grid--balanced,
   .case-study-media-grid--three,
   .case-study-media-grid--four,
   .case-study-flow-layout,

@@ -31,9 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initResumeModal();
   initProjectModal();
   initCurrentPageLinks();
+  initNameFaceReaction();
   initSandboxTransition();
   initBizznestThumbAnimation();
   initFullscreenLayout();
+  initSpotifyTopTracks();
   initCaseStudyReveal();
 });
 
@@ -78,6 +80,7 @@ const PROJECTS = [
     image: "./images/projects/open-source-san-jose/case-study.png",
     imageAlt: "Open Source San José redesigned homepage",
     video: "./images/projects/open-source-san-jose/demo.mp4",
+    caseStudy: "./open-source-san-jose-case-study.html",
     live: "https://jasontello.github.io/BizzNestDesignAssessment/",
     github: "https://github.com/jasontello/BizzNestDesignAssessment"
   },
@@ -362,6 +365,50 @@ function initCurrentPageLinks() {
   });
 }
 
+function initNameFaceReaction() {
+  let resetTimer;
+
+  document.querySelectorAll("[data-face-trigger] .name-face").forEach((face) => {
+    if (face.dataset.faceReaction) {
+      const reactionImage = new Image();
+      reactionImage.src = face.dataset.faceReaction;
+    }
+  });
+
+  const showReaction = (event) => {
+    if (!(event.target instanceof Element)) {
+      return;
+    }
+
+    const trigger = event.target.closest("[data-face-trigger]");
+
+    if (!trigger) {
+      return;
+    }
+
+    const face = trigger.querySelector(".name-face");
+    const normalSrc = face?.dataset.faceNormal || face?.getAttribute("src");
+    const reactionSrc = face?.dataset.faceReaction;
+
+    if (!face || !normalSrc || !reactionSrc) {
+      return;
+    }
+
+    window.clearTimeout(resetTimer);
+    face.src = reactionSrc;
+    trigger.classList.add("is-reacting");
+
+    resetTimer = window.setTimeout(() => {
+      face.src = normalSrc;
+      trigger.classList.remove("is-reacting");
+    }, 850);
+  };
+
+  document.addEventListener("pointerdown", showReaction);
+  document.addEventListener("mousedown", showReaction);
+  document.addEventListener("click", showReaction);
+}
+
 function normalizePath(pathname) {
   const withoutTrailingSlash = pathname.replace(/\/+$/, "");
 
@@ -518,6 +565,105 @@ function initResumeModal() {
       closeModal();
     }
   });
+}
+
+function initSpotifyTopTracks() {
+  const container = document.querySelector("[data-spotify-top-tracks]");
+
+  if (!container) {
+    return;
+  }
+
+  const renderStatus = (message) => {
+    container.replaceChildren();
+    const status = document.createElement("p");
+    status.className = "top-tracks__status";
+    status.textContent = message;
+    container.append(status);
+  };
+
+  const renderTracks = (tracks, updatedAt) => {
+    container.replaceChildren();
+
+    const list = document.createElement("ol");
+    list.className = "top-tracks__list";
+
+    tracks.slice(0, 3).forEach((track, index) => {
+      const item = document.createElement("li");
+      item.className = "top-track";
+
+      const number = document.createElement("span");
+      number.className = "top-track__number";
+      number.textContent = String(index + 1).padStart(2, "0");
+
+      const artwork = document.createElement("img");
+      artwork.className = "top-track__artwork";
+      artwork.src = track.albumImage || "./images/walltexture.jpg";
+      artwork.alt = track.album ? `${track.album} album cover` : "";
+      artwork.loading = "lazy";
+
+      const details = document.createElement("div");
+      details.className = "top-track__details";
+
+      const title = document.createElement("a");
+      title.className = "top-track__title";
+      title.href = track.spotifyUrl;
+      title.target = "_blank";
+      title.rel = "noreferrer";
+      title.textContent = track.name;
+
+      const artist = document.createElement("p");
+      artist.className = "top-track__artist";
+      artist.textContent = track.artists.join(", ");
+
+      const album = document.createElement("p");
+      album.className = "top-track__album";
+      album.textContent = track.album;
+
+      details.append(title, artist, album);
+      item.append(number, artwork, details);
+      list.append(item);
+    });
+
+    const meta = document.createElement("p");
+    meta.className = "top-tracks__meta";
+    meta.textContent = updatedAt ? `Updated ${formatSpotifyDate(updatedAt)}` : "Spotify short-term top tracks";
+
+    container.append(list, meta);
+  };
+
+  fetch("./data/spotify-top-tracks.json", { cache: "no-store" })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Top tracks data is not available.");
+      }
+
+      return response.json();
+    })
+    .then((data) => {
+      if (!Array.isArray(data.tracks) || data.tracks.length === 0) {
+        renderStatus("Spotify sync is ready, but no top tracks have been published yet.");
+        return;
+      }
+
+      renderTracks(data.tracks, data.updatedAt);
+    })
+    .catch(() => {
+      renderStatus("Spotify top tracks will appear here after the first sync.");
+    });
+}
+
+function formatSpotifyDate(value) {
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return "recently";
+  }
+
+  return new Intl.DateTimeFormat("en", {
+    month: "short",
+    day: "numeric"
+  }).format(date);
 }
 
 function initCaseStudyReveal() {

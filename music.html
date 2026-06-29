@@ -14,7 +14,7 @@
         }
       } catch (error) {}
     </script>
-    <link rel="stylesheet" href="./style.css?v=design-system-6" />
+    <link rel="stylesheet" href="./style.css?v=spotify-top-tracks-1" />
 
     <title>Music | Jason Tello Portfolio</title>
 
@@ -77,84 +77,29 @@
         <div class="music-gallery__header">
           <div>
             <h2 id="music-title">Music</h2>
-            <p>A place for album art, current listens, and the sounds sitting behind the work.</p>
+            <p>A public playlist pulled from liked songs, current rotation, and the sounds sitting behind the work.</p>
           </div>
-          <span>Foundation</span>
+          <span>Spotify</span>
         </div>
 
         <div class="music-panel">
-          <section class="music-panel__intro" aria-labelledby="album-covers-title">
-            <p class="music-panel__label">Album covers</p>
-            <h3 id="album-covers-title">Visual references, favorite records, and cover art that shapes the mood.</h3>
+          <section class="music-panel__intro" aria-labelledby="playlist-title">
+            <p class="music-panel__label">Public playlist</p>
+            <h3 id="playlist-title">Liked songs, edited into something worth sharing.</h3>
           </section>
 
-          <div class="album-grid" aria-label="Album cover placeholders">
-            <article class="album-card album-card--pulse">
-              <span class="album-card__cover" aria-hidden="true">
-                <span></span>
-              </span>
-              <div>
-                <h4>Cover Study 01</h4>
-                <p>Replace with an album, playlist, or visual reference.</p>
-              </div>
-            </article>
-
-            <article class="album-card album-card--signal">
-              <span class="album-card__cover" aria-hidden="true">
-                <span></span>
-              </span>
-              <div>
-                <h4>Cover Study 02</h4>
-                <p>A second slot for art direction, typography, or color notes.</p>
-              </div>
-            </article>
-
-            <article class="album-card album-card--groove">
-              <span class="album-card__cover" aria-hidden="true">
-                <span></span>
-              </span>
-              <div>
-                <h4>Cover Study 03</h4>
-                <p>Use this for a record that feels connected to your work.</p>
-              </div>
-            </article>
-          </div>
-
-          <section class="listening-board" aria-labelledby="currently-listening-title">
+          <section class="spotify-board" aria-labelledby="currently-listening-title">
             <div class="listening-board__top">
               <div>
                 <p class="music-panel__label">Currently listening</p>
-                <h3 id="currently-listening-title">Tracks on rotation</h3>
+                <h3 id="currently-listening-title">Top tracks lately</h3>
               </div>
-              <span>Update manually for now</span>
+              <a class="spotify-board__link" href="https://open.spotify.com/playlist/1WnuBR8G38niNAKLAfQ8XO?si=3dd2e893e48e4f96" target="_blank" rel="noreferrer">Open playlist</a>
             </div>
 
-            <ul class="track-list">
-              <li>
-                <span>01</span>
-                <div>
-                  <strong>Song title</strong>
-                  <p>Artist name</p>
-                </div>
-                <em>Current mood</em>
-              </li>
-              <li>
-                <span>02</span>
-                <div>
-                  <strong>Another track</strong>
-                  <p>Artist name</p>
-                </div>
-                <em>Design fuel</em>
-              </li>
-              <li>
-                <span>03</span>
-                <div>
-                  <strong>Late-night repeat</strong>
-                  <p>Artist name</p>
-                </div>
-                <em>Loop-worthy</em>
-              </li>
-            </ul>
+            <div class="top-tracks" data-spotify-top-tracks>
+              <p class="top-tracks__status">Loading recent tracks...</p>
+            </div>
           </section>
         </div>
       </section>
@@ -178,6 +123,6 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="./script.js?v=design-system-6"></script>
+    <script src="./script.js?v=spotify-top-tracks-1"></script>
   </body>
 </html>
