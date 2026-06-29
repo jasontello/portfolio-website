@@ -1,18 +1,8 @@
 {
-  "updatedAt": "2026-06-29T15:02:24.604Z",
+  "updatedAt": "2026-06-29T17:55:31.014Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
-    {
-      "id": "5cAsy4oXqZCemP9r7va8Ub",
-      "name": "I Choose You",
-      "artists": [
-        "f5ve"
-      ],
-      "album": "SEQUENCE 01.5 (dreaming of the 2nd 1st impact - consequences of fate redux)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b471c4ec307f664ad34f7394",
-      "spotifyUrl": "https://open.spotify.com/track/5cAsy4oXqZCemP9r7va8Ub"
-    },
     {
       "id": "28FSGvQfafhr7oq5vbJOon",
       "name": "Praying",
@@ -32,6 +22,16 @@
       "album": "BETWEEN 1&2",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27390b0ec9b2a62d373bcbfd267",
       "spotifyUrl": "https://open.spotify.com/track/5wT0dbK1lgkHIvLRk99arN"
+    },
+    {
+      "id": "1ZPwN2BYeKssfv4avkzyKI",
+      "name": "Pimple",
+      "artists": [
+        "ILLIT"
+      ],
+      "album": "I'LL LIKE YOU",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fc2fffae3025fbc540b98f34",
+      "spotifyUrl": "https://open.spotify.com/track/1ZPwN2BYeKssfv4avkzyKI"
     }
   ]
 }
