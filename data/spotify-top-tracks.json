@@ -1,18 +1,8 @@
 {
-  "updatedAt": "2026-06-29T17:55:31.014Z",
+  "updatedAt": "2026-06-30T17:18:54.938Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
-    {
-      "id": "28FSGvQfafhr7oq5vbJOon",
-      "name": "Praying",
-      "artists": [
-        "SEULGI"
-      ],
-      "album": "Accidentally On Purpose - The 2nd Mini Album",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273900b8945b16b4a571bed8f06",
-      "spotifyUrl": "https://open.spotify.com/track/28FSGvQfafhr7oq5vbJOon"
-    },
     {
       "id": "5wT0dbK1lgkHIvLRk99arN",
       "name": "Gone",
@@ -24,14 +14,24 @@
       "spotifyUrl": "https://open.spotify.com/track/5wT0dbK1lgkHIvLRk99arN"
     },
     {
-      "id": "1ZPwN2BYeKssfv4avkzyKI",
-      "name": "Pimple",
+      "id": "28FSGvQfafhr7oq5vbJOon",
+      "name": "Praying",
       "artists": [
-        "ILLIT"
+        "SEULGI"
       ],
-      "album": "I'LL LIKE YOU",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fc2fffae3025fbc540b98f34",
-      "spotifyUrl": "https://open.spotify.com/track/1ZPwN2BYeKssfv4avkzyKI"
+      "album": "Accidentally On Purpose - The 2nd Mini Album",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273900b8945b16b4a571bed8f06",
+      "spotifyUrl": "https://open.spotify.com/track/28FSGvQfafhr7oq5vbJOon"
+    },
+    {
+      "id": "3BIIJgBJJ7NhhCv4MI6n7w",
+      "name": "Alien Boy",
+      "artists": [
+        "Oliver Tree"
+      ],
+      "album": "Ugly is Beautiful",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c1bdf5564ed647ab6cb12f4b",
+      "spotifyUrl": "https://open.spotify.com/track/3BIIJgBJJ7NhhCv4MI6n7w"
     }
   ]
 }
