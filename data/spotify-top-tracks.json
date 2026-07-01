@@ -1,27 +1,17 @@
 {
-  "updatedAt": "2026-06-30T17:18:54.938Z",
+  "updatedAt": "2026-07-01T17:25:27.836Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
     {
-      "id": "5wT0dbK1lgkHIvLRk99arN",
-      "name": "Gone",
+      "id": "3NXNXRW5tDFiLre0EpSDkE",
+      "name": "METRONOME",
       "artists": [
-        "TWICE"
+        "izna"
       ],
-      "album": "BETWEEN 1&2",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27390b0ec9b2a62d373bcbfd267",
-      "spotifyUrl": "https://open.spotify.com/track/5wT0dbK1lgkHIvLRk99arN"
-    },
-    {
-      "id": "28FSGvQfafhr7oq5vbJOon",
-      "name": "Praying",
-      "artists": [
-        "SEULGI"
-      ],
-      "album": "Accidentally On Purpose - The 2nd Mini Album",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273900b8945b16b4a571bed8f06",
-      "spotifyUrl": "https://open.spotify.com/track/28FSGvQfafhr7oq5vbJOon"
+      "album": "SET THE TEMPO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a3cba6911729850b7530064a",
+      "spotifyUrl": "https://open.spotify.com/track/3NXNXRW5tDFiLre0EpSDkE"
     },
     {
       "id": "3BIIJgBJJ7NhhCv4MI6n7w",
@@ -32,6 +22,16 @@
       "album": "Ugly is Beautiful",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273c1bdf5564ed647ab6cb12f4b",
       "spotifyUrl": "https://open.spotify.com/track/3BIIJgBJJ7NhhCv4MI6n7w"
+    },
+    {
+      "id": "49PPH7Kji3bCyKKNx78SxS",
+      "name": "Say",
+      "artists": [
+        "keshi"
+      ],
+      "album": "Requiem",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
+      "spotifyUrl": "https://open.spotify.com/track/49PPH7Kji3bCyKKNx78SxS"
     }
   ]
 }
