@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" class="case-study-root">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css?v=design-system-10" />
+
+    <title>Open Source San José Case Study | Jason Tello Portfolio</title>
+
+    <link rel="icon" type="image/png" href="./images/favicon-head.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  </head>
+  <body class="case-study-body">
+    <header class="case-study-nav">
+      <span class="case-study-nav__slot" aria-hidden="true"></span>
+      <nav class="case-study-nav__links" aria-label="Case study navigation">
+        <a class="nav-link-fx" href="./index.html">Work</a>
+        <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
+        <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+        <a class="nav-link-fx" href="./music.html">Music</a>
+        <a class="nav-link-fx" href="./design-system.html">Style Guide</a>
+      </nav>
+      <img id="topright-corner" class="triangle" src="./images/topright-cornertriangle.svg" alt="corner image">
+    </header>
+
+    <main class="case-study-page" aria-labelledby="case-study-title">
+      <section class="case-study-hero">
+        <div class="case-study-hero__meta">
+          <a class="case-study-back" href="./index.html">Back to work</a>
+          <dl>
+            <div>
+              <dt>Type</dt>
+              <dd>Website evaluation + redesign</dd>
+            </div>
+            <div>
+              <dt>Role</dt>
+              <dd>Audit, content structure, visual design, front-end</dd>
+            </div>
+            <div>
+              <dt>Timeline</dt>
+              <dd>4-6 hour take-home assessment</dd>
+            </div>
+            <div>
+              <dt>Tools</dt>
+              <dd>HTML/CSS/JS, Figma, GitHub Pages</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="case-study-hero__intro">
+          <p class="case-study-kicker">Case study / civic-tech redesign</p>
+          <h1 id="case-study-title">Open Source San José Website Redesign</h1>
+          <p>A homepage evaluation and redesign for a civic-tech organization, focused on preserving the original mission and content while making the hierarchy, spacing, typography, and volunteer path feel more intentional.</p>
+          <div class="case-study-actions">
+            <a href="https://jasontello.github.io/BizzNestDesignAssessment/" target="_blank" rel="noreferrer">Live site <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/jasontello/BizzNestDesignAssessment" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <figure class="case-study-figure case-study-figure--wide case-study-figure--framed">
+        <img src="./images/projects/open-source-san-jose/case-study.png" alt="Open Source San José redesigned homepage hero">
+        <figcaption>Final homepage direction: a darker civic-tech interface with a clearer hero, stronger navigation, and an immediate path toward getting involved.</figcaption>
+      </figure>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="context-title">
+        <div>
+          <p class="case-study-kicker">Context</p>
+          <h2 id="context-title">The assessment asked me to evaluate an existing homepage, then redesign it with clearer structure and stronger visual execution.</h2>
+        </div>
+        <div class="case-study-copy">
+          <p>For the BizzNEST Design Associate assessment, I chose the website evaluation and redesign option. The assignment required a written audit of the current Open Source San José homepage and a high-fidelity homepage redesign that addressed issues in visual hierarchy, navigation, mobile responsiveness, CTA clarity, and overall visual cohesion.</p>
+          <p>Open Source San José already had a strong mission and useful content: volunteers, civic technology, current projects, sponsors, and meeting details. My goal was not to replace that identity. I wanted to keep the organization’s original content and civic-tech purpose, then reorganize the experience so the page felt more polished and easier to scan.</p>
+        </div>
+      </section>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="brief-title">
+        <div>
+          <p class="case-study-kicker">Assignment</p>
+          <h2 id="brief-title">I chose Option 2: audit the existing Open Source San José homepage and create a high-fidelity redesign.</h2>
+        </div>
+        <div class="case-study-copy">
+          <p>The deliverables were a high-fidelity homepage design and a short design rationale explaining the design approach, user experience improvements, challenges, and how the audit informed the redesign.</p>
+          <p>The hardest part was the content structure. I tried to keep as much of the original information as possible, then improve how that information was grouped and prioritized through typography, spacing, layout rhythm, and clearer section breaks.</p>
+        </div>
+      </section>
+
+      <section class="case-study-section" aria-labelledby="problem-title">
+        <div class="case-study-problem-grid">
+          <div class="case-study-problem-heading">
+            <p class="case-study-kicker">Problem</p>
+            <h2 id="problem-title">The original homepage had the right information, but the hierarchy made it harder to understand what mattered first.</h2>
+          </div>
+          <div class="case-study-audit-list" aria-label="Homepage experience issues">
+            <article>
+              <h3>Visual hierarchy was doing too much at once.</h3>
+              <p>The page included mission text, volunteer CTAs, project cards, sponsors, and location details, but many sections used similar weight and spacing, so the reading path felt less controlled.</p>
+            </article>
+            <article>
+              <h3>The CTA path could be simplified.</h3>
+              <p>The original hero had multiple actions close together. I wanted the redesign to make the main get-involved path feel more deliberate while still keeping donation and community links available.</p>
+            </article>
+            <article>
+              <h3>The content needed more breathing room.</h3>
+              <p>The original site had valuable paragraphs about the organization’s mission and work, but tighter spacing and smaller text made those sections feel dense.</p>
+            </article>
+            <article>
+              <h3>The visual system could feel more software-driven.</h3>
+              <p>Because Open Source San José is a software and civic-tech organization, I wanted the redesign to keep the existing dark, blue, and red brand cues while making the typography and layout feel more technical.</p>
+            </article>
+          </div>
+        </div>
+        <div class="case-study-media-grid case-study-media-grid--two">
+          <figure class="case-study-figure case-study-figure--scroll">
+            <div class="case-study-scroll-frame">
+              <img src="./images/projects/open-source-san-jose/case-study/original-homepage-desktop.png" alt="Original Open Source San José homepage desktop screenshot">
+            </div>
+            <figcaption>Original desktop homepage capture from opensourcesanjose.org, used for the visual hierarchy and content-structure audit.</figcaption>
+          </figure>
+          <figure class="case-study-figure case-study-figure--phone">
+            <div class="case-study-phone-frame">
+              <img src="./images/projects/open-source-san-jose/case-study/original-homepage-mobile.png" alt="Original Open Source San José homepage mobile screenshot">
+            </div>
+            <figcaption>Original mobile homepage capture, showing how the same dense content stack appears on a smaller screen.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="goal-title">
+        <div>
+          <p class="case-study-kicker">Challenge</p>
+          <h2 id="goal-title">Improve the page without making it feel like a different organization.</h2>
+        </div>
+        <div class="case-study-copy">
+          <p>The main challenge was respecting what was already there. Open Source San José had recognizable colors, a clear volunteer mission, and content that explained the organization well. The redesign needed to make those pieces easier to read instead of replacing them with a completely new brand direction.</p>
+          <p>I focused on changing the structure around the content: larger type where the page needed emphasis, more consistent spacing, a stronger section rhythm, and a clearer order from mission to projects to sponsors to meeting details.</p>
+        </div>
+      </section>
+
+      <section class="case-study-section" aria-labelledby="principles-title">
+        <div class="case-study-section__top">
+          <p class="case-study-kicker">Design priorities</p>
+          <h2 id="principles-title">I used four priorities to keep the redesign focused.</h2>
+        </div>
+        <div class="case-study-feature-grid">
+          <article>
+            <span>01</span>
+            <h3>Keep the original identity</h3>
+            <p>Carry forward the dark background, bright blue accents, red CTA color, and community photography from the original site.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Make it feel technical</h3>
+            <p>Use a code-inspired type direction and sharper spacing so the page immediately gives software-organization cues.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Preserve the content</h3>
+            <p>Keep the original mission, project, sponsor, and meeting information, but reorganize it into clearer chunks.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Guide the next step</h3>
+            <p>Make volunteering, community details, and donation paths easier to understand without overloading the hero.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="planning-title">
+        <div>
+          <p class="case-study-kicker">User flow</p>
+          <h2 id="planning-title">I reorganized the homepage around the order a new visitor would naturally need.</h2>
+        </div>
+        <div class="case-study-flow-layout">
+          <div class="case-study-flow-steps" aria-label="Open Source San José visitor flow">
+            <article>
+              <span>01</span>
+              <div>
+                <h3>Understand the mission</h3>
+                <p>Lead with a direct statement about building technology for a better San José.</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>Scan what the group does</h3>
+                <p>Break Who We Are, Mission, Vision, and What We Do into a tighter row of digestible content blocks.</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>Explore projects</h3>
+                <p>Give project work more visual presence so the organization’s software output feels concrete.</p>
+              </div>
+            </article>
+            <article>
+              <span>04</span>
+              <div>
+                <h3>Build trust</h3>
+                <p>Keep sponsors and community proof visible, but give them a calmer section layout.</p>
+              </div>
+            </article>
+            <article>
+              <span>05</span>
+              <div>
+                <h3>Find the next action</h3>
+                <p>Move visitors toward Eventbrite, Discord, directions, volunteering, or donation after the core story is clear.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="structure-title">
+        <div>
+          <p class="case-study-kicker">Content structure</p>
+          <h2 id="structure-title">Most of the redesign work was deciding how to keep the original information while making it easier to scan.</h2>
+        </div>
+        <div class="case-study-copy">
+          <p>I kept the organization’s core sections: who they are, mission, vision, what they do, current projects, sponsors, and where to find them. The redesign changes how those sections are paced and grouped so the visitor does not have to work as hard to understand the page.</p>
+          <p>The original site used strong brand colors, so I kept the black background, bright blue divider language, and orange-red action color. I made those choices feel more intentional by giving the page a more disciplined grid, larger type contrast, and clearer content modules.</p>
+          <p>I also chose a type direction that feels closer to code and software culture. That was intentional: I wanted someone landing on the page to immediately feel that this is a technology organization, not just a general nonprofit page.</p>
+        </div>
+      </section>
+
+      <section class="case-study-section" aria-labelledby="comparison-title">
+        <div class="case-study-iteration-layout">
+          <div class="case-study-section__top">
+            <p class="case-study-kicker">Before / after</p>
+            <h2 id="comparison-title">The final design keeps the same civic-tech content but makes the page feel more deliberate.</h2>
+          </div>
+          <div class="case-study-iteration-media">
+            <div class="case-study-media-grid case-study-media-grid--balanced case-study-media-grid--comparison">
+              <figure class="case-study-figure case-study-figure--scroll case-study-figure--zoom-scroll">
+                <div class="case-study-scroll-frame">
+                  <img src="./images/projects/open-source-san-jose/case-study/original-homepage-desktop.png" alt="Original Open Source San José homepage before redesign">
+                </div>
+                <figcaption>Before: the original homepage already had the right content and brand cues, but the hierarchy felt denser.</figcaption>
+              </figure>
+              <figure class="case-study-figure case-study-figure--scroll case-study-figure--zoom-scroll">
+                <div class="case-study-scroll-frame">
+                  <img src="./images/projects/open-source-san-jose/case-study/final-homepage-desktop.png" alt="Final Open Source San José homepage redesign">
+                </div>
+                <figcaption>After: the redesign keeps the same mission and brand colors while using a stronger grid, larger type, and clearer section rhythm.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="insight-title">
+        <div>
+          <p class="case-study-kicker">Insight</p>
+          <h2 id="insight-title">The biggest improvement was not inventing new content. It was making the existing content feel intentional.</h2>
+        </div>
+        <div class="case-study-copy">
+          <p>A civic organization homepage has to do more than look professional. It has to help different visitors orient themselves quickly: a potential volunteer, a sponsor, a community member, or someone simply trying to understand what the organization does.</p>
+          <p>That insight shaped the redesign around restraint. I kept the original organization’s goals, language, and dominant colors, then used layout and typography to make the same information feel clearer, more modern, and more software-oriented.</p>
+        </div>
+      </section>
+
+      <section class="case-study-section" aria-labelledby="solution-title">
+        <div class="case-study-section__top">
+          <p class="case-study-kicker">Final direction</p>
+          <h2 id="solution-title">The final redesign uses a stronger civic-tech identity and a clearer homepage flow.</h2>
+        </div>
+        <div class="case-study-feature-grid">
+          <article>
+            <span>01</span>
+            <h3>Sharper first screen</h3>
+            <p>The hero keeps the original mission headline and community photography, but gives them more scale and breathing room.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Clearer navigation</h3>
+            <p>Top-level links and dropdown behavior support volunteer, about, community, and donation paths without crowding the first screen.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Software visual cues</h3>
+            <p>Code-associated typography, dark UI styling, and blue technical accents help the page read as civic tech.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Responsive interaction</h3>
+            <p>The page includes mobile navigation, accessible controls, reduced-motion handling, and responsive section stacking.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-study-section" aria-labelledby="screens-title">
+        <div class="case-study-iteration-layout">
+          <div class="case-study-section__top">
+            <p class="case-study-kicker">Screens</p>
+            <h2 id="screens-title">Final redesign screens</h2>
+          </div>
+          <div class="case-study-iteration-media">
+            <figure class="case-study-figure case-study-figure--scroll case-study-figure--compact-scroll">
+              <div class="case-study-scroll-frame">
+                <img src="./images/projects/open-source-san-jose/case-study/final-homepage-desktop.png" alt="Full-page screenshot of the final Open Source San José homepage redesign">
+              </div>
+              <figcaption>Final desktop homepage capture, showing the redesigned flow from hero through footer.</figcaption>
+            </figure>
+            <div class="case-study-media-grid case-study-media-grid--two">
+              <figure class="case-study-figure case-study-figure--phone">
+                <div class="case-study-phone-frame">
+                  <img src="./images/projects/open-source-san-jose/case-study/final-homepage-mobile.png" alt="Mobile screenshot of the final Open Source San José homepage redesign">
+                </div>
+                <figcaption>Final mobile homepage capture showing the responsive stacked version of the redesign.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="build-title">
+        <div>
+          <p class="case-study-kicker">Build</p>
+          <h2 id="build-title">I built the redesign as a responsive front end after creating the high-fidelity direction in Figma.</h2>
+        </div>
+        <div class="case-study-copy">
+          <p>The project was implemented with HTML, CSS, and JavaScript and deployed through GitHub Pages. The build focuses on responsive layout, readable hierarchy, accessible navigation, and a visual system that fits the organization’s tech-focused identity.</p>
+          <p>The final page includes an animated code-rain treatment, mobile menu behavior, dropdown navigation, reduced-motion support, and redesigned homepage sections for projects, sponsors, community context, location, and footer content.</p>
+        </div>
+      </section>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="summary-title">
+        <div>
+          <p class="case-study-kicker">Outcome</p>
+          <h2 id="summary-title">The final version keeps Open Source San José recognizable while making the homepage feel more polished and easier to scan.</h2>
+        </div>
+        <ul class="case-study-list">
+          <li>Preserved the organization’s original mission, project, sponsor, and meeting content instead of starting from a blank redesign.</li>
+          <li>Reworked the content structure so a new visitor can move from mission to community proof to action more naturally.</li>
+          <li>Kept the original dominant colors while making the palette feel more controlled and intentional.</li>
+          <li>Used a code-inspired type direction and darker interface style to make the page feel more connected to software and civic tech.</li>
+        </ul>
+      </section>
+
+      <section class="case-study-section" aria-labelledby="reflection-title">
+        <div class="case-study-section__top">
+          <p class="case-study-kicker">Looking ahead</p>
+          <h2 id="reflection-title">What I would build next</h2>
+        </div>
+        <ul class="case-study-list case-study-list--columns">
+          <li>Add the final Figma frame or rationale PDF as a process artifact so the assessment deliverables are visible.</li>
+          <li>Add a dedicated project-detail template so each civic-tech project can explain the local issue, team roles, and outcome.</li>
+          <li>Test the volunteer path with people who are new to civic tech and people who already code or design.</li>
+          <li>Make the donate and sponsor paths more explicit with clearer supporting copy and trust signals.</li>
+          <li>Document the accessibility decisions with screenshots of keyboard navigation, menu states, and reduced-motion behavior.</li>
+        </ul>
+      </section>
+    </main>
+
+    <section class="resume-modal" id="resume-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" hidden>
+      <div class="resume-modal__backdrop" data-resume-close></div>
+      <div class="resume-modal__panel">
+        <header class="resume-modal__header">
+          <div>
+            <p class="resume-modal__eyebrow">Resume</p>
+            <h2 id="resume-modal-title">Jason Tello</h2>
+          </div>
+          <div class="resume-modal__actions">
+            <a class="resume-modal__download" href="./documents/Jason_Tello_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            <button class="resume-modal__close" type="button" aria-label="Close resume" data-resume-close>Close</button>
+          </div>
+        </header>
+        <iframe class="resume-modal__frame" src="./documents/Jason_Tello_Resume.pdf#view=FitH" title="Jason Tello resume"></iframe>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="./script.js?v=design-system-10"></script>
+  </body>
+</html>

@@ -499,6 +499,13 @@ function initResumeModal() {
 
   const openModal = (trigger) => {
     lastTrigger = trigger;
+    const frame = modal.querySelector(".resume-modal__frame[data-resume-src]");
+
+    if (frame && !frame.dataset.resumeLoaded) {
+      frame.src = frame.dataset.resumeSrc;
+      frame.dataset.resumeLoaded = "true";
+    }
+
     modal.hidden = false;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
@@ -568,22 +575,33 @@ function initResumeModal() {
 }
 
 function initSpotifyTopTracks() {
-  const container = document.querySelector("[data-spotify-top-tracks]");
+  const trackListContainer = document.querySelector("[data-spotify-top-tracks]");
+  const shelfContainer = document.querySelector("[data-spotify-shelf-cases]");
 
-  if (!container) {
+  if (!trackListContainer && !shelfContainer) {
     return;
   }
 
-  const renderStatus = (message) => {
+  const renderStatus = (container, message, className) => {
+    if (!container) {
+      return;
+    }
+
     container.replaceChildren();
     const status = document.createElement("p");
-    status.className = "top-tracks__status";
+    status.className = className;
     status.textContent = message;
     container.append(status);
   };
 
+  const getArtists = (track) => Array.isArray(track.artists) ? track.artists.join(", ") : "";
+
   const renderTracks = (tracks, updatedAt) => {
-    container.replaceChildren();
+    if (!trackListContainer) {
+      return;
+    }
+
+    trackListContainer.replaceChildren();
 
     const list = document.createElement("ol");
     list.className = "top-tracks__list";
@@ -614,7 +632,7 @@ function initSpotifyTopTracks() {
 
       const artist = document.createElement("p");
       artist.className = "top-track__artist";
-      artist.textContent = track.artists.join(", ");
+      artist.textContent = getArtists(track);
 
       const album = document.createElement("p");
       album.className = "top-track__album";
@@ -629,7 +647,33 @@ function initSpotifyTopTracks() {
     meta.className = "top-tracks__meta";
     meta.textContent = updatedAt ? `Updated ${formatSpotifyDate(updatedAt)}` : "Spotify short-term top tracks";
 
-    container.append(list, meta);
+    trackListContainer.append(list, meta);
+  };
+
+  const renderShelf = (tracks) => {
+    if (!shelfContainer) {
+      return;
+    }
+
+    shelfContainer.replaceChildren();
+
+    tracks.slice(0, 3).forEach((track, index) => {
+      const caseLink = document.createElement("a");
+      caseLink.className = `shelf-cd shelf-cd--${index + 1}`;
+      caseLink.href = track.spotifyUrl;
+      caseLink.target = "_blank";
+      caseLink.rel = "noreferrer";
+      caseLink.setAttribute("aria-label", `${track.name} by ${getArtists(track)} on Spotify`);
+
+      const artwork = document.createElement("img");
+      artwork.className = "shelf-cd__artwork";
+      artwork.src = track.albumImage || "./images/walltexture.jpg";
+      artwork.alt = "";
+      artwork.loading = "lazy";
+
+      caseLink.append(artwork);
+      shelfContainer.append(caseLink);
+    });
   };
 
   fetch("./data/spotify-top-tracks.json", { cache: "no-store" })
@@ -642,14 +686,17 @@ function initSpotifyTopTracks() {
     })
     .then((data) => {
       if (!Array.isArray(data.tracks) || data.tracks.length === 0) {
-        renderStatus("Spotify sync is ready, but no top tracks have been published yet.");
+        renderStatus(trackListContainer, "Spotify sync is ready, but no top tracks have been published yet.", "top-tracks__status");
+        renderStatus(shelfContainer, "Spotify sync is ready.", "music-shelf__status");
         return;
       }
 
       renderTracks(data.tracks, data.updatedAt);
+      renderShelf(data.tracks);
     })
     .catch(() => {
-      renderStatus("Spotify top tracks will appear here after the first sync.");
+      renderStatus(trackListContainer, "Spotify top tracks will appear here after the first sync.", "top-tracks__status");
+      renderStatus(shelfContainer, "Top tracks will appear here after Spotify sync.", "music-shelf__status");
     });
 }
 

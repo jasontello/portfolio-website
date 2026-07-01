@@ -14,7 +14,7 @@
         }
       } catch (error) {}
     </script>
-    <link rel="stylesheet" href="./style.css?v=design-system-6" />
+    <link rel="stylesheet" href="./style.css?v=design-system-8" />
 
     <title>Jason Tello Portfolio</title>
 
@@ -29,7 +29,16 @@
         <div class="about"> 
           <div class="name-row">
             <h1 id="name">Jason Tello</h1>
-            <img class="name-face" src="./images/face.png" alt="">
+            <button class="name-face-button" type="button" aria-label="Make Jason's face react" data-face-trigger>
+              <img
+                class="name-face"
+                src="./images/face.png"
+                data-face-normal="./images/face.png"
+                data-face-reaction="./images/face-shout.png"
+                alt=""
+                aria-hidden="true"
+              >
+            </button>
           </div>
           <p>I’m a designer based in the Bay Area, open to junior design roles and internships.</p>
           <p>I love all things art, movies, music, NewJeans, and TLOU 2.</p>
@@ -217,6 +226,6 @@
       </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="./script.js?v=design-system-6"></script>
+    <script src="./script.js?v=design-system-10"></script>
   </body>
 </html>
