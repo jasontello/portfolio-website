@@ -3,29 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   navLinks.forEach((link) => {
     const text = (link.textContent || "").trim();
-    link.textContent = "";
-
-    const original = document.createElement("span");
-    original.className = "nav-word nav-word--original";
-
-    const clone = document.createElement("span");
-    clone.className = "nav-word nav-word--clone";
-    clone.setAttribute("aria-hidden", "true");
-
-    text.split("").forEach((char, index) => {
-      const topChar = document.createElement("span");
-      topChar.className = "char";
-      topChar.style.setProperty("--char-index", String(index));
-      topChar.textContent = char === " " ? "\u00A0" : char;
-
-      const bottomChar = topChar.cloneNode(true);
-
-      original.appendChild(topChar);
-      clone.appendChild(bottomChar);
-    });
-
-    link.appendChild(original);
-    link.appendChild(clone);
+    renderSplitText(link, text);
   });
 
   initResumeModal();
@@ -38,6 +16,33 @@ document.addEventListener("DOMContentLoaded", () => {
   initSpotifyTopTracks();
   initCaseStudyReveal();
 });
+
+function renderSplitText(element, text) {
+  element.textContent = "";
+  element.setAttribute("aria-label", text);
+
+  const original = document.createElement("span");
+  original.className = "nav-word nav-word--original";
+  original.setAttribute("aria-hidden", "true");
+
+  const clone = document.createElement("span");
+  clone.className = "nav-word nav-word--clone";
+  clone.setAttribute("aria-hidden", "true");
+
+  text.split("").forEach((char, index) => {
+    const topChar = document.createElement("span");
+    topChar.className = "char";
+    topChar.style.setProperty("--char-index", String(index));
+    topChar.textContent = char === " " ? "\u00A0" : char;
+
+    const bottomChar = topChar.cloneNode(true);
+
+    original.appendChild(topChar);
+    clone.appendChild(bottomChar);
+  });
+
+  element.append(original, clone);
+}
 
 const PROJECTS = [
   {
@@ -577,6 +582,11 @@ function initResumeModal() {
 function initSpotifyTopTracks() {
   const trackListContainer = document.querySelector("[data-spotify-top-tracks]");
   const shelfContainer = document.querySelector("[data-spotify-shelf-cases]");
+  const shelfPlayer = document.querySelector("[data-spotify-shelf-player]");
+  const shelfEmbed = document.querySelector("[data-spotify-shelf-embed]");
+  const shelfPlayerTitle = document.querySelector("[data-spotify-shelf-title]");
+  const shelfPlayerMeta = document.querySelector("[data-spotify-shelf-meta]");
+  const shelfPlayerLink = document.querySelector("[data-spotify-shelf-link]");
 
   if (!trackListContainer && !shelfContainer) {
     return;
@@ -595,6 +605,99 @@ function initSpotifyTopTracks() {
   };
 
   const getArtists = (track) => Array.isArray(track.artists) ? track.artists.join(", ") : "";
+  const getSpotifyTrackId = (track) => {
+    if (track.id) {
+      return track.id;
+    }
+
+    const match = track.spotifyUrl?.match(/\/track\/([^/?]+)/);
+    return match ? match[1] : "";
+  };
+
+  const setShelfPlayerText = (element, text, animate = true) => {
+    if (!element) {
+      return;
+    }
+
+    const settleText = () => {
+      element.classList.remove("shelf-selection-fx", "is-swapping");
+      element.textContent = text;
+      element.setAttribute("aria-label", text);
+    };
+
+    window.clearTimeout(element.shelfSelectionTimer);
+
+    if (!animate) {
+      settleText();
+      return;
+    }
+
+    element.classList.add("shelf-selection-fx");
+    element.classList.remove("is-swapping");
+    renderSplitText(element, text);
+
+    window.requestAnimationFrame(() => {
+      element.classList.add("is-swapping");
+    });
+
+    element.shelfSelectionTimer = window.setTimeout(settleText, 720);
+  };
+
+  const showShelfPlayer = (track, options = {}) => {
+    if (!shelfPlayer || !shelfEmbed || !track.spotifyUrl) {
+      return false;
+    }
+
+    const trackId = getSpotifyTrackId(track);
+
+    if (!trackId) {
+      return false;
+    }
+
+    const artists = getArtists(track);
+    const title = track.name || "Spotify track";
+
+    shelfPlayer.hidden = false;
+    shelfPlayer.classList.add("is-visible");
+    shelfEmbed.src = `https://open.spotify.com/embed/track/${encodeURIComponent(trackId)}?utm_source=generator`;
+    shelfEmbed.title = `Spotify player for ${title}`;
+
+    setShelfPlayerText(shelfPlayerTitle, title, options.animate !== false);
+    setShelfPlayerText(
+      shelfPlayerMeta,
+      artists ? `${artists}${track.album ? ` · ${track.album}` : ""}` : track.album || "",
+      options.animate !== false
+    );
+
+    if (shelfPlayerLink) {
+      shelfPlayerLink.href = track.spotifyUrl;
+    }
+
+    return true;
+  };
+
+  const syncActiveShelfTrack = (track) => {
+    if (!shelfContainer) {
+      return;
+    }
+
+    const selectedTrackId = getSpotifyTrackId(track);
+    let matchingShelfCase = null;
+
+    shelfContainer.querySelectorAll(".shelf-cd.is-active").forEach((item) => {
+      item.classList.remove("is-active");
+    });
+
+    shelfContainer.querySelectorAll(".shelf-cd").forEach((item) => {
+      const itemTrackId = getSpotifyTrackId({ spotifyUrl: item.href });
+
+      if (itemTrackId && itemTrackId === selectedTrackId) {
+        matchingShelfCase = item;
+      }
+    });
+
+    matchingShelfCase?.classList.add("is-active");
+  };
 
   const renderTracks = (tracks, updatedAt) => {
     if (!trackListContainer) {
@@ -606,7 +709,7 @@ function initSpotifyTopTracks() {
     const list = document.createElement("ol");
     list.className = "top-tracks__list";
 
-    tracks.slice(0, 3).forEach((track, index) => {
+    tracks.slice(0, 10).forEach((track, index) => {
       const item = document.createElement("li");
       item.className = "top-track";
 
@@ -614,11 +717,22 @@ function initSpotifyTopTracks() {
       number.className = "top-track__number";
       number.textContent = String(index + 1).padStart(2, "0");
 
+      const artworkButton = document.createElement("button");
+      artworkButton.className = "top-track__artwork-button";
+      artworkButton.type = "button";
+      artworkButton.setAttribute("aria-label", `Play ${track.name} by ${getArtists(track)} in the Spotify player`);
+      artworkButton.addEventListener("click", () => {
+        if (showShelfPlayer(track)) {
+          syncActiveShelfTrack(track);
+        }
+      });
+
       const artwork = document.createElement("img");
       artwork.className = "top-track__artwork";
       artwork.src = track.albumImage || "./images/walltexture.jpg";
       artwork.alt = track.album ? `${track.album} album cover` : "";
       artwork.loading = "lazy";
+      artworkButton.append(artwork);
 
       const details = document.createElement("div");
       details.className = "top-track__details";
@@ -639,7 +753,7 @@ function initSpotifyTopTracks() {
       album.textContent = track.album;
 
       details.append(title, artist, album);
-      item.append(number, artwork, details);
+      item.append(number, artworkButton, details);
       list.append(item);
     });
 
@@ -663,7 +777,19 @@ function initSpotifyTopTracks() {
       caseLink.href = track.spotifyUrl;
       caseLink.target = "_blank";
       caseLink.rel = "noreferrer";
-      caseLink.setAttribute("aria-label", `${track.name} by ${getArtists(track)} on Spotify`);
+      caseLink.setAttribute("aria-label", `Play ${track.name} by ${getArtists(track)} on Spotify`);
+      caseLink.addEventListener("click", (event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+          return;
+        }
+
+        if (!showShelfPlayer(track)) {
+          return;
+        }
+
+        event.preventDefault();
+        syncActiveShelfTrack(track);
+      });
 
       const artwork = document.createElement("img");
       artwork.className = "shelf-cd__artwork";
@@ -674,6 +800,13 @@ function initSpotifyTopTracks() {
       caseLink.append(artwork);
       shelfContainer.append(caseLink);
     });
+
+    const firstTrack = tracks[0];
+    const firstCase = shelfContainer.querySelector(".shelf-cd");
+
+    if (firstTrack && showShelfPlayer(firstTrack, { animate: false }) && firstCase) {
+      syncActiveShelfTrack(firstTrack);
+    }
   };
 
   fetch("./data/spotify-top-tracks.json", { cache: "no-store" })

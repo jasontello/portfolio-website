@@ -14,7 +14,7 @@
         }
       } catch (error) {}
     </script>
-    <link rel="stylesheet" href="./style.css?v=shelf-covers-1" />
+    <link rel="stylesheet" href="./style.css?v=music-shelf-sync-1" />
 
     <title>Music | Jason Tello Portfolio</title>
 
@@ -77,13 +77,30 @@
         <div class="music-gallery__header">
           <div>
             <h2 id="music-title">Music</h2>
-            <p>A public playlist pulled from liked songs, current rotation, and the sounds sitting behind the work.</p>
+            <p>Music I'm currently listening to.</p>
           </div>
           <span>Spotify</span>
         </div>
 
         <div class="music-panel">
           <section class="music-shelf" aria-label="Top tracks on a CD shelf">
+            <div class="music-shelf-player" data-spotify-shelf-player>
+              <div class="music-shelf-player__top">
+                <div>
+                  <p class="music-panel__label">Shelf selection</p>
+                  <h3 data-spotify-shelf-title>Loading shelf selection...</h3>
+                  <p data-spotify-shelf-meta></p>
+                </div>
+                <a href="https://open.spotify.com/" target="_blank" rel="noreferrer" data-spotify-shelf-link>Open in Spotify</a>
+              </div>
+              <iframe
+                data-spotify-shelf-embed
+                title="Spotify player"
+                loading="lazy"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
             <div class="music-shelf__scene">
               <img class="music-shelf__image" src="./images/music/shelf.png" alt="" aria-hidden="true">
               <div class="music-shelf__cases" data-spotify-shelf-cases>
@@ -92,16 +109,11 @@
             </div>
           </section>
 
-          <section class="music-panel__intro" aria-labelledby="playlist-title">
-            <p class="music-panel__label">Public playlist</p>
-            <h3 id="playlist-title">Liked songs, edited into something worth sharing.</h3>
-          </section>
-
           <section class="spotify-board" aria-labelledby="currently-listening-title">
             <div class="listening-board__top">
               <div>
                 <p class="music-panel__label">Currently listening</p>
-                <h3 id="currently-listening-title">Top tracks lately</h3>
+                <h3 id="currently-listening-title">Top 10 tracks lately</h3>
               </div>
               <a class="spotify-board__link" href="https://open.spotify.com/playlist/1WnuBR8G38niNAKLAfQ8XO?si=3dd2e893e48e4f96" target="_blank" rel="noreferrer">Open playlist</a>
             </div>
@@ -132,6 +144,6 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="./script.js?v=shelf-covers-1"></script>
+    <script src="./script.js?v=music-shelf-sync-1"></script>
   </body>
 </html>

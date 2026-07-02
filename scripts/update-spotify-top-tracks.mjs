@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputPath = resolve(root, "data/spotify-top-tracks.json");
 const tokenUrl = "https://accounts.spotify.com/api/token";
-const tracksUrl = "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=3";
+const tracksUrl = "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10";
 
 const requiredEnv = [
   "SPOTIFY_CLIENT_ID",

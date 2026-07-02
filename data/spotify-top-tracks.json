@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T17:25:27.836Z",
+  "updatedAt": "2026-07-01T21:12:51.140Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -32,6 +32,76 @@
       "album": "Requiem",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
       "spotifyUrl": "https://open.spotify.com/track/49PPH7Kji3bCyKKNx78SxS"
+    },
+    {
+      "id": "4xlkIVboOY2plOALp9bqD8",
+      "name": "Night",
+      "artists": [
+        "keshi"
+      ],
+      "album": "Requiem",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
+      "spotifyUrl": "https://open.spotify.com/track/4xlkIVboOY2plOALp9bqD8"
+    },
+    {
+      "id": "3hT8jruKBCSNjcKLrHOz1b",
+      "name": "MARS",
+      "artists": [
+        "TWICE"
+      ],
+      "album": "THIS IS FOR",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273393ae2f0bd79be4d87335d0a",
+      "spotifyUrl": "https://open.spotify.com/track/3hT8jruKBCSNjcKLrHOz1b"
+    },
+    {
+      "id": "5wT0dbK1lgkHIvLRk99arN",
+      "name": "Gone",
+      "artists": [
+        "TWICE"
+      ],
+      "album": "BETWEEN 1&2",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27390b0ec9b2a62d373bcbfd267",
+      "spotifyUrl": "https://open.spotify.com/track/5wT0dbK1lgkHIvLRk99arN"
+    },
+    {
+      "id": "7oUH2gGidvdp6jwTOraZRi",
+      "name": "Red Angel",
+      "artists": [
+        "S.E.S."
+      ],
+      "album": "Choose My Life-U",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733a39b47088f69545c9102064",
+      "spotifyUrl": "https://open.spotify.com/track/7oUH2gGidvdp6jwTOraZRi"
+    },
+    {
+      "id": "21Ou57aSTKECHs3zedyFLd",
+      "name": "SEESAW",
+      "artists": [
+        "TWICE"
+      ],
+      "album": "THIS IS FOR",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273393ae2f0bd79be4d87335d0a",
+      "spotifyUrl": "https://open.spotify.com/track/21Ou57aSTKECHs3zedyFLd"
+    },
+    {
+      "id": "1ZPwN2BYeKssfv4avkzyKI",
+      "name": "Pimple",
+      "artists": [
+        "ILLIT"
+      ],
+      "album": "I'LL LIKE YOU",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fc2fffae3025fbc540b98f34",
+      "spotifyUrl": "https://open.spotify.com/track/1ZPwN2BYeKssfv4avkzyKI"
+    },
+    {
+      "id": "5gq7xM6eI16osBO2U581NL",
+      "name": "Do not touch",
+      "artists": [
+        "MISAMO"
+      ],
+      "album": "Masterpiece",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273266faf63f2196093a52fb1b1",
+      "spotifyUrl": "https://open.spotify.com/track/5gq7xM6eI16osBO2U581NL"
     }
   ]
 }
