@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T21:12:51.140Z",
+  "updatedAt": "2026-07-02T17:03:52.478Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -54,14 +54,14 @@
       "spotifyUrl": "https://open.spotify.com/track/3hT8jruKBCSNjcKLrHOz1b"
     },
     {
-      "id": "5wT0dbK1lgkHIvLRk99arN",
-      "name": "Gone",
+      "id": "5gq7xM6eI16osBO2U581NL",
+      "name": "Do not touch",
       "artists": [
-        "TWICE"
+        "MISAMO"
       ],
-      "album": "BETWEEN 1&2",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27390b0ec9b2a62d373bcbfd267",
-      "spotifyUrl": "https://open.spotify.com/track/5wT0dbK1lgkHIvLRk99arN"
+      "album": "Masterpiece",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273266faf63f2196093a52fb1b1",
+      "spotifyUrl": "https://open.spotify.com/track/5gq7xM6eI16osBO2U581NL"
     },
     {
       "id": "7oUH2gGidvdp6jwTOraZRi",
@@ -74,16 +74,6 @@
       "spotifyUrl": "https://open.spotify.com/track/7oUH2gGidvdp6jwTOraZRi"
     },
     {
-      "id": "21Ou57aSTKECHs3zedyFLd",
-      "name": "SEESAW",
-      "artists": [
-        "TWICE"
-      ],
-      "album": "THIS IS FOR",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273393ae2f0bd79be4d87335d0a",
-      "spotifyUrl": "https://open.spotify.com/track/21Ou57aSTKECHs3zedyFLd"
-    },
-    {
       "id": "1ZPwN2BYeKssfv4avkzyKI",
       "name": "Pimple",
       "artists": [
@@ -94,14 +84,24 @@
       "spotifyUrl": "https://open.spotify.com/track/1ZPwN2BYeKssfv4avkzyKI"
     },
     {
-      "id": "5gq7xM6eI16osBO2U581NL",
-      "name": "Do not touch",
+      "id": "2aL4lMGhWdPpyPL6COPou7",
+      "name": "Soft Spot",
       "artists": [
-        "MISAMO"
+        "keshi"
       ],
-      "album": "Masterpiece",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273266faf63f2196093a52fb1b1",
-      "spotifyUrl": "https://open.spotify.com/track/5gq7xM6eI16osBO2U581NL"
+      "album": "Requiem",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
+      "spotifyUrl": "https://open.spotify.com/track/2aL4lMGhWdPpyPL6COPou7"
+    },
+    {
+      "id": "1t88m8JUlqn9kf0FLmVta5",
+      "name": "Give it to me",
+      "artists": [
+        "SISTAR"
+      ],
+      "album": "Give It To Me",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ac2a3f037e468c2f386f93fa",
+      "spotifyUrl": "https://open.spotify.com/track/1t88m8JUlqn9kf0FLmVta5"
     }
   ]
 }
