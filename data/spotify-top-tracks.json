@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T16:48:19.040Z",
+  "updatedAt": "2026-07-04T16:28:23.496Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -22,26 +22,6 @@
       "album": "Ugly is Beautiful",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273c1bdf5564ed647ab6cb12f4b",
       "spotifyUrl": "https://open.spotify.com/track/3BIIJgBJJ7NhhCv4MI6n7w"
-    },
-    {
-      "id": "49PPH7Kji3bCyKKNx78SxS",
-      "name": "Say",
-      "artists": [
-        "keshi"
-      ],
-      "album": "Requiem",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
-      "spotifyUrl": "https://open.spotify.com/track/49PPH7Kji3bCyKKNx78SxS"
-    },
-    {
-      "id": "4xlkIVboOY2plOALp9bqD8",
-      "name": "Night",
-      "artists": [
-        "keshi"
-      ],
-      "album": "Requiem",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
-      "spotifyUrl": "https://open.spotify.com/track/4xlkIVboOY2plOALp9bqD8"
     },
     {
       "id": "2aL4lMGhWdPpyPL6COPou7",
@@ -74,6 +54,16 @@
       "spotifyUrl": "https://open.spotify.com/track/3hT8jruKBCSNjcKLrHOz1b"
     },
     {
+      "id": "4xlkIVboOY2plOALp9bqD8",
+      "name": "Night",
+      "artists": [
+        "keshi"
+      ],
+      "album": "Requiem",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
+      "spotifyUrl": "https://open.spotify.com/track/4xlkIVboOY2plOALp9bqD8"
+    },
+    {
       "id": "5gq7xM6eI16osBO2U581NL",
       "name": "Do not touch",
       "artists": [
@@ -102,6 +92,17 @@
       "album": "Give It To Me",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273ac2a3f037e468c2f386f93fa",
       "spotifyUrl": "https://open.spotify.com/track/1t88m8JUlqn9kf0FLmVta5"
+    },
+    {
+      "id": "7zCBT5SUMOHkuUnTZHyNQC",
+      "name": "NOTA",
+      "artists": [
+        "Paloma Mami",
+        "Cris MJ"
+      ],
+      "album": "NOTA",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739427d0fffa8fe983d2ccc44b",
+      "spotifyUrl": "https://open.spotify.com/track/7zCBT5SUMOHkuUnTZHyNQC"
     }
   ]
 }
