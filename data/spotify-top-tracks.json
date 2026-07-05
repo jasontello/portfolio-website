@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-04T16:28:23.496Z",
+  "updatedAt": "2026-07-05T16:30:09.573Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -24,16 +24,6 @@
       "spotifyUrl": "https://open.spotify.com/track/3BIIJgBJJ7NhhCv4MI6n7w"
     },
     {
-      "id": "2aL4lMGhWdPpyPL6COPou7",
-      "name": "Soft Spot",
-      "artists": [
-        "keshi"
-      ],
-      "album": "Requiem",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
-      "spotifyUrl": "https://open.spotify.com/track/2aL4lMGhWdPpyPL6COPou7"
-    },
-    {
       "id": "7oUH2gGidvdp6jwTOraZRi",
       "name": "Red Angel",
       "artists": [
@@ -52,16 +42,6 @@
       "album": "THIS IS FOR",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273393ae2f0bd79be4d87335d0a",
       "spotifyUrl": "https://open.spotify.com/track/3hT8jruKBCSNjcKLrHOz1b"
-    },
-    {
-      "id": "4xlkIVboOY2plOALp9bqD8",
-      "name": "Night",
-      "artists": [
-        "keshi"
-      ],
-      "album": "Requiem",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
-      "spotifyUrl": "https://open.spotify.com/track/4xlkIVboOY2plOALp9bqD8"
     },
     {
       "id": "5gq7xM6eI16osBO2U581NL",
@@ -103,6 +83,26 @@
       "album": "NOTA",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2739427d0fffa8fe983d2ccc44b",
       "spotifyUrl": "https://open.spotify.com/track/7zCBT5SUMOHkuUnTZHyNQC"
+    },
+    {
+      "id": "55pBIZO1cqoldeqpp5WR7H",
+      "name": "the cure",
+      "artists": [
+        "Olivia Rodrigo"
+      ],
+      "album": "you seem pretty sad for a girl so in love",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735cf234eeb7a2edf44bf64a46",
+      "spotifyUrl": "https://open.spotify.com/track/55pBIZO1cqoldeqpp5WR7H"
+    },
+    {
+      "id": "28FSGvQfafhr7oq5vbJOon",
+      "name": "Praying",
+      "artists": [
+        "SEULGI"
+      ],
+      "album": "Accidentally On Purpose - The 2nd Mini Album",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273900b8945b16b4a571bed8f06",
+      "spotifyUrl": "https://open.spotify.com/track/28FSGvQfafhr7oq5vbJOon"
     }
   ]
 }
