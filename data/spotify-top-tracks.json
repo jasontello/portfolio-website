@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-05T16:30:09.573Z",
+  "updatedAt": "2026-07-06T17:55:26.816Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -24,6 +24,16 @@
       "spotifyUrl": "https://open.spotify.com/track/3BIIJgBJJ7NhhCv4MI6n7w"
     },
     {
+      "id": "5gq7xM6eI16osBO2U581NL",
+      "name": "Do not touch",
+      "artists": [
+        "MISAMO"
+      ],
+      "album": "Masterpiece",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273266faf63f2196093a52fb1b1",
+      "spotifyUrl": "https://open.spotify.com/track/5gq7xM6eI16osBO2U581NL"
+    },
+    {
       "id": "7oUH2gGidvdp6jwTOraZRi",
       "name": "Red Angel",
       "artists": [
@@ -42,16 +52,6 @@
       "album": "THIS IS FOR",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273393ae2f0bd79be4d87335d0a",
       "spotifyUrl": "https://open.spotify.com/track/3hT8jruKBCSNjcKLrHOz1b"
-    },
-    {
-      "id": "5gq7xM6eI16osBO2U581NL",
-      "name": "Do not touch",
-      "artists": [
-        "MISAMO"
-      ],
-      "album": "Masterpiece",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273266faf63f2196093a52fb1b1",
-      "spotifyUrl": "https://open.spotify.com/track/5gq7xM6eI16osBO2U581NL"
     },
     {
       "id": "1ZPwN2BYeKssfv4avkzyKI",
@@ -95,14 +95,14 @@
       "spotifyUrl": "https://open.spotify.com/track/55pBIZO1cqoldeqpp5WR7H"
     },
     {
-      "id": "28FSGvQfafhr7oq5vbJOon",
-      "name": "Praying",
+      "id": "2aL4lMGhWdPpyPL6COPou7",
+      "name": "Soft Spot",
       "artists": [
-        "SEULGI"
+        "keshi"
       ],
-      "album": "Accidentally On Purpose - The 2nd Mini Album",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273900b8945b16b4a571bed8f06",
-      "spotifyUrl": "https://open.spotify.com/track/28FSGvQfafhr7oq5vbJOon"
+      "album": "Requiem",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
+      "spotifyUrl": "https://open.spotify.com/track/2aL4lMGhWdPpyPL6COPou7"
     }
   ]
 }
