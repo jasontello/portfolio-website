@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-06T17:55:26.816Z",
+  "updatedAt": "2026-07-07T17:28:45.263Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -54,16 +54,6 @@
       "spotifyUrl": "https://open.spotify.com/track/3hT8jruKBCSNjcKLrHOz1b"
     },
     {
-      "id": "1ZPwN2BYeKssfv4avkzyKI",
-      "name": "Pimple",
-      "artists": [
-        "ILLIT"
-      ],
-      "album": "I'LL LIKE YOU",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273fc2fffae3025fbc540b98f34",
-      "spotifyUrl": "https://open.spotify.com/track/1ZPwN2BYeKssfv4avkzyKI"
-    },
-    {
       "id": "1t88m8JUlqn9kf0FLmVta5",
       "name": "Give it to me",
       "artists": [
@@ -103,6 +93,16 @@
       "album": "Requiem",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
       "spotifyUrl": "https://open.spotify.com/track/2aL4lMGhWdPpyPL6COPou7"
+    },
+    {
+      "id": "6V9pUGpSOIVTlRkJwrQAnt",
+      "name": "who are you?",
+      "artists": [
+        "kinoue64"
+      ],
+      "album": "Nichijou Shometsu",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ea54a6be651435da08417c9e",
+      "spotifyUrl": "https://open.spotify.com/track/6V9pUGpSOIVTlRkJwrQAnt"
     }
   ]
 }
