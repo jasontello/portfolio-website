@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-07T17:28:45.263Z",
+  "updatedAt": "2026-07-08T16:52:55.800Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -34,14 +34,15 @@
       "spotifyUrl": "https://open.spotify.com/track/5gq7xM6eI16osBO2U581NL"
     },
     {
-      "id": "7oUH2gGidvdp6jwTOraZRi",
-      "name": "Red Angel",
+      "id": "7zCBT5SUMOHkuUnTZHyNQC",
+      "name": "NOTA",
       "artists": [
-        "S.E.S."
+        "Paloma Mami",
+        "Cris MJ"
       ],
-      "album": "Choose My Life-U",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733a39b47088f69545c9102064",
-      "spotifyUrl": "https://open.spotify.com/track/7oUH2gGidvdp6jwTOraZRi"
+      "album": "NOTA",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739427d0fffa8fe983d2ccc44b",
+      "spotifyUrl": "https://open.spotify.com/track/7zCBT5SUMOHkuUnTZHyNQC"
     },
     {
       "id": "3hT8jruKBCSNjcKLrHOz1b",
@@ -62,17 +63,6 @@
       "album": "Give It To Me",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273ac2a3f037e468c2f386f93fa",
       "spotifyUrl": "https://open.spotify.com/track/1t88m8JUlqn9kf0FLmVta5"
-    },
-    {
-      "id": "7zCBT5SUMOHkuUnTZHyNQC",
-      "name": "NOTA",
-      "artists": [
-        "Paloma Mami",
-        "Cris MJ"
-      ],
-      "album": "NOTA",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739427d0fffa8fe983d2ccc44b",
-      "spotifyUrl": "https://open.spotify.com/track/7zCBT5SUMOHkuUnTZHyNQC"
     },
     {
       "id": "55pBIZO1cqoldeqpp5WR7H",
@@ -103,6 +93,16 @@
       "album": "Nichijou Shometsu",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273ea54a6be651435da08417c9e",
       "spotifyUrl": "https://open.spotify.com/track/6V9pUGpSOIVTlRkJwrQAnt"
+    },
+    {
+      "id": "3xHIyErJUeuy0MpjUKRuPw",
+      "name": "Something",
+      "artists": [
+        "Girl's Day"
+      ],
+      "album": "Girl's Day Love Second Album",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273db81829826109e9ac97c05be",
+      "spotifyUrl": "https://open.spotify.com/track/3xHIyErJUeuy0MpjUKRuPw"
     }
   ]
 }
