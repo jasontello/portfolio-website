@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./style.css?v=sandbox-ink-1" />
+    <link rel="stylesheet" href="./style.css?v=sandbox-sand-2" />
 
     <title>Sandbox | Jason Tello Portfolio</title>
 
@@ -14,12 +14,37 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   </head>
   <body class="sandbox-body sandbox-ready">
-    <main class="sandbox-page" aria-label="Interactive sandbox">
+    <main class="sandbox-page" aria-label="Interactive sandbox" data-sandbox-gallery>
       <a class="sandbox-back" href="./index.html" aria-label="Return to portfolio">Back</a>
-      <section class="sandbox-visual" aria-label="Interactive liquid ink sandbox">
-        <div class="hero-visual" data-ink-symbiote></div>
-      </section>
+      <button class="sandbox-center-ink" type="button" data-ink-return>Center ink</button>
+      <button class="sandbox-nav sandbox-nav--prev" type="button" aria-label="Previous art installation" data-sandbox-prev disabled>
+        <span aria-hidden="true">←</span>
+      </button>
+      <button class="sandbox-nav sandbox-nav--next" type="button" aria-label="Next art installation" data-sandbox-next>
+        <span aria-hidden="true">→</span>
+      </button>
+      <div class="sandbox-track" data-sandbox-track>
+        <section class="sandbox-installation sandbox-installation--ink" aria-label="Interactive liquid ink sandbox">
+          <div class="sandbox-visual">
+            <div class="hero-visual" data-ink-symbiote></div>
+          </div>
+        </section>
+        <section class="sandbox-installation sandbox-installation--poster" aria-label="Interactive poster art installation">
+          <div class="poster-installation">
+            <div class="poster-grain" aria-hidden="true"></div>
+            <div class="poster-sand-stage" aria-hidden="true">
+              <canvas class="poster-sand-canvas" data-hourglass-sand></canvas>
+            </div>
+            <p class="poster-type poster-type--left">申込締切　七月二十九日　気配</p>
+            <p class="poster-type poster-type--right">工芸都市高岡　クラフトコンペティション</p>
+            <p class="poster-type poster-type--lower-left">その中でクラフトはただ機能するだけでなく空間に配されたときに漂う気配を人は受け取っている。</p>
+            <p class="poster-type poster-type--lower-right">審査員　大治将典　小林和人　寺山紀彦　辰野しずか</p>
+          </div>
+        </section>
+      </div>
     </main>
-    <script src="./ink-symbiote.js?v=sandbox-ink-1"></script>
+    <script src="./ink-symbiote.js?v=sandbox-ink-6"></script>
+    <script src="./sandbox-gallery.js?v=sandbox-gallery-3"></script>
+    <script src="./hourglass-sand.js?v=sandbox-sand-6"></script>
   </body>
 </html>

@@ -164,6 +164,8 @@ function createInkProgram(gl) {
 function createInkBlobs() {
   return inkBlobBlueprint.map((blob, index) => ({
     ...blob,
+    centerX: blob.x * INK_POSITION_SCALE * 0.16,
+    centerY: blob.y * INK_POSITION_SCALE * 0.16,
     phase: blob.seed * Math.PI * 12 + index * 0.41,
     r: blob.r * INK_RADIUS_SCALE,
     vx: 0,
@@ -172,6 +174,8 @@ function createInkBlobs() {
     y: blob.y * INK_POSITION_SCALE
   }));
 }
+
+const inkSymbioteInstances = [];
 
 function InkSymbiote(root) {
   const wrapper = document.createElement("div");
@@ -196,6 +200,7 @@ function InkSymbiote(root) {
   };
   let reduceMotion = false;
   let animationFrame = 0;
+  let centerReturn = false;
   let resizeObserver = null;
 
   wrapper.className = "ink-symbiote";
@@ -358,8 +363,6 @@ function InkSymbiote(root) {
       const driftY =
         Math.cos(time * (0.28 + blob.seed * 0.11) + blob.phase * 0.82) * blob.r * 0.16 +
         Math.sin(time * 0.21 + blob.phase) * 0.004;
-      let targetX = blob.x + driftX;
-      let targetY = blob.y + driftY;
       const pointerDx = pointer.x - blob.x;
       const pointerDy = pointer.y - blob.y;
       const pointerDistance = Math.hypot(pointerDx, pointerDy);
@@ -374,13 +377,22 @@ function InkSymbiote(root) {
       const pulseInfluence = Math.pow(1 - clamp(pulseDistance / pulseReach, 0, 1), 2);
       const pulsePush = pointer.pulse * pulseInfluence * (0.04 + blob.pull * 0.014);
 
+      let targetX = blob.x + driftX;
+      let targetY = blob.y + driftY;
+
       targetX += pointerDx * (hoverPull + downPull);
       targetY += pointerDy * (hoverPull + downPull);
       targetX += (pulseDx / pulseDistance) * pulsePush;
       targetY += (pulseDy / pulseDistance) * pulsePush;
 
-      const stiffness = reduceMotion ? 1 : 0.038 + hover * 0.03 + pointer.downStrength * 0.022;
-      const damping = reduceMotion ? 0 : 0.82;
+      if (centerReturn) {
+        targetX += (blob.centerX - blob.x) * 0.32;
+        targetY += (blob.centerY - blob.y) * 0.32;
+      }
+
+      const centerStiffness = centerReturn ? 0.012 : 0;
+      const stiffness = reduceMotion ? 1 : 0.038 + hover * 0.03 + pointer.downStrength * 0.022 + centerStiffness;
+      const damping = reduceMotion ? 0 : centerReturn ? 0.74 : 0.82;
 
       blob.vx = (blob.vx + (targetX - blob.x) * stiffness) * damping;
       blob.vy = (blob.vy + (targetY - blob.y) * stiffness) * damping;
@@ -442,6 +454,43 @@ function InkSymbiote(root) {
     restart();
   };
 
+  const beginReturnToCenter = () => {
+    pointer.down = false;
+    pointer.pointerId = null;
+    pointer.pulse = 0;
+    pointer.targetStrength = 0;
+    pointer.strength = 0;
+    pointer.downStrength = 0;
+    pointer.velocityX = 0;
+    pointer.velocityY = 0;
+    pointer.x = 0;
+    pointer.y = 0;
+    if (reduceMotion) {
+      centerReturn = false;
+      blobs.forEach((blob) => {
+        blob.x = blob.centerX;
+        blob.y = blob.centerY;
+        blob.vx = 0;
+        blob.vy = 0;
+      });
+    } else {
+      centerReturn = true;
+    }
+
+    if (!animationFrame) {
+      restart();
+    }
+  };
+
+  const stopReturnToCenter = () => {
+    centerReturn = false;
+
+    blobs.forEach((blob) => {
+      blob.vx = 0;
+      blob.vy = 0;
+    });
+  };
+
   canvas.addEventListener("pointercancel", handlePointerRelease);
   canvas.addEventListener("pointerdown", handlePointerDown);
   canvas.addEventListener("pointerenter", movePointer);
@@ -455,6 +504,8 @@ function InkSymbiote(root) {
   restart();
 
   return {
+    beginReturnToCenter,
+    stopReturnToCenter,
     destroy() {
       window.cancelAnimationFrame(animationFrame);
       window.cancelAnimationFrame(frameRef.current);
@@ -475,7 +526,92 @@ function InkSymbiote(root) {
 }
 
 window.InkSymbiote = InkSymbiote;
+window.inkSymbioteInstances = inkSymbioteInstances;
 
 document.querySelectorAll("[data-ink-symbiote]").forEach((root) => {
-  InkSymbiote(root);
+  const instance = InkSymbiote(root);
+
+  inkSymbioteInstances.push(instance);
+  root.inkSymbiote = instance;
+});
+
+document.querySelectorAll("[data-ink-return]").forEach((button) => {
+  let activeCenterMouseHold = false;
+  let activeCenterKeyHold = false;
+
+  const beginCenterHold = (event) => {
+    if (event.button !== 0) {
+      return;
+    }
+
+    event.preventDefault();
+    activeCenterMouseHold = true;
+
+    inkSymbioteInstances.forEach((instance) => {
+      if (typeof instance.beginReturnToCenter === "function") {
+        instance.beginReturnToCenter();
+      }
+    });
+  };
+
+  const stopCenterHold = () => {
+    if (!activeCenterMouseHold) {
+      return;
+    }
+
+    activeCenterMouseHold = false;
+
+    inkSymbioteInstances.forEach((instance) => {
+      if (typeof instance.stopReturnToCenter === "function") {
+        instance.stopReturnToCenter();
+      }
+    });
+  };
+
+  const handleCenterKeyDown = (event) => {
+    if (event.repeat || (event.key !== " " && event.key !== "Enter")) {
+      return;
+    }
+
+    event.preventDefault();
+    activeCenterKeyHold = true;
+    inkSymbioteInstances.forEach((instance) => {
+      if (typeof instance.beginReturnToCenter === "function") {
+        instance.beginReturnToCenter();
+      }
+    });
+  };
+
+  const handleCenterKeyUp = (event) => {
+    if (event.key !== " " && event.key !== "Enter") {
+      return;
+    }
+
+    event.preventDefault();
+    activeCenterKeyHold = false;
+    inkSymbioteInstances.forEach((instance) => {
+      if (typeof instance.stopReturnToCenter === "function") {
+        instance.stopReturnToCenter();
+      }
+    });
+  };
+
+  button.addEventListener("mousedown", beginCenterHold);
+  button.addEventListener("keydown", handleCenterKeyDown);
+  button.addEventListener("keyup", handleCenterKeyUp);
+  window.addEventListener("blur", () => {
+    if (activeCenterMouseHold) {
+      stopCenterHold();
+    }
+
+    if (activeCenterKeyHold) {
+      activeCenterKeyHold = false;
+      inkSymbioteInstances.forEach((instance) => {
+        if (typeof instance.stopReturnToCenter === "function") {
+          instance.stopReturnToCenter();
+        }
+      });
+    }
+  });
+  window.addEventListener("mouseup", stopCenterHold);
 });

@@ -40,7 +40,7 @@
               >
             </button>
           </div>
-          <p>I’m a designer based in the Bay Area, open to junior design roles and internships.</p>
+          <p>I’m a designer based in the Bay Area, open to apprenticeships, internships, and junior product design roles.</p>
           <p>I love all things art, movies, music, NewJeans, and TLOU 2.</p>
           <p>You can reach me on <a href="https://www.linkedin.com/in/jason-tello-123888235/" target="_blank" >LinkedIn</a> or at jasontello2003@gmail.com.</p>
         </div>
@@ -87,28 +87,30 @@
         </div>
 
         <div class="work-grid">
-          <button class="work-card work-card--funfetti" type="button" data-project-open="funfetti-events" aria-haspopup="dialog" aria-controls="project-modal" aria-label="View Funfetti Events Website Redesign project story">
+          <a class="work-card work-card--funfetti" href="./funfetti-events-case-study.html" aria-label="Open Funfetti Events Website Redesign case study">
             <span class="work-card__preview funfetti-thumb" aria-hidden="true">
-              <img class="funfetti-thumb__scene" src="./images/projects/funfetti-events/case-study.png" alt="">
-              <img class="funfetti-thumb__logo" src="./images/projects/funfetti-events/logo.png" alt="">
+              <img class="funfetti-thumb__mockup" src="./images/projects/funfetti-laptop-thumbnail.png?v=2" alt="">
             </span>
             <span class="work-card__meta">
               <strong>Funfetti Events Website Redesign</strong>
               <span>A responsive redesign concept for a real event-planning and party-rental business.</span>
             </span>
-          </button>
+          </a>
 
-          <button class="work-card work-card--open-source-sj" type="button" data-project-open="open-source-sj" aria-haspopup="dialog" aria-controls="project-modal" aria-label="View Open Source San José Redesign project story">
+          <a class="work-card work-card--open-source-sj" href="./open-source-san-jose-case-study.html" aria-label="Open Open Source San Jose Redesign case study">
             <span class="work-card__preview">
+              <span class="code-rain-background" aria-hidden="true">
+                <canvas class="code-rain-canvas"></canvas>
+              </span>
               <img class="open-source-sj-thumb" src="./images/projects/open-source-san-jose/logo.png" alt="Open Source San José">
             </span>
             <span class="work-card__meta">
               <strong>Open Source San José Redesign</strong>
               <span>A responsive civic-tech homepage redesign with improved navigation, project presentation, and mobile experience.</span>
             </span>
-          </button>
+          </a>
 
-          <button class="work-card work-card--rainbow" type="button" data-project-open="rainbow-lab" aria-haspopup="dialog" aria-controls="project-modal" aria-label="View Rainbow Lab project story">
+          <a class="work-card work-card--rainbow" href="https://jasontello.github.io/rainbow-square-lab/" aria-label="Open Rainbow Lab live project">
             <span class="work-card__preview" aria-hidden="true">
               <span class="rainbow-thumb__brand">
                 <span class="rainbow-thumb__logo">
@@ -127,9 +129,9 @@
               <strong>Rainbow Lab</strong>
               <span>Color tool, in progress</span>
             </span>
-          </button>
+          </a>
 
-          <button class="work-card work-card--bizznest" type="button" data-project-open="bizznest-linktree" aria-haspopup="dialog" aria-controls="project-modal" aria-label="View BizzNEST Linktree Assessment project story">
+          <a class="work-card work-card--bizznest" href="https://jasontello.github.io/bizznest-linktree-assessment/" aria-label="Open BizzNEST Linktree Assessment live project">
             <span class="work-card__preview bizznest-thumb" aria-hidden="true">
               <img class="bizznest-thumb__logo" src="./images/projects/bizznest/linktree-logo.png" alt="">
             </span>
@@ -137,85 +139,18 @@
               <strong>BizzNEST Linktree Assessment</strong>
               <span>A responsive Linktree-style personal landing page with a custom list/grid layout toggle.</span>
             </span>
-          </button>
+          </a>
         </div>
       </section>
 
     </div>
-    <section class="project-modal" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" hidden>
-      <div class="project-modal__backdrop" data-project-close></div>
-      <div class="project-modal__panel">
-        <header class="project-modal__topbar">
-          <span class="project-modal__count"><span data-project-index>01</span> / 04</span>
-          <button class="project-modal__close" type="button" aria-label="Close project story" title="Close" data-project-close>&times;</button>
-        </header>
-
-        <div class="project-modal__layout">
-          <aside class="project-modal__rail">
-            <p class="project-modal__label">Selected work</p>
-            <h2 id="project-modal-title" data-project-title></h2>
-            <p class="project-modal__summary" data-project-summary></p>
-
-            <dl class="project-modal__meta">
-              <div>
-                <dt>Role</dt>
-                <dd data-project-role></dd>
-              </div>
-              <div>
-                <dt>Focus</dt>
-                <dd data-project-focus></dd>
-              </div>
-            </dl>
-
-            <div class="project-modal__links">
-              <a data-project-case-study>Case Study <span aria-hidden="true">↗</span></a>
-              <a data-project-live target="_blank" rel="noreferrer">Live site <span aria-hidden="true">↗</span></a>
-              <a data-project-github target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-            </div>
-          </aside>
-
-          <main class="project-modal__story" data-project-story tabindex="0">
-            <figure class="project-modal__hero">
-              <video data-project-video muted loop playsinline preload="metadata"></video>
-            </figure>
-
-            <div class="project-modal__statements">
-              <section>
-                <p class="project-modal__label">The challenge</p>
-                <h3 data-project-challenge></h3>
-              </section>
-              <section>
-                <p class="project-modal__label">The approach</p>
-                <h3 data-project-approach></h3>
-              </section>
-            </div>
-
-            <section class="project-modal__outcome">
-              <p class="project-modal__label">The result</p>
-              <p data-project-outcome></p>
-            </section>
-
-            <section class="project-modal__details">
-              <p class="project-modal__label">Key details</p>
-              <ul data-project-highlights></ul>
-            </section>
-
-            <footer class="project-modal__pager">
-              <button type="button" data-project-previous aria-label="View previous project"><span aria-hidden="true">←</span> Previous</button>
-              <button type="button" data-project-next aria-label="View next project">Next <span aria-hidden="true">→</span></button>
-            </footer>
-          </main>
-        </div>
-      </div>
-    </section>
-
     <section class="resume-modal" id="resume-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" hidden>
       <div class="resume-modal__backdrop" data-resume-close></div>
       <div class="resume-modal__panel">
         <header class="resume-modal__header">
           <div>
             <p class="resume-modal__eyebrow">Resume</p>
-            <h2 id="resume-modal-title">Jason Tello</h2>
+            <h2 id="resume-modal-title">Jason Tello - Product Design</h2>
           </div>
           <div class="resume-modal__actions">
             <a class="resume-modal__download" href="./documents/Jason_Tello_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
