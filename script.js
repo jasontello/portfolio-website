@@ -45,6 +45,183 @@ function renderSplitText(element, text) {
   element.append(original, clone);
 }
 
+function initInkCursor() {
+  const finePointer = window.matchMedia("(pointer: fine)");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  if (!finePointer.matches || reduceMotion.matches) {
+    return;
+  }
+
+  const cursor = document.createElement("span");
+  cursor.className = "ink-cursor";
+  cursor.setAttribute("aria-hidden", "true");
+
+  const trailLayer = document.createElement("span");
+  trailLayer.className = "ink-cursor-trail-layer";
+  trailLayer.setAttribute("aria-hidden", "true");
+  document.body.append(trailLayer, cursor);
+  document.body.classList.add("has-ink-cursor");
+
+  let targetX = window.innerWidth / 2;
+  let targetY = window.innerHeight / 2;
+  let currentX = targetX;
+  let currentY = targetY;
+  let previousX = targetX;
+  let previousY = targetY;
+  let lastTrailX = targetX;
+  let lastTrailY = targetY;
+  let lastTrailTime = 0;
+  let lastPressBurstTime = 0;
+  let isVisible = false;
+  let isRunning = false;
+  let activeDrops = 0;
+  const maxDrops = 42;
+
+  const isInteractive = (target) => (
+    target instanceof Element &&
+    Boolean(target.closest("a, button, input, textarea, select, label, [role='button'], [tabindex]:not([tabindex='-1'])"))
+  );
+
+  const isProjectSurface = (target) => (
+    target instanceof Element &&
+    Boolean(target.closest(".work-card, .sandbox-project-card, .case-study-actions a, .project-modal__links a, .spotify-board__link, .music-shelf a"))
+  );
+
+  const isTextSurface = (target) => (
+    target instanceof Element &&
+    Boolean(target.closest("p, h1, h2, h3, h4, strong, dt, dd, figcaption, li"))
+  );
+
+  const syncMood = (target) => {
+    const interactive = isInteractive(target);
+    const projectSurface = isProjectSurface(target);
+    const textSurface = isTextSurface(target);
+
+    cursor.classList.toggle("is-over-interactive", interactive);
+    cursor.classList.toggle("is-over-card", projectSurface);
+    cursor.classList.toggle("is-over-text", textSurface && !interactive);
+  };
+
+  const releaseInk = (x, y, speed = 0, burst = false) => {
+    if (activeDrops >= maxDrops) {
+      const oldestDrop = trailLayer.firstElementChild;
+
+      if (oldestDrop) {
+        oldestDrop.remove();
+        activeDrops -= 1;
+      }
+    }
+
+    const drop = document.createElement("span");
+    const size = Math.max(4, Math.min(18, (burst ? 10 : 5) + speed * 0.045 + Math.random() * 7));
+    const driftX = (Math.random() - 0.5) * (burst ? 42 : 18);
+    const driftY = (Math.random() - 0.5) * (burst ? 34 : 16);
+    const duration = Math.round((burst ? 820 : 620) + Math.random() * 360);
+
+    drop.className = "ink-cursor-drop";
+    drop.style.setProperty("--x", `${x + (Math.random() - 0.5) * 8}px`);
+    drop.style.setProperty("--y", `${y + (Math.random() - 0.5) * 8}px`);
+    drop.style.setProperty("--size", `${size}px`);
+    drop.style.setProperty("--drift-x", `${driftX}px`);
+    drop.style.setProperty("--drift-y", `${driftY}px`);
+    drop.style.setProperty("--rotate", `${Math.round(Math.random() * 120 - 60)}deg`);
+    drop.style.setProperty("--duration", `${duration}ms`);
+    trailLayer.append(drop);
+    activeDrops += 1;
+
+    window.setTimeout(() => {
+      drop.remove();
+      activeDrops = Math.max(0, activeDrops - 1);
+    }, duration + 120);
+  };
+
+  const render = () => {
+    currentX += (targetX - currentX) * 0.24;
+    currentY += (targetY - currentY) * 0.24;
+    cursor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+
+    if (isVisible) {
+      window.requestAnimationFrame(render);
+      return;
+    }
+
+    isRunning = false;
+  };
+
+  const start = () => {
+    if (!isRunning) {
+      isRunning = true;
+      window.requestAnimationFrame(render);
+    }
+  };
+
+  const show = (event) => {
+    const now = window.performance.now();
+    const oldTargetX = targetX;
+    const oldTargetY = targetY;
+    const speed = Math.hypot(event.clientX - oldTargetX, event.clientY - oldTargetY);
+    const trailDistance = Math.hypot(event.clientX - lastTrailX, event.clientY - lastTrailY);
+
+    previousX = oldTargetX;
+    previousY = oldTargetY;
+    targetX = event.clientX;
+    targetY = event.clientY;
+
+    if (!isVisible) {
+      currentX = targetX;
+      currentY = targetY;
+      isVisible = true;
+      cursor.classList.add("is-visible");
+    }
+
+    if (speed > 2 && trailDistance > 7 && now - lastTrailTime > 24) {
+      releaseInk(event.clientX - (event.clientX - previousX) * 0.24, event.clientY - (event.clientY - previousY) * 0.24, speed);
+      lastTrailX = event.clientX;
+      lastTrailY = event.clientY;
+      lastTrailTime = now;
+    }
+
+    syncMood(event.target);
+    start();
+  };
+
+  const hide = () => {
+    isVisible = false;
+    cursor.classList.remove("is-visible", "is-over-interactive", "is-over-card", "is-over-text", "is-pressed");
+  };
+
+  const press = () => {
+    const now = window.performance.now();
+
+    if (now - lastPressBurstTime < 90) {
+      return;
+    }
+
+    lastPressBurstTime = now;
+    cursor.classList.add("is-pressed");
+
+    for (let index = 0; index < 7; index += 1) {
+      releaseInk(targetX, targetY, 18 + index * 2, true);
+    }
+  };
+
+  const releasePress = () => {
+    cursor.classList.remove("is-pressed");
+  };
+
+  document.addEventListener("mousemove", show);
+  document.addEventListener("mouseleave", hide);
+  document.addEventListener("mouseover", (event) => {
+    syncMood(event.target);
+  });
+  document.addEventListener("pointerdown", press);
+  document.addEventListener("mousedown", press);
+  document.addEventListener("pointerup", releasePress);
+  document.addEventListener("mouseup", releasePress);
+  window.addEventListener("blur", hide);
+}
+
 function initSandboxTransition() {
   const triggers = document.querySelectorAll(".sandbox-trigger");
   const gsap = window.gsap;
@@ -59,6 +236,7 @@ function initSandboxTransition() {
     trigger.addEventListener("click", (event) => {
       if (
         navigating ||
+        event.defaultPrevented ||
         event.metaKey ||
         event.ctrlKey ||
         event.shiftKey ||

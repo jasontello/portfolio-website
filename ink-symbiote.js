@@ -181,7 +181,37 @@ function InkSymbiote(root) {
   const wrapper = document.createElement("div");
   const canvas = document.createElement("canvas");
   const frameRef = { current: 0 };
+  const previewMode = root.hasAttribute("data-ink-preview");
   const blobs = createInkBlobs();
+
+  if (previewMode) {
+    const previewLobes = [
+      { x: -0.16, y: 0.05 },
+      { x: -0.04, y: 0.15 },
+      { x: 0.13, y: 0.1 },
+      { x: 0.18, y: -0.05 },
+      { x: 0.05, y: -0.16 },
+      { x: -0.12, y: -0.14 }
+    ];
+    const previewDropletIndices = [20, 23, 25, 31, 34, 35];
+
+    blobs.forEach((blob, index) => {
+      const lobe = previewLobes[index % previewLobes.length];
+      const dropletIndex = previewDropletIndices.indexOf(index);
+
+      blob.centerX = lobe.x + blob.centerX * 0.75;
+      blob.centerY = lobe.y + blob.centerY * 0.75;
+      blob.r *= 1.5;
+      blob.x = blob.centerX;
+      blob.y = blob.centerY;
+      blob.previewDroplet = dropletIndex !== -1;
+      blob.previewDropletDelay = dropletIndex * 0.15;
+      blob.previewDropletDistance = 0.28 + (dropletIndex % 3) * 0.045;
+      blob.previewDropletSpeed = 0.065 + dropletIndex * 0.003;
+      blob.previewDropletAngle = (dropletIndex / previewDropletIndices.length) * Math.PI * 2;
+    });
+  }
+
   const pointer = {
     down: false,
     downStrength: 0,
@@ -200,7 +230,7 @@ function InkSymbiote(root) {
   };
   let reduceMotion = false;
   let animationFrame = 0;
-  let centerReturn = false;
+  let centerReturn = previewMode;
   let resizeObserver = null;
 
   wrapper.className = "ink-symbiote";
@@ -379,19 +409,31 @@ function InkSymbiote(root) {
 
       let targetX = blob.x + driftX;
       let targetY = blob.y + driftY;
+      const isPreviewDroplet = previewMode && blob.previewDroplet;
+
+      if (isPreviewDroplet) {
+        const dropletCycle = (time * blob.previewDropletSpeed + blob.previewDropletDelay) % 1;
+        const dropletExcursion = Math.pow(Math.sin(Math.PI * dropletCycle), 2.35);
+        const dropletAngle = blob.previewDropletAngle + dropletCycle * Math.PI * 2;
+        const dropletDistance = blob.previewDropletDistance * dropletExcursion;
+
+        targetX = blob.centerX + Math.cos(dropletAngle) * dropletDistance;
+        targetY = blob.centerY + Math.sin(dropletAngle) * dropletDistance * 0.72;
+      }
 
       targetX += pointerDx * (hoverPull + downPull);
       targetY += pointerDy * (hoverPull + downPull);
       targetX += (pulseDx / pulseDistance) * pulsePush;
       targetY += (pulseDy / pulseDistance) * pulsePush;
 
-      if (centerReturn) {
+      if (centerReturn && !isPreviewDroplet) {
         targetX += (blob.centerX - blob.x) * 0.32;
         targetY += (blob.centerY - blob.y) * 0.32;
       }
 
       const centerStiffness = centerReturn ? 0.012 : 0;
-      const stiffness = reduceMotion ? 1 : 0.038 + hover * 0.03 + pointer.downStrength * 0.022 + centerStiffness;
+      const previewDropletStiffness = isPreviewDroplet ? 0.055 : 0;
+      const stiffness = reduceMotion ? 1 : 0.038 + hover * 0.03 + pointer.downStrength * 0.022 + centerStiffness + previewDropletStiffness;
       const damping = reduceMotion ? 0 : centerReturn ? 0.74 : 0.82;
 
       blob.vx = (blob.vx + (targetX - blob.x) * stiffness) * damping;

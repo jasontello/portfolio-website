@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./style.css?v=sandbox-sand-2" />
+    <script>
+      try {
+        if (
+          localStorage.getItem("portfolioContentFullscreen") === "true" &&
+          window.matchMedia("(min-width: 901px)").matches
+        ) {
+          document.documentElement.classList.add("is-content-fullscreen", "is-fullscreen-restoring");
+        }
+      } catch (error) {}
+    </script>
+    <link rel="stylesheet" href="./style.css?v=hourglass-preview-1" />
 
     <title>Sandbox | Jason Tello Portfolio</title>
 
@@ -13,38 +23,119 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   </head>
-  <body class="sandbox-body sandbox-ready">
-    <main class="sandbox-page" aria-label="Interactive sandbox" data-sandbox-gallery>
-      <a class="sandbox-back" href="./index.html" aria-label="Return to portfolio">Back</a>
-      <button class="sandbox-center-ink" type="button" data-ink-return>Center ink</button>
-      <button class="sandbox-nav sandbox-nav--prev" type="button" aria-label="Previous art installation" data-sandbox-prev disabled>
-        <span aria-hidden="true">←</span>
-      </button>
-      <button class="sandbox-nav sandbox-nav--next" type="button" aria-label="Next art installation" data-sandbox-next>
-        <span aria-hidden="true">→</span>
-      </button>
-      <div class="sandbox-track" data-sandbox-track>
-        <section class="sandbox-installation sandbox-installation--ink" aria-label="Interactive liquid ink sandbox">
-          <div class="sandbox-visual">
-            <div class="hero-visual" data-ink-symbiote></div>
+  <body class="sandbox-index-body">
+    <nav class="main-navigation">
+      <header>
+        <div class="about">
+          <div class="name-row">
+            <h1 id="name">Jason Tello</h1>
+            <button class="name-face-button" type="button" aria-label="Make Jason's face react" data-face-trigger>
+              <img
+                class="name-face"
+                src="./images/face.png"
+                data-face-normal="./images/face.png"
+                data-face-reaction="./images/face-shout.png"
+                alt=""
+                aria-hidden="true"
+              >
+            </button>
           </div>
-        </section>
-        <section class="sandbox-installation sandbox-installation--poster" aria-label="Interactive poster art installation">
-          <div class="poster-installation">
-            <div class="poster-grain" aria-hidden="true"></div>
-            <div class="poster-sand-stage" aria-hidden="true">
-              <canvas class="poster-sand-canvas" data-hourglass-sand></canvas>
-            </div>
-            <p class="poster-type poster-type--left">申込締切　七月二十九日　気配</p>
-            <p class="poster-type poster-type--right">工芸都市高岡　クラフトコンペティション</p>
-            <p class="poster-type poster-type--lower-left">その中でクラフトはただ機能するだけでなく空間に配されたときに漂う気配を人は受け取っている。</p>
-            <p class="poster-type poster-type--lower-right">審査員　大治将典　小林和人　寺山紀彦　辰野しずか</p>
-          </div>
-        </section>
+          <p>I’m a designer based in the Bay Area, open to apprenticeships, internships, and junior product design roles.</p>
+          <p>I love all things art, movies, music, NewJeans, and TLOU 2.</p>
+          <p>You can reach me on <a href="https://www.linkedin.com/in/jason-tello-123888235/" target="_blank" >LinkedIn</a> or at jasontello2003@gmail.com.</p>
+        </div>
+        <ul class="nav-links">
+          <li class="work-section-link">
+            <a class="nav-link-fx" href="./index.html">Work</a>
+          </li>
+          <li class="playground-section">
+            <a class="nav-link-fx nav-link-fx--active sandbox-trigger" href="./sandbox.html" aria-current="page">Sandbox</a>
+          </li>
+          <li class="resume-section">
+            <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+          </li>
+          <li class="music-section-link">
+            <a class="nav-link-fx" href="./music.html">Music</a>
+          </li>
+          <li class="style-guide-section-link">
+            <a class="nav-link-fx" href="./design-system.html">Style Guide</a>
+          </li>
+        </ul>
+      </header>
+      <footer>
+        <img id="bottomleft-corner" class="triangle" src="./images/CornerTriangle.svg" alt="corner image">
+      </footer>
+    </nav>
+
+    <main class="main-content sandbox-hub-page" aria-labelledby="sandbox-title">
+      <div class="headerright-section content-chrome">
+        <button class="fullscreen-toggle" type="button" aria-label="Enter fullscreen layout" aria-pressed="false" data-fullscreen-toggle>
+          <img class="fullscreen-toggle__icon" src="./images/fullscreen-icon.png" alt="" aria-hidden="true">
+        </button>
+        <nav class="content-nav" aria-label="Fullscreen navigation">
+          <a class="nav-link-fx" href="./index.html">Work</a>
+          <a class="nav-link-fx nav-link-fx--active sandbox-trigger" href="./sandbox.html" aria-current="page">Sandbox</a>
+          <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+          <a class="nav-link-fx" href="./music.html">Music</a>
+          <a class="nav-link-fx" href="./design-system.html">Style Guide</a>
+        </nav>
+        <img id="topright-corner" class="triangle" src="./images/topright-cornertriangle.svg" alt="corner image">
       </div>
+
+      <section class="sandbox-hub" aria-label="Interactive art sandbox">
+        <div class="sandbox-hub__header">
+          <h2 id="sandbox-title">Sandbox</h2>
+          <span>2 +</span>
+        </div>
+
+        <div class="sandbox-project-grid">
+          <a class="sandbox-project-card sandbox-project-card--ink" href="./sandbox-ink.html" aria-label="Open Ink Symbiote sandbox project">
+            <span class="sandbox-project-card__preview" aria-hidden="true">
+              <span class="sandbox-preview-ink" data-ink-symbiote data-ink-preview></span>
+            </span>
+            <span class="sandbox-project-card__meta">
+              <span class="sandbox-project-card__meta-head">
+                <strong>Ink Symbiote</strong>
+                <span>WebGL - Interaction</span>
+              </span>
+              <span class="sandbox-project-card__caption">A liquid ink field that reacts to pointer movement and touch.</span>
+            </span>
+          </a>
+
+          <a class="sandbox-project-card sandbox-project-card--poster" href="./sandbox-poster.html" aria-label="Open Hourglass Poster sandbox project">
+            <span class="sandbox-project-card__preview" aria-hidden="true">
+              <img class="sandbox-preview-poster-image" src="./images/hourglass-preview.png?v=hourglass-preview-1" alt="">
+            </span>
+            <span class="sandbox-project-card__meta">
+              <span class="sandbox-project-card__meta-head">
+                <strong>Hourglass Poster</strong>
+                <span>Canvas - Motion Study</span>
+              </span>
+              <span class="sandbox-project-card__caption">A one-minute study built around falling sand, grain, and shifting mass.</span>
+            </span>
+          </a>
+        </div>
+      </section>
     </main>
-    <script src="./ink-symbiote.js?v=sandbox-ink-6"></script>
-    <script src="./sandbox-gallery.js?v=sandbox-gallery-3"></script>
-    <script src="./hourglass-sand.js?v=sandbox-sand-6"></script>
+
+    <section class="resume-modal" id="resume-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" hidden>
+      <div class="resume-modal__backdrop" data-resume-close></div>
+      <div class="resume-modal__panel">
+        <header class="resume-modal__header">
+          <div>
+            <p class="resume-modal__eyebrow">Resume</p>
+            <h2 id="resume-modal-title">Jason Tello - Product Design</h2>
+          </div>
+          <div class="resume-modal__actions">
+            <a class="resume-modal__download" href="./documents/Jason_Tello_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            <button class="resume-modal__close" type="button" aria-label="Close resume" data-resume-close>Close</button>
+          </div>
+        </header>
+        <iframe class="resume-modal__frame" src="./documents/Jason_Tello_Resume.pdf#view=FitH" title="Jason Tello resume"></iframe>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="./ink-symbiote.js?v=sandbox-preview-6"></script>
+    <script src="./script.js?v=sandbox-hub-1"></script>
   </body>
 </html>

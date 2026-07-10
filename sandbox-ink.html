@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+      if (window.location.hash === "#poster") {
+        window.location.replace(`./sandbox-poster.html${window.location.search}`);
+      }
+    </script>
+    <link rel="stylesheet" href="./style.css?v=sandbox-project-pages-1" />
+
+    <title>Ink Symbiote | Jason Tello Portfolio</title>
+
+    <link rel="icon" type="image/png" href="./images/favicon-head.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  </head>
+  <body class="sandbox-body sandbox-ready">
+    <main class="sandbox-page" aria-label="Ink Symbiote sandbox project">
+      <a class="sandbox-back" href="./sandbox.html" aria-label="Return to sandbox projects">Back</a>
+      <button class="sandbox-center-ink" type="button" data-ink-return>Center ink</button>
+      <section class="sandbox-installation sandbox-installation--ink" aria-label="Interactive liquid ink installation">
+        <div class="sandbox-visual">
+          <div class="hero-visual" data-ink-symbiote></div>
+        </div>
+      </section>
+    </main>
+    <script src="./ink-symbiote.js?v=sandbox-ink-7"></script>
+  </body>
+</html>
