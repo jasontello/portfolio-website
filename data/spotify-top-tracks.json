@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-11T16:12:56.224Z",
+  "updatedAt": "2026-07-12T16:15:22.828Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -75,6 +75,16 @@
       "spotifyUrl": "https://open.spotify.com/track/34VlPxx6QaZEHI0tFLl1G8"
     },
     {
+      "id": "3CnEw0mRAXVlLw36iL0mbe",
+      "name": "Sun Has Set",
+      "artists": [
+        "beabadoobee"
+      ],
+      "album": "Sun Has Set",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736f3307b2ee6c3131410efdc7",
+      "spotifyUrl": "https://open.spotify.com/track/3CnEw0mRAXVlLw36iL0mbe"
+    },
+    {
       "id": "55pBIZO1cqoldeqpp5WR7H",
       "name": "the cure",
       "artists": [
@@ -93,16 +103,6 @@
       "album": "Nichijou Shometsu",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273ea54a6be651435da08417c9e",
       "spotifyUrl": "https://open.spotify.com/track/6V9pUGpSOIVTlRkJwrQAnt"
-    },
-    {
-      "id": "2Ngy7J2ma8lSQVapeybA12",
-      "name": "Who is ruling the ocean?",
-      "artists": [
-        "tiny yawn"
-      ],
-      "album": "yawn",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27310f85e078df8b0bec82a0a28",
-      "spotifyUrl": "https://open.spotify.com/track/2Ngy7J2ma8lSQVapeybA12"
     }
   ]
 }
