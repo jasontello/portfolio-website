@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-12T16:15:22.828Z",
+  "updatedAt": "2026-07-13T17:24:49.703Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -45,14 +45,14 @@
       "spotifyUrl": "https://open.spotify.com/track/7zCBT5SUMOHkuUnTZHyNQC"
     },
     {
-      "id": "3hT8jruKBCSNjcKLrHOz1b",
-      "name": "MARS",
+      "id": "3CnEw0mRAXVlLw36iL0mbe",
+      "name": "Sun Has Set",
       "artists": [
-        "TWICE"
+        "beabadoobee"
       ],
-      "album": "THIS IS FOR",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273393ae2f0bd79be4d87335d0a",
-      "spotifyUrl": "https://open.spotify.com/track/3hT8jruKBCSNjcKLrHOz1b"
+      "album": "Sun Has Set",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736f3307b2ee6c3131410efdc7",
+      "spotifyUrl": "https://open.spotify.com/track/3CnEw0mRAXVlLw36iL0mbe"
     },
     {
       "id": "1t88m8JUlqn9kf0FLmVta5",
@@ -75,16 +75,6 @@
       "spotifyUrl": "https://open.spotify.com/track/34VlPxx6QaZEHI0tFLl1G8"
     },
     {
-      "id": "3CnEw0mRAXVlLw36iL0mbe",
-      "name": "Sun Has Set",
-      "artists": [
-        "beabadoobee"
-      ],
-      "album": "Sun Has Set",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736f3307b2ee6c3131410efdc7",
-      "spotifyUrl": "https://open.spotify.com/track/3CnEw0mRAXVlLw36iL0mbe"
-    },
-    {
       "id": "55pBIZO1cqoldeqpp5WR7H",
       "name": "the cure",
       "artists": [
@@ -103,6 +93,16 @@
       "album": "Nichijou Shometsu",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273ea54a6be651435da08417c9e",
       "spotifyUrl": "https://open.spotify.com/track/6V9pUGpSOIVTlRkJwrQAnt"
+    },
+    {
+      "id": "2Ngy7J2ma8lSQVapeybA12",
+      "name": "Who is ruling the ocean?",
+      "artists": [
+        "tiny yawn"
+      ],
+      "album": "yawn",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27310f85e078df8b0bec82a0a28",
+      "spotifyUrl": "https://open.spotify.com/track/2Ngy7J2ma8lSQVapeybA12"
     }
   ]
 }
