@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-16T16:45:36.967Z",
+  "updatedAt": "2026-07-17T16:36:52.546Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -45,16 +45,6 @@
       "spotifyUrl": "https://open.spotify.com/track/3CnEw0mRAXVlLw36iL0mbe"
     },
     {
-      "id": "3BIIJgBJJ7NhhCv4MI6n7w",
-      "name": "Alien Boy",
-      "artists": [
-        "Oliver Tree"
-      ],
-      "album": "Ugly is Beautiful",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c1bdf5564ed647ab6cb12f4b",
-      "spotifyUrl": "https://open.spotify.com/track/3BIIJgBJJ7NhhCv4MI6n7w"
-    },
-    {
       "id": "1t88m8JUlqn9kf0FLmVta5",
       "name": "Give it to me",
       "artists": [
@@ -75,14 +65,14 @@
       "spotifyUrl": "https://open.spotify.com/track/34VlPxx6QaZEHI0tFLl1G8"
     },
     {
-      "id": "55pBIZO1cqoldeqpp5WR7H",
-      "name": "the cure",
+      "id": "7rjyxp9j8hSje07if1lBV7",
+      "name": "Meiomi",
       "artists": [
-        "Olivia Rodrigo"
+        "Young Miko"
       ],
-      "album": "you seem pretty sad for a girl so in love",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2735cf234eeb7a2edf44bf64a46",
-      "spotifyUrl": "https://open.spotify.com/track/55pBIZO1cqoldeqpp5WR7H"
+      "album": "Do Not Disturb",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2737fcd5648e2e2c477597e016c",
+      "spotifyUrl": "https://open.spotify.com/track/7rjyxp9j8hSje07if1lBV7"
     },
     {
       "id": "6V9pUGpSOIVTlRkJwrQAnt",
@@ -103,6 +93,16 @@
       "album": "yawn",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27310f85e078df8b0bec82a0a28",
       "spotifyUrl": "https://open.spotify.com/track/2Ngy7J2ma8lSQVapeybA12"
+    },
+    {
+      "id": "2l2pKMAYOnoc9KcHPwiUCk",
+      "name": "Icarus",
+      "artists": [
+        "ARTMS"
+      ],
+      "album": "<Club Icarus>",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27363047fa25a906b3536f51ea3",
+      "spotifyUrl": "https://open.spotify.com/track/2l2pKMAYOnoc9KcHPwiUCk"
     }
   ]
 }
