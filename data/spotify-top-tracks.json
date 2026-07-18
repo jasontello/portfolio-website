@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-17T16:36:52.546Z",
+  "updatedAt": "2026-07-18T16:14:11.363Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -85,16 +85,6 @@
       "spotifyUrl": "https://open.spotify.com/track/6V9pUGpSOIVTlRkJwrQAnt"
     },
     {
-      "id": "2Ngy7J2ma8lSQVapeybA12",
-      "name": "Who is ruling the ocean?",
-      "artists": [
-        "tiny yawn"
-      ],
-      "album": "yawn",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27310f85e078df8b0bec82a0a28",
-      "spotifyUrl": "https://open.spotify.com/track/2Ngy7J2ma8lSQVapeybA12"
-    },
-    {
       "id": "2l2pKMAYOnoc9KcHPwiUCk",
       "name": "Icarus",
       "artists": [
@@ -103,6 +93,16 @@
       "album": "<Club Icarus>",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27363047fa25a906b3536f51ea3",
       "spotifyUrl": "https://open.spotify.com/track/2l2pKMAYOnoc9KcHPwiUCk"
+    },
+    {
+      "id": "3xHIyErJUeuy0MpjUKRuPw",
+      "name": "Something",
+      "artists": [
+        "Girl's Day"
+      ],
+      "album": "Girl's Day Love Second Album",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273db81829826109e9ac97c05be",
+      "spotifyUrl": "https://open.spotify.com/track/3xHIyErJUeuy0MpjUKRuPw"
     }
   ]
 }
