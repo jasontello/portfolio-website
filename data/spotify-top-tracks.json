@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-18T16:14:11.363Z",
+  "updatedAt": "2026-07-19T16:14:37.652Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -12,16 +12,6 @@
       "album": "SET THE TEMPO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273a3cba6911729850b7530064a",
       "spotifyUrl": "https://open.spotify.com/track/3NXNXRW5tDFiLre0EpSDkE"
-    },
-    {
-      "id": "5gq7xM6eI16osBO2U581NL",
-      "name": "Do not touch",
-      "artists": [
-        "MISAMO"
-      ],
-      "album": "Masterpiece",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273266faf63f2196093a52fb1b1",
-      "spotifyUrl": "https://open.spotify.com/track/5gq7xM6eI16osBO2U581NL"
     },
     {
       "id": "7zCBT5SUMOHkuUnTZHyNQC",
@@ -45,14 +35,25 @@
       "spotifyUrl": "https://open.spotify.com/track/3CnEw0mRAXVlLw36iL0mbe"
     },
     {
-      "id": "1t88m8JUlqn9kf0FLmVta5",
-      "name": "Give it to me",
+      "id": "5gq7xM6eI16osBO2U581NL",
+      "name": "Do not touch",
       "artists": [
-        "SISTAR"
+        "MISAMO"
       ],
-      "album": "Give It To Me",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ac2a3f037e468c2f386f93fa",
-      "spotifyUrl": "https://open.spotify.com/track/1t88m8JUlqn9kf0FLmVta5"
+      "album": "Masterpiece",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273266faf63f2196093a52fb1b1",
+      "spotifyUrl": "https://open.spotify.com/track/5gq7xM6eI16osBO2U581NL"
+    },
+    {
+      "id": "2PqFh92NTHhlbshWLOumzl",
+      "name": "Hvnly (feat. JIHYO)",
+      "artists": [
+        "Jenevieve",
+        "JIHYO"
+      ],
+      "album": "CRYSALIS (CODA)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27303f01f495ed76d0c668e17e5",
+      "spotifyUrl": "https://open.spotify.com/track/2PqFh92NTHhlbshWLOumzl"
     },
     {
       "id": "34VlPxx6QaZEHI0tFLl1G8",
@@ -95,14 +96,14 @@
       "spotifyUrl": "https://open.spotify.com/track/2l2pKMAYOnoc9KcHPwiUCk"
     },
     {
-      "id": "3xHIyErJUeuy0MpjUKRuPw",
-      "name": "Something",
+      "id": "1t88m8JUlqn9kf0FLmVta5",
+      "name": "Give it to me",
       "artists": [
-        "Girl's Day"
+        "SISTAR"
       ],
-      "album": "Girl's Day Love Second Album",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273db81829826109e9ac97c05be",
-      "spotifyUrl": "https://open.spotify.com/track/3xHIyErJUeuy0MpjUKRuPw"
+      "album": "Give It To Me",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ac2a3f037e468c2f386f93fa",
+      "spotifyUrl": "https://open.spotify.com/track/1t88m8JUlqn9kf0FLmVta5"
     }
   ]
 }
