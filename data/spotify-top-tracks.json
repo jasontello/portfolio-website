@@ -1,18 +1,8 @@
 {
-  "updatedAt": "2026-07-21T16:48:44.007Z",
+  "updatedAt": "2026-07-22T16:52:19.548Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
-    {
-      "id": "3NXNXRW5tDFiLre0EpSDkE",
-      "name": "METRONOME",
-      "artists": [
-        "izna"
-      ],
-      "album": "SET THE TEMPO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a3cba6911729850b7530064a",
-      "spotifyUrl": "https://open.spotify.com/track/3NXNXRW5tDFiLre0EpSDkE"
-    },
     {
       "id": "2PqFh92NTHhlbshWLOumzl",
       "name": "Hvnly (feat. JIHYO)",
@@ -23,6 +13,16 @@
       "album": "CRYSALIS (CODA)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27303f01f495ed76d0c668e17e5",
       "spotifyUrl": "https://open.spotify.com/track/2PqFh92NTHhlbshWLOumzl"
+    },
+    {
+      "id": "3NXNXRW5tDFiLre0EpSDkE",
+      "name": "METRONOME",
+      "artists": [
+        "izna"
+      ],
+      "album": "SET THE TEMPO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a3cba6911729850b7530064a",
+      "spotifyUrl": "https://open.spotify.com/track/3NXNXRW5tDFiLre0EpSDkE"
     },
     {
       "id": "7zCBT5SUMOHkuUnTZHyNQC",
@@ -46,6 +46,16 @@
       "spotifyUrl": "https://open.spotify.com/track/3CnEw0mRAXVlLw36iL0mbe"
     },
     {
+      "id": "7rjyxp9j8hSje07if1lBV7",
+      "name": "Meiomi",
+      "artists": [
+        "Young Miko"
+      ],
+      "album": "Do Not Disturb",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2737fcd5648e2e2c477597e016c",
+      "spotifyUrl": "https://open.spotify.com/track/7rjyxp9j8hSje07if1lBV7"
+    },
+    {
       "id": "34VlPxx6QaZEHI0tFLl1G8",
       "name": "Space, Circumstances, Time, and Events.",
       "artists": [
@@ -56,24 +66,14 @@
       "spotifyUrl": "https://open.spotify.com/track/34VlPxx6QaZEHI0tFLl1G8"
     },
     {
-      "id": "5gq7xM6eI16osBO2U581NL",
-      "name": "Do not touch",
+      "id": "4hsNNlV2DFit4LSs1wL5ux",
+      "name": "Hit 'Em",
       "artists": [
-        "MISAMO"
+        "MEOVV"
       ],
-      "album": "Masterpiece",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273266faf63f2196093a52fb1b1",
-      "spotifyUrl": "https://open.spotify.com/track/5gq7xM6eI16osBO2U581NL"
-    },
-    {
-      "id": "7rjyxp9j8hSje07if1lBV7",
-      "name": "Meiomi",
-      "artists": [
-        "Young Miko"
-      ],
-      "album": "Do Not Disturb",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2737fcd5648e2e2c477597e016c",
-      "spotifyUrl": "https://open.spotify.com/track/7rjyxp9j8hSje07if1lBV7"
+      "album": "BITE NOW",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d087301a15138f4ec9e78c11",
+      "spotifyUrl": "https://open.spotify.com/track/4hsNNlV2DFit4LSs1wL5ux"
     },
     {
       "id": "6V9pUGpSOIVTlRkJwrQAnt",
@@ -96,14 +96,14 @@
       "spotifyUrl": "https://open.spotify.com/track/2l2pKMAYOnoc9KcHPwiUCk"
     },
     {
-      "id": "4hsNNlV2DFit4LSs1wL5ux",
-      "name": "Hit 'Em",
+      "id": "2pl1Yo26URVBFQRrJXvyuX",
+      "name": "Goodbye",
       "artists": [
-        "MEOVV"
+        "toe"
       ],
-      "album": "BITE NOW",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d087301a15138f4ec9e78c11",
-      "spotifyUrl": "https://open.spotify.com/track/4hsNNlV2DFit4LSs1wL5ux"
+      "album": "I Am Shark: Confessions Under Water, Vol. 3",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27335837b179ea3485776175708",
+      "spotifyUrl": "https://open.spotify.com/track/2pl1Yo26URVBFQRrJXvyuX"
     }
   ]
 }
