@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-24T16:59:42.267Z",
+  "updatedAt": "2026-07-25T16:14:34.708Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -56,6 +56,16 @@
       "spotifyUrl": "https://open.spotify.com/track/3CnEw0mRAXVlLw36iL0mbe"
     },
     {
+      "id": "2pl1Yo26URVBFQRrJXvyuX",
+      "name": "Goodbye",
+      "artists": [
+        "toe"
+      ],
+      "album": "I Am Shark: Confessions Under Water, Vol. 3",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27335837b179ea3485776175708",
+      "spotifyUrl": "https://open.spotify.com/track/2pl1Yo26URVBFQRrJXvyuX"
+    },
+    {
       "id": "34VlPxx6QaZEHI0tFLl1G8",
       "name": "Space, Circumstances, Time, and Events.",
       "artists": [
@@ -94,16 +104,6 @@
       "album": "<Club Icarus>",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27363047fa25a906b3536f51ea3",
       "spotifyUrl": "https://open.spotify.com/track/2l2pKMAYOnoc9KcHPwiUCk"
-    },
-    {
-      "id": "2pl1Yo26URVBFQRrJXvyuX",
-      "name": "Goodbye",
-      "artists": [
-        "toe"
-      ],
-      "album": "I Am Shark: Confessions Under Water, Vol. 3",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27335837b179ea3485776175708",
-      "spotifyUrl": "https://open.spotify.com/track/2pl1Yo26URVBFQRrJXvyuX"
     }
   ]
 }
