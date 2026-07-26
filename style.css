@@ -2385,6 +2385,19 @@ html.case-study-root body.case-study-body {
   object-fit: cover;
 }
 
+.bizznest-page-preview {
+  overflow: hidden;
+}
+
+.bizznest-page .bizznest-page-preview__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1076 / 720;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.055);
+  pointer-events: none;
+}
+
 .bizznest-page .case-study-phone-frame {
   background: #f7f7f5;
 }
