@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" class="case-study-root">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css?v=bizznest-breakdown-1" />
+
+    <title>BizzNEST Personal Links Builder | Jason Tello Portfolio</title>
+
+    <link rel="icon" type="image/png" href="./images/favicon-head.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  </head>
+  <body class="case-study-body">
+    <header class="case-study-nav">
+      <span class="case-study-nav__slot" aria-hidden="true"></span>
+      <nav class="case-study-nav__links" aria-label="Project navigation">
+        <a class="nav-link-fx" href="./index.html">Work</a>
+        <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
+        <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+        <a class="nav-link-fx" href="./music.html">Music</a>
+        <a class="nav-link-fx" href="./design-system.html">Style Guide</a>
+      </nav>
+      <img id="topright-corner" class="triangle" src="./images/topright-cornertriangle.svg" alt="corner image">
+    </header>
+
+    <main class="case-study-page bizznest-page" aria-labelledby="case-study-title">
+      <section class="case-study-hero">
+        <div class="case-study-hero__meta">
+          <a class="case-study-back" href="./index.html">Back to work</a>
+          <dl>
+            <div>
+              <dt>Type</dt>
+              <dd>Interactive product prototype</dd>
+            </div>
+            <div>
+              <dt>Context</dt>
+              <dd>BizzNEST technical assessment</dd>
+            </div>
+            <div>
+              <dt>Role</dt>
+              <dd>Product UI, interaction design, front-end, QA</dd>
+            </div>
+            <div>
+              <dt>Tools</dt>
+              <dd>React, CSS, Motion, Playwright, Codex</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="case-study-hero__intro">
+          <p class="case-study-kicker">Project breakdown / BizzNEST technical assessment</p>
+          <h1 id="case-study-title">BizzNEST Personal Links Builder</h1>
+          <p>A responsive personal-links prototype that turns a static profile page into a live editing workspace with customizable content, two layouts, reorderable links, and persistent browser-based settings.</p>
+          <div class="case-study-actions">
+            <a href="https://jasontello.github.io/bizznest-linktree-assessment/" target="_blank" rel="noreferrer">Live app <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/jasontello/bizznest-linktree-assessment" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <figure class="case-study-figure case-study-figure--wide case-study-figure--framed">
+        <img src="./images/projects/bizznest/bizznest-public-grid.jpg" alt="BizzNEST Personal Links Builder showing Jason Tello's profile and links in the bento-grid layout">
+        <figcaption>Current public bento-grid view. The same profile and link data can also be presented as a compact vertical list.</figcaption>
+      </figure>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="brief-title">
+        <div>
+          <p class="case-study-kicker">Brief / constraints</p>
+          <h2 id="brief-title">The assessment began as a personal links page with one custom feature.</h2>
+        </div>
+        <div class="case-study-copy">
+          <p>I treated the custom feature as the center of the experience: an edit mode that lets someone shape the page while seeing the result in place. The core profile, links, layout, and controls all needed to remain usable across desktop and mobile.</p>
+          <p>This is a front-end prototype rather than a multi-user publishing platform. Changes save to local browser storage, so there are no accounts, backend database, public sharing controls, or cross-device sync.</p>
+        </div>
+      </section>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="objective-title">
+        <div>
+          <p class="case-study-kicker">Objective</p>
+          <h2 id="objective-title">Make customization immediate without separating editing from the live page.</h2>
+        </div>
+        <div class="case-study-copy">
+          <p>The main design problem was not simply displaying four links. It was creating an editing model that stayed understandable while the page changed shape, content grew, optional text disappeared, and links moved between positions.</p>
+          <p>I kept the public page and editor connected so users could make a change, judge it in context, and return to the finished view without switching to a separate settings screen.</p>
+        </div>
+      </section>
+
+      <section class="case-study-section" aria-labelledby="decisions-title">
+        <div class="case-study-section__top">
+          <p class="case-study-kicker">Interaction decisions</p>
+          <h2 id="decisions-title">The same content system supports different looks and editing needs.</h2>
+        </div>
+        <div class="case-study-feature-grid">
+          <article>
+            <span>01</span>
+            <h3>Live edit mode</h3>
+            <p>Profile text, link content, colors, and the profile image can be edited directly against the page preview.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Two layouts</h3>
+            <p>Bento-grid and list views use the same underlying link data while adapting hierarchy and spacing.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Flexible profile</h3>
+            <p>Name, description, location, and role can be resized, edited, or hidden without rebuilding the page.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Reorderable links</h3>
+            <p>Links can be edited and rearranged through drag-and-drop or keyboard controls, with visible focus feedback.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-study-section" aria-labelledby="editor-title">
+        <div class="case-study-section__top">
+          <p class="case-study-kicker">Editor</p>
+          <h2 id="editor-title">Controls stay around the preview so changes remain visible while they happen.</h2>
+        </div>
+        <figure class="case-study-figure case-study-figure--framed">
+          <img src="./images/projects/bizznest/bizznest-edit-desktop.jpg" alt="BizzNEST editor showing the live bento-grid preview, background color controls, edit mode status, and reset and done actions">
+          <figcaption>Edit mode places persistent actions and color controls around the same live profile view.</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-study-section" aria-labelledby="responsive-title">
+        <div class="case-study-section__top">
+          <p class="case-study-kicker">Responsive design / accessibility / QA</p>
+          <h2 id="responsive-title">The layout was tested as an interaction system, not only as a finished desktop composition.</h2>
+        </div>
+        <div class="case-study-media-grid case-study-media-grid--two">
+          <figure class="case-study-figure case-study-figure--framed">
+            <img src="./images/projects/bizznest/bizznest-list-desktop.jpg" alt="BizzNEST Personal Links Builder in the desktop list layout">
+            <figcaption>Desktop list view keeps the same content in a tighter, familiar links-page format.</figcaption>
+          </figure>
+          <figure class="case-study-figure case-study-figure--phone">
+            <div class="case-study-phone-frame">
+              <img src="./images/projects/bizznest/bizznest-mobile-grid.jpg" alt="BizzNEST Personal Links Builder bento-grid layout on a narrow mobile viewport">
+            </div>
+            <figcaption>Mobile grid reflows the profile and cards into a scrollable single-column composition.</figcaption>
+          </figure>
+        </div>
+        <div class="case-study-copy">
+          <p>I checked both layouts at narrow mobile, breakpoint, laptop, and wide-desktop widths. Edge-case testing covered long copy, maximum text sizing, hidden optional lines, overflow, mode switching, popup placement, and reorder behavior.</p>
+          <p>Editable profile rows support keyboard activation, focus returns after the editor closes, sliders expose percentage values, and hidden preview copy is removed from the accessibility tree. This was targeted interaction testing rather than a full WCAG conformance review; dedicated screen-reader and browser-zoom testing would still be needed.</p>
+        </div>
+      </section>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="implementation-title">
+        <div>
+          <p class="case-study-kicker">Implementation</p>
+          <h2 id="implementation-title">The prototype is built around shared state, responsive layout rules, and repeatable smoke tests.</h2>
+        </div>
+        <div class="case-study-copy">
+          <p>I built the application with React and plain CSS, using Motion for interface transitions. A shared link model powers both layout modes, and localStorage preserves profile, color, order, and layout choices in the same browser.</p>
+          <p>Automated browser checks cover reordering, profile-text editing, keyboard entry, focus handoff, slider semantics, responsive hide/show behavior, and key layout breakpoints. Manual visual checks were used alongside those tests to catch spacing and overlap issues.</p>
+        </div>
+      </section>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="ai-process-title">
+        <div>
+          <p class="case-study-kicker">AI-assisted process</p>
+          <h2 id="ai-process-title">Codex accelerated implementation and QA; I remained responsible for the product decisions and final quality.</h2>
+        </div>
+        <div class="case-study-copy">
+          <p>I used Codex as an implementation and QA collaborator to translate interaction requirements into React and CSS, investigate edge cases, and expand automated checks. I owned the interpretation of the brief, visual and interaction direction, feature priorities, acceptance criteria, code review, and final product decisions.</p>
+        </div>
+      </section>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="outcome-title">
+        <div>
+          <p class="case-study-kicker">Outcome / reflection</p>
+          <h2 id="outcome-title">The finished prototype demonstrates more than a links page: it shows how I design, build, and test interaction states.</h2>
+        </div>
+        <ul class="case-study-list">
+          <li>Shipped a responsive live prototype with bento-grid and list presentations built from the same content.</li>
+          <li>Expanded the assessment with editable and hideable profile text, font-size controls, link editing, color customization, persistence, reordering, focus states, and motion.</li>
+          <li>Resolved layout and accessibility edge cases through repeated breakpoint audits and targeted automated checks.</li>
+          <li>Kept the project honest: it has not been validated through formal user research, usability testing, or outcome metrics.</li>
+          <li>A product version would need account-based persistence, cross-device syncing, sharing and publishing controls, and testing with real creators.</li>
+        </ul>
+      </section>
+    </main>
+
+    <section class="resume-modal" id="resume-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" hidden>
+      <div class="resume-modal__backdrop" data-resume-close></div>
+      <div class="resume-modal__panel">
+        <header class="resume-modal__header">
+          <div>
+            <p class="resume-modal__eyebrow">Resume</p>
+            <h2 id="resume-modal-title">Jason Tello - Product Design</h2>
+          </div>
+          <div class="resume-modal__actions">
+            <a class="resume-modal__download" href="./documents/Jason_Tello_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            <button class="resume-modal__close" type="button" aria-label="Close resume" data-resume-close>Close</button>
+          </div>
+        </header>
+        <iframe class="resume-modal__frame" src="./documents/Jason_Tello_Resume.pdf#view=FitH" title="Jason Tello resume"></iframe>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="./script.js?v=default-cursor-1"></script>
+    <!-- Cloudflare Web Analytics -->
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"b487877912b34d169c3745d5bd3cfb90"}'></script>
+    <!-- End Cloudflare Web Analytics -->
+  </body>
+</html>

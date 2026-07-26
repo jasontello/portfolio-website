@@ -2329,21 +2329,64 @@ html.case-study-root body.case-study-body {
 
 .work-card--bizznest .work-card__preview {
   display: grid;
-  place-items: center;
-  background: #fff;
+  place-items: stretch;
+  aspect-ratio: 1076 / 720;
+  border-color: rgba(0, 0, 0, 0.055);
+  background: rgba(0, 0, 0, 0.055);
 }
 
 .bizznest-thumb {
   display: grid;
-  place-items: center;
+  place-items: stretch;
 }
 
-.bizznest-thumb__logo {
-  width: clamp(54px, 7.8vw, 92px);
-  height: auto;
+.bizznest-thumb__video,
+.bizznest-thumb__poster {
+  position: absolute;
+  inset: 1px;
   display: block;
-  opacity: 0;
-  transform: scale(0.9);
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+}
+
+.bizznest-thumb__video {
+  pointer-events: none;
+}
+
+.bizznest-thumb__poster {
+  display: none;
+}
+
+.work-card--bizznest .work-card__meta-head {
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+
+.work-card--bizznest .work-card__tags {
+  text-align: left;
+  white-space: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bizznest-thumb__video {
+    display: none;
+  }
+
+  .bizznest-thumb__poster {
+    display: block;
+  }
+}
+
+.bizznest-page .case-study-figure--wide img {
+  background: #d94f98;
+  object-fit: cover;
+}
+
+.bizznest-page .case-study-phone-frame {
+  background: #f7f7f5;
 }
 
 .work-card--funfetti .work-card__preview {
