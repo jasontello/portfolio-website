@@ -71,7 +71,7 @@ body.is-page-exiting .main-content {
   }
 
   .work-card--open-source-sj .work-card__preview {
-    background: #eef6f8;
+    background: #E1F1F7;
     animation: none;
   }
 
@@ -2289,7 +2289,7 @@ html.case-study-root body.case-study-body {
   display: grid;
   place-items: stretch;
   isolation: isolate;
-  background: #eef6f8;
+  background: #E1F1F7;
 }
 
 .open-source-sj-preview {
@@ -3597,7 +3597,7 @@ body.is-project-open {
 
 @media (prefers-reduced-motion: reduce) {
   .work-card--open-source-sj .work-card__preview {
-    background: #eef6f8;
+    background: #E1F1F7;
     animation: none;
   }
 
