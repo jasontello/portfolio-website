@@ -4,17 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <script>
-      try {
-        if (
-          localStorage.getItem("portfolioContentFullscreen") === "true" &&
-          window.matchMedia("(min-width: 901px)").matches
-        ) {
-          document.documentElement.classList.add("is-content-fullscreen", "is-fullscreen-restoring");
-        }
-      } catch (error) {}
-    </script>
-    <link rel="stylesheet" href="./style.css?v=funfetti-preview-board-2" />
+    <link rel="stylesheet" href="./style.css?v=work-layout-option-3" />
 
     <title>Jason Tello Portfolio</title>
 
@@ -23,71 +13,52 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   </head>
-  <body class="work-body">
-    <nav class="main-navigation">
-      <header> 
-        <div class="about"> 
-          <div class="name-row">
-            <h1 id="name">Jason Tello</h1>
-            <button class="name-face-button" type="button" aria-label="Make Jason's face react" data-face-trigger>
-              <img
-                class="name-face"
-                src="./images/face.png"
-                data-face-normal="./images/face.png"
-                data-face-reaction="./images/face-shout.png"
-                alt=""
-                aria-hidden="true"
-              >
-            </button>
-          </div>
-          <p>I’m a designer based in the Bay Area, open to apprenticeships, internships, and junior product design roles.</p>
-          <p>I love all things art, movies, music, NewJeans, and TLOU 2.</p>
-          <p>You can reach me on <a href="https://www.linkedin.com/in/jason-tello-123888235/" target="_blank" >LinkedIn</a> or at jasontello2003@gmail.com.</p>
-        </div>
-        <ul class="nav-links">
-          <li class="work-section-link">
-            <a class="nav-link-fx nav-link-fx--active" href="./index.html" aria-current="page">Work</a>
-          </li>
-          <li class="playground-section">
-            <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
-          </li>
-          <li class="resume-section">
-            <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
-          </li>
-          <li class="music-section-link">
-            <a class="nav-link-fx" href="./music.html">Music</a>
-          </li>
-          <li class="style-guide-section-link">
-            <a class="nav-link-fx" href="./design-system.html">Style Guide</a>
-          </li>
-        </ul>
-      </header>
-      <footer>
-        <img id="bottomleft-corner" class="triangle" src="./images/CornerTriangle.svg" alt="corner image">
-      </footer>
-    </nav>
+  <body class="work-body" data-work-filter="work">
     <div class="main-content">
-      <div class="headerright-section content-chrome">
-        <button class="fullscreen-toggle" type="button" aria-label="Enter fullscreen layout" aria-pressed="false" data-fullscreen-toggle>
-          <img class="fullscreen-toggle__icon" src="./images/fullscreen-icon.png" alt="" aria-hidden="true">
+      <header class="portfolio-header">
+        <div class="portfolio-header__inner">
+          <a class="portfolio-brand" href="./index.html" aria-label="Jason Tello home">
+            <strong>Jason Tello</strong>
+          </a>
+          <nav class="portfolio-header__nav" aria-label="Primary navigation">
+            <a class="nav-link-fx nav-link-fx--active" href="#selected-work" aria-current="page">Work</a>
+            <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
+            <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+            <a class="nav-link-fx" href="./music.html">Music</a>
+            <a class="nav-link-fx" href="./design-system.html">Style Guide</a>
+          </nav>
+        </div>
+      </header>
+
+      <section class="portfolio-intro" aria-labelledby="portfolio-intro-title">
+        <button class="portfolio-intro__face name-face-button" type="button" aria-label="Make Jason's face react" data-face-trigger>
+          <img
+            class="name-face"
+            src="./images/face.png"
+            data-face-normal="./images/face.png"
+            data-face-reaction="./images/face-shout.png"
+            alt=""
+            aria-hidden="true"
+          >
         </button>
-        <nav class="content-nav" aria-label="Fullscreen navigation">
-          <a class="nav-link-fx nav-link-fx--active" href="./index.html" aria-current="page">Work</a>
-          <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
-          <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
-          <a class="nav-link-fx" href="./music.html">Music</a>
-          <a class="nav-link-fx" href="./design-system.html">Style Guide</a>
-        </nav>
-        <img id="topright-corner" class="triangle" src="./images/topright-cornertriangle.svg" alt="corner image">
-      </div>
-      <section class="work-gallery" aria-label="Portfolio work">
-        <div class="work-gallery__header">
-          <h2>Work</h2>
-          <span>6 +</span>
+        <h1 id="portfolio-intro-title">Jason Tello is a Bay Area product designer focused on thoughtful interaction and clear visual systems.</h1>
+        <p class="portfolio-intro__contact">
+          <span>Available for new opportunities</span>
+          <span aria-hidden="true">·</span>
+          <a href="https://www.linkedin.com/in/jason-tello-123888235/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <span aria-hidden="true">·</span>
+          <a href="mailto:jasontello2003@gmail.com">jasontello2003@gmail.com</a>
+        </p>
+      </section>
+
+      <section class="work-gallery" id="selected-work" aria-label="Portfolio work">
+        <div class="work-filter" role="tablist" aria-label="Project categories">
+          <button class="work-filter__tab is-active" type="button" role="tab" aria-selected="true" aria-controls="work-grid" data-work-filter-button="work">Work</button>
+          <button class="work-filter__tab" type="button" role="tab" aria-selected="false" aria-controls="work-grid" data-work-filter-button="experiments">Experiments</button>
         </div>
 
-        <div class="work-grid">
-          <a class="work-card work-card--funfetti" href="./funfetti-events-case-study.html" aria-label="Open Funfetti Events Website Redesign case study">
+        <div class="work-grid" id="work-grid">
+          <a class="work-card work-card--funfetti" data-work-category="work" href="./funfetti-events-case-study.html" aria-label="Open Funfetti Events Website Redesign case study">
             <span class="work-card__preview">
               <img class="funfetti-preview" src="./images/projects/funfetti-events/preview-board.png" alt="Funfetti Events website redesign preview board">
             </span>
@@ -100,7 +71,7 @@
             </span>
           </a>
 
-          <a class="work-card work-card--open-source-sj" href="./open-source-san-jose-case-study.html" aria-label="Open Open Source San Jose Redesign case study">
+          <a class="work-card work-card--open-source-sj" data-work-category="work" href="./open-source-san-jose-case-study.html" aria-label="Open Open Source San Jose Redesign case study">
             <span class="work-card__preview">
               <img class="open-source-sj-preview" src="./images/projects/open-source-san-jose/preview-board.png" alt="Open Source San José website redesign preview board">
             </span>
@@ -113,7 +84,7 @@
             </span>
           </a>
 
-          <a class="work-card work-card--rainbow" href="https://jasontello.github.io/rainbow-square-lab/" aria-label="Open Rainbow Lab live project">
+          <a class="work-card work-card--rainbow is-filtered-out" data-work-category="experiments" href="https://jasontello.github.io/rainbow-square-lab/" aria-label="Open Rainbow Lab live project" aria-hidden="true">
             <span class="work-card__preview" aria-hidden="true">
               <span class="rainbow-thumb__brand">
                 <span class="rainbow-thumb__logo">
@@ -137,7 +108,7 @@
             </span>
           </a>
 
-          <a class="work-card work-card--bizznest" href="./bizznest-personal-links-builder.html" aria-label="Open BizzNEST Personal Links Builder project breakdown">
+          <a class="work-card work-card--bizznest" data-work-category="work" href="./bizznest-personal-links-builder.html" aria-label="Open BizzNEST Personal Links Builder project breakdown">
             <span class="work-card__preview bizznest-thumb" aria-hidden="true">
               <video class="bizznest-thumb__video" autoplay muted loop playsinline preload="metadata" poster="./images/projects/bizznest/state-02-public-list-poster.png">
                 <source src="./images/projects/bizznest/state-02-public-list-detail-1080.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
@@ -153,7 +124,7 @@
             </span>
           </a>
 
-          <a class="work-card work-card--john-tello" href="https://johntello.com/" target="_blank" rel="noopener noreferrer" aria-label="Open John Tello Engineering Portfolio live website">
+          <a class="work-card work-card--john-tello" data-work-category="work" href="https://johntello.com/" target="_blank" rel="noopener noreferrer" aria-label="Open John Tello Engineering Portfolio live website">
             <span class="work-card__preview john-tello-thumb" aria-hidden="true">
               <picture class="john-tello-thumb__clouds">
                 <source media="(prefers-reduced-motion: reduce)" srcset="./images/projects/john-tello-engineering/clouds-above-background.jpg">
@@ -169,19 +140,6 @@
             </span>
           </a>
 
-          <a class="work-card work-card--lingualoop" href="./lingualoop-wip.html" aria-label="Open LinguaLoop work in progress project page">
-            <span class="work-card__preview lingualoop-thumb" aria-hidden="true">
-              <img class="lingualoop-thumb__image" src="./images/projects/lingualoop/learn-preview.png" alt="">
-              <span class="work-card__status">Work in progress</span>
-            </span>
-            <span class="work-card__meta">
-              <span class="work-card__meta-head">
-                <strong>LinguaLoop</strong>
-                <span class="work-card__tags">Personal product project · In progress</span>
-              </span>
-              <span class="work-card__caption">A beginner language-learning concept that combines guided daily study, high-frequency vocabulary, and spaced repetition in a calmer, more approachable experience.</span>
-            </span>
-          </a>
         </div>
       </section>
 
@@ -203,7 +161,7 @@
       </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="./script.js?v=default-cursor-1"></script>
+    <script src="./script.js?v=work-layout-option-3"></script>
     <!-- Cloudflare Web Analytics -->
     <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"b487877912b34d169c3745d5bd3cfb90"}'></script>
     <!-- End Cloudflare Web Analytics -->

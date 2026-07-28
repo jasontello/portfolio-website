@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSandboxTransition();
   initBizznestThumbAnimation();
   initFullscreenLayout();
+  initWorkFilters();
   initSpotifyTopTracks();
   initCaseStudyReveal();
 });
@@ -276,9 +277,10 @@ function initCurrentPageLinks() {
   const currentPath = normalizePath(window.location.pathname);
 
   currentLinks.forEach((link) => {
-    const linkPath = normalizePath(new URL(link.href, window.location.href).pathname);
+    const linkUrl = new URL(link.href, window.location.href);
+    const linkPath = normalizePath(linkUrl.pathname);
 
-    if (linkPath !== currentPath) {
+    if (linkPath !== currentPath || linkUrl.hash) {
       return;
     }
 
@@ -350,6 +352,68 @@ function normalizePath(pathname) {
   }
 
   return withoutTrailingSlash;
+}
+
+function initWorkFilters() {
+  const filterButtons = Array.from(document.querySelectorAll("[data-work-filter-button]"));
+  const cards = Array.from(document.querySelectorAll("[data-work-category]"));
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  if (!filterButtons.length || !cards.length) {
+    return;
+  }
+
+  const setFilter = (filter) => {
+    cards.forEach((card) => {
+      const isVisible = card.dataset.workCategory === filter;
+      const video = card.querySelector("video");
+
+      card.classList.toggle("is-filtered-out", !isVisible);
+      card.setAttribute("aria-hidden", String(!isVisible));
+
+      if (!video) {
+        return;
+      }
+
+      if (!isVisible || reduceMotion.matches) {
+        video.pause();
+        return;
+      }
+
+      video.play().catch(() => {});
+    });
+
+    document.body.dataset.workFilter = filter;
+
+    filterButtons.forEach((button) => {
+      const isActive = button.dataset.workFilterButton === filter;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-selected", String(isActive));
+      button.tabIndex = isActive ? 0 : -1;
+    });
+  };
+
+  filterButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      setFilter(button.dataset.workFilterButton);
+    });
+
+    button.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight"].includes(event.key)) {
+        return;
+      }
+
+      event.preventDefault();
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      const nextIndex = (index + direction + filterButtons.length) % filterButtons.length;
+      const nextButton = filterButtons[nextIndex];
+
+      setFilter(nextButton.dataset.workFilterButton);
+      nextButton.focus();
+    });
+  });
+
+  setFilter(document.body.dataset.workFilter || "work");
 }
 
 function initFullscreenLayout() {

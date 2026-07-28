@@ -1,19 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="is-content-fullscreen">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script>
-      try {
-        if (
-          localStorage.getItem("portfolioContentFullscreen") === "true" &&
-          window.matchMedia("(min-width: 901px)").matches
-        ) {
-          document.documentElement.classList.add("is-content-fullscreen", "is-fullscreen-restoring");
-        }
-      } catch (error) {}
-    </script>
     <link rel="stylesheet" href="./style.css?v=hourglass-preview-1" />
 
     <title>Sandbox | Jason Tello Portfolio</title>
@@ -23,55 +13,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   </head>
-  <body class="sandbox-index-body">
-    <nav class="main-navigation">
-      <header>
-        <div class="about">
-          <div class="name-row">
-            <h1 id="name">Jason Tello</h1>
-            <button class="name-face-button" type="button" aria-label="Make Jason's face react" data-face-trigger>
-              <img
-                class="name-face"
-                src="./images/face.png"
-                data-face-normal="./images/face.png"
-                data-face-reaction="./images/face-shout.png"
-                alt=""
-                aria-hidden="true"
-              >
-            </button>
-          </div>
-          <p>I’m a designer based in the Bay Area, open to apprenticeships, internships, and junior product design roles.</p>
-          <p>I love all things art, movies, music, NewJeans, and TLOU 2.</p>
-          <p>You can reach me on <a href="https://www.linkedin.com/in/jason-tello-123888235/" target="_blank" >LinkedIn</a> or at jasontello2003@gmail.com.</p>
-        </div>
-        <ul class="nav-links">
-          <li class="work-section-link">
-            <a class="nav-link-fx" href="./index.html">Work</a>
-          </li>
-          <li class="playground-section">
-            <a class="nav-link-fx nav-link-fx--active sandbox-trigger" href="./sandbox.html" aria-current="page">Sandbox</a>
-          </li>
-          <li class="resume-section">
-            <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
-          </li>
-          <li class="music-section-link">
-            <a class="nav-link-fx" href="./music.html">Music</a>
-          </li>
-          <li class="style-guide-section-link">
-            <a class="nav-link-fx" href="./design-system.html">Style Guide</a>
-          </li>
-        </ul>
-      </header>
-      <footer>
-        <img id="bottomleft-corner" class="triangle" src="./images/CornerTriangle.svg" alt="corner image">
-      </footer>
-    </nav>
-
+  <body class="sandbox-index-body is-content-fullscreen">
     <main class="main-content sandbox-hub-page" aria-labelledby="sandbox-title">
       <div class="headerright-section content-chrome">
-        <button class="fullscreen-toggle" type="button" aria-label="Enter fullscreen layout" aria-pressed="false" data-fullscreen-toggle>
-          <img class="fullscreen-toggle__icon" src="./images/fullscreen-icon.png" alt="" aria-hidden="true">
-        </button>
+        <span aria-hidden="true"></span>
         <nav class="content-nav" aria-label="Fullscreen navigation">
           <a class="nav-link-fx" href="./index.html">Work</a>
           <a class="nav-link-fx nav-link-fx--active sandbox-trigger" href="./sandbox.html" aria-current="page">Sandbox</a>
