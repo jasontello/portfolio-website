@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-01T16:17:05.747Z",
+  "updatedAt": "2026-08-02T16:17:30.956Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -86,6 +86,17 @@
       "spotifyUrl": "https://open.spotify.com/track/0YlS16W4HY6CJVk7Q750Yu"
     },
     {
+      "id": "7JK0qP2osdX997FTlUnWo2",
+      "name": "AVOCADO (feat. Gliiico)",
+      "artists": [
+        "CHAEYOUNG",
+        "Gliiico"
+      ],
+      "album": "LIL FANTASY vol.1",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dcbcb0d97b6f44234bd58fa7",
+      "spotifyUrl": "https://open.spotify.com/track/7JK0qP2osdX997FTlUnWo2"
+    },
+    {
       "id": "7wYCva1bI1AkHRQoVXhy8F",
       "name": "Crave",
       "artists": [
@@ -94,16 +105,6 @@
       "album": "This Is Why",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27305f425b3ea2d3609d2d8b962",
       "spotifyUrl": "https://open.spotify.com/track/7wYCva1bI1AkHRQoVXhy8F"
-    },
-    {
-      "id": "2GWeUyD6K8hxushwf2nxLf",
-      "name": "Ojalá",
-      "artists": [
-        "Young Miko"
-      ],
-      "album": "Do Not Disturb",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2737fcd5648e2e2c477597e016c",
-      "spotifyUrl": "https://open.spotify.com/track/2GWeUyD6K8hxushwf2nxLf"
     }
   ]
 }
