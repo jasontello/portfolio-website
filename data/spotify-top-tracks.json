@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-03T17:21:42.591Z",
+  "updatedAt": "2026-08-04T17:08:26.219Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -66,16 +66,6 @@
       "spotifyUrl": "https://open.spotify.com/track/0YlS16W4HY6CJVk7Q750Yu"
     },
     {
-      "id": "3CnEw0mRAXVlLw36iL0mbe",
-      "name": "Sun Has Set",
-      "artists": [
-        "beabadoobee"
-      ],
-      "album": "Sun Has Set",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736f3307b2ee6c3131410efdc7",
-      "spotifyUrl": "https://open.spotify.com/track/3CnEw0mRAXVlLw36iL0mbe"
-    },
-    {
       "id": "7JK0qP2osdX997FTlUnWo2",
       "name": "AVOCADO (feat. Gliiico)",
       "artists": [
@@ -85,6 +75,16 @@
       "album": "LIL FANTASY vol.1",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273dcbcb0d97b6f44234bd58fa7",
       "spotifyUrl": "https://open.spotify.com/track/7JK0qP2osdX997FTlUnWo2"
+    },
+    {
+      "id": "3CnEw0mRAXVlLw36iL0mbe",
+      "name": "Sun Has Set",
+      "artists": [
+        "beabadoobee"
+      ],
+      "album": "Sun Has Set",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736f3307b2ee6c3131410efdc7",
+      "spotifyUrl": "https://open.spotify.com/track/3CnEw0mRAXVlLw36iL0mbe"
     },
     {
       "id": "7rjyxp9j8hSje07if1lBV7",
