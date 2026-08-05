@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-04T17:08:26.219Z",
+  "updatedAt": "2026-08-05T16:55:05.087Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -26,26 +26,6 @@
       "spotifyUrl": "https://open.spotify.com/track/5YUSR9XCo9nf8TxObGSrl7"
     },
     {
-      "id": "2pl1Yo26URVBFQRrJXvyuX",
-      "name": "Goodbye",
-      "artists": [
-        "toe"
-      ],
-      "album": "I Am Shark: Confessions Under Water, Vol. 3",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27335837b179ea3485776175708",
-      "spotifyUrl": "https://open.spotify.com/track/2pl1Yo26URVBFQRrJXvyuX"
-    },
-    {
-      "id": "4hsNNlV2DFit4LSs1wL5ux",
-      "name": "Hit 'Em",
-      "artists": [
-        "MEOVV"
-      ],
-      "album": "BITE NOW",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d087301a15138f4ec9e78c11",
-      "spotifyUrl": "https://open.spotify.com/track/4hsNNlV2DFit4LSs1wL5ux"
-    },
-    {
       "id": "2l2pKMAYOnoc9KcHPwiUCk",
       "name": "Icarus",
       "artists": [
@@ -66,6 +46,26 @@
       "spotifyUrl": "https://open.spotify.com/track/0YlS16W4HY6CJVk7Q750Yu"
     },
     {
+      "id": "2pl1Yo26URVBFQRrJXvyuX",
+      "name": "Goodbye",
+      "artists": [
+        "toe"
+      ],
+      "album": "I Am Shark: Confessions Under Water, Vol. 3",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27335837b179ea3485776175708",
+      "spotifyUrl": "https://open.spotify.com/track/2pl1Yo26URVBFQRrJXvyuX"
+    },
+    {
+      "id": "4hsNNlV2DFit4LSs1wL5ux",
+      "name": "Hit 'Em",
+      "artists": [
+        "MEOVV"
+      ],
+      "album": "BITE NOW",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d087301a15138f4ec9e78c11",
+      "spotifyUrl": "https://open.spotify.com/track/4hsNNlV2DFit4LSs1wL5ux"
+    },
+    {
       "id": "7JK0qP2osdX997FTlUnWo2",
       "name": "AVOCADO (feat. Gliiico)",
       "artists": [
@@ -75,16 +75,6 @@
       "album": "LIL FANTASY vol.1",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273dcbcb0d97b6f44234bd58fa7",
       "spotifyUrl": "https://open.spotify.com/track/7JK0qP2osdX997FTlUnWo2"
-    },
-    {
-      "id": "3CnEw0mRAXVlLw36iL0mbe",
-      "name": "Sun Has Set",
-      "artists": [
-        "beabadoobee"
-      ],
-      "album": "Sun Has Set",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2736f3307b2ee6c3131410efdc7",
-      "spotifyUrl": "https://open.spotify.com/track/3CnEw0mRAXVlLw36iL0mbe"
     },
     {
       "id": "7rjyxp9j8hSje07if1lBV7",
@@ -97,14 +87,25 @@
       "spotifyUrl": "https://open.spotify.com/track/7rjyxp9j8hSje07if1lBV7"
     },
     {
-      "id": "7wYCva1bI1AkHRQoVXhy8F",
-      "name": "Crave",
+      "id": "4eHrSQm6BqYT8LF3LP6ye5",
+      "name": "DOWNPOUR (feat. Gliiico)",
       "artists": [
-        "Paramore"
+        "CHAEYOUNG",
+        "Gliiico"
       ],
-      "album": "This Is Why",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27305f425b3ea2d3609d2d8b962",
-      "spotifyUrl": "https://open.spotify.com/track/7wYCva1bI1AkHRQoVXhy8F"
+      "album": "LIL FANTASY vol.1",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dcbcb0d97b6f44234bd58fa7",
+      "spotifyUrl": "https://open.spotify.com/track/4eHrSQm6BqYT8LF3LP6ye5"
+    },
+    {
+      "id": "0SfRur4asjqaySk55PftAA",
+      "name": "Turn Echo (Slowed Version)",
+      "artists": [
+        "Kaikobad"
+      ],
+      "album": "Turn Echo (Slowed Version)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2732a0917ea37a84e6d0e20f4ec",
+      "spotifyUrl": "https://open.spotify.com/track/0SfRur4asjqaySk55PftAA"
     }
   ]
 }
