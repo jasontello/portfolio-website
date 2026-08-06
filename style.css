@@ -526,6 +526,11 @@ button.nav-link-fx {
   transform: translateX(-24px);
 }
 
+/* Music and Style Guide stay full-width on desktop; their sidebar returns on mobile. */
+.locked-content-fullscreen .main-navigation {
+  visibility: hidden;
+}
+
 body.is-content-fullscreen,
 html.is-content-fullscreen body {
   grid-template-columns: 0 minmax(0, 1fr);
@@ -3768,6 +3773,24 @@ body.is-project-open {
 
   .is-content-fullscreen .main-navigation {
     display: flex;
+  }
+
+  .locked-content-fullscreen .main-navigation {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 36px 24px 22px;
+    border-right: 0;
+    border-bottom: 1px solid hsla(0, 0%, 7%, .2);
+    pointer-events: auto;
+    transform: none;
+    visibility: visible;
+  }
+
+  .locked-content-fullscreen .main-navigation > header,
+  .locked-content-fullscreen .main-navigation footer {
+    opacity: 1;
+    transform: none;
   }
 
   .is-content-fullscreen .main-content {
