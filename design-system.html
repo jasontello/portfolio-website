@@ -1,20 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="is-content-fullscreen">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script>
-      try {
-        if (
-          localStorage.getItem("portfolioContentFullscreen") === "true" &&
-          window.matchMedia("(min-width: 901px)").matches
-        ) {
-          document.documentElement.classList.add("is-content-fullscreen", "is-fullscreen-restoring");
-        }
-      } catch (error) {}
-    </script>
-    <link rel="stylesheet" href="./style.css?v=ink-cursor-2" />
+    <link rel="stylesheet" href="./style.css?v=locked-content-pages-1" />
 
     <title>Style Guide | Jason Tello Portfolio</title>
 
@@ -23,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   </head>
-  <body class="design-system-body">
+  <body class="design-system-body is-content-fullscreen locked-content-fullscreen">
     <nav class="main-navigation">
       <header>
         <div class="about">
@@ -60,9 +50,7 @@
 
     <main class="main-content design-system-page" aria-labelledby="system-title">
       <div class="headerright-section content-chrome">
-        <button class="fullscreen-toggle" type="button" aria-label="Enter fullscreen layout" aria-pressed="false" data-fullscreen-toggle>
-          <img class="fullscreen-toggle__icon" src="./images/fullscreen-icon.png" alt="" aria-hidden="true">
-        </button>
+        <span aria-hidden="true"></span>
         <nav class="content-nav" aria-label="Fullscreen navigation">
           <a class="nav-link-fx" href="./index.html">Work</a>
           <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
