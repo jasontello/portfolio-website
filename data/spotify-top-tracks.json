@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-07T16:11:54.681Z",
+  "updatedAt": "2026-08-08T15:50:38.609Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -26,6 +26,16 @@
       "spotifyUrl": "https://open.spotify.com/track/5YUSR9XCo9nf8TxObGSrl7"
     },
     {
+      "id": "0YlS16W4HY6CJVk7Q750Yu",
+      "name": "Killin′ Me Good",
+      "artists": [
+        "JIHYO"
+      ],
+      "album": "ZONE",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733230765b6902f7572d2fdddc",
+      "spotifyUrl": "https://open.spotify.com/track/0YlS16W4HY6CJVk7Q750Yu"
+    },
+    {
       "id": "2l2pKMAYOnoc9KcHPwiUCk",
       "name": "Icarus",
       "artists": [
@@ -36,14 +46,15 @@
       "spotifyUrl": "https://open.spotify.com/track/2l2pKMAYOnoc9KcHPwiUCk"
     },
     {
-      "id": "0YlS16W4HY6CJVk7Q750Yu",
-      "name": "Killin′ Me Good",
+      "id": "7JK0qP2osdX997FTlUnWo2",
+      "name": "AVOCADO (feat. Gliiico)",
       "artists": [
-        "JIHYO"
+        "CHAEYOUNG",
+        "Gliiico"
       ],
-      "album": "ZONE",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733230765b6902f7572d2fdddc",
-      "spotifyUrl": "https://open.spotify.com/track/0YlS16W4HY6CJVk7Q750Yu"
+      "album": "LIL FANTASY vol.1",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dcbcb0d97b6f44234bd58fa7",
+      "spotifyUrl": "https://open.spotify.com/track/7JK0qP2osdX997FTlUnWo2"
     },
     {
       "id": "2pl1Yo26URVBFQRrJXvyuX",
@@ -64,17 +75,6 @@
       "album": "BITE NOW",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273d087301a15138f4ec9e78c11",
       "spotifyUrl": "https://open.spotify.com/track/4hsNNlV2DFit4LSs1wL5ux"
-    },
-    {
-      "id": "7JK0qP2osdX997FTlUnWo2",
-      "name": "AVOCADO (feat. Gliiico)",
-      "artists": [
-        "CHAEYOUNG",
-        "Gliiico"
-      ],
-      "album": "LIL FANTASY vol.1",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dcbcb0d97b6f44234bd58fa7",
-      "spotifyUrl": "https://open.spotify.com/track/7JK0qP2osdX997FTlUnWo2"
     },
     {
       "id": "4eHrSQm6BqYT8LF3LP6ye5",
@@ -98,14 +98,15 @@
       "spotifyUrl": "https://open.spotify.com/track/0SfRur4asjqaySk55PftAA"
     },
     {
-      "id": "4ayWErdGIvSo4o6a3lMVLt",
-      "name": "24 Hours",
+      "id": "3Q6mwJseOFYBJ10d5CXp4o",
+      "name": "Odd Look",
       "artists": [
-        "SUNMI"
+        "Kavinsky",
+        "The Weeknd"
       ],
-      "album": "24 Hours",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a916eb5cb60ec476b75fc807",
-      "spotifyUrl": "https://open.spotify.com/track/4ayWErdGIvSo4o6a3lMVLt"
+      "album": "Odd Look",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738cc5da5394cb8ccd3646179a",
+      "spotifyUrl": "https://open.spotify.com/track/3Q6mwJseOFYBJ10d5CXp4o"
     }
   ]
 }
