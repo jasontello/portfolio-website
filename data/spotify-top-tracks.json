@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-08T15:50:38.609Z",
+  "updatedAt": "2026-08-09T15:51:41.946Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -98,15 +98,15 @@
       "spotifyUrl": "https://open.spotify.com/track/0SfRur4asjqaySk55PftAA"
     },
     {
-      "id": "3Q6mwJseOFYBJ10d5CXp4o",
-      "name": "Odd Look",
+      "id": "12Yy0hZrUebGnr3IrppPnW",
+      "name": "Zero (J.I.D Remix)",
       "artists": [
-        "Kavinsky",
-        "The Weeknd"
+        "NewJeans",
+        "JID"
       ],
-      "album": "Odd Look",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738cc5da5394cb8ccd3646179a",
-      "spotifyUrl": "https://open.spotify.com/track/3Q6mwJseOFYBJ10d5CXp4o"
+      "album": "Zero (J.I.D Remix)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27366daf96fd3f1a920cd2053e6",
+      "spotifyUrl": "https://open.spotify.com/track/12Yy0hZrUebGnr3IrppPnW"
     }
   ]
 }
