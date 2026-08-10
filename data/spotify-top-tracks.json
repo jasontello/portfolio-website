@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-09T15:51:41.946Z",
+  "updatedAt": "2026-08-10T16:12:12.376Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -57,26 +57,6 @@
       "spotifyUrl": "https://open.spotify.com/track/7JK0qP2osdX997FTlUnWo2"
     },
     {
-      "id": "2pl1Yo26URVBFQRrJXvyuX",
-      "name": "Goodbye",
-      "artists": [
-        "toe"
-      ],
-      "album": "I Am Shark: Confessions Under Water, Vol. 3",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27335837b179ea3485776175708",
-      "spotifyUrl": "https://open.spotify.com/track/2pl1Yo26URVBFQRrJXvyuX"
-    },
-    {
-      "id": "4hsNNlV2DFit4LSs1wL5ux",
-      "name": "Hit 'Em",
-      "artists": [
-        "MEOVV"
-      ],
-      "album": "BITE NOW",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273d087301a15138f4ec9e78c11",
-      "spotifyUrl": "https://open.spotify.com/track/4hsNNlV2DFit4LSs1wL5ux"
-    },
-    {
       "id": "4eHrSQm6BqYT8LF3LP6ye5",
       "name": "DOWNPOUR (feat. Gliiico)",
       "artists": [
@@ -98,15 +78,34 @@
       "spotifyUrl": "https://open.spotify.com/track/0SfRur4asjqaySk55PftAA"
     },
     {
-      "id": "12Yy0hZrUebGnr3IrppPnW",
-      "name": "Zero (J.I.D Remix)",
+      "id": "6wIMIRovtvzVPxIjq8KhA5",
+      "name": "To Me From Me (Prod. TABLO)",
       "artists": [
-        "NewJeans",
-        "JID"
+        "KiiiKiii"
       ],
-      "album": "Zero (J.I.D Remix)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27366daf96fd3f1a920cd2053e6",
-      "spotifyUrl": "https://open.spotify.com/track/12Yy0hZrUebGnr3IrppPnW"
+      "album": "To Me From Me (Prod. TABLO)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b3f7b769136681e40dfa662c",
+      "spotifyUrl": "https://open.spotify.com/track/6wIMIRovtvzVPxIjq8KhA5"
+    },
+    {
+      "id": "4amAvQMUbcN0DIyMbMmy7x",
+      "name": "SHOOT (Firecracker)",
+      "artists": [
+        "CHAEYOUNG"
+      ],
+      "album": "LIL FANTASY vol.1",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dcbcb0d97b6f44234bd58fa7",
+      "spotifyUrl": "https://open.spotify.com/track/4amAvQMUbcN0DIyMbMmy7x"
+    },
+    {
+      "id": "0x9r8CViffbwk0NrpwAkvw",
+      "name": "그녀는 예뻤다",
+      "artists": [
+        "박진영"
+      ],
+      "album": "썸머징글벨",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2737249f2e7f2e242ab99344bdd",
+      "spotifyUrl": "https://open.spotify.com/track/0x9r8CViffbwk0NrpwAkvw"
     }
   ]
 }
