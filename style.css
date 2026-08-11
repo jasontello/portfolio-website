@@ -2381,8 +2381,12 @@ html.case-study-root body.case-study-body {
   aspect-ratio: 1076 / 720;
   display: grid;
   place-items: stretch;
-  border-color: rgba(0, 0, 0, 0.055);
+  border: 0;
   background: rgba(0, 0, 0, 0.055);
+}
+
+.work-body .work-card--bizznest .work-card__preview {
+  aspect-ratio: 1076 / 720;
 }
 
 .bizznest-thumb {
@@ -2393,10 +2397,10 @@ html.case-study-root body.case-study-body {
 .bizznest-thumb__video,
 .bizznest-thumb__poster {
   position: absolute;
-  inset: 1px;
+  inset: 0;
   display: block;
-  width: calc(100% - 2px);
-  height: calc(100% - 2px);
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center;
   transform: none;
