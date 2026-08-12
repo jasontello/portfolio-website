@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-11T16:13:20.028Z",
+  "updatedAt": "2026-08-12T16:13:20.023Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -15,17 +15,6 @@
       "spotifyUrl": "https://open.spotify.com/track/2PqFh92NTHhlbshWLOumzl"
     },
     {
-      "id": "5YUSR9XCo9nf8TxObGSrl7",
-      "name": "Dream Team",
-      "artists": [
-        "Young Miko",
-        "De La Rose"
-      ],
-      "album": "Do Not Disturb: Late Checkout",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739c8aeb68e2d5cb49ede9fe55",
-      "spotifyUrl": "https://open.spotify.com/track/5YUSR9XCo9nf8TxObGSrl7"
-    },
-    {
       "id": "40p1AU9WjnKzgUTQu3FBEN",
       "name": "EVERYTHING I'VE EVER WANTED",
       "artists": [
@@ -36,14 +25,15 @@
       "spotifyUrl": "https://open.spotify.com/track/40p1AU9WjnKzgUTQu3FBEN"
     },
     {
-      "id": "0YlS16W4HY6CJVk7Q750Yu",
-      "name": "Killin′ Me Good",
+      "id": "5YUSR9XCo9nf8TxObGSrl7",
+      "name": "Dream Team",
       "artists": [
-        "JIHYO"
+        "Young Miko",
+        "De La Rose"
       ],
-      "album": "ZONE",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733230765b6902f7572d2fdddc",
-      "spotifyUrl": "https://open.spotify.com/track/0YlS16W4HY6CJVk7Q750Yu"
+      "album": "Do Not Disturb: Late Checkout",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739c8aeb68e2d5cb49ede9fe55",
+      "spotifyUrl": "https://open.spotify.com/track/5YUSR9XCo9nf8TxObGSrl7"
     },
     {
       "id": "5PYrRnaRsCOOE0c65L4y2M",
@@ -56,14 +46,14 @@
       "spotifyUrl": "https://open.spotify.com/track/5PYrRnaRsCOOE0c65L4y2M"
     },
     {
-      "id": "2l2pKMAYOnoc9KcHPwiUCk",
-      "name": "Icarus",
+      "id": "0FyhBw60Tk0UyVqJEJqn9N",
+      "name": "DOIT4ME",
       "artists": [
-        "ARTMS"
+        "Tiffany Day"
       ],
-      "album": "<Club Icarus>",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27363047fa25a906b3536f51ea3",
-      "spotifyUrl": "https://open.spotify.com/track/2l2pKMAYOnoc9KcHPwiUCk"
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/0FyhBw60Tk0UyVqJEJqn9N"
     },
     {
       "id": "71LP1o5OzVVxBWIcIF6NAD",
@@ -74,6 +64,16 @@
       "album": "THE CORE - 核",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27324272a7f97cf5b5f8fcb60e0",
       "spotifyUrl": "https://open.spotify.com/track/71LP1o5OzVVxBWIcIF6NAD"
+    },
+    {
+      "id": "0YlS16W4HY6CJVk7Q750Yu",
+      "name": "Killin′ Me Good",
+      "artists": [
+        "JIHYO"
+      ],
+      "album": "ZONE",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733230765b6902f7572d2fdddc",
+      "spotifyUrl": "https://open.spotify.com/track/0YlS16W4HY6CJVk7Q750Yu"
     },
     {
       "id": "7JK0qP2osdX997FTlUnWo2",
@@ -87,25 +87,24 @@
       "spotifyUrl": "https://open.spotify.com/track/7JK0qP2osdX997FTlUnWo2"
     },
     {
-      "id": "0FyhBw60Tk0UyVqJEJqn9N",
-      "name": "DOIT4ME",
+      "id": "3vt2JsfvpAvlxfIcFO7lZe",
+      "name": "PRETTY4U",
       "artists": [
         "Tiffany Day"
       ],
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/0FyhBw60Tk0UyVqJEJqn9N"
+      "spotifyUrl": "https://open.spotify.com/track/3vt2JsfvpAvlxfIcFO7lZe"
     },
     {
-      "id": "4eHrSQm6BqYT8LF3LP6ye5",
-      "name": "DOWNPOUR (feat. Gliiico)",
+      "id": "5FzY8uPr7G9U3cKq37DOd1",
+      "name": "IT'S NOT LIKE THAT ANYMORE",
       "artists": [
-        "CHAEYOUNG",
-        "Gliiico"
+        "Tiffany Day"
       ],
-      "album": "LIL FANTASY vol.1",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dcbcb0d97b6f44234bd58fa7",
-      "spotifyUrl": "https://open.spotify.com/track/4eHrSQm6BqYT8LF3LP6ye5"
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/5FzY8uPr7G9U3cKq37DOd1"
     }
   ]
 }
