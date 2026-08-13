@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12T16:13:20.023Z",
+  "updatedAt": "2026-08-13T16:13:00.276Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -36,16 +36,6 @@
       "spotifyUrl": "https://open.spotify.com/track/5YUSR9XCo9nf8TxObGSrl7"
     },
     {
-      "id": "5PYrRnaRsCOOE0c65L4y2M",
-      "name": "SAME LA",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/5PYrRnaRsCOOE0c65L4y2M"
-    },
-    {
       "id": "0FyhBw60Tk0UyVqJEJqn9N",
       "name": "DOIT4ME",
       "artists": [
@@ -54,6 +44,16 @@
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
       "spotifyUrl": "https://open.spotify.com/track/0FyhBw60Tk0UyVqJEJqn9N"
+    },
+    {
+      "id": "5PYrRnaRsCOOE0c65L4y2M",
+      "name": "SAME LA",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/5PYrRnaRsCOOE0c65L4y2M"
     },
     {
       "id": "71LP1o5OzVVxBWIcIF6NAD",
@@ -76,6 +76,16 @@
       "spotifyUrl": "https://open.spotify.com/track/0YlS16W4HY6CJVk7Q750Yu"
     },
     {
+      "id": "3vt2JsfvpAvlxfIcFO7lZe",
+      "name": "PRETTY4U",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/3vt2JsfvpAvlxfIcFO7lZe"
+    },
+    {
       "id": "7JK0qP2osdX997FTlUnWo2",
       "name": "AVOCADO (feat. Gliiico)",
       "artists": [
@@ -87,24 +97,14 @@
       "spotifyUrl": "https://open.spotify.com/track/7JK0qP2osdX997FTlUnWo2"
     },
     {
-      "id": "3vt2JsfvpAvlxfIcFO7lZe",
-      "name": "PRETTY4U",
+      "id": "57aMyrC1ts3HlTSwBk2BIZ",
+      "name": "COPYCAT",
       "artists": [
         "Tiffany Day"
       ],
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/3vt2JsfvpAvlxfIcFO7lZe"
-    },
-    {
-      "id": "5FzY8uPr7G9U3cKq37DOd1",
-      "name": "IT'S NOT LIKE THAT ANYMORE",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/5FzY8uPr7G9U3cKq37DOd1"
+      "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
     }
   ]
 }
