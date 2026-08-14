@@ -1,8 +1,18 @@
 {
-  "updatedAt": "2026-08-13T16:13:00.276Z",
+  "updatedAt": "2026-08-14T16:08:42.902Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
+    {
+      "id": "40p1AU9WjnKzgUTQu3FBEN",
+      "name": "EVERYTHING I'VE EVER WANTED",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/40p1AU9WjnKzgUTQu3FBEN"
+    },
     {
       "id": "2PqFh92NTHhlbshWLOumzl",
       "name": "Hvnly (feat. JIHYO)",
@@ -15,14 +25,14 @@
       "spotifyUrl": "https://open.spotify.com/track/2PqFh92NTHhlbshWLOumzl"
     },
     {
-      "id": "40p1AU9WjnKzgUTQu3FBEN",
-      "name": "EVERYTHING I'VE EVER WANTED",
+      "id": "0FyhBw60Tk0UyVqJEJqn9N",
+      "name": "DOIT4ME",
       "artists": [
         "Tiffany Day"
       ],
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/40p1AU9WjnKzgUTQu3FBEN"
+      "spotifyUrl": "https://open.spotify.com/track/0FyhBw60Tk0UyVqJEJqn9N"
     },
     {
       "id": "5YUSR9XCo9nf8TxObGSrl7",
@@ -36,16 +46,6 @@
       "spotifyUrl": "https://open.spotify.com/track/5YUSR9XCo9nf8TxObGSrl7"
     },
     {
-      "id": "0FyhBw60Tk0UyVqJEJqn9N",
-      "name": "DOIT4ME",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/0FyhBw60Tk0UyVqJEJqn9N"
-    },
-    {
       "id": "5PYrRnaRsCOOE0c65L4y2M",
       "name": "SAME LA",
       "artists": [
@@ -54,6 +54,16 @@
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
       "spotifyUrl": "https://open.spotify.com/track/5PYrRnaRsCOOE0c65L4y2M"
+    },
+    {
+      "id": "3vt2JsfvpAvlxfIcFO7lZe",
+      "name": "PRETTY4U",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/3vt2JsfvpAvlxfIcFO7lZe"
     },
     {
       "id": "71LP1o5OzVVxBWIcIF6NAD",
@@ -76,14 +86,14 @@
       "spotifyUrl": "https://open.spotify.com/track/0YlS16W4HY6CJVk7Q750Yu"
     },
     {
-      "id": "3vt2JsfvpAvlxfIcFO7lZe",
-      "name": "PRETTY4U",
+      "id": "57aMyrC1ts3HlTSwBk2BIZ",
+      "name": "COPYCAT",
       "artists": [
         "Tiffany Day"
       ],
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/3vt2JsfvpAvlxfIcFO7lZe"
+      "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
     },
     {
       "id": "7JK0qP2osdX997FTlUnWo2",
@@ -95,16 +105,6 @@
       "album": "LIL FANTASY vol.1",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273dcbcb0d97b6f44234bd58fa7",
       "spotifyUrl": "https://open.spotify.com/track/7JK0qP2osdX997FTlUnWo2"
-    },
-    {
-      "id": "57aMyrC1ts3HlTSwBk2BIZ",
-      "name": "COPYCAT",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
     }
   ]
 }
