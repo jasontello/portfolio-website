@@ -258,7 +258,7 @@ function initSandboxTransition() {
       document.body.classList.add("is-page-exiting");
 
       if (gsap && !reduceMotion) {
-        gsap.to(".main-navigation, .main-content", {
+        gsap.to(".main-navigation, .case-study-body > .site-header, .main-content", {
           autoAlpha: 0,
           duration: 0.42,
           ease: "power2.inOut",

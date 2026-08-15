@@ -42,11 +42,13 @@ body {
 }
 
 .main-navigation,
+.case-study-body > .site-header,
 .main-content {
   animation: pageFadeIn 800ms ease-out both;
 }
 
 body.is-page-exiting .main-navigation,
+body.is-page-exiting.case-study-body > .site-header,
 body.is-page-exiting .main-content {
   animation: pageFadeOut 420ms ease-in forwards;
 }
@@ -63,8 +65,10 @@ body.is-page-exiting .main-content {
 
 @media (prefers-reduced-motion: reduce) {
   .main-navigation,
+  .case-study-body > .site-header,
   .main-content,
   body.is-page-exiting .main-navigation,
+  body.is-page-exiting.case-study-body > .site-header,
   body.is-page-exiting .main-content {
     opacity: 1;
     animation: none;
@@ -346,6 +350,60 @@ button.nav-link-fx {
   transform: translateY(-100%);
 }
 
+/* Shared site header: stable brand, centered navigation, and one divider. */
+.site-header {
+  --site-header-gutter: clamp(24px, 4vw, 64px);
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 68px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 32px;
+  flex: 0 0 auto;
+  margin: 0 auto;
+  padding-inline: max(
+    var(--site-header-gutter),
+    calc((100% - 1480px) / 2 + var(--site-header-gutter))
+  );
+  box-sizing: border-box;
+}
+
+.site-header::after {
+  position: absolute;
+  right: auto;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  height: 1px;
+  content: "";
+  background: var(--line-soft);
+  transform: translateX(-50%);
+}
+
+.site-header__brand {
+  justify-self: start;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 3vw, 38px);
+  min-width: 0;
+}
+
+.site-header__nav .nav-link-fx {
+  flex: 0 0 auto;
+  font-size: 14px;
+}
+
 .main-navigation {
   z-index: 2;
   width: 100%;
@@ -545,8 +603,16 @@ html.is-content-fullscreen body {
 .is-content-fullscreen .main-content {
   width: 100%;
   overflow-y: auto;
+  padding-top: 0;
   padding-left: clamp(28px, 3.2vw, 58px);
   scrollbar-gutter: stable;
+}
+
+@media (min-width: 901px) {
+  .is-content-fullscreen .site-header {
+    width: calc(100% + (2 * var(--space-page-x)));
+    margin-left: calc(-1 * var(--space-page-x));
+  }
 }
 
 .is-content-fullscreen .headerright-section {
@@ -778,10 +844,12 @@ html.is-fullscreen-restoring .fullscreen-toggle__icon {
 }
 
 .music-body .main-content {
+  grid-column: 2;
   overflow-y: auto;
 }
 
 .design-system-body .main-content {
+  grid-column: 2;
   overflow-y: auto;
 }
 
@@ -1786,7 +1854,7 @@ html.is-fullscreen-restoring .fullscreen-toggle__icon {
 
 .system-notes {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(18px, 2.8vw, 34px);
   margin: 0;
 }
@@ -3173,7 +3241,7 @@ body.is-project-open {
   width: min(100%, 1240px);
   align-self: center;
   margin-top: 0;
-  padding-top: 0;
+  padding-top: clamp(30px, 4vw, 48px);
   padding-bottom: clamp(72px, 9vw, 128px);
 }
 
@@ -3773,6 +3841,33 @@ body.is-project-open {
     height: auto;
     min-height: 78vh;
     padding: 24px;
+  }
+
+  .site-header {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 18px;
+    padding: 20px 24px 16px;
+  }
+
+  .site-header__nav {
+    justify-content: flex-start;
+    gap: 18px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .site-header__nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .is-content-fullscreen .site-header {
+    width: calc(100% + 48px);
+    margin-top: -24px;
+    margin-left: -24px;
   }
 
   .is-content-fullscreen .main-navigation {
@@ -4537,6 +4632,14 @@ body.work-body {
 }
 
 @media (max-width: 520px) {
+  .site-header__nav {
+    gap: 16px;
+  }
+
+  .site-header__nav .nav-link-fx {
+    font-size: 12px;
+  }
+
   .portfolio-header__inner {
     padding: 22px 18px;
   }
