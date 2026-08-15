@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-14T16:08:42.902Z",
+  "updatedAt": "2026-08-15T15:39:16.037Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -35,6 +35,16 @@
       "spotifyUrl": "https://open.spotify.com/track/0FyhBw60Tk0UyVqJEJqn9N"
     },
     {
+      "id": "5PYrRnaRsCOOE0c65L4y2M",
+      "name": "SAME LA",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/5PYrRnaRsCOOE0c65L4y2M"
+    },
+    {
       "id": "5YUSR9XCo9nf8TxObGSrl7",
       "name": "Dream Team",
       "artists": [
@@ -44,16 +54,6 @@
       "album": "Do Not Disturb: Late Checkout",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2739c8aeb68e2d5cb49ede9fe55",
       "spotifyUrl": "https://open.spotify.com/track/5YUSR9XCo9nf8TxObGSrl7"
-    },
-    {
-      "id": "5PYrRnaRsCOOE0c65L4y2M",
-      "name": "SAME LA",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/5PYrRnaRsCOOE0c65L4y2M"
     },
     {
       "id": "3vt2JsfvpAvlxfIcFO7lZe",
@@ -66,14 +66,14 @@
       "spotifyUrl": "https://open.spotify.com/track/3vt2JsfvpAvlxfIcFO7lZe"
     },
     {
-      "id": "71LP1o5OzVVxBWIcIF6NAD",
-      "name": "4 SEASONS",
+      "id": "57aMyrC1ts3HlTSwBk2BIZ",
+      "name": "COPYCAT",
       "artists": [
-        "XG"
+        "Tiffany Day"
       ],
-      "album": "THE CORE - 核",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27324272a7f97cf5b5f8fcb60e0",
-      "spotifyUrl": "https://open.spotify.com/track/71LP1o5OzVVxBWIcIF6NAD"
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
     },
     {
       "id": "0YlS16W4HY6CJVk7Q750Yu",
@@ -86,25 +86,24 @@
       "spotifyUrl": "https://open.spotify.com/track/0YlS16W4HY6CJVk7Q750Yu"
     },
     {
-      "id": "57aMyrC1ts3HlTSwBk2BIZ",
-      "name": "COPYCAT",
+      "id": "71LP1o5OzVVxBWIcIF6NAD",
+      "name": "4 SEASONS",
+      "artists": [
+        "XG"
+      ],
+      "album": "THE CORE - 核",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27324272a7f97cf5b5f8fcb60e0",
+      "spotifyUrl": "https://open.spotify.com/track/71LP1o5OzVVxBWIcIF6NAD"
+    },
+    {
+      "id": "7xSm07mkWui2K3XkwUTgFi",
+      "name": "NO LUCK",
       "artists": [
         "Tiffany Day"
       ],
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
-    },
-    {
-      "id": "7JK0qP2osdX997FTlUnWo2",
-      "name": "AVOCADO (feat. Gliiico)",
-      "artists": [
-        "CHAEYOUNG",
-        "Gliiico"
-      ],
-      "album": "LIL FANTASY vol.1",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273dcbcb0d97b6f44234bd58fa7",
-      "spotifyUrl": "https://open.spotify.com/track/7JK0qP2osdX997FTlUnWo2"
+      "spotifyUrl": "https://open.spotify.com/track/7xSm07mkWui2K3XkwUTgFi"
     }
   ]
 }
