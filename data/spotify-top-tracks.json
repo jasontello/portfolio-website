@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-16T15:40:28.882Z",
+  "updatedAt": "2026-08-17T15:44:37.985Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -76,6 +76,16 @@
       "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
     },
     {
+      "id": "7xSm07mkWui2K3XkwUTgFi",
+      "name": "NO LUCK",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/7xSm07mkWui2K3XkwUTgFi"
+    },
+    {
       "id": "0YlS16W4HY6CJVk7Q750Yu",
       "name": "Killin′ Me Good",
       "artists": [
@@ -86,24 +96,14 @@
       "spotifyUrl": "https://open.spotify.com/track/0YlS16W4HY6CJVk7Q750Yu"
     },
     {
-      "id": "71LP1o5OzVVxBWIcIF6NAD",
-      "name": "4 SEASONS",
-      "artists": [
-        "XG"
-      ],
-      "album": "THE CORE - 核",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27324272a7f97cf5b5f8fcb60e0",
-      "spotifyUrl": "https://open.spotify.com/track/71LP1o5OzVVxBWIcIF6NAD"
-    },
-    {
-      "id": "7xSm07mkWui2K3XkwUTgFi",
-      "name": "NO LUCK",
+      "id": "3SqnwMW6Xcldf9KYgL8UOD",
+      "name": "BREAKUP",
       "artists": [
         "Tiffany Day"
       ],
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/7xSm07mkWui2K3XkwUTgFi"
+      "spotifyUrl": "https://open.spotify.com/track/3SqnwMW6Xcldf9KYgL8UOD"
     }
   ]
 }
