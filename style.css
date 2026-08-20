@@ -10,6 +10,7 @@ html, body {
   --color-line: rgba(0, 0, 0, 0.16);
   --color-paper: #fff;
   --color-surface-soft: rgba(255, 255, 255, 0.32);
+  --site-page-gutter: clamp(24px, 4vw, 64px);
   --space-page-x: clamp(28px, 3.2vw, 58px);
   --space-section-y: clamp(22px, 5vw, 68px);
   --radius-none: 0;
@@ -352,7 +353,6 @@ button.nav-link-fx {
 
 /* Shared site header: stable brand, centered navigation, and one divider. */
 .site-header {
-  --site-header-gutter: clamp(24px, 4vw, 64px);
   position: relative;
   z-index: 10;
   width: 100%;
@@ -364,8 +364,8 @@ button.nav-link-fx {
   flex: 0 0 auto;
   margin: 0 auto;
   padding-inline: max(
-    var(--site-header-gutter),
-    calc((100% - 1480px) / 2 + var(--site-header-gutter))
+    var(--site-page-gutter),
+    calc((100% - 1480px) / 2 + var(--site-page-gutter))
   );
   box-sizing: border-box;
 }
@@ -612,6 +612,32 @@ html.is-content-fullscreen body {
   .is-content-fullscreen .site-header {
     width: calc(100% + (2 * var(--space-page-x)));
     margin-left: calc(-1 * var(--space-page-x));
+  }
+
+  .locked-content-fullscreen .main-content {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .locked-content-fullscreen .site-header {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .locked-content-fullscreen.is-content-fullscreen .music-gallery,
+  .locked-content-fullscreen.is-content-fullscreen .system-gallery {
+    width: min(100%, 1480px);
+    padding-right: var(--site-page-gutter);
+    padding-left: var(--site-page-gutter);
+  }
+
+  .locked-content-fullscreen.is-content-fullscreen .music-panel {
+    width: min(100%, 1240px);
+    justify-self: center;
+  }
+
+  .locked-content-fullscreen.is-content-fullscreen .system-gallery > .system-section {
+    width: min(100%, 1240px);
   }
 }
 
@@ -2443,6 +2469,15 @@ html.case-study-root body.case-study-body {
   place-items: center;
   container-type: inline-size;
   background: #fff;
+}
+
+.work-card--ink .work-card__preview,
+.work-card--hourglass .work-card__preview {
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.28), transparent 42%),
+    rgba(232, 232, 232, 0.72);
 }
 
 .work-card--bizznest .work-card__preview {
@@ -4474,7 +4509,7 @@ body.work-body {
   gap: 26px;
   align-content: start;
   margin: 0 auto;
-  padding: 0 clamp(24px, 4vw, 64px) 112px;
+  padding: 0 var(--site-page-gutter) 112px;
   box-sizing: border-box;
 }
 
@@ -4670,8 +4705,8 @@ body.work-body {
 
   .work-body .work-gallery,
   .work-body.is-content-fullscreen .work-gallery {
-    padding-right: 18px;
-    padding-left: 18px;
+    padding-right: var(--site-page-gutter);
+    padding-left: var(--site-page-gutter);
   }
 
   .work-filter {

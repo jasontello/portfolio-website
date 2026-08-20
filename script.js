@@ -357,11 +357,50 @@ function normalizePath(pathname) {
 function initWorkFilters() {
   const filterButtons = Array.from(document.querySelectorAll("[data-work-filter-button]"));
   const cards = Array.from(document.querySelectorAll("[data-work-category]"));
+  const inkPreviewRoots = Array.from(document.querySelectorAll("[data-ink-preview]"));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let inkPreviewScriptPromise = null;
 
   if (!filterButtons.length || !cards.length) {
     return;
   }
+
+  const loadInkPreviews = () => {
+    if (!inkPreviewRoots.length || window.InkSymbiote) {
+      return Promise.resolve();
+    }
+
+    if (inkPreviewScriptPromise) {
+      return inkPreviewScriptPromise;
+    }
+
+    inkPreviewScriptPromise = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "./ink-symbiote.js?v=experiments-move-1";
+      script.addEventListener("load", resolve, { once: true });
+      script.addEventListener("error", reject, { once: true });
+      document.body.appendChild(script);
+    });
+
+    return inkPreviewScriptPromise;
+  };
+
+  const syncInkPreviewMotion = (isActive) => {
+    inkPreviewRoots.forEach((root) => {
+      const instance = root.inkSymbiote;
+
+      if (!instance) {
+        return;
+      }
+
+      if (isActive) {
+        instance.resume?.();
+        return;
+      }
+
+      instance.pause?.();
+    });
+  };
 
   const setFilter = (filter) => {
     cards.forEach((card) => {
@@ -384,6 +423,14 @@ function initWorkFilters() {
     });
 
     document.body.dataset.workFilter = filter;
+
+    if (filter === "experiments") {
+      loadInkPreviews()
+        .then(() => syncInkPreviewMotion(document.body.dataset.workFilter === "experiments"))
+        .catch(() => {});
+    } else {
+      syncInkPreviewMotion(false);
+    }
 
     filterButtons.forEach((button) => {
       const isActive = button.dataset.workFilterButton === filter;
@@ -413,7 +460,20 @@ function initWorkFilters() {
     });
   });
 
-  setFilter(document.body.dataset.workFilter || "work");
+  const getHashFilter = () => {
+    const hash = window.location.hash.slice(1);
+    return filterButtons.some((button) => button.dataset.workFilterButton === hash) ? hash : null;
+  };
+
+  window.addEventListener("hashchange", () => {
+    const hashFilter = getHashFilter();
+
+    if (hashFilter) {
+      setFilter(hashFilter);
+    }
+  });
+
+  setFilter(getHashFilter() || document.body.dataset.workFilter || "work");
 }
 
 function initFullscreenLayout() {

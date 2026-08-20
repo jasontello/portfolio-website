@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="./style.css?v=site-header-5" />
+    <link rel="stylesheet" href="./style.css?v=alignment-grid-1" />
 
     <title>Jason Tello Portfolio</title>
 
@@ -19,7 +19,6 @@
         <a class="site-header__brand" href="./index.html" aria-label="Jason Tello home">Jason Tello</a>
         <nav class="site-header__nav" aria-label="Primary navigation">
           <a class="nav-link-fx nav-link-fx--active" href="#selected-work" aria-current="page">Work</a>
-          <a class="nav-link-fx sandbox-trigger" href="./sandbox.html">Sandbox</a>
           <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
           <a class="nav-link-fx" href="./music.html">Music</a>
           <a class="nav-link-fx" href="./design-system.html">Style Guide</a>
@@ -104,6 +103,32 @@
             </span>
           </a>
 
+          <a class="work-card work-card--ink is-filtered-out" data-work-category="experiments" href="./sandbox-ink.html" aria-label="Open Ink Symbiote experiment" aria-hidden="true">
+            <span class="work-card__preview" aria-hidden="true">
+              <span class="sandbox-preview-ink" data-ink-symbiote data-ink-preview></span>
+            </span>
+            <span class="work-card__meta">
+              <span class="work-card__meta-head">
+                <strong>Ink Symbiote</strong>
+                <span class="work-card__tags">WebGL - Interaction</span>
+              </span>
+              <span class="work-card__caption">A liquid ink field that reacts to pointer movement and touch.</span>
+            </span>
+          </a>
+
+          <a class="work-card work-card--hourglass is-filtered-out" data-work-category="experiments" href="./sandbox-poster.html" aria-label="Open Hourglass Poster experiment" aria-hidden="true">
+            <span class="work-card__preview" aria-hidden="true">
+              <img class="sandbox-preview-poster-image" src="./images/hourglass-preview.png?v=hourglass-preview-1" alt="">
+            </span>
+            <span class="work-card__meta">
+              <span class="work-card__meta-head">
+                <strong>Hourglass Poster</strong>
+                <span class="work-card__tags">Canvas - Motion Study</span>
+              </span>
+              <span class="work-card__caption">A one-minute study built around falling sand, grain, and shifting mass.</span>
+            </span>
+          </a>
+
           <a class="work-card work-card--bizznest" data-work-category="work" href="./bizznest-personal-links-builder.html" aria-label="Open BizzNEST Personal Links Builder project breakdown">
             <span class="work-card__preview bizznest-thumb" aria-hidden="true">
               <video class="bizznest-thumb__video" autoplay muted loop playsinline preload="metadata" poster="./images/projects/bizznest/state-02-public-list-poster.png">
@@ -157,7 +182,7 @@
       </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="./script.js?v=site-header-1"></script>
+    <script src="./script.js?v=experiments-move-1"></script>
     <!-- Cloudflare Web Analytics -->
     <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"b487877912b34d169c3745d5bd3cfb90"}'></script>
     <!-- End Cloudflare Web Analytics -->
