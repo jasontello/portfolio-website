@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T15:50:14.574Z",
+  "updatedAt": "2026-08-20T15:52:23.722Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -24,6 +24,16 @@
       "spotifyUrl": "https://open.spotify.com/track/0FyhBw60Tk0UyVqJEJqn9N"
     },
     {
+      "id": "5PYrRnaRsCOOE0c65L4y2M",
+      "name": "SAME LA",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/5PYrRnaRsCOOE0c65L4y2M"
+    },
+    {
       "id": "2PqFh92NTHhlbshWLOumzl",
       "name": "Hvnly (feat. JIHYO)",
       "artists": [
@@ -33,16 +43,6 @@
       "album": "CRYSALIS (CODA)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27303f01f495ed76d0c668e17e5",
       "spotifyUrl": "https://open.spotify.com/track/2PqFh92NTHhlbshWLOumzl"
-    },
-    {
-      "id": "5PYrRnaRsCOOE0c65L4y2M",
-      "name": "SAME LA",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/5PYrRnaRsCOOE0c65L4y2M"
     },
     {
       "id": "5YUSR9XCo9nf8TxObGSrl7",
@@ -66,6 +66,27 @@
       "spotifyUrl": "https://open.spotify.com/track/0dz1fnXbc6ZHxmZjAtuozd"
     },
     {
+      "id": "3Nkw1nmtFnx6adWNWOnPsB",
+      "name": "Bellafonte (feat. Tkay Maidza)",
+      "artists": [
+        "Jenevieve",
+        "Tkay Maidza"
+      ],
+      "album": "CRYSALIS (CODA)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27303f01f495ed76d0c668e17e5",
+      "spotifyUrl": "https://open.spotify.com/track/3Nkw1nmtFnx6adWNWOnPsB"
+    },
+    {
+      "id": "3SqnwMW6Xcldf9KYgL8UOD",
+      "name": "BREAKUP",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/3SqnwMW6Xcldf9KYgL8UOD"
+    },
+    {
       "id": "3vt2JsfvpAvlxfIcFO7lZe",
       "name": "PRETTY4U",
       "artists": [
@@ -84,26 +105,6 @@
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
       "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
-    },
-    {
-      "id": "7xSm07mkWui2K3XkwUTgFi",
-      "name": "NO LUCK",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/7xSm07mkWui2K3XkwUTgFi"
-    },
-    {
-      "id": "3SqnwMW6Xcldf9KYgL8UOD",
-      "name": "BREAKUP",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/3SqnwMW6Xcldf9KYgL8UOD"
     }
   ]
 }
