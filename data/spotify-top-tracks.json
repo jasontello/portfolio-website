@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-21T15:52:22.295Z",
+  "updatedAt": "2026-08-22T15:39:52.501Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -34,6 +34,17 @@
       "spotifyUrl": "https://open.spotify.com/track/5PYrRnaRsCOOE0c65L4y2M"
     },
     {
+      "id": "3Nkw1nmtFnx6adWNWOnPsB",
+      "name": "Bellafonte (feat. Tkay Maidza)",
+      "artists": [
+        "Jenevieve",
+        "Tkay Maidza"
+      ],
+      "album": "CRYSALIS (CODA)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27303f01f495ed76d0c668e17e5",
+      "spotifyUrl": "https://open.spotify.com/track/3Nkw1nmtFnx6adWNWOnPsB"
+    },
+    {
       "id": "2PqFh92NTHhlbshWLOumzl",
       "name": "Hvnly (feat. JIHYO)",
       "artists": [
@@ -53,28 +64,6 @@
       "album": "bodies (Live at AT&T Block Party 2026)",
       "albumImage": "https://i.scdn.co/image/ab6742d3000053b7daf80151c0258cb1edc0730a",
       "spotifyUrl": "https://open.spotify.com/track/0dz1fnXbc6ZHxmZjAtuozd"
-    },
-    {
-      "id": "5YUSR9XCo9nf8TxObGSrl7",
-      "name": "Dream Team",
-      "artists": [
-        "Young Miko",
-        "De La Rose"
-      ],
-      "album": "Do Not Disturb: Late Checkout",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739c8aeb68e2d5cb49ede9fe55",
-      "spotifyUrl": "https://open.spotify.com/track/5YUSR9XCo9nf8TxObGSrl7"
-    },
-    {
-      "id": "3Nkw1nmtFnx6adWNWOnPsB",
-      "name": "Bellafonte (feat. Tkay Maidza)",
-      "artists": [
-        "Jenevieve",
-        "Tkay Maidza"
-      ],
-      "album": "CRYSALIS (CODA)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27303f01f495ed76d0c668e17e5",
-      "spotifyUrl": "https://open.spotify.com/track/3Nkw1nmtFnx6adWNWOnPsB"
     },
     {
       "id": "3SqnwMW6Xcldf9KYgL8UOD",
@@ -105,6 +94,17 @@
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
       "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
+    },
+    {
+      "id": "5YUSR9XCo9nf8TxObGSrl7",
+      "name": "Dream Team",
+      "artists": [
+        "Young Miko",
+        "De La Rose"
+      ],
+      "album": "Do Not Disturb: Late Checkout",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739c8aeb68e2d5cb49ede9fe55",
+      "spotifyUrl": "https://open.spotify.com/track/5YUSR9XCo9nf8TxObGSrl7"
     }
   ]
 }
