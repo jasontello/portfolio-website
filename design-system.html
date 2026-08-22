@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./style.css?v=alignment-grid-1" />
+    <link rel="stylesheet" href="./style.css?v=verso-phase-1" />
 
     <title>Style Guide | Jason Tello Portfolio</title>
 
@@ -31,8 +31,44 @@
             <h2 id="system-title">Style Guide</h2>
             <p>A small reusable system for the portfolio: tokens, components, layout rules, and interaction patterns.</p>
           </div>
-          <span>v1</span>
+          <button class="system-version" type="button" aria-expanded="false" aria-controls="system-xray" data-system-xray-toggle>v1</button>
         </div>
+
+        <aside class="system-xray" id="system-xray" aria-labelledby="system-xray-title" hidden>
+          <div class="system-xray__header">
+            <div>
+              <p class="system-kicker">Live inspection</p>
+              <h3 id="system-xray-title">System X-Ray</h3>
+            </div>
+            <button class="system-xray__close" type="button" data-system-xray-close>Close</button>
+          </div>
+          <dl class="system-xray__tokens">
+            <div>
+              <dt>Header at viewport</dt>
+              <dd data-system-value="header">68px</dd>
+            </div>
+            <div>
+              <dt>Page gutter</dt>
+              <dd data-system-value="gutter">Responsive</dd>
+            </div>
+            <div>
+              <dt>Divider</dt>
+              <dd data-system-value="line">rgba(0, 0, 0, 0.16)</dd>
+            </div>
+            <div>
+              <dt>Interaction motion</dt>
+              <dd data-system-value="motion">420ms</dd>
+            </div>
+            <div>
+              <dt>Interface type</dt>
+              <dd data-system-value="type">Space Grotesk</dd>
+            </div>
+            <div>
+              <dt>Motion preference</dt>
+              <dd data-system-value="preference">Standard</dd>
+            </div>
+          </dl>
+        </aside>
 
         <section class="system-section" aria-labelledby="system-story-title">
           <p class="system-kicker">Why it exists</p>
@@ -221,7 +257,7 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="./script.js?v=site-header-1"></script>
+    <script src="./script.js?v=verso-phase-1"></script>
     <!-- Cloudflare Web Analytics -->
     <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"b487877912b34d169c3745d5bd3cfb90"}'></script>
     <!-- End Cloudflare Web Analytics -->
