@@ -232,6 +232,7 @@ function InkSymbiote(root) {
   let animationFrame = 0;
   let centerReturn = previewMode;
   let resizeObserver = null;
+  let isPaused = false;
 
   wrapper.className = "ink-symbiote";
   wrapper.setAttribute("aria-hidden", "true");
@@ -470,10 +471,18 @@ function InkSymbiote(root) {
     gl.uniform2fv(flowsLocation, flowData);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
-    if (!reduceMotion) {
+    if (!reduceMotion && !isPaused) {
       animationFrame = window.requestAnimationFrame(render);
       frameRef.current = animationFrame;
     }
+  };
+
+  const pause = () => {
+    isPaused = true;
+    window.cancelAnimationFrame(animationFrame);
+    window.cancelAnimationFrame(frameRef.current);
+    animationFrame = 0;
+    frameRef.current = 0;
   };
 
   const restart = () => {
@@ -493,7 +502,9 @@ function InkSymbiote(root) {
       return;
     }
 
-    restart();
+    if (!isPaused) {
+      restart();
+    }
   };
 
   const beginReturnToCenter = () => {
@@ -548,6 +559,15 @@ function InkSymbiote(root) {
   return {
     beginReturnToCenter,
     stopReturnToCenter,
+    pause,
+    resume() {
+      if (!isPaused) {
+        return;
+      }
+
+      isPaused = false;
+      restart();
+    },
     destroy() {
       window.cancelAnimationFrame(animationFrame);
       window.cancelAnimationFrame(frameRef.current);

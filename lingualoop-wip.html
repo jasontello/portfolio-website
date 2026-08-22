@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="case-study-root">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css?v=site-header-5" />
+
+    <title>LinguaLoop Work in Progress | Jason Tello Portfolio</title>
+
+    <link rel="icon" type="image/png" href="./images/favicon-head.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  </head>
+  <body class="case-study-body">
+    <header class="site-header">
+      <a class="site-header__brand" href="./index.html" aria-label="Jason Tello home">Jason Tello</a>
+      <nav class="site-header__nav" aria-label="Primary navigation">
+        <a class="nav-link-fx nav-link-fx--active" href="./index.html" aria-current="location">Work</a>
+        <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+        <a class="nav-link-fx" href="./music.html">Music</a>
+        <a class="nav-link-fx" href="./design-system.html">Style Guide</a>
+      </nav>
+    </header>
+
+    <main class="case-study-page lingualoop-page" aria-labelledby="case-study-title">
+      <section class="case-study-hero">
+        <div class="case-study-hero__meta">
+          <a class="case-study-back" href="./index.html">Back to work</a>
+          <dl>
+            <div>
+              <dt>Type</dt>
+              <dd>Personal product project</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd>Work in progress</dd>
+            </div>
+            <div>
+              <dt>Prototype</dt>
+              <dd>React, TypeScript, Vite</dd>
+            </div>
+            <div>
+              <dt>Focus</dt>
+              <dd>Beginner Spanish study flow</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="case-study-hero__intro">
+          <p class="case-study-kicker">Product exploration / work in progress</p>
+          <h1 id="case-study-title">LinguaLoop</h1>
+          <p>A beginner language-learning product I am building to make daily study feel simpler and more guided than a dense Anki-style workflow.</p>
+          <p class="project-status-note">This is an active prototype, so I am showing what exists now and what I am still shaping next.</p>
+        </div>
+      </section>
+
+      <figure class="case-study-figure case-study-figure--wide case-study-figure--framed lingualoop-preview">
+        <picture>
+          <source media="(max-width: 640px)" srcset="./images/projects/lingualoop/learn-preview-mobile.png">
+          <img src="./images/projects/lingualoop/learn-preview.png" alt="LinguaLoop prototype Learn screen showing a ten-module beginner Spanish learning path">
+        </picture>
+        <figcaption>Current prototype capture: the new Learn path maps completed, current, and upcoming modules for beginner Spanish.</figcaption>
+      </figure>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="current-title">
+        <div>
+          <p class="case-study-kicker">What exists now</p>
+          <h2 id="current-title">The prototype is focused on making the next study step obvious.</h2>
+        </div>
+        <div class="case-study-copy">
+          <p>LinguaLoop currently includes onboarding, a Today dashboard, a focused flashcard study session, 50 beginner Spanish vocabulary cards, a searchable word library, progress tracking, settings, local browser persistence, light and dark themes, and a visual ten-module Learn path.</p>
+          <p>The learning model is built around high-frequency vocabulary, scheduled review, active recall, daily goals, weak-word surfacing, and visible progression.</p>
+        </div>
+      </section>
+
+      <section class="case-study-section" aria-labelledby="building-title">
+        <div class="case-study-section__top">
+          <p class="case-study-kicker">What I am shaping</p>
+          <h2 id="building-title">I am using the current build to test how guided study should feel before the product grows past flashcards.</h2>
+        </div>
+        <div class="case-study-feature-grid lingualoop-feature-grid">
+          <article>
+            <span>01</span>
+            <h3>Learning path</h3>
+            <p>Making progression feel visible without turning the product into a cluttered dashboard.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Study interactions</h3>
+            <p>Keeping review sessions focused on recall instead of deck management.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Visual system</h3>
+            <p>Building a calmer study space that still feels motivating enough to return to daily.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Next formats</h3>
+            <p>Exploring mini-stories, listening and captioned media, typing recall, and early speaking practice.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-study-section case-study-section--split" aria-labelledby="next-title">
+        <div>
+          <p class="case-study-kicker">Next</p>
+          <h2 id="next-title">The next step is connecting the study loop to more context and output.</h2>
+        </div>
+        <ul class="case-study-list">
+          <li>Add contextual input so vocabulary appears inside short beginner-friendly reading and listening moments.</li>
+          <li>Test typing and recall exercises that ask learners to produce language, not just recognize cards.</li>
+          <li>Explore early speaking practice once the daily loop feels stable enough to support it.</li>
+        </ul>
+      </section>
+    </main>
+
+    <section class="resume-modal" id="resume-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" hidden>
+      <div class="resume-modal__backdrop" data-resume-close></div>
+      <div class="resume-modal__panel">
+        <header class="resume-modal__header">
+          <div>
+            <p class="resume-modal__eyebrow">Resume</p>
+            <h2 id="resume-modal-title">Jason Tello - Product Design</h2>
+          </div>
+          <div class="resume-modal__actions">
+            <a class="resume-modal__download" href="./documents/Jason_Tello_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            <button class="resume-modal__close" type="button" aria-label="Close resume" data-resume-close>Close</button>
+          </div>
+        </header>
+        <iframe class="resume-modal__frame" src="./documents/Jason_Tello_Resume.pdf#view=FitH" title="Jason Tello resume"></iframe>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="./script.js?v=site-header-1"></script>
+    <!-- Cloudflare Web Analytics -->
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"b487877912b34d169c3745d5bd3cfb90"}'></script>
+    <!-- End Cloudflare Web Analytics -->
+  </body>
+</html>

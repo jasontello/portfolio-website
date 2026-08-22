@@ -10,8 +10,12 @@
   }
 
   let activeIndex = 0;
+  const hashToIndex = new Map([
+    ["#ink", 0],
+    ["#poster", 1]
+  ]);
 
-  const setSlide = (nextIndex) => {
+  const setSlide = (nextIndex, shouldUpdateHash = true) => {
     const clampedIndex = Math.min(Math.max(nextIndex, 0), slides.length - 1);
 
     activeIndex = clampedIndex;
@@ -24,6 +28,14 @@
     slides.forEach((slide, index) => {
       slide.setAttribute("aria-hidden", index === activeIndex ? "false" : "true");
     });
+
+    if (shouldUpdateHash) {
+      const nextHash = activeIndex === 0 ? "#ink" : "#poster";
+
+      if (window.location.hash !== nextHash) {
+        window.history.replaceState(null, "", nextHash);
+      }
+    }
   };
 
   previousButton.addEventListener("click", () => setSlide(activeIndex - 1));
@@ -42,5 +54,9 @@
     }
   });
 
-  setSlide(0);
+  window.addEventListener("hashchange", () => {
+    setSlide(hashToIndex.get(window.location.hash) || 0, false);
+  });
+
+  setSlide(hashToIndex.get(window.location.hash) || 0, false);
 })();
