@@ -4470,6 +4470,247 @@ body.work-body {
   width: 50px;
 }
 
+.face-discovery {
+  margin: -6px 0 -4px;
+  opacity: 0;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transform: translateY(-3px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.face-discovery.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.face-discovery a {
+  color: var(--text-muted);
+  text-underline-offset: 3px;
+}
+
+.face-discovery a:hover,
+.face-discovery a:focus-visible {
+  color: var(--text-primary);
+}
+
+.system-version {
+  appearance: none;
+  padding: 2px 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.system-version:hover,
+.system-version:focus-visible,
+.system-version[aria-expanded="true"] {
+  border-bottom-color: currentColor;
+  outline: none;
+}
+
+.system-xray {
+  display: grid;
+  gap: 24px;
+  margin-top: calc(-1 * clamp(14px, 2vw, 24px));
+  padding: clamp(18px, 2.5vw, 28px);
+  border: 1px solid var(--line-soft);
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.system-xray[hidden] {
+  display: none;
+}
+
+.system-xray__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.system-xray__header > div {
+  display: grid;
+  gap: 8px;
+}
+
+.system-xray__header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.system-xray__close {
+  appearance: none;
+  padding: 0 0 3px;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.system-xray__close:hover,
+.system-xray__close:focus-visible {
+  color: var(--text-primary);
+  outline: none;
+}
+
+.system-xray__tokens {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px 28px;
+  margin: 0;
+}
+
+.system-xray__tokens div {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 10px;
+}
+
+.system-xray__tokens dt,
+.system-xray__tokens dd {
+  margin: 0;
+}
+
+.system-xray__tokens dt {
+  color: var(--text-muted);
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.system-xray__tokens dd {
+  overflow-wrap: anywhere;
+  color: var(--text-primary);
+  font-size: 13px;
+}
+
+.error-body {
+  min-height: 100vh;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.error-body .main-content {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  display: block;
+  overflow: visible;
+  transform: none;
+}
+
+.error-page {
+  width: min(100% - (2 * var(--site-page-gutter)), 760px);
+  min-height: calc(100vh - 69px);
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  align-content: center;
+  gap: 24px 30px;
+  margin: 0 auto;
+  padding: 64px 0 96px;
+  box-sizing: border-box;
+}
+
+.error-page__face.name-face-button {
+  width: 64px;
+  height: 64px;
+  align-self: start;
+}
+
+.error-page__face .name-face {
+  width: 56px;
+}
+
+.error-page__face.name-face-button.is-reacting .name-face {
+  width: 60px;
+}
+
+.error-page__copy {
+  display: grid;
+  gap: 16px;
+}
+
+.error-page__label,
+.error-page__path {
+  margin: 0;
+  color: var(--text-muted);
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.error-page h1,
+.error-page p {
+  margin: 0;
+}
+
+.error-page h1 {
+  color: var(--text-primary);
+  font-size: clamp(34px, 7vw, 74px);
+  font-weight: 500;
+  line-height: 0.94;
+}
+
+.error-page__message {
+  max-width: 520px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.error-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  margin-top: 8px;
+}
+
+.error-page__actions a {
+  color: var(--text-primary);
+  font-size: 13px;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 700px) {
+  .system-xray__tokens {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .error-page {
+    grid-template-columns: 1fr;
+    align-content: start;
+    padding-top: 72px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .face-discovery {
+    transition: none;
+  }
+}
+
 .portfolio-intro h1 {
   max-width: 720px;
   margin: 0;

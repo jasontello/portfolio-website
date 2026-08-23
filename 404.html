@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css?v=verso-phase-1">
+    <title>Page Not Found | Jason Tello Portfolio</title>
+    <link rel="icon" type="image/png" href="/images/favicon-head.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  </head>
+  <body class="error-body">
+    <div class="main-content">
+      <header class="site-header">
+        <a class="site-header__brand" href="/index.html" aria-label="Jason Tello home">Jason Tello</a>
+        <nav class="site-header__nav" aria-label="Primary navigation">
+          <a class="nav-link-fx" href="/index.html">Work</a>
+          <button class="nav-link-fx resume-trigger" type="button" aria-haspopup="dialog" aria-controls="resume-modal" aria-expanded="false">Resume</button>
+          <a class="nav-link-fx" href="/music.html">Music</a>
+          <a class="nav-link-fx" href="/design-system.html">Style Guide</a>
+        </nav>
+      </header>
+
+      <main class="error-page" aria-labelledby="error-title">
+        <button class="error-page__face name-face-button" type="button" aria-label="Make Jason's face react" data-face-trigger>
+          <img class="name-face" src="/images/face.png" data-face-normal="/images/face.png" data-face-reaction="/images/face-shout.png" alt="" aria-hidden="true">
+        </button>
+        <div class="error-page__copy">
+          <p class="error-page__label">Error 404</p>
+          <h1 id="error-title">Page not found.</h1>
+          <p class="error-page__message">The address may be outdated, or this page may have moved.</p>
+          <p class="error-page__path" data-error-path></p>
+          <div class="error-page__actions">
+            <a href="/index.html">Back to work</a>
+            <a href="/index.html#experiments">Browse experiments</a>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <section class="resume-modal" id="resume-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" hidden>
+      <div class="resume-modal__backdrop" data-resume-close></div>
+      <div class="resume-modal__panel">
+        <header class="resume-modal__header">
+          <div>
+            <p class="resume-modal__eyebrow">Resume</p>
+            <h2 id="resume-modal-title">Jason Tello</h2>
+          </div>
+          <div class="resume-modal__actions">
+            <a class="resume-modal__download" href="/documents/Jason_Tello_Resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+            <button class="resume-modal__close" type="button" aria-label="Close resume" data-resume-close>Close</button>
+          </div>
+        </header>
+        <iframe class="resume-modal__frame" src="/documents/Jason_Tello_Resume.pdf#view=FitH" title="Jason Tello resume"></iframe>
+      </div>
+    </section>
+
+    <script src="/script.js?v=verso-phase-1"></script>
+    <script>
+      const pathLabel = document.querySelector("[data-error-path]");
+      if (pathLabel) pathLabel.textContent = window.location.pathname;
+    </script>
+  </body>
+</html>

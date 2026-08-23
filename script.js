@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initResumeModal();
   initCurrentPageLinks();
   initNameFaceReaction();
+  initSystemXray();
   initSandboxTransition();
   initBizznestThumbAnimation();
   initFullscreenLayout();
@@ -302,6 +303,11 @@ function initCurrentPageLinks() {
 
 function initNameFaceReaction() {
   let resetTimer;
+  let discoveryTimer;
+  let concealTimer;
+  let activationTimes = [];
+  const discovery = document.querySelector("[data-face-discovery]");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   document.querySelectorAll("[data-face-trigger] .name-face").forEach((face) => {
     if (face.dataset.faceReaction) {
@@ -310,17 +316,7 @@ function initNameFaceReaction() {
     }
   });
 
-  const showReaction = (event) => {
-    if (!(event.target instanceof Element)) {
-      return;
-    }
-
-    const trigger = event.target.closest("[data-face-trigger]");
-
-    if (!trigger) {
-      return;
-    }
-
+  const showReaction = (trigger) => {
     const face = trigger.querySelector(".name-face");
     const normalSrc = face?.dataset.faceNormal || face?.getAttribute("src");
     const reactionSrc = face?.dataset.faceReaction;
@@ -339,9 +335,152 @@ function initNameFaceReaction() {
     }, 850);
   };
 
-  document.addEventListener("pointerdown", showReaction);
-  document.addEventListener("mousedown", showReaction);
-  document.addEventListener("click", showReaction);
+  const hideDiscovery = (immediate = false) => {
+    if (!discovery || discovery.hidden) {
+      return;
+    }
+
+    window.clearTimeout(discoveryTimer);
+    window.clearTimeout(concealTimer);
+    discovery.classList.remove("is-visible");
+
+    const conceal = () => {
+      discovery.hidden = true;
+      activationTimes = [];
+    };
+
+    if (immediate || reduceMotion.matches) {
+      conceal();
+      return;
+    }
+
+    concealTimer = window.setTimeout(conceal, 180);
+  };
+
+  const scheduleDiscoveryDismissal = (delay = 7000) => {
+    if (!discovery || discovery.hidden) {
+      return;
+    }
+
+    window.clearTimeout(discoveryTimer);
+    discoveryTimer = window.setTimeout(() => {
+      const hasPointer = discovery.matches(":hover");
+      const hasFocus = discovery.contains(document.activeElement);
+
+      if (!hasPointer && !hasFocus) {
+        hideDiscovery();
+      }
+    }, delay);
+  };
+
+  const revealDiscovery = () => {
+    if (!discovery) {
+      return;
+    }
+
+    window.clearTimeout(concealTimer);
+    discovery.hidden = false;
+
+    if (reduceMotion.matches) {
+      discovery.classList.add("is-visible");
+    } else {
+      window.requestAnimationFrame(() => discovery.classList.add("is-visible"));
+    }
+
+    scheduleDiscoveryDismissal();
+  };
+
+  if (discovery) {
+    const pauseDismissal = () => {
+      window.clearTimeout(discoveryTimer);
+      window.clearTimeout(concealTimer);
+      discovery.classList.add("is-visible");
+    };
+
+    discovery.addEventListener("pointerenter", pauseDismissal);
+    discovery.addEventListener("pointerleave", () => scheduleDiscoveryDismissal(3000));
+    discovery.addEventListener("focusin", pauseDismissal);
+    discovery.addEventListener("focusout", () => {
+      window.requestAnimationFrame(() => {
+        if (!discovery.contains(document.activeElement)) {
+          scheduleDiscoveryDismissal(3000);
+        }
+      });
+    });
+  }
+
+  document.querySelectorAll("[data-face-trigger]").forEach((trigger) => {
+    trigger.addEventListener("pointerdown", () => showReaction(trigger));
+    trigger.addEventListener("click", (event) => {
+      if (event.detail === 0) {
+        showReaction(trigger);
+      }
+
+      const now = window.performance.now();
+      activationTimes = activationTimes.filter((time) => now - time <= 5000);
+      activationTimes.push(now);
+
+      if (activationTimes.length >= 3) {
+        revealDiscovery();
+      }
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !discovery || discovery.hidden) {
+      return;
+    }
+
+    hideDiscovery(true);
+  });
+}
+
+function initSystemXray() {
+  const toggle = document.querySelector("[data-system-xray-toggle]");
+  const panel = document.querySelector("#system-xray");
+  const close = panel?.querySelector("[data-system-xray-close]");
+
+  if (!toggle || !panel || !close) {
+    return;
+  }
+
+  const rootStyles = window.getComputedStyle(document.documentElement);
+  const header = document.querySelector(".site-header");
+  const bodyStyles = window.getComputedStyle(document.body);
+  const values = {
+    header: header ? window.getComputedStyle(header).minHeight : "68px",
+    gutter: rootStyles.getPropertyValue("--site-page-gutter").trim(),
+    line: rootStyles.getPropertyValue("--line-soft").trim(),
+    motion: rootStyles.getPropertyValue("--motion-smooth").trim(),
+    type: bodyStyles.fontFamily.split(",")[0].replace(/[\"']/g, ""),
+    preference: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "Reduced" : "Standard"
+  };
+
+  panel.querySelectorAll("[data-system-value]").forEach((value) => {
+    value.textContent = values[value.dataset.systemValue] || value.textContent;
+  });
+
+  const setOpen = (isOpen, restoreFocus = false) => {
+    panel.hidden = !isOpen;
+    toggle.setAttribute("aria-expanded", String(isOpen));
+
+    if (isOpen) {
+      close.focus();
+      return;
+    }
+
+    if (restoreFocus) {
+      toggle.focus();
+    }
+  };
+
+  toggle.addEventListener("click", () => setOpen(panel.hidden));
+  close.addEventListener("click", () => setOpen(false, true));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !panel.hidden) {
+      setOpen(false, true);
+    }
+  });
 }
 
 function normalizePath(pathname) {
