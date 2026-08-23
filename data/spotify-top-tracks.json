@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-22T15:39:52.501Z",
+  "updatedAt": "2026-08-23T15:41:15.116Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -96,15 +96,14 @@
       "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
     },
     {
-      "id": "5YUSR9XCo9nf8TxObGSrl7",
-      "name": "Dream Team",
+      "id": "7xSm07mkWui2K3XkwUTgFi",
+      "name": "NO LUCK",
       "artists": [
-        "Young Miko",
-        "De La Rose"
+        "Tiffany Day"
       ],
-      "album": "Do Not Disturb: Late Checkout",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739c8aeb68e2d5cb49ede9fe55",
-      "spotifyUrl": "https://open.spotify.com/track/5YUSR9XCo9nf8TxObGSrl7"
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/7xSm07mkWui2K3XkwUTgFi"
     }
   ]
 }
