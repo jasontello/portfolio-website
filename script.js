@@ -303,6 +303,8 @@ function initCurrentPageLinks() {
 
 function initNameFaceReaction() {
   let resetTimer;
+  let discoveryTimer;
+  let concealTimer;
   let activationTimes = [];
   const discovery = document.querySelector("[data-face-discovery]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -333,20 +335,79 @@ function initNameFaceReaction() {
     }, 850);
   };
 
-  const revealDiscovery = () => {
-    if (!discovery || !discovery.hidden) {
+  const hideDiscovery = (immediate = false) => {
+    if (!discovery || discovery.hidden) {
       return;
     }
 
+    window.clearTimeout(discoveryTimer);
+    window.clearTimeout(concealTimer);
+    discovery.classList.remove("is-visible");
+
+    const conceal = () => {
+      discovery.hidden = true;
+      activationTimes = [];
+    };
+
+    if (immediate || reduceMotion.matches) {
+      conceal();
+      return;
+    }
+
+    concealTimer = window.setTimeout(conceal, 180);
+  };
+
+  const scheduleDiscoveryDismissal = (delay = 7000) => {
+    if (!discovery || discovery.hidden) {
+      return;
+    }
+
+    window.clearTimeout(discoveryTimer);
+    discoveryTimer = window.setTimeout(() => {
+      const hasPointer = discovery.matches(":hover");
+      const hasFocus = discovery.contains(document.activeElement);
+
+      if (!hasPointer && !hasFocus) {
+        hideDiscovery();
+      }
+    }, delay);
+  };
+
+  const revealDiscovery = () => {
+    if (!discovery) {
+      return;
+    }
+
+    window.clearTimeout(concealTimer);
     discovery.hidden = false;
 
     if (reduceMotion.matches) {
       discovery.classList.add("is-visible");
-      return;
+    } else {
+      window.requestAnimationFrame(() => discovery.classList.add("is-visible"));
     }
 
-    window.requestAnimationFrame(() => discovery.classList.add("is-visible"));
+    scheduleDiscoveryDismissal();
   };
+
+  if (discovery) {
+    const pauseDismissal = () => {
+      window.clearTimeout(discoveryTimer);
+      window.clearTimeout(concealTimer);
+      discovery.classList.add("is-visible");
+    };
+
+    discovery.addEventListener("pointerenter", pauseDismissal);
+    discovery.addEventListener("pointerleave", () => scheduleDiscoveryDismissal(3000));
+    discovery.addEventListener("focusin", pauseDismissal);
+    discovery.addEventListener("focusout", () => {
+      window.requestAnimationFrame(() => {
+        if (!discovery.contains(document.activeElement)) {
+          scheduleDiscoveryDismissal(3000);
+        }
+      });
+    });
+  }
 
   document.querySelectorAll("[data-face-trigger]").forEach((trigger) => {
     trigger.addEventListener("pointerdown", () => showReaction(trigger));
@@ -370,9 +431,7 @@ function initNameFaceReaction() {
       return;
     }
 
-    discovery.hidden = true;
-    discovery.classList.remove("is-visible");
-    activationTimes = [];
+    hideDiscovery(true);
   });
 }
 
