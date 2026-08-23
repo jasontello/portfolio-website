@@ -68,8 +68,12 @@
   let fragmentCount = 0;
   let frameId = 0;
   let lastTime = 0;
+  let lastDrawTime = 0;
   let lastClockSecond = -1;
+  let lastPointerInput = 0;
+  let fieldTransition = null;
   let visible = !document.hidden;
+  const frameInterval = 1000 / 30;
 
   function resize() {
     width = window.innerWidth;
@@ -117,7 +121,7 @@
     context.save();
     context.textAlign = "center";
     context.textBaseline = "middle";
-    context.font = `${mobile ? 7 : 8}px "DM Mono", monospace`;
+    context.font = `${mobile ? 7 : 8}px "DM Mono", "SFMono-Regular", monospace`;
 
     for (let index = 0; index < total; index += 1) {
       const row = Math.floor(index / columns);
@@ -204,11 +208,23 @@
 
     const delta = Math.min(32, time - lastTime || 16.7);
     lastTime = time;
+
+    if (pointer.active && time - lastPointerInput > 1500) {
+      pointer.active = false;
+      pointer.targetX = width * 0.52;
+      pointer.targetY = height * 0.48;
+    }
+
     const easing = 1 - Math.pow(0.001, delta / 1000);
     pointer.x += (pointer.targetX - pointer.x) * easing * 3.4;
     pointer.y += (pointer.targetY - pointer.y) * easing * 3.4;
-    updateClock(time);
-    draw(time);
+
+    if (time - lastDrawTime >= frameInterval) {
+      lastDrawTime = time - (time - lastDrawTime) % frameInterval;
+      updateClock(time);
+      draw(time);
+    }
+
     frameId = window.requestAnimationFrame(animate);
   }
 
@@ -216,6 +232,7 @@
     pointer.targetX = event.clientX;
     pointer.targetY = event.clientY;
     pointer.active = true;
+    lastPointerInput = performance.now();
 
     const xPercent = Math.max(0, Math.min(100, event.clientX / width * 100));
     const yPercent = Math.max(0, Math.min(100, event.clientY / height * 100));
@@ -239,6 +256,20 @@
     if (elements.fragmentCopy instanceof HTMLElement) elements.fragmentCopy.textContent = state.fragment;
     if (elements.fragment instanceof HTMLElement) elements.fragment.classList.add("is-visible");
     if (elements.fragmentId instanceof HTMLElement) elements.fragmentId.textContent = String(fragmentCount).padStart(3, "0");
+    stage.setAttribute("aria-label", `${state.name}. Activate to shift the data field to its next editorial state.`);
+
+    if (!reducedMotion.matches && typeof canvas.animate === "function") {
+      fieldTransition?.cancel();
+      fieldTransition = canvas.animate([
+        { opacity: 1, offset: 0 },
+        { opacity: 0.28, offset: 0.34 },
+        { opacity: 1, offset: 1 }
+      ], {
+        duration: 720,
+        easing: "cubic-bezier(0.65, 0, 0.35, 1)"
+      });
+    }
+
     draw(performance.now());
   }
 
@@ -273,6 +304,7 @@
     window.cancelAnimationFrame(frameId);
     if (visible && !reducedMotion.matches) {
       lastTime = performance.now();
+      lastDrawTime = 0;
       frameId = window.requestAnimationFrame(animate);
     } else {
       draw(performance.now());
@@ -285,6 +317,7 @@
       draw(0);
     } else if (visible) {
       lastTime = performance.now();
+      lastDrawTime = 0;
       frameId = window.requestAnimationFrame(animate);
     }
   }
@@ -299,6 +332,7 @@
 
   window.addEventListener("pagehide", () => {
     window.cancelAnimationFrame(frameId);
+    fieldTransition?.cancel();
     window.removeEventListener("resize", resize);
     window.removeEventListener("pointermove", updatePointer);
     window.removeEventListener("pointerdown", updatePointer);

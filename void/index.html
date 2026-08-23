@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#f4f4ef">
     <title>Void | Jason Tello</title>
     <link rel="icon" type="image/png" href="../images/favicon-head.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./void.css">
+    <link rel="stylesheet" href="./void.css?v=editorial-polish-1">
   </head>
   <body>
     <canvas class="data-field" data-field aria-hidden="true"></canvas>
@@ -61,7 +61,10 @@
         <div class="fragment-scale" aria-hidden="true"><span></span></div>
       </section>
 
-      <p class="interaction-note">MOVE TO DISTURB<br>PRESS TO SHIFT</p>
+      <p class="interaction-note">
+        <span class="interaction-note__desktop">MOVE TO DISTURB<br>PRESS TO SHIFT</span>
+        <span class="interaction-note__mobile">DRAG TO DISTURB<br>TAP TO SHIFT</span>
+      </p>
 
       <div class="state-caption" aria-hidden="true">
         <span data-state-name>QUIET FIELD</span>
@@ -69,6 +72,6 @@
       </div>
     </main>
 
-    <script src="./void.js" defer></script>
+    <script src="./void.js?v=editorial-polish-1" defer></script>
   </body>
 </html>
