@@ -108,6 +108,11 @@ body[data-state="inverse"] .paper-grain {
 
 .return-link {
   position: relative;
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0 4px;
+  margin: -17px -4px;
   text-decoration: none;
 }
 
@@ -115,7 +120,7 @@ body[data-state="inverse"] .paper-grain {
   content: "";
   position: absolute;
   right: 0;
-  bottom: -5px;
+  bottom: 11px;
   left: 0;
   height: 1px;
   background: currentColor;

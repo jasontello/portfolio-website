@@ -1,3 +1,5 @@
+const portfolioAssistantBase = new URL(".", document.currentScript?.src || document.baseURI);
+
 document.addEventListener("DOMContentLoaded", initPortfolioAssistant);
 
 function initPortfolioAssistant() {
@@ -14,8 +16,8 @@ function initPortfolioAssistant() {
     <button class="portfolio-agent__launcher" type="button" aria-expanded="false" aria-controls="portfolio-agent-panel">
       <span class="portfolio-agent__launcher-label" aria-hidden="true">ASK ABOUT JASON</span>
       <span class="portfolio-agent__pet" aria-hidden="true">
-        <img class="portfolio-agent__pet-image portfolio-agent__pet-image--idle" src="./images/portfolio-assistant/index-idle.png" alt="">
-        <img class="portfolio-agent__pet-image portfolio-agent__pet-image--thinking" src="./images/portfolio-assistant/index-thinking.png" alt="">
+        <img class="portfolio-agent__pet-image portfolio-agent__pet-image--idle" src="${new URL("images/portfolio-assistant/index-idle.png", portfolioAssistantBase)}" alt="">
+        <img class="portfolio-agent__pet-image portfolio-agent__pet-image--thinking" src="${new URL("images/portfolio-assistant/index-thinking.png", portfolioAssistantBase)}" alt="">
       </span>
       <span class="sr-only">Open the portfolio assistant</span>
     </button>
@@ -112,7 +114,7 @@ function initPortfolioAssistant() {
     if (path.includes("bizznest-personal-links-builder")) return "bizznest";
     if (path.includes("music")) return "music";
     if (path.includes("design-system")) return "style-guide";
-    if (path.includes("sandbox")) return "experiments";
+    if (path.includes("sandbox") || path.includes("/void/")) return "experiments";
     if (hash === "#experiments" || document.body.dataset.workFilter === "experiments") return "experiments";
     if (path.endsWith("/") || path.endsWith("/index.html") || path.endsWith("index.html")) return "home";
     return "global";
@@ -205,15 +207,15 @@ function initPortfolioAssistant() {
 
     sourceItems.forEach((source, index) => {
       const link = document.createElement("a");
-      link.href = source.href;
+      link.href = new URL(source.href, portfolioAssistantBase);
       link.textContent = `${String(index + 1).padStart(2, "0")} / ${source.label}`;
       sourceList.appendChild(link);
     });
 
     if (entry?.project) {
       if (entry.project.image) {
-        matchLink.href = entry.project.href;
-        matchImage.src = entry.project.image;
+        matchLink.href = new URL(entry.project.href, portfolioAssistantBase);
+        matchImage.src = new URL(entry.project.image, portfolioAssistantBase);
         matchImage.alt = "";
         matchTitle.textContent = entry.project.title || entry.project.label;
         matchLabel.textContent = entry.project.label;
@@ -300,7 +302,7 @@ function initPortfolioAssistant() {
   });
   window.addEventListener("hashchange", updateContext);
 
-  fetch(new URL("./data/portfolio-assistant-knowledge.json", document.baseURI))
+  fetch(new URL("data/portfolio-assistant-knowledge.json", portfolioAssistantBase))
     .then((response) => {
       if (!response.ok) throw new Error(`Portfolio index failed with ${response.status}`);
       return response.json();
