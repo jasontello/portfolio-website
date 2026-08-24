@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f4f4ef">
+    <title>Void | Jason Tello</title>
+    <link rel="icon" type="image/png" href="../images/favicon-head.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./void.css?v=editorial-polish-1">
+  </head>
+  <body>
+    <canvas class="data-field" data-field aria-hidden="true"></canvas>
+    <div class="paper-grain" aria-hidden="true"></div>
+
+    <header class="void-header">
+      <a class="return-link" href="../index.html" data-return>RETURN</a>
+      <p class="running-note" aria-hidden="true">
+        <span data-running-note>FIELD IS LISTENING</span>
+        <span class="running-line"></span>
+      </p>
+    </header>
+
+    <main class="data-stage" data-stage tabindex="0" role="button" aria-label="Shift the data field to its next editorial state">
+      <h1 class="sr-only">Void, an interactive data field</h1>
+
+      <p class="field-word" aria-hidden="true">
+        <span>UN</span>
+        <span>FOLD</span>
+      </p>
+
+      <section class="system-window system-window--reading" aria-label="Live field reading">
+        <div class="window-rule">
+          <span>READING</span>
+          <span data-state-index>01 / 03</span>
+        </div>
+        <dl class="reading-grid">
+          <div>
+            <dt>X</dt>
+            <dd data-coordinate-x>050.0</dd>
+          </div>
+          <div>
+            <dt>Y</dt>
+            <dd data-coordinate-y>050.0</dd>
+          </div>
+          <div>
+            <dt>FIELD</dt>
+            <dd data-field-mode>QUIET</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="system-window system-window--fragment" data-fragment aria-label="Diagnostic fragment" aria-live="polite">
+        <div class="window-rule">
+          <span>FRAGMENT</span>
+          <span data-fragment-id>000</span>
+        </div>
+        <p data-fragment-copy>Touch the formation to displace its reading.</p>
+        <div class="fragment-scale" aria-hidden="true"><span></span></div>
+      </section>
+
+      <p class="interaction-note">
+        <span class="interaction-note__desktop">MOVE TO DISTURB<br>PRESS TO SHIFT</span>
+        <span class="interaction-note__mobile">DRAG TO DISTURB<br>TAP TO SHIFT</span>
+      </p>
+
+      <div class="state-caption" aria-hidden="true">
+        <span data-state-name>QUIET FIELD</span>
+        <span data-time>00:00:00</span>
+      </div>
+    </main>
+
+    <script src="./void.js?v=editorial-polish-1" defer></script>
+  </body>
+</html>
