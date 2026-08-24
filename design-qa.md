@@ -90,6 +90,14 @@ No actionable P0, P1, or P2 differences remain.
 - [P3] A future asset pass could add a dedicated presenting pose. The current implementation uses the approved idle image with a small state transform after an answer.
 - [P3] The source mock uses a narrow mechanical `INDEX` tab. The implementation intentionally replaces that control with the selected pet launcher, which is the user's requested product change.
 
+### Mascot hover-pose pass
+
+- Added three identity-matched transparent PNG poses: curious lean, small wave, and eager ready.
+- Normal pointer hover and keyboard focus play one restrained `1.4s` pose sequence, then settle on the wave instead of looping indefinitely.
+- Reduced-motion mode changes directly to the static wave pose.
+- All three assets use the same `380 x 420` transparent canvas and bottom alignment, avoiding frame-size and baseline popping.
+- Desktop and `390 x 844` mobile checks showed no horizontal overflow or broken pose assets. A fresh browser load produced no console errors.
+
 ## Verification checklist
 
 - `node --check script.js`: passed
