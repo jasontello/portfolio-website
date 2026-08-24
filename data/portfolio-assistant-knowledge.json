@@ -1,0 +1,235 @@
+{
+  "assistant": {
+    "name": "Index",
+    "description": "A grounded guide to Jason Tello's approved portfolio material.",
+    "welcome": "Ask about Jason's projects, design process, experience, education, tools, or experiments. Answers link back to the portfolio material they use.",
+    "fallback": "The approved portfolio does not contain enough information to answer that. Try asking about Jason's projects, experience, education, tools, AI-assisted process, or experiments."
+  },
+  "contexts": {
+    "global": {
+      "label": "GLOBAL",
+      "starters": [
+        "What kind of designer is Jason?",
+        "Which project should I view first?",
+        "How does Jason use AI?"
+      ]
+    },
+    "home": {
+      "label": "SELECTED WORK",
+      "starters": [
+        "Which project shows UX thinking?",
+        "Show me stakeholder feedback",
+        "What is Jason experimenting with?"
+      ]
+    },
+    "funfetti": {
+      "label": "FUNFETTI",
+      "starters": [
+        "Why did the visual direction change?",
+        "How did Jason improve booking?",
+        "What was the project outcome?"
+      ]
+    },
+    "open-source-san-jose": {
+      "label": "OPEN SOURCE SAN JOSE",
+      "starters": [
+        "What problem did this redesign address?",
+        "How did Jason improve discovery?",
+        "What accessibility work is shown?"
+      ]
+    },
+    "bizznest": {
+      "label": "BIZZNEST",
+      "starters": [
+        "How was AI used on this project?",
+        "What interaction system did Jason design?",
+        "Was this project user tested?"
+      ]
+    },
+    "music": {
+      "label": "MUSIC",
+      "starters": [
+        "What is this music page?",
+        "Where can I see Jason's recent tracks?",
+        "Show me another portfolio experiment"
+      ]
+    },
+    "style-guide": {
+      "label": "STYLE GUIDE",
+      "starters": [
+        "What visual system does this site use?",
+        "What typography does the portfolio use?",
+        "Which projects show interaction design?"
+      ]
+    },
+    "experiments": {
+      "label": "EXPERIMENTS",
+      "starters": [
+        "What does Jason do with creative coding?",
+        "Show me something experimental",
+        "What is Rainbow Lab?"
+      ]
+    }
+  },
+  "entries": [
+    {
+      "id": "designer-profile",
+      "keywords": ["what kind", "designer", "design focus", "about jason", "who is jason"],
+      "answer": "Jason is a Bay Area product designer focused on thoughtful interaction, clear visual systems, responsive UI, information architecture, and accessibility principles. His portfolio pairs product thinking with hands-on HTML, CSS, and JavaScript prototyping.",
+      "sources": [
+        {"label": "Portfolio introduction", "href": "./index.html"},
+        {"label": "Resume", "href": "./documents/Jason_Tello_Resume.pdf"}
+      ]
+    },
+    {
+      "id": "project-first",
+      "keywords": ["view first", "look at first", "start with", "recommend a project", "strongest ux", "ux thinking", "best project"],
+      "answer": "Funfetti is a strong place to start for end-to-end UX thinking. It shows a site audit, a booking-focused user flow, iteration after stakeholder feedback, and a final responsive direction. Open Source San Jose is the stronger follow-up for information architecture and civic-tech accessibility.",
+      "sources": [
+        {"label": "Funfetti case study", "href": "./funfetti-events-case-study.html"},
+        {"label": "Open Source San Jose", "href": "./open-source-san-jose-case-study.html"}
+      ],
+      "project": {"label": "View Funfetti", "title": "Funfetti Events Website Redesign", "href": "./funfetti-events-case-study.html", "image": "./images/projects/funfetti-events/preview-board.png"}
+    },
+    {
+      "id": "stakeholder-feedback",
+      "keywords": ["stakeholder", "feedback", "more color", "visual energy", "visual direction", "why did", "why change", "direction change"],
+      "contexts": ["funfetti"],
+      "answer": "The first Funfetti direction improved structure but still felt too restrained for the business. Stakeholder feedback asked for more color and visual energy, so Jason moved toward a brighter illustration-led system while keeping the service and quote path clear.",
+      "sources": [
+        {"label": "Funfetti case study", "href": "./funfetti-events-case-study.html#insight-title"},
+        {"label": "Resume", "href": "./documents/Jason_Tello_Resume.pdf"}
+      ],
+      "project": {"label": "View Funfetti", "title": "Funfetti Events Website Redesign", "href": "./funfetti-events-case-study.html", "image": "./images/projects/funfetti-events/preview-board.png"}
+    },
+    {
+      "id": "funfetti-booking",
+      "keywords": ["booking", "quote", "service discovery", "improve booking", "funfetti"],
+      "contexts": ["funfetti"],
+      "answer": "Jason treated the Funfetti homepage as a decision path: explain the business, separate service categories, build trust with event imagery, and make requesting a quote easy to find. The final concept includes clearer service discovery and a guided planning estimator.",
+      "sources": [
+        {"label": "Funfetti user flow", "href": "./funfetti-events-case-study.html#planning-title"},
+        {"label": "Funfetti final direction", "href": "./funfetti-events-case-study.html#solution-title"}
+      ],
+      "project": {"label": "View Funfetti", "title": "Funfetti Events Website Redesign", "href": "./funfetti-events-case-study.html", "image": "./images/projects/funfetti-events/preview-board.png"}
+    },
+    {
+      "id": "funfetti-outcome",
+      "keywords": ["funfetti outcome", "project outcome", "result", "what happened"],
+      "contexts": ["funfetti"],
+      "answer": "The portfolio documents a redesigned homepage and contact path, a clearer service structure, and a more energetic visual direction. It does not claim measured conversion gains or formal usability-test results.",
+      "sources": [
+        {"label": "Funfetti outcome", "href": "./funfetti-events-case-study.html#summary-title"}
+      ],
+      "project": {"label": "View outcome", "title": "Funfetti Events Website Redesign", "href": "./funfetti-events-case-study.html#summary-title", "image": "./images/projects/funfetti-events/preview-board.png"}
+    },
+    {
+      "id": "open-source-project",
+      "keywords": ["open source san jose", "civic tech", "nonprofit", "project discovery", "volunteer", "community"],
+      "contexts": ["open-source-san-jose"],
+      "answer": "The Open Source San Jose redesign reorganizes the nonprofit homepage around mission, community impact, programs, and clearer ways to get involved. Jason focused on hierarchy, project discovery, readable navigation, responsive behavior, and volunteer conversion.",
+      "sources": [
+        {"label": "Open Source San Jose case study", "href": "./open-source-san-jose-case-study.html"},
+        {"label": "Resume", "href": "./documents/Jason_Tello_Resume.pdf"}
+      ],
+      "project": {"label": "View Open Source San Jose", "title": "Open Source San Jose Redesign", "href": "./open-source-san-jose-case-study.html", "image": "./images/projects/open-source-san-jose/preview-board.png"}
+    },
+    {
+      "id": "accessibility",
+      "keywords": ["accessibility", "accessible", "readability", "mobile navigation"],
+      "contexts": ["open-source-san-jose", "bizznest"],
+      "answer": "Jason's portfolio describes accessibility as part of responsive product work: clearer hierarchy and navigation, readable content, keyboard and focus states, and layouts reviewed across desktop and mobile. The available material presents design decisions, not a formal accessibility certification.",
+      "sources": [
+        {"label": "Open Source San Jose", "href": "./open-source-san-jose-case-study.html"},
+        {"label": "BizzNEST responsive QA", "href": "./bizznest-personal-links-builder.html#responsive-title"},
+        {"label": "Resume", "href": "./documents/Jason_Tello_Resume.pdf"}
+      ]
+    },
+    {
+      "id": "ai-process",
+      "keywords": ["use ai", "uses ai", "ai process", "codex", "ai-assisted", "artificial intelligence"],
+      "contexts": ["bizznest", "funfetti"],
+      "answer": "Jason uses AI as a prototyping and implementation partner. The portfolio says he directs Codex, reviews HTML, CSS, and JavaScript output, tests responsive behavior, and remains responsible for product decisions and final quality.",
+      "sources": [
+        {"label": "BizzNEST AI-assisted process", "href": "./bizznest-personal-links-builder.html#ai-process-title"},
+        {"label": "Resume", "href": "./documents/Jason_Tello_Resume.pdf"}
+      ],
+      "project": {"label": "View BizzNEST", "title": "BizzNEST Personal Links Builder", "href": "./bizznest-personal-links-builder.html", "image": "./images/projects/bizznest/state-02-public-list-poster.png"}
+    },
+    {
+      "id": "bizznest-interaction",
+      "keywords": ["bizznest", "links builder", "interaction system", "edit mode", "reorderable", "personal profile"],
+      "contexts": ["bizznest"],
+      "answer": "For BizzNEST, Jason designed an edit mode that lets someone change profile content, colors, links, and layout while seeing the result in place. The project also covers reorderable content, responsive grid and list layouts, accessible states, and browser QA.",
+      "sources": [
+        {"label": "BizzNEST project breakdown", "href": "./bizznest-personal-links-builder.html"}
+      ],
+      "project": {"label": "View BizzNEST", "title": "BizzNEST Personal Links Builder", "href": "./bizznest-personal-links-builder.html", "image": "./images/projects/bizznest/state-02-public-list-poster.png"}
+    },
+    {
+      "id": "bizznest-validation",
+      "keywords": ["user tested", "user research", "validated", "metrics", "formal research"],
+      "contexts": ["bizznest"],
+      "answer": "The BizzNEST project has not been validated through formal user research, usability testing, or outcome metrics. The portfolio labels that limitation directly.",
+      "sources": [
+        {"label": "BizzNEST outcome", "href": "./bizznest-personal-links-builder.html#outcome-title"}
+      ]
+    },
+    {
+      "id": "education",
+      "keywords": ["education", "studying", "study", "school", "degree", "university", "college", "biology", "computer science"],
+      "answer": "Jason's resume lists a Bachelor of Arts in Biology from the University of California, Merced, completed in May 2025 with a 3.7 GPA. It also lists a Bachelor of Science in Computer Science from Western Governors University dated January 2026.",
+      "sources": [
+        {"label": "Resume", "href": "./documents/Jason_Tello_Resume.pdf"}
+      ]
+    },
+    {
+      "id": "experience",
+      "keywords": ["experience", "work history", "employment", "job", "career", "computer care", "bereal", "extern"],
+      "answer": "Jason's approved resume lists experience as an IT Asset Management Coordinator at ComputerCare and as a Product Innovation Extern with BeReal. The roles cover operational systems and troubleshooting, plus social-product concept work, competitive analysis, journey mapping, prototyping, and iterative feedback.",
+      "sources": [
+        {"label": "Resume", "href": "./documents/Jason_Tello_Resume.pdf"}
+      ]
+    },
+    {
+      "id": "tools",
+      "keywords": ["tools", "skills", "figma", "html", "css", "javascript", "jira", "github"],
+      "answer": "The resume lists Figma, GitHub, Jira, Google Workspace, Microsoft Office, NetSuite, ShipJunction, and FedEx Ship Manager. It also describes HTML, CSS, and JavaScript literacy, browser debugging, responsive layout review, information architecture, interaction design, and accessibility principles.",
+      "sources": [
+        {"label": "Resume", "href": "./documents/Jason_Tello_Resume.pdf"}
+      ]
+    },
+    {
+      "id": "experiments",
+      "keywords": ["creative coding", "experiment", "experimental", "something weird", "surprise me", "rainbow lab", "ink symbiote", "hourglass"],
+      "contexts": ["experiments"],
+      "answer": "Jason's experiments use the browser as a material. Rainbow Lab explores square-based color palettes, Ink Symbiote is a pointer-reactive liquid ink field, and Hourglass Poster studies falling sand, grain, and shifting mass.",
+      "sources": [
+        {"label": "Portfolio experiments", "href": "./index.html#experiments"},
+        {"label": "Ink Symbiote", "href": "./sandbox-ink.html"},
+        {"label": "Hourglass Poster", "href": "./sandbox-poster.html"}
+      ],
+      "project": {"label": "Open experiments", "title": "Portfolio Experiments", "href": "./sandbox.html", "image": "./images/hourglass-preview.png"}
+    },
+    {
+      "id": "music",
+      "keywords": ["music", "listening", "spotify", "tracks", "songs"],
+      "contexts": ["music"],
+      "answer": "Jason's Music page shows what he is currently listening to and includes a recent top-tracks board with Spotify links. Because that data can refresh, the page itself is the source of truth for the current list.",
+      "sources": [
+        {"label": "Music", "href": "./music.html"}
+      ],
+      "project": {"label": "Open Music", "title": "Music", "href": "./music.html", "image": "./images/music/cd-transparent.png"}
+    },
+    {
+      "id": "visual-system",
+      "keywords": ["visual system", "style guide", "design system", "typography", "font", "colors", "portfolio style"],
+      "contexts": ["style-guide"],
+      "answer": "The portfolio uses Space Grotesk for primary interface typography and DM Mono for compact metadata. Its visual language is mostly monochrome, with off-white paper texture, black ink, thin dividers, square geometry, restrained motion, and color concentrated inside project imagery.",
+      "sources": [
+        {"label": "Style Guide", "href": "./design-system.html"}
+      ],
+      "project": {"label": "View Style Guide", "title": "Portfolio Style Guide", "href": "./design-system.html", "image": "./images/face.png"}
+    }
+  ]
+}
