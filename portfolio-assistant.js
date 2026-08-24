@@ -17,9 +17,7 @@ function initPortfolioAssistant() {
       <span class="portfolio-agent__launcher-label" aria-hidden="true">ASK ABOUT JASON</span>
       <span class="portfolio-agent__pet" aria-hidden="true">
         <img class="portfolio-agent__pet-image portfolio-agent__pet-image--idle" src="${new URL("images/portfolio-assistant/index-idle.png", portfolioAssistantBase)}" alt="">
-        <img class="portfolio-agent__pet-image portfolio-agent__pet-image--hover portfolio-agent__pet-image--curious" src="${new URL("images/portfolio-assistant/index-hover-curious.png", portfolioAssistantBase)}" alt="">
-        <img class="portfolio-agent__pet-image portfolio-agent__pet-image--hover portfolio-agent__pet-image--wave" src="${new URL("images/portfolio-assistant/index-hover-wave.png", portfolioAssistantBase)}" alt="">
-        <img class="portfolio-agent__pet-image portfolio-agent__pet-image--hover portfolio-agent__pet-image--ready" src="${new URL("images/portfolio-assistant/index-hover-ready.png", portfolioAssistantBase)}" alt="">
+        <span class="portfolio-agent__pet-wave" style="--portfolio-agent-wave-sprite: url('${new URL("images/portfolio-assistant/index-hover-wave-strip.png", portfolioAssistantBase)}')"></span>
         <img class="portfolio-agent__pet-image portfolio-agent__pet-image--thinking" src="${new URL("images/portfolio-assistant/index-thinking.png", portfolioAssistantBase)}" alt="">
       </span>
       <span class="sr-only">Open the portfolio assistant</span>
