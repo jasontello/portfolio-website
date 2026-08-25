@@ -260,6 +260,20 @@ function insufficientPayload() {
   };
 }
 
+function extractOutputText(response) {
+  if (typeof response?.output_text === "string") return response.output_text;
+
+  for (const item of response?.output || []) {
+    for (const content of item?.content || []) {
+      if (content?.type === "output_text" && typeof content.text === "string") {
+        return content.text;
+      }
+    }
+  }
+
+  return "";
+}
+
 async function askOpenAI({ question, context, safetyIdentifier, fetchImpl = fetch }) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
@@ -306,8 +320,9 @@ async function askOpenAI({ question, context, safetyIdentifier, fetchImpl = fetc
     }
 
     const response = await upstream.json();
-    if (!response.output_text) throw new Error("openai_empty_response");
-    const modelResult = JSON.parse(response.output_text);
+    const outputText = extractOutputText(response);
+    if (!outputText) throw new Error("openai_empty_response");
+    const modelResult = JSON.parse(outputText);
     return groundedPayload(modelResult) || insufficientPayload();
   } finally {
     clearTimeout(timeout);
@@ -387,6 +402,7 @@ module.exports._test = {
   RATE_LIMITS,
   askOpenAI,
   checkRateLimits,
+  extractOutputText,
   groundedPayload,
   insufficientPayload,
   normalizeQuestion,

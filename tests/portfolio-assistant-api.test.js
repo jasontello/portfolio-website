@@ -78,11 +78,18 @@ test("sends a bounded, tool-free structured request to OpenAI", async () => {
     return {
       ok: true,
       json: async () => ({
-        output_text: JSON.stringify({
-          status: "grounded",
-          answer: "Jason works across product thinking and hands-on prototyping.",
-          source_ids: ["designer-profile"]
-        })
+        output: [{
+          type: "message",
+          status: "completed",
+          content: [{
+            type: "output_text",
+            text: JSON.stringify({
+              status: "grounded",
+              answer: "Jason works across product thinking and hands-on prototyping.",
+              source_ids: ["designer-profile"]
+            })
+          }]
+        }]
       })
     };
   };
