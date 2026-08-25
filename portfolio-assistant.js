@@ -45,6 +45,48 @@ function initPortfolioAssistant() {
 
         <section class="portfolio-agent__result" data-agent-result aria-live="polite" aria-busy="false" hidden>
           <p class="portfolio-agent__question" data-agent-question></p>
+          <section class="portfolio-agent__diagnostic" data-agent-diagnostic hidden aria-label="Portfolio search progress">
+            <p class="portfolio-agent__diagnostic-label">PACKET ROUTE</p>
+            <ol class="portfolio-agent__diagnostic-stages">
+              <li class="portfolio-agent__diagnostic-stage" data-agent-stage data-status="waiting">
+                <span class="portfolio-agent__stage-index">01</span>
+                <span class="portfolio-agent__stage-name">Parse query</span>
+                <span class="portfolio-agent__stage-time">018 ms</span>
+                <span class="portfolio-agent__stage-status">WAIT</span>
+              </li>
+              <li class="portfolio-agent__diagnostic-stage" data-agent-stage data-status="waiting">
+                <span class="portfolio-agent__stage-index">02</span>
+                <span class="portfolio-agent__stage-name">Scan index</span>
+                <span class="portfolio-agent__stage-time">042 ms</span>
+                <span class="portfolio-agent__stage-status">WAIT</span>
+              </li>
+              <li class="portfolio-agent__diagnostic-stage" data-agent-stage data-status="waiting">
+                <span class="portfolio-agent__stage-index">03</span>
+                <span class="portfolio-agent__stage-name">Rank match</span>
+                <span class="portfolio-agent__stage-time">063 ms</span>
+                <span class="portfolio-agent__stage-status">WAIT</span>
+              </li>
+              <li class="portfolio-agent__diagnostic-stage" data-agent-stage data-status="waiting">
+                <span class="portfolio-agent__stage-index">04</span>
+                <span class="portfolio-agent__stage-name">Ground answer</span>
+                <span class="portfolio-agent__stage-time">--- ms</span>
+                <span class="portfolio-agent__stage-status">WAIT</span>
+              </li>
+            </ol>
+            <img class="portfolio-agent__diagnostic-pet" src="${new URL("images/portfolio-assistant/index-thinking.png", portfolioAssistantBase)}" alt="" aria-hidden="true">
+            <div class="portfolio-agent__diagnostic-preview" aria-hidden="true">
+              <p>Resolving answer</p>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="portfolio-agent__diagnostic-source-preview" aria-hidden="true">
+              <p>Sources</p>
+              <span>Preparing source 01</span>
+              <span>Preparing source 02</span>
+            </div>
+            <p class="sr-only" data-agent-progress-live></p>
+          </section>
           <div class="portfolio-agent__answer-block">
             <p class="portfolio-agent__answer-meta" data-agent-answer-meta>ANSWER</p>
             <p class="portfolio-agent__answer" data-agent-answer></p>
@@ -92,6 +134,9 @@ function initPortfolioAssistant() {
   const questionOutput = root.querySelector("[data-agent-question]");
   const answerMeta = root.querySelector("[data-agent-answer-meta]");
   const answerOutput = root.querySelector("[data-agent-answer]");
+  const diagnostic = root.querySelector("[data-agent-diagnostic]");
+  const diagnosticStages = Array.from(root.querySelectorAll("[data-agent-stage]"));
+  const progressLive = root.querySelector("[data-agent-progress-live]");
   const sources = root.querySelector("[data-agent-sources]");
   const sourceList = root.querySelector("[data-agent-source-list]");
   const matchLink = root.querySelector("[data-agent-match]");
@@ -103,6 +148,7 @@ function initPortfolioAssistant() {
   let knowledge = null;
   let activeContext = getPortfolioAssistantContext();
   let returnFocus = null;
+  let activeSequence = 0;
 
   panel.inert = true;
 
@@ -232,6 +278,8 @@ function initPortfolioAssistant() {
   function showAnswer(question, entry) {
     const sourceCount = entry?.sources?.length || 0;
     questionOutput.textContent = question;
+    diagnostic.hidden = true;
+    root.dataset.diagnosticStage = "complete";
     answerOutput.textContent = entry?.answer || knowledge?.assistant?.fallback || "The approved portfolio does not contain enough information to answer that.";
     answerMeta.textContent = sourceCount > 0
       ? `ANSWER / GROUNDED IN ${sourceCount} ${sourceCount === 1 ? "SOURCE" : "SOURCES"}`
@@ -246,6 +294,55 @@ function initPortfolioAssistant() {
     root.dataset.state = "presenting";
   }
 
+  function wait(duration) {
+    return new Promise((resolve) => window.setTimeout(resolve, duration));
+  }
+
+  function resetDiagnosticStages() {
+    diagnosticStages.forEach((stage) => {
+      stage.dataset.status = "waiting";
+      stage.querySelector(".portfolio-agent__stage-status").textContent = "WAIT";
+    });
+    root.dataset.diagnosticStage = "0";
+  }
+
+  async function runDiagnosticSequence(sequence, question, entry) {
+    const stageNames = ["Parsing question", "Scanning portfolio index", "Ranking portfolio matches", "Grounding answer in sources"];
+    const stageDelay = 410;
+
+    for (let index = 0; index < diagnosticStages.length; index += 1) {
+      if (sequence !== activeSequence) return;
+
+      diagnosticStages.forEach((stage, stageIndex) => {
+        if (stageIndex < index) {
+          stage.dataset.status = "complete";
+          stage.querySelector(".portfolio-agent__stage-status").textContent = "DONE";
+        } else if (stageIndex === index) {
+          stage.dataset.status = "active";
+          stage.querySelector(".portfolio-agent__stage-status").textContent = "LIVE";
+        } else {
+          stage.dataset.status = "waiting";
+          stage.querySelector(".portfolio-agent__stage-status").textContent = "WAIT";
+        }
+      });
+
+      root.dataset.diagnosticStage = String(index + 1);
+      progressLive.textContent = stageNames[index];
+
+      if (!reduceMotion.matches) {
+        await wait(index === diagnosticStages.length - 1 ? 620 : stageDelay);
+      }
+    }
+
+    if (sequence !== activeSequence) return;
+    diagnosticStages.forEach((stage) => {
+      stage.dataset.status = "complete";
+      stage.querySelector(".portfolio-agent__stage-status").textContent = "DONE";
+    });
+    progressLive.textContent = "Portfolio answer ready";
+    showAnswer(question, entry);
+  }
+
   function submitQuestion(question) {
     const trimmed = question.trim();
     if (!trimmed) {
@@ -255,23 +352,28 @@ function initPortfolioAssistant() {
     }
 
     input.value = trimmed;
+    const sequence = activeSequence + 1;
+    activeSequence = sequence;
     root.dataset.state = "thinking";
+    welcome.hidden = true;
     result.hidden = false;
     result.setAttribute("aria-busy", "true");
     questionOutput.textContent = trimmed;
-    answerMeta.textContent = "PROCESSING";
+    resetDiagnosticStages();
+    diagnostic.hidden = false;
+    answerMeta.textContent = "PROCESSING / APPROVED INDEX";
     answerOutput.textContent = "Checking the approved portfolio index.";
+    root.querySelector(".portfolio-agent__answer-block").hidden = true;
     sources.hidden = true;
     matchLink.hidden = true;
+    helper.textContent = "Tracing the question through approved portfolio material.";
 
-    const resolveAnswer = () => showAnswer(trimmed, findEntry(trimmed));
-
-    if (reduceMotion.matches) {
-      resolveAnswer();
-      return;
-    }
-
-    window.requestAnimationFrame(() => window.requestAnimationFrame(resolveAnswer));
+    const entry = findEntry(trimmed);
+    runDiagnosticSequence(sequence, trimmed, entry).then(() => {
+      if (sequence === activeSequence) {
+        root.querySelector(".portfolio-agent__answer-block").hidden = false;
+      }
+    });
   }
 
   launcher.addEventListener("click", () => setOpen(root.dataset.open !== "true"));
@@ -303,7 +405,7 @@ function initPortfolioAssistant() {
   });
   window.addEventListener("hashchange", updateContext);
 
-  fetch(new URL("data/portfolio-assistant-knowledge.json", portfolioAssistantBase))
+  fetch(new URL("data/portfolio-assistant-knowledge.json?v=portfolio-agent-2", portfolioAssistantBase))
     .then((response) => {
       if (!response.ok) throw new Error(`Portfolio index failed with ${response.status}`);
       return response.json();

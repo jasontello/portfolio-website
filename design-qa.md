@@ -122,6 +122,61 @@ final result: passed
 
 ---
 
+## Diagnostic Spine question flow
+
+## Evidence
+
+- Source visual truth: `/Users/jasontello/.codex/generated_images/01a03139-b1a9-7b52-849e-bdc03b3b1b9c/exec-03784b32-28fb-493a-bebe-468b085e8636.png`
+- Browser-rendered desktop implementation: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/diagnostic-spine-desktop-final.png`
+- Browser-rendered mobile implementation: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/diagnostic-spine-mobile-final.png`
+- Full-view side-by-side comparison: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/diagnostic-spine-comparison-full.png`
+- Focused panel comparison: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/diagnostic-spine-comparison-panel.png`
+
+The source raster is `1672 x 941` pixels and was normalized to `1440 x 810` for comparison. The desktop implementation is `1440 x 810` pixels at a `1440 x 810` CSS viewport and density 1. The mobile implementation is `390 x 844` pixels at a `390 x 844` CSS viewport and density 1.
+
+Compared state: the sidebar is open after asking `Which project shows UX thinking?`; `PARSE QUERY`, `SCAN INDEX`, and `RANK MATCH` are complete; `GROUND ANSWER` is active; the operator mascot, resolving-answer preview, source-preparation rows, and persistent composer are visible.
+
+## Findings
+
+No actionable P0, P1, or P2 differences remain.
+
+- Fonts and typography: The implementation retains the portfolio's Space Grotesk and DM Mono system. Compact diagnostic labels, timings, status text, and body hierarchy closely match the reference without copying ImageGen text artifacts.
+- Spacing and layout rhythm: The existing `386px` white sidebar remains full-height and edge-aligned. The four-stage rail, resolving preview, source rows, and bottom composer fit at `1440 x 810`; the `390 x 844` layout uses the same sequence without horizontal overflow or cropped controls.
+- Colors and visual tokens: The main canvas still renders `walltexture.jpg` at `0.5` opacity. The sidebar reports `rgb(255, 255, 255)` and uses one restrained `#00b8d4` signal for the active packet and rail segment. No gradients, glow, or textured sidebar surface were introduced.
+- Image quality and asset fidelity: The live operator uses the existing transparent `index-thinking.png` mascot asset, preserving the approved character identity and clean edges. The launcher mascot is hidden during processing so the source's single-operator composition is retained.
+- Copy and content: Stage names and timings follow the selected concept. The composer keeps the visitor's real question visible, and the final answer returns the existing grounded answer and source links instead of a decorative mock response.
+- Interaction and accessibility: The real sequence advances through four states, cancels stale sequences on a new question, updates an assistive live region, respects reduced-motion preferences, resolves into the grounded result, supports repeated questions, and preserves open/close behavior. Fresh desktop and mobile browser runs produced no console errors.
+
+## Comparison history
+
+### Pass 1
+
+- [P1] The first processing build left the welcome copy and suggested questions above the diagnostic rail, pushing the scan below the intended focal area.
+- Fix: Hide the welcome state and question card while processing so `PACKET ROUTE` begins directly below context, matching the source hierarchy.
+- [P2] The fixed launcher mascot remained visible while the diagnostic operator was active, producing two mascots.
+- Fix: Hide the launcher during the thinking state and keep the in-rail operator as the only character.
+- [P2] The hidden matched-project element still displayed because its class-level `display` rule overrode the browser's hidden rule.
+- Fix: Added explicit hidden-state selectors for result, welcome, diagnostic, answer, source, and match regions.
+
+### Pass 2
+
+- [P2] The operator mascot was clipped against the left edge at `390 x 844`.
+- Fix: Moved the mobile operator inside the safe content edge and reduced its width to `74px`.
+
+### Final pass
+
+- Post-fix evidence: `qa/diagnostic-spine-comparison-full.png`, `qa/diagnostic-spine-comparison-panel.png`, and `qa/diagnostic-spine-mobile-final.png`.
+- All four scan stages render and advance correctly, the white sidebar/main-texture boundary remains intact, the final answer returns two grounded sources, every suggested question maps to an approved knowledge entry, and no P0, P1, or P2 findings remain.
+
+## Follow-up polish
+
+- [P3] A future mascot asset pass could add the reference's dedicated inspection tool. The existing thinking pose already reads as focused at the live panel size and avoids identity drift.
+- [P3] The reference uses pictographic completion checks; the implementation uses the explicit word `DONE` to stay legible and avoid introducing an unmatched icon asset.
+
+final result: passed
+
+---
+
 ## Sidebar solid-surface refinement
 
 ## Evidence

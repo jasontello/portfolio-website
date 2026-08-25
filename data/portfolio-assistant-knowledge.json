@@ -125,7 +125,7 @@
     },
     {
       "id": "open-source-project",
-      "keywords": ["open source san jose", "civic tech", "nonprofit", "project discovery", "volunteer", "community"],
+      "keywords": ["open source san jose", "civic tech", "nonprofit", "project discovery", "improve discovery", "what problem", "redesign address", "volunteer", "community"],
       "contexts": ["open-source-san-jose"],
       "answer": "The Open Source San Jose redesign reorganizes the nonprofit homepage around mission, community impact, programs, and clearer ways to get involved. Jason focused on hierarchy, project discovery, readable navigation, responsive behavior, and volunteer conversion.",
       "sources": [
@@ -147,7 +147,7 @@
     },
     {
       "id": "ai-process",
-      "keywords": ["use ai", "uses ai", "ai process", "codex", "ai-assisted", "artificial intelligence"],
+      "keywords": ["use ai", "uses ai", "used ai", "how was ai used", "ai process", "codex", "ai-assisted", "artificial intelligence"],
       "contexts": ["bizznest", "funfetti"],
       "answer": "Jason uses AI as a prototyping and implementation partner. The portfolio says he directs Codex, reviews HTML, CSS, and JavaScript output, tests responsive behavior, and remains responsible for product decisions and final quality.",
       "sources": [
@@ -201,8 +201,8 @@
     },
     {
       "id": "experiments",
-      "keywords": ["creative coding", "experiment", "experimental", "something weird", "surprise me", "rainbow lab", "ink symbiote", "hourglass"],
-      "contexts": ["experiments"],
+      "keywords": ["creative coding", "experiment", "experimenting", "experimental", "something weird", "surprise me", "rainbow lab", "ink symbiote", "hourglass"],
+      "contexts": ["experiments", "home", "global"],
       "answer": "Jason's experiments use the browser as a material. Rainbow Lab explores square-based color palettes, Ink Symbiote is a pointer-reactive liquid ink field, and Hourglass Poster studies falling sand, grain, and shifting mass.",
       "sources": [
         {"label": "Portfolio experiments", "href": "./index.html#experiments"},
@@ -223,7 +223,7 @@
     },
     {
       "id": "visual-system",
-      "keywords": ["visual system", "style guide", "design system", "typography", "font", "colors", "portfolio style"],
+      "keywords": ["visual system", "style guide", "design system", "interaction design", "typography", "font", "colors", "portfolio style"],
       "contexts": ["style-guide"],
       "answer": "The portfolio uses Space Grotesk for primary interface typography and DM Mono for compact metadata. Its visual language is mostly monochrome, with off-white paper texture, black ink, thin dividers, square geometry, restrained motion, and color concentrated inside project imagery.",
       "sources": [
