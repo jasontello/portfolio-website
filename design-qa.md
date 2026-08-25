@@ -142,7 +142,7 @@ No actionable P0, P1, or P2 differences remain.
 
 - Fonts and typography: The implementation deliberately retains the live portfolio's Space Grotesk and DM Mono hierarchy. It matches the selected mock's editorial contrast without adopting ImageGen text-shape artifacts.
 - Spacing and layout rhythm: Existing panel dimensions, padding, divider rhythm, content structure, and mascot attachment point remain unchanged. This isolates the selected change to the sidebar surfaces.
-- Colors and visual tokens: The portfolio canvas still renders `walltexture.jpg` through `body::before` at `0.5` opacity. The sidebar reports `background-image: none`, a `#faf9f6` main surface, `#f2f1ec` header and composer surfaces, and a restrained `rgba(0, 0, 0, 0.24)` left rail.
+- Colors and visual tokens: The portfolio canvas still renders `walltexture.jpg` through `body::before` at `0.5` opacity. The sidebar, header, and composer all report `rgb(255, 255, 255)` with `background-image: none`, while the restrained `rgba(0, 0, 0, 0.24)` left rail preserves the boundary.
 - Image quality and asset fidelity: All existing portfolio imagery and generated mascot assets remain untouched. No visible asset was recreated or substituted.
 - Copy and content: All live assistant copy, project content, suggested questions, and controls remain unchanged.
 - Interaction and accessibility: Desktop and responsive checks passed for opening, closing, and reopening the assistant. The full-width responsive panel retained the solid treatment and persistent composer. No browser console warnings or errors were observed.
@@ -151,9 +151,15 @@ No actionable P0, P1, or P2 differences remain.
 
 ### Pass 1
 
-- The full-view and focused comparisons confirmed the requested material boundary: textured portfolio canvas on the left, flat warm assistant surface on the right.
+- The full-view and focused comparisons confirmed the requested material boundary: textured portfolio canvas on the left, flat white assistant surface on the right.
 - No P0, P1, or P2 issues were found, so no visual correction loop was required.
 - The live implementation intentionally preserves the current site's exact panel width and content scale rather than copying small proportional drift from the generated concept image.
+
+### User correction
+
+- Replaced the rejected warm ivory surfaces with literal `#fff` across the entire sidebar.
+- Advanced every portfolio-assistant stylesheet reference to `portfolio-agent-2`, preventing Chrome from reusing the earlier textured CSS.
+- Browser evidence confirmed the main page texture remains active at `0.5` opacity while the sidebar has no background image. Desktop and mobile console checks remained clear.
 
 ## Follow-up polish
 

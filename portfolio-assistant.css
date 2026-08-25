@@ -13,8 +13,8 @@
 
 .portfolio-agent {
   --portfolio-agent-panel-width: min(386px, 100vw);
-  --portfolio-agent-panel-surface: #faf9f6;
-  --portfolio-agent-chrome-surface: #f2f1ec;
+  --portfolio-agent-panel-surface: #fff;
+  --portfolio-agent-chrome-surface: #fff;
   position: fixed;
   inset: 0;
   z-index: 9000;
