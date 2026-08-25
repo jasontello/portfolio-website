@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-23T15:41:15.116Z",
+  "updatedAt": "2026-08-25T16:03:42.989Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -45,17 +45,6 @@
       "spotifyUrl": "https://open.spotify.com/track/3Nkw1nmtFnx6adWNWOnPsB"
     },
     {
-      "id": "2PqFh92NTHhlbshWLOumzl",
-      "name": "Hvnly (feat. JIHYO)",
-      "artists": [
-        "Jenevieve",
-        "JIHYO"
-      ],
-      "album": "CRYSALIS (CODA)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27303f01f495ed76d0c668e17e5",
-      "spotifyUrl": "https://open.spotify.com/track/2PqFh92NTHhlbshWLOumzl"
-    },
-    {
       "id": "0dz1fnXbc6ZHxmZjAtuozd",
       "name": "bodies - Live at AT&T Block Party 2026",
       "artists": [
@@ -64,6 +53,16 @@
       "album": "bodies (Live at AT&T Block Party 2026)",
       "albumImage": "https://i.scdn.co/image/ab6742d3000053b7daf80151c0258cb1edc0730a",
       "spotifyUrl": "https://open.spotify.com/track/0dz1fnXbc6ZHxmZjAtuozd"
+    },
+    {
+      "id": "7AaCqnFCdfEKesBwSzS8NQ",
+      "name": "Bodies",
+      "artists": [
+        "keshi"
+      ],
+      "album": "Requiem",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
+      "spotifyUrl": "https://open.spotify.com/track/7AaCqnFCdfEKesBwSzS8NQ"
     },
     {
       "id": "3SqnwMW6Xcldf9KYgL8UOD",
