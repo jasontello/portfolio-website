@@ -119,3 +119,44 @@ No actionable P0, P1, or P2 differences remain.
 - Fresh browser console: passed
 
 final result: passed
+
+---
+
+## Sidebar solid-surface refinement
+
+## Evidence
+
+- Source visual truth: `/Users/jasontello/.codex/generated_images/01a03139-b1a9-7b52-849e-bdc03b3b1b9c/exec-f9116248-0480-4aec-a2a0-a0c6bb1e3580.png`
+- Browser-rendered desktop implementation: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/sidebar-solid-implementation-experiments.png`
+- Browser-rendered mobile implementation: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/sidebar-solid-mobile.png`
+- Full-view comparison: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/sidebar-solid-comparison-full.png`
+- Focused sidebar comparison: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/sidebar-solid-comparison-focused.png`
+
+The source raster is `1577 x 997` pixels. It was proportionally fitted and centered on a `1440 x 1024` canvas for the full-view comparison. The implementation raster is `1440 x 1024` pixels from a `1440 x 1024` CSS viewport at density 1. The focused comparison normalizes the source sidebar crop from `370 x 996` to the implementation panel's `386 x 1024` dimensions. The responsive check used a `390 x 844` viewport override; the in-app browser's content capture was `375 x 812` pixels after browser chrome and scrollbar allocation.
+
+Compared state: the portfolio assistant is open while the Experiments tab is selected, with the Experiments context, three suggested questions, mascot, and persistent question form visible.
+
+## Findings
+
+No actionable P0, P1, or P2 differences remain.
+
+- Fonts and typography: The implementation deliberately retains the live portfolio's Space Grotesk and DM Mono hierarchy. It matches the selected mock's editorial contrast without adopting ImageGen text-shape artifacts.
+- Spacing and layout rhythm: Existing panel dimensions, padding, divider rhythm, content structure, and mascot attachment point remain unchanged. This isolates the selected change to the sidebar surfaces.
+- Colors and visual tokens: The portfolio canvas still renders `walltexture.jpg` through `body::before` at `0.5` opacity. The sidebar reports `background-image: none`, a `#faf9f6` main surface, `#f2f1ec` header and composer surfaces, and a restrained `rgba(0, 0, 0, 0.24)` left rail.
+- Image quality and asset fidelity: All existing portfolio imagery and generated mascot assets remain untouched. No visible asset was recreated or substituted.
+- Copy and content: All live assistant copy, project content, suggested questions, and controls remain unchanged.
+- Interaction and accessibility: Desktop and responsive checks passed for opening, closing, and reopening the assistant. The full-width responsive panel retained the solid treatment and persistent composer. No browser console warnings or errors were observed.
+
+## Comparison history
+
+### Pass 1
+
+- The full-view and focused comparisons confirmed the requested material boundary: textured portfolio canvas on the left, flat warm assistant surface on the right.
+- No P0, P1, or P2 issues were found, so no visual correction loop was required.
+- The live implementation intentionally preserves the current site's exact panel width and content scale rather than copying small proportional drift from the generated concept image.
+
+## Follow-up polish
+
+- No P3 follow-up is required for this surface change.
+
+final result: passed
