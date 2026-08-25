@@ -25,19 +25,11 @@ function initPortfolioAssistant() {
 
     <aside class="portfolio-agent__panel" id="portfolio-agent-panel" aria-hidden="true" aria-labelledby="portfolio-agent-title">
       <header class="portfolio-agent__header">
-        <div>
-          <p class="portfolio-agent__index">INDEX / READY</p>
-          <h2 id="portfolio-agent-title">Portfolio Index</h2>
-        </div>
+        <h2 id="portfolio-agent-title">Ask Jason</h2>
         <button class="portfolio-agent__close" type="button">Close</button>
       </header>
 
       <div class="portfolio-agent__body">
-        <div class="portfolio-agent__context-row">
-          <span>CONTEXT</span>
-          <strong data-agent-context>GLOBAL</strong>
-        </div>
-
         <section class="portfolio-agent__welcome" data-agent-welcome>
           <p data-agent-welcome-copy>Loading the approved portfolio index.</p>
           <div class="portfolio-agent__starters" data-agent-starters aria-label="Suggested questions"></div>
@@ -55,33 +47,22 @@ function initPortfolioAssistant() {
             <p class="sr-only" data-agent-progress-live></p>
           </section>
           <div class="portfolio-agent__answer-block">
-            <p class="portfolio-agent__answer-meta" data-agent-answer-meta>ANSWER</p>
             <p class="portfolio-agent__answer" data-agent-answer></p>
           </div>
-          <div class="portfolio-agent__sources" data-agent-sources hidden>
-            <p>Sources</p>
+          <details class="portfolio-agent__sources" data-agent-sources hidden>
+            <summary data-agent-sources-summary>View sources</summary>
             <div data-agent-source-list></div>
-          </div>
-          <a class="portfolio-agent__match" data-agent-match href="./index.html" hidden>
-            <span class="portfolio-agent__match-meta">MATCH / 01</span>
-            <span class="portfolio-agent__match-content">
-              <img data-agent-match-image src="" alt="">
-              <span>
-                <strong data-agent-match-title></strong>
-                <span data-agent-match-label></span>
-              </span>
-            </span>
-          </a>
+          </details>
         </section>
       </div>
 
       <form class="portfolio-agent__form" data-agent-form>
-        <label for="portfolio-agent-query">Ask a question</label>
+        <label class="sr-only" for="portfolio-agent-query">Ask Jason a question</label>
         <div class="portfolio-agent__input-row">
-          <input id="portfolio-agent-query" data-agent-input name="question" type="text" maxlength="500" autocomplete="off" placeholder="Projects, process, experience...">
-          <button type="submit">Ask</button>
+          <input id="portfolio-agent-query" data-agent-input name="question" type="text" maxlength="500" autocomplete="off" placeholder="Ask about Jason's work...">
+          <button type="submit" aria-label="Send question">Send</button>
         </div>
-        <p class="portfolio-agent__helper" data-agent-helper>Answers use approved portfolio material only.</p>
+        <p class="sr-only" data-agent-helper aria-live="polite">Answers use approved portfolio material only.</p>
       </form>
     </aside>
   `;
@@ -93,22 +74,17 @@ function initPortfolioAssistant() {
   const closeButton = root.querySelector(".portfolio-agent__close");
   const form = root.querySelector("[data-agent-form]");
   const input = root.querySelector("[data-agent-input]");
-  const contextLabel = root.querySelector("[data-agent-context]");
   const welcome = root.querySelector("[data-agent-welcome]");
   const welcomeCopy = root.querySelector("[data-agent-welcome-copy]");
   const starters = root.querySelector("[data-agent-starters]");
   const result = root.querySelector("[data-agent-result]");
   const questionOutput = root.querySelector("[data-agent-question]");
-  const answerMeta = root.querySelector("[data-agent-answer-meta]");
   const answerOutput = root.querySelector("[data-agent-answer]");
   const thinkingScene = root.querySelector("[data-agent-thinking]");
   const progressLive = root.querySelector("[data-agent-progress-live]");
   const sources = root.querySelector("[data-agent-sources]");
+  const sourceSummary = root.querySelector("[data-agent-sources-summary]");
   const sourceList = root.querySelector("[data-agent-source-list]");
-  const matchLink = root.querySelector("[data-agent-match]");
-  const matchImage = root.querySelector("[data-agent-match-image]");
-  const matchTitle = root.querySelector("[data-agent-match-title]");
-  const matchLabel = root.querySelector("[data-agent-match-label]");
   const helper = root.querySelector("[data-agent-helper]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let knowledge = null;
@@ -141,7 +117,6 @@ function initPortfolioAssistant() {
   function updateContext() {
     activeContext = getPortfolioAssistantContext();
     const context = knowledge?.contexts?.[activeContext] || knowledge?.contexts?.global;
-    contextLabel.textContent = context?.label || "GLOBAL";
     renderStarters(context?.starters || []);
   }
 
@@ -287,28 +262,15 @@ function initPortfolioAssistant() {
     sourceList.replaceChildren();
     const sourceItems = answer?.sources || [];
     sources.hidden = sourceItems.length === 0;
+    sources.open = false;
+    sourceSummary.textContent = `View ${sourceItems.length} ${sourceItems.length === 1 ? "source" : "sources"}`;
 
-    sourceItems.forEach((source, index) => {
+    sourceItems.forEach((source) => {
       const link = document.createElement("a");
       link.href = new URL(source.href, portfolioAssistantBase);
-      link.textContent = `${String(index + 1).padStart(2, "0")} / ${source.label}`;
+      link.textContent = source.label;
       sourceList.appendChild(link);
     });
-
-    if (answer?.project) {
-      if (answer.project.image) {
-        matchLink.href = new URL(answer.project.href, portfolioAssistantBase);
-        matchImage.src = new URL(answer.project.image, portfolioAssistantBase);
-        matchImage.alt = "";
-        matchTitle.textContent = answer.project.title || answer.project.label;
-        matchLabel.textContent = answer.project.label;
-        matchLink.hidden = false;
-      } else {
-        matchLink.hidden = true;
-      }
-    } else {
-      matchLink.hidden = true;
-    }
   }
 
   function showAnswer(question, answer) {
@@ -318,19 +280,14 @@ function initPortfolioAssistant() {
     root.dataset.thinkingPhase = "complete";
     root.dataset.answerMode = answer?.mode || "local";
     answerOutput.textContent = answer?.answer || knowledge?.assistant?.fallback || "Honestly, I don't have that information in the portfolio, so I don't want to make something up.";
-    answerMeta.textContent = sourceCount > 0
-      ? `ANSWER / GROUNDED IN ${sourceCount} ${sourceCount === 1 ? "SOURCE" : "SOURCES"}`
-      : "ANSWER / INSUFFICIENT INFORMATION";
     renderSources(answer);
     welcome.hidden = true;
     result.hidden = false;
     result.setAttribute("aria-busy", "false");
     root.querySelector(".portfolio-agent__answer-block").hidden = false;
     helper.textContent = sourceCount > 0
-      ? answer?.mode === "local"
-        ? "Using the approved local index. Open a source to inspect the material."
-        : "Open a source to inspect the supporting portfolio material."
-      : "Try asking about my projects, experience, education, tools, or experiments.";
+      ? "Answer ready. Supporting portfolio sources are available."
+      : "The portfolio does not include enough information for that question.";
     root.dataset.state = "presenting";
   }
 
@@ -372,7 +329,7 @@ function initPortfolioAssistant() {
       return;
     }
 
-    input.value = trimmed;
+    input.value = "";
     const sequence = activeSequence + 1;
     activeSequence = sequence;
     root.dataset.state = "thinking";
@@ -382,12 +339,10 @@ function initPortfolioAssistant() {
     questionOutput.textContent = trimmed;
     root.dataset.thinkingPhase = "1";
     thinkingScene.hidden = false;
-    answerMeta.textContent = "PROCESSING / APPROVED INDEX";
     answerOutput.textContent = "Checking the approved portfolio index.";
     root.querySelector(".portfolio-agent__answer-block").hidden = true;
     sources.hidden = true;
-    matchLink.hidden = true;
-    helper.textContent = "Tracing the question through approved portfolio material.";
+    helper.textContent = "Thinking through Jason's portfolio.";
 
     activeRequestController?.abort();
     activeRequestController = new AbortController();
