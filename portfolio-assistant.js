@@ -280,7 +280,7 @@ function initPortfolioAssistant() {
     questionOutput.textContent = question;
     diagnostic.hidden = true;
     root.dataset.diagnosticStage = "complete";
-    answerOutput.textContent = entry?.answer || knowledge?.assistant?.fallback || "The approved portfolio does not contain enough information to answer that.";
+    answerOutput.textContent = entry?.answer || knowledge?.assistant?.fallback || "Honestly, I don't have that information in the portfolio, so I don't want to make something up.";
     answerMeta.textContent = sourceCount > 0
       ? `ANSWER / GROUNDED IN ${sourceCount} ${sourceCount === 1 ? "SOURCE" : "SOURCES"}`
       : "ANSWER / INSUFFICIENT INFORMATION";
@@ -290,7 +290,7 @@ function initPortfolioAssistant() {
     result.setAttribute("aria-busy", "false");
     helper.textContent = sourceCount > 0
       ? "Open a source to inspect the supporting portfolio material."
-      : "Try a question about projects, experience, education, tools, or experiments.";
+      : "Try asking about my projects, experience, education, tools, or experiments.";
     root.dataset.state = "presenting";
   }
 
@@ -405,7 +405,7 @@ function initPortfolioAssistant() {
   });
   window.addEventListener("hashchange", updateContext);
 
-  fetch(new URL("data/portfolio-assistant-knowledge.json?v=portfolio-agent-2", portfolioAssistantBase))
+  fetch(new URL("data/portfolio-assistant-knowledge.json?v=portfolio-agent-3", portfolioAssistantBase))
     .then((response) => {
       if (!response.ok) throw new Error(`Portfolio index failed with ${response.status}`);
       return response.json();
