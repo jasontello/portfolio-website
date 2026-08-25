@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24T15:59:05.149Z",
+  "updatedAt": "2026-08-25T16:03:42.989Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -55,15 +55,14 @@
       "spotifyUrl": "https://open.spotify.com/track/0dz1fnXbc6ZHxmZjAtuozd"
     },
     {
-      "id": "2PqFh92NTHhlbshWLOumzl",
-      "name": "Hvnly (feat. JIHYO)",
+      "id": "7AaCqnFCdfEKesBwSzS8NQ",
+      "name": "Bodies",
       "artists": [
-        "Jenevieve",
-        "JIHYO"
+        "keshi"
       ],
-      "album": "CRYSALIS (CODA)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27303f01f495ed76d0c668e17e5",
-      "spotifyUrl": "https://open.spotify.com/track/2PqFh92NTHhlbshWLOumzl"
+      "album": "Requiem",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
+      "spotifyUrl": "https://open.spotify.com/track/7AaCqnFCdfEKesBwSzS8NQ"
     },
     {
       "id": "3SqnwMW6Xcldf9KYgL8UOD",
