@@ -115,6 +115,11 @@ function initPortfolioAssistant() {
   let activeContext = getPortfolioAssistantContext();
   let returnFocus = null;
   let activeSequence = 0;
+  let activeRequestController = null;
+  const assistantEndpoint = window.PORTFOLIO_ASSISTANT_API_URL
+    || document.querySelector('meta[name="portfolio-assistant-endpoint"]')?.content
+    || new URL("api/portfolio-assistant", portfolioAssistantBase).href;
+  const visitorId = getVisitorId();
 
   panel.inert = true;
 
@@ -213,9 +218,74 @@ function initPortfolioAssistant() {
     return bestScore > 0 ? best : null;
   }
 
-  function renderSources(entry) {
+  function getVisitorId() {
+    const storageKey = "portfolio-assistant-visitor";
+    const generated = window.crypto?.randomUUID?.()
+      || `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+
+    try {
+      const existing = window.sessionStorage.getItem(storageKey);
+      if (existing) return existing;
+      window.sessionStorage.setItem(storageKey, generated);
+    } catch {
+      // A session-only identifier is optional when storage is unavailable.
+    }
+
+    return generated;
+  }
+
+  function localAnswer(entry) {
+    return {
+      answer: entry?.answer || knowledge?.assistant?.fallback || "Honestly, I don't have that information in the portfolio, so I don't want to make something up.",
+      sources: entry?.sources || [],
+      project: entry?.project || null,
+      insufficientEvidence: !entry,
+      mode: "local"
+    };
+  }
+
+  function validAssistantAnswer(payload) {
+    return payload
+      && typeof payload.answer === "string"
+      && Array.isArray(payload.sources)
+      && payload.sources.every((source) => (
+        source
+        && typeof source.label === "string"
+        && typeof source.href === "string"
+      ));
+  }
+
+  async function requestAssistantAnswer(question, fallbackEntry, controller) {
+    const timeout = window.setTimeout(() => controller.abort(), 13500);
+
+    try {
+      const response = await fetch(assistantEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          question,
+          context: activeContext,
+          visitorId
+        }),
+        credentials: "omit",
+        referrerPolicy: "strict-origin-when-cross-origin",
+        signal: controller.signal
+      });
+
+      if (!response.ok) throw new Error(`Portfolio assistant failed with ${response.status}`);
+      const payload = await response.json();
+      if (!validAssistantAnswer(payload)) throw new Error("Portfolio assistant returned an invalid answer");
+      return payload;
+    } catch {
+      return localAnswer(fallbackEntry);
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
+
+  function renderSources(answer) {
     sourceList.replaceChildren();
-    const sourceItems = entry?.sources || [];
+    const sourceItems = answer?.sources || [];
     sources.hidden = sourceItems.length === 0;
 
     sourceItems.forEach((source, index) => {
@@ -225,13 +295,13 @@ function initPortfolioAssistant() {
       sourceList.appendChild(link);
     });
 
-    if (entry?.project) {
-      if (entry.project.image) {
-        matchLink.href = new URL(entry.project.href, portfolioAssistantBase);
-        matchImage.src = new URL(entry.project.image, portfolioAssistantBase);
+    if (answer?.project) {
+      if (answer.project.image) {
+        matchLink.href = new URL(answer.project.href, portfolioAssistantBase);
+        matchImage.src = new URL(answer.project.image, portfolioAssistantBase);
         matchImage.alt = "";
-        matchTitle.textContent = entry.project.title || entry.project.label;
-        matchLabel.textContent = entry.project.label;
+        matchTitle.textContent = answer.project.title || answer.project.label;
+        matchLabel.textContent = answer.project.label;
         matchLink.hidden = false;
       } else {
         matchLink.hidden = true;
@@ -241,21 +311,25 @@ function initPortfolioAssistant() {
     }
   }
 
-  function showAnswer(question, entry) {
-    const sourceCount = entry?.sources?.length || 0;
+  function showAnswer(question, answer) {
+    const sourceCount = answer?.sources?.length || 0;
     questionOutput.textContent = question;
     thinkingScene.hidden = true;
     root.dataset.thinkingPhase = "complete";
-    answerOutput.textContent = entry?.answer || knowledge?.assistant?.fallback || "Honestly, I don't have that information in the portfolio, so I don't want to make something up.";
+    root.dataset.answerMode = answer?.mode || "local";
+    answerOutput.textContent = answer?.answer || knowledge?.assistant?.fallback || "Honestly, I don't have that information in the portfolio, so I don't want to make something up.";
     answerMeta.textContent = sourceCount > 0
       ? `ANSWER / GROUNDED IN ${sourceCount} ${sourceCount === 1 ? "SOURCE" : "SOURCES"}`
       : "ANSWER / INSUFFICIENT INFORMATION";
-    renderSources(entry);
+    renderSources(answer);
     welcome.hidden = true;
     result.hidden = false;
     result.setAttribute("aria-busy", "false");
+    root.querySelector(".portfolio-agent__answer-block").hidden = false;
     helper.textContent = sourceCount > 0
-      ? "Open a source to inspect the supporting portfolio material."
+      ? answer?.mode === "local"
+        ? "Using the approved local index. Open a source to inspect the material."
+        : "Open a source to inspect the supporting portfolio material."
       : "Try asking about my projects, experience, education, tools, or experiments.";
     root.dataset.state = "presenting";
   }
@@ -264,7 +338,7 @@ function initPortfolioAssistant() {
     return new Promise((resolve) => window.setTimeout(resolve, duration));
   }
 
-  async function runThinkingSequence(sequence, question, entry) {
+  async function runThinkingSequence(sequence, question, answerPromise) {
     const thinkingMessages = [
       "Considering the question",
       "Reviewing the portfolio",
@@ -284,9 +358,10 @@ function initPortfolioAssistant() {
       }
     }
 
+    const answer = await answerPromise;
     if (sequence !== activeSequence) return;
     progressLive.textContent = "Portfolio answer ready";
-    showAnswer(question, entry);
+    showAnswer(question, answer);
   }
 
   function submitQuestion(question) {
@@ -314,12 +389,11 @@ function initPortfolioAssistant() {
     matchLink.hidden = true;
     helper.textContent = "Tracing the question through approved portfolio material.";
 
+    activeRequestController?.abort();
+    activeRequestController = new AbortController();
     const entry = findEntry(trimmed);
-    runThinkingSequence(sequence, trimmed, entry).then(() => {
-      if (sequence === activeSequence) {
-        root.querySelector(".portfolio-agent__answer-block").hidden = false;
-      }
-    });
+    const answerPromise = requestAssistantAnswer(trimmed, entry, activeRequestController);
+    runThinkingSequence(sequence, trimmed, answerPromise);
   }
 
   launcher.addEventListener("click", () => setOpen(root.dataset.open !== "true"));

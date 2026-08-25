@@ -1,40 +1,41 @@
 # Portfolio assistant production architecture
 
-The current website build uses a deterministic, client-side knowledge index. It contains no model call, secret, or production API route. This keeps the first interaction prototype safe and makes every answer directly reviewable.
+The assistant now uses a hybrid design. The browser keeps the existing deterministic knowledge index as a zero-cost fallback, while `POST /api/portfolio-assistant` can use OpenAI to understand flexible questions and write a natural answer from the same approved material.
 
-## Proposed production stack
+## Implemented stack
 
-- Keep the existing portfolio on its current static hosting path.
-- Add one small Cloudflare Worker endpoint for `POST /portfolio-agent`.
-- Store the OpenAI API key only as a Worker secret.
-- Bundle an approved portfolio knowledge document with the Worker deployment. Do not let the public request select arbitrary URLs or tools.
-- Send a narrow system instruction, the approved excerpts, page context, and the visitor question to the model.
-- Return a structured response containing `answer`, `sources`, `relatedProject`, and `insufficientEvidence`.
-- Restrict CORS to the production portfolio origin and the local preview origin used during development.
+- `portfolio-assistant.js` calls the server endpoint without receiving or exposing an API key.
+- `api/portfolio-assistant.js` is a Vercel-compatible Node serverless function. It can also be adapted to another server runtime without changing the response contract.
+- `OPENAI_API_KEY` remains server-side. Local development stores it in the ignored `.env.local` file; production must use the hosting provider's encrypted environment settings.
+- The server bundles `data/portfolio-assistant-knowledge.json`. Visitors cannot select arbitrary URLs, upload files, enable tools, or provide new source material.
+- The OpenAI request uses Structured Outputs and returns approved source identifiers. The server resolves those identifiers back to its own labels, links, and project metadata before responding to the browser.
+- The model response is not rendered as HTML. The frontend uses text nodes and server-validated portfolio links.
+- CORS defaults to `jasontello.com`, `www.jasontello.com`, and the documented local preview origin. Additional exact origins can be supplied through `PORTFOLIO_ALLOWED_ORIGINS`.
+- If the server is missing, unavailable, blocked, or rate-limited, the frontend quietly returns the existing local answer instead.
 
-This Worker is a proposal only. It is not implemented or deployed in this branch.
+The default browser endpoint is `/api/portfolio-assistant`. If the static portfolio and API are hosted separately, define `window.PORTFOLIO_ASSISTANT_API_URL` before loading `portfolio-assistant.js`, or add a `portfolio-assistant-endpoint` meta tag containing the HTTPS endpoint.
 
 ## Request and abuse controls
 
 - Accept JSON only and cap the question at 500 characters.
 - Reject unexpected fields and malformed content.
-- Rate limit by a privacy-preserving IP hash, with a small burst allowance and a conservative daily limit.
-- Cap model input and output tokens. A portfolio answer should usually fit within 150-250 output tokens.
+- Rate limit by privacy-preserving IP and session hashes: five requests per visitor per hour, twenty per IP per day, and one hundred total per server instance per day.
+- Cap questions at 500 characters, request bodies at 4 KB, upstream time at 12 seconds, and model output at 350 tokens.
 - Set a short upstream timeout and return a plain grounded-error state when the model is unavailable.
 - Keep tools disabled. The model does not need code execution, browsing, file access, or arbitrary retrieval.
 - Treat user instructions as untrusted content. The system instruction must say that visitors cannot replace the grounding policy or request hidden instructions.
-- Require every substantive claim to map to one of the supplied source identifiers.
+- Require every grounded answer to map to one to three approved knowledge-entry identifiers.
 - If evidence is missing or source validation fails, return `insufficientEvidence: true` instead of an unsupported answer.
 - Log only operational metadata needed for reliability. Do not retain full visitor questions by default.
 
 ## Expected API and cost behavior
 
 - One visitor submission creates one model request. There is no autonomous loop and no background generation.
-- Cache normalized common questions such as education, tools, and project recommendations at the Worker edge.
-- Keep the approved knowledge compact and retrieve only the most relevant excerpts before each request.
-- Use a small text model that supports structured output. Select the exact model only after reviewing the current official pricing and quality tradeoffs.
-- Enforce a hard daily request ceiling in the Worker so public traffic cannot create unbounded spend.
-- Track request count, cache-hit rate, input tokens, output tokens, blocked requests, and insufficient-evidence responses.
+- Cache normalized questions for one hour inside a warm server instance.
+- Use `gpt-5.4-mini` by default, with `OPENAI_MODEL` available as a deployment override.
+- Keep `store: false`, omit all tools, and send a privacy-preserving `safety_identifier`.
+- Enforce conservative application request ceilings. Because in-memory counters are per server instance, production should also enable a hosting-level rate limit if the site receives meaningful traffic.
+- Use a dedicated OpenAI project with a $2 monthly hard spend limit and a $0.50 alert. Those account controls must be configured in OpenAI Platform; they are intentionally not stored in repository code.
 
 The cost envelope is therefore controlled by four explicit limits: requests per visitor, total requests per day, retrieved context size, and output-token cap. Exact dollar estimates should be calculated from the current official model price immediately before the production route is approved.
 
@@ -42,13 +43,13 @@ The cost envelope is therefore controlled by four explicit limits: requests per 
 
 ```json
 {
-  "answer": "Jason's Funfetti case study shows...",
+  "answer": "I treated the Funfetti homepage like a decision path...",
   "sources": [
-    {"id": "funfetti-insight", "label": "Funfetti case study", "href": "/funfetti-events-case-study.html#insight-title"}
+    {"label": "Funfetti case study", "href": "./funfetti-events-case-study.html#insight-title"}
   ],
-  "relatedProject": {"label": "View Funfetti", "href": "/funfetti-events-case-study.html"},
+  "project": {"label": "View Funfetti", "href": "./funfetti-events-case-study.html"},
   "insufficientEvidence": false
 }
 ```
 
-The Worker must validate this structure before returning it to the browser. The frontend should render strings through text nodes rather than injecting model-produced HTML.
+The server validates the model's structured result, resolves sources from the local allowlist, and returns only the browser-facing fields above. The browser never accepts model-produced HTML or arbitrary source URLs.

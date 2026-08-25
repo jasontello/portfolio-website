@@ -1,0 +1,10 @@
+{
+  "name": "jason-tello-portfolio",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  }
+}
