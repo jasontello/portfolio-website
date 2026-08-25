@@ -122,6 +122,58 @@ final result: passed
 
 ---
 
+## Orbit Ink thinking state
+
+## Evidence
+
+- Source visual truth: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/portfolio-assistant/orbit-ink-source.png`
+- Browser-rendered desktop implementation: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/portfolio-assistant/orbit-ink-thinking-implementation-v3.png`
+- Browser-rendered `1280 x 720` answer state: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/portfolio-assistant/orbit-ink-answer-1280.png`
+- Browser-rendered `390 x 844` thinking state: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/portfolio-assistant/orbit-ink-thinking-mobile-390.png`
+- Full-view side-by-side comparison: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/portfolio-assistant/orbit-ink-thinking-comparison-v3.png`
+- Focused sidebar comparison: `/Users/jasontello/VScode/Personal_Website-ai-void-integration/qa/portfolio-assistant/orbit-ink-sidebar-comparison-v3.png`
+
+The source and desktop implementation are both `1672 x 941` pixels at a `1672 x 941` CSS viewport and density 1. The responsive checks used `1280 x 720` and `390 x 844` CSS viewports. The selected comparison state is the open white sidebar after asking `What tools does Jason use?`, while the assistant is thinking and before the grounded answer appears.
+
+## Findings
+
+No actionable P0, P1, or P2 differences remain.
+
+- Fonts and typography: The implementation retains the portfolio's Space Grotesk and DM Mono system. The quiet uppercase thinking caption matches the reference's software-instrument tone without adding a competing status checklist.
+- Spacing and layout rhythm: The `386px` desktop panel, context header, large centered orbit, mascot, caption, and fixed composer follow the selected composition. At `1280 x 720`, the compact-height rules preserve the full thinking scene; at `390 x 844`, the orbit scales down and the panel stays edge-aligned.
+- Colors and visual tokens: The portfolio canvas keeps `walltexture.jpg`; the sidebar remains literal white. The active thought uses solid black with a white grid glyph, while inactive thoughts use black ink and low-opacity gray orbit marks. No blue or cyan assistant-state accent remains.
+- Image quality and asset fidelity: The inactive orbit and active thought are real transparent PNG assets at `1254 x 1254`. They preserve the hand-drawn line character, clean alpha edges, consistent stroke weight, and the selected source geometry. The existing transparent thinking mascot remains unmodified.
+- Copy and content: The animation uses the visitor's real question, a concise `THINKING THROUGH THE PORTFOLIO...` caption, and Jason-voice grounded answers. It does not expose hidden chain-of-thought or fake processing metrics.
+- States and interactions: Asking a question replaces the former checklist with four semantic live-region updates while the orbit, active thought, and mascot animate. The sequence resolves into the existing grounded answer and source links, supports repeated questions, and cancels stale sequences.
+- Accessibility and responsiveness: The input remains labeled, the result uses `aria-live` and `aria-busy`, keyboard controls remain intact, and `prefers-reduced-motion` disables all three visual animations while advancing directly to the answer. The assistant body hides horizontal overflow and keeps the composer usable on mobile.
+
+## Comparison history
+
+### Pass 1
+
+- [P2] The first implementation rendered the orbit too small and too high compared with the chosen solid-black concept.
+- Fix: Increased the desktop orbit to `376px`, enlarged the active thought and mascot, and lowered the scene while preserving compact-height and mobile overrides.
+
+### Pass 2
+
+- [P2] The enlarged scene could add an unnecessary sidebar scrollbar at the full `1672 x 941` comparison viewport.
+- Fix: Applied border-box sizing to the thinking scene and verified the assistant body at `752px` client and scroll height.
+
+### Pass 3
+
+- [P2] A `100vw` mobile panel could shift left by the browser scrollbar width on long portfolio pages.
+- Fix: Use `100%` of the fixed assistant root at the mobile breakpoint, keeping the panel within the layout viewport.
+- Post-fix evidence: `qa/portfolio-assistant/orbit-ink-thinking-comparison-v3.png` and `qa/portfolio-assistant/orbit-ink-sidebar-comparison-v3.png`.
+- The selected sidebar composition now matches in scale, placement, surface, and monochrome state contrast. The final answer flow remains functional and a clean browser tab produced no application console errors.
+
+## Follow-up polish
+
+- [P3] The orbit raster is intentionally larger than its rendered slot for clean high-density edges. A future asset pass could reduce its file weight after the interaction direction is locked.
+
+final result: passed
+
+---
+
 ## Diagnostic Spine question flow
 
 ## Evidence
