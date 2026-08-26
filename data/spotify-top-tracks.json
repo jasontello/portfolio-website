@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-25T16:03:42.989Z",
+  "updatedAt": "2026-08-26T16:34:48.578Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -45,26 +45,6 @@
       "spotifyUrl": "https://open.spotify.com/track/3Nkw1nmtFnx6adWNWOnPsB"
     },
     {
-      "id": "0dz1fnXbc6ZHxmZjAtuozd",
-      "name": "bodies - Live at AT&T Block Party 2026",
-      "artists": [
-        "keshi"
-      ],
-      "album": "bodies (Live at AT&T Block Party 2026)",
-      "albumImage": "https://i.scdn.co/image/ab6742d3000053b7daf80151c0258cb1edc0730a",
-      "spotifyUrl": "https://open.spotify.com/track/0dz1fnXbc6ZHxmZjAtuozd"
-    },
-    {
-      "id": "7AaCqnFCdfEKesBwSzS8NQ",
-      "name": "Bodies",
-      "artists": [
-        "keshi"
-      ],
-      "album": "Requiem",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
-      "spotifyUrl": "https://open.spotify.com/track/7AaCqnFCdfEKesBwSzS8NQ"
-    },
-    {
       "id": "3SqnwMW6Xcldf9KYgL8UOD",
       "name": "BREAKUP",
       "artists": [
@@ -93,6 +73,26 @@
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
       "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
+    },
+    {
+      "id": "0dz1fnXbc6ZHxmZjAtuozd",
+      "name": "bodies - Live at AT&T Block Party 2026",
+      "artists": [
+        "keshi"
+      ],
+      "album": "bodies (Live at AT&T Block Party 2026)",
+      "albumImage": "https://i.scdn.co/image/ab6742d3000053b7daf80151c0258cb1edc0730a",
+      "spotifyUrl": "https://open.spotify.com/track/0dz1fnXbc6ZHxmZjAtuozd"
+    },
+    {
+      "id": "7AaCqnFCdfEKesBwSzS8NQ",
+      "name": "Bodies",
+      "artists": [
+        "keshi"
+      ],
+      "album": "Requiem",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
+      "spotifyUrl": "https://open.spotify.com/track/7AaCqnFCdfEKesBwSzS8NQ"
     },
     {
       "id": "7xSm07mkWui2K3XkwUTgFi",
