@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSandboxTransition();
   initBizznestThumbAnimation();
   initFullscreenLayout();
+  initVoidCardPreview();
   initWorkFilters();
   initSpotifyTopTracks();
   initCaseStudyReveal();
@@ -493,10 +494,252 @@ function normalizePath(pathname) {
   return withoutTrailingSlash;
 }
 
+function initVoidCardPreview() {
+  const root = document.querySelector("[data-void-card-preview]");
+  const canvas = root?.querySelector("[data-void-card-canvas]");
+
+  if (!(root instanceof HTMLElement) || !(canvas instanceof HTMLCanvasElement)) {
+    return;
+  }
+
+  const context = canvas.getContext("2d", { alpha: false });
+
+  if (!context) {
+    return;
+  }
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const pointer = {
+    x: 0,
+    y: 0,
+    targetX: 0,
+    targetY: 0,
+    active: false
+  };
+  let width = 0;
+  let height = 0;
+  let dpr = 1;
+  let frameId = 0;
+  let lastFrameTime = 0;
+  let isInViewport = false;
+  let isFilterActive = document.body.dataset.workFilter === "experiments";
+  let isDestroyed = false;
+  const frameInterval = 1000 / 30;
+
+  const seeded = (index, offset = 0) => {
+    const value = Math.sin(index * 91.173 + offset * 17.719) * 43758.5453;
+    return value - Math.floor(value);
+  };
+
+  const draw = (time = 0) => {
+    if (!width || !height) {
+      return;
+    }
+
+    context.save();
+    context.setTransform(dpr, 0, 0, dpr, 0, 0);
+    context.fillStyle = "#f6f6f4";
+    context.fillRect(0, 0, width, height);
+
+    const centerX = width * 0.5;
+    const centerY = height * 0.5;
+    const radiusX = Math.min(width * 0.31, 230);
+    const radiusY = Math.min(height * 0.42, 230);
+    const drift = reduceMotion.matches ? 0 : time * 0.00022;
+    const pulse = reduceMotion.matches ? 1 : 1 + Math.sin(time * 0.0007) * 0.012;
+    const rows = width < 520 ? 50 : 62;
+    const columns = width < 520 ? 34 : 46;
+    const fontSize = Math.max(6.2, Math.min(9.2, width / 82));
+
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.font = `${fontSize}px "DM Mono", "SFMono-Regular", monospace`;
+
+    for (let index = 0; index < rows * columns; index += 1) {
+      const row = Math.floor(index / columns);
+      const column = index % columns;
+      const u = column / (columns - 1) * 2 - 1;
+      const v = row / (rows - 1) * 2 - 1;
+      const waveU = u + Math.sin(v * 5.2 + drift * 3.1) * 0.028;
+      const waveV = v + Math.sin(u * 4.4 - drift * 2.2) * 0.018;
+      const ellipse = Math.hypot(waveU / 0.76, waveV);
+      const ring = Math.exp(-Math.pow((ellipse - 0.72) * 7.2, 2));
+      const innerDust = Math.exp(-Math.pow(ellipse * 1.55, 2)) * 0.11;
+      const outerDust = Math.exp(-Math.pow((ellipse - 1.03) * 4.2, 2)) * 0.1;
+      const density = ring + innerDust + outerDust;
+
+      if (seeded(index, 4) > density * 0.79) {
+        continue;
+      }
+
+      const phase = v * 6.8 + drift * 7.4 + seeded(index, 2) * 1.2;
+      let x = centerX + waveU * radiusX * pulse + Math.sin(phase + u * 4.7) * 3.4;
+      let y = centerY + waveV * radiusY * pulse + Math.cos(phase * 0.72) * 2.6;
+      const dx = x - pointer.x;
+      const dy = y - pointer.y;
+      const distance = Math.max(12, Math.hypot(dx, dy));
+      const forceRadius = Math.min(138, width * 0.25);
+
+      if (pointer.active && distance < forceRadius) {
+        const force = Math.pow(1 - distance / forceRadius, 2) * 58;
+        x += dx / distance * force;
+        y += dy / distance * force;
+      }
+
+      const pointerEmphasis = pointer.active && distance < forceRadius ? 0.16 : 0;
+      const alpha = density > 0.7
+        ? 0.78 + pointerEmphasis
+        : density > 0.28
+          ? 0.38 + pointerEmphasis
+          : 0.12 + pointerEmphasis * 0.5;
+      context.fillStyle = `rgba(15,15,14,${Math.min(0.94, alpha)})`;
+      context.fillText(String((row * 7 + column * 3 + Math.floor(seeded(index, 9) * 10)) % 10), x, y);
+    }
+    context.restore();
+  };
+
+  const resize = () => {
+    const bounds = root.getBoundingClientRect();
+    const nextWidth = Math.round(bounds.width);
+    const nextHeight = Math.round(bounds.height);
+
+    if (!nextWidth || !nextHeight) {
+      return;
+    }
+
+    width = nextWidth;
+    height = nextHeight;
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+
+    if (!pointer.x && !pointer.y) {
+      pointer.x = pointer.targetX = width * 0.5;
+      pointer.y = pointer.targetY = height * 0.5;
+    }
+
+    draw(performance.now());
+    root.classList.add("is-live");
+  };
+
+  const shouldAnimate = () => (
+    !isDestroyed &&
+    !document.hidden &&
+    isInViewport &&
+    isFilterActive &&
+    !reduceMotion.matches
+  );
+
+  const stop = () => {
+    window.cancelAnimationFrame(frameId);
+    frameId = 0;
+  };
+
+  const animate = (time) => {
+    if (!shouldAnimate()) {
+      stop();
+      return;
+    }
+
+    pointer.x += (pointer.targetX - pointer.x) * 0.16;
+    pointer.y += (pointer.targetY - pointer.y) * 0.16;
+
+    if (time - lastFrameTime >= frameInterval) {
+      lastFrameTime = time - (time - lastFrameTime) % frameInterval;
+      draw(time);
+    }
+
+    frameId = window.requestAnimationFrame(animate);
+  };
+
+  const start = () => {
+    resize();
+
+    if (shouldAnimate() && !frameId) {
+      lastFrameTime = 0;
+      frameId = window.requestAnimationFrame(animate);
+    } else if (reduceMotion.matches) {
+      draw(0);
+    }
+  };
+
+  const updatePointer = (event) => {
+    const bounds = root.getBoundingClientRect();
+    pointer.targetX = event.clientX - bounds.left;
+    pointer.targetY = event.clientY - bounds.top;
+    pointer.active = true;
+
+    if (reduceMotion.matches) {
+      pointer.x = pointer.targetX;
+      pointer.y = pointer.targetY;
+      draw(0);
+    }
+  };
+
+  const resetPointer = () => {
+    pointer.active = false;
+    pointer.targetX = width * 0.5;
+    pointer.targetY = height * 0.5;
+
+    if (reduceMotion.matches) {
+      pointer.x = pointer.targetX;
+      pointer.y = pointer.targetY;
+      draw(0);
+    }
+  };
+
+  const handleVisibility = () => document.hidden ? stop() : start();
+  const handleMotionPreference = () => reduceMotion.matches ? (stop(), draw(0)) : start();
+  const resizeObserver = new ResizeObserver(resize);
+  const intersectionObserver = new IntersectionObserver((entries) => {
+    isInViewport = entries.some((entry) => entry.isIntersecting);
+    if (isInViewport) {
+      start();
+    } else {
+      stop();
+    }
+  }, { rootMargin: "120px" });
+
+  root.voidCardPreview = {
+    pause() {
+      isFilterActive = false;
+      stop();
+    },
+    resume() {
+      isFilterActive = true;
+      start();
+    }
+  };
+
+  root.addEventListener("pointermove", updatePointer, { passive: true });
+  root.addEventListener("pointerdown", updatePointer, { passive: true });
+  root.addEventListener("pointerleave", resetPointer);
+  document.addEventListener("visibilitychange", handleVisibility);
+  reduceMotion.addEventListener("change", handleMotionPreference);
+  resizeObserver.observe(root);
+  intersectionObserver.observe(root);
+  resize();
+
+  window.addEventListener("pagehide", () => {
+    isDestroyed = true;
+    stop();
+    resizeObserver.disconnect();
+    intersectionObserver.disconnect();
+    root.removeEventListener("pointermove", updatePointer);
+    root.removeEventListener("pointerdown", updatePointer);
+    root.removeEventListener("pointerleave", resetPointer);
+    document.removeEventListener("visibilitychange", handleVisibility);
+    reduceMotion.removeEventListener("change", handleMotionPreference);
+  }, { once: true });
+}
+
 function initWorkFilters() {
   const filterButtons = Array.from(document.querySelectorAll("[data-work-filter-button]"));
   const cards = Array.from(document.querySelectorAll("[data-work-category]"));
   const inkPreviewRoots = Array.from(document.querySelectorAll("[data-ink-preview]"));
+  const voidPreviewRoots = Array.from(document.querySelectorAll("[data-void-card-preview]"));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let inkPreviewScriptPromise = null;
 
@@ -541,6 +784,18 @@ function initWorkFilters() {
     });
   };
 
+  const syncVoidPreviewMotion = (isActive) => {
+    voidPreviewRoots.forEach((root) => {
+      const instance = root.voidCardPreview;
+
+      if (isActive) {
+        instance?.resume?.();
+      } else {
+        instance?.pause?.();
+      }
+    });
+  };
+
   const setFilter = (filter) => {
     cards.forEach((card) => {
       const isVisible = card.dataset.workCategory === filter;
@@ -564,10 +819,12 @@ function initWorkFilters() {
     document.body.dataset.workFilter = filter;
 
     if (filter === "experiments") {
+      syncVoidPreviewMotion(true);
       loadInkPreviews()
         .then(() => syncInkPreviewMotion(document.body.dataset.workFilter === "experiments"))
         .catch(() => {});
     } else {
+      syncVoidPreviewMotion(false);
       syncInkPreviewMotion(false);
     }
 

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A continuous halftone cloudscape assembles around a Swiss-style poster before a monochrome pixel rocket rises through it."
+    />
+    <title>Rocket Pixel | Jason Tello Portfolio</title>
+    <link rel="icon" type="image/png" href="../../images/favicon-head.png" />
+    <link rel="preload" href="assets/paradiso-poster-no-line.png" as="image" />
+    <link rel="preload" href="assets/cloud-anchor-preserved-v2.png" as="image" />
+    <link rel="preload" href="assets/cloud-continuation-fine-screen-v2.png" as="image" />
+    <link rel="stylesheet" href="styles.css?v=rocket-pixel-portfolio-1" />
+  </head>
+  <body>
+    <a class="portfolio-back" href="../../index.html#experiments" aria-label="Return to experiments">Back</a>
+    <main class="page-shell">
+      <figure class="poster-wrap">
+        <button
+          class="poster-stage"
+          id="poster-stage"
+          type="button"
+          aria-label="Enter the cloud launch scene"
+          aria-describedby="launch-help"
+        >
+          <img
+            class="poster-art"
+            src="assets/paradiso-poster-no-line.png"
+            alt="Paradiso event poster with four halftone cloud panels"
+            width="1200"
+            height="1558"
+          />
+        </button>
+
+        <figcaption class="controls">
+          <span id="launch-help">Click the paper or press Space to enter</span>
+          <button class="replay-button" id="replay-button" type="button">
+            Enter
+          </button>
+        </figcaption>
+      </figure>
+    </main>
+
+    <button
+      class="cloud-takeover"
+      id="cloud-takeover"
+      type="button"
+      aria-label="Cloud launch scene. Click or press Escape to return to the poster."
+      aria-hidden="true"
+      tabindex="-1"
+      hidden
+    >
+      <span class="cloud-mosaic" id="cloud-mosaic" aria-hidden="true"></span>
+
+      <span class="takeover-rocket" aria-hidden="true">
+        <img
+          class="takeover-rocket-art"
+          src="assets/pixel-rocket-monochrome.png"
+          alt=""
+          width="1254"
+          height="1254"
+        />
+      </span>
+    </button>
+
+    <script src="script.js?v=rocket-pixel-portfolio-1"></script>
+    <!-- Cloudflare Web Analytics -->
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"b487877912b34d169c3745d5bd3cfb90"}'></script>
+    <!-- End Cloudflare Web Analytics -->
+  </body>
+</html>

@@ -2480,6 +2480,68 @@ html.case-study-root body.case-study-body {
     rgba(232, 232, 232, 0.72);
 }
 
+.work-card--void .work-card__preview {
+  background: #f6f6f4;
+}
+
+.work-card--rocket-pixel .work-card__preview {
+  display: grid;
+  place-items: center;
+  background: #f1f1f0;
+}
+
+.rocket-pixel-preview {
+  display: block;
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transform: scale(0.9);
+  transition: transform 620ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.work-card--rocket-pixel:hover .rocket-pixel-preview,
+.work-card--rocket-pixel:focus-visible .rocket-pixel-preview {
+  transform: scale(0.93);
+}
+
+.void-card-preview {
+  isolation: isolate;
+  contain: layout paint;
+}
+
+.void-card-preview__fallback,
+.void-card-preview__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.void-card-preview__fallback {
+  object-fit: cover;
+  object-position: center;
+  background: #f6f6f4;
+  mix-blend-mode: multiply;
+  transition: opacity 180ms ease;
+}
+
+.void-card-preview__canvas {
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.void-card-preview.is-live .void-card-preview__fallback {
+  opacity: 0;
+}
+
+.void-card-preview.is-live .void-card-preview__canvas {
+  opacity: 1;
+}
+
 .work-card--bizznest .work-card__preview {
   aspect-ratio: 1076 / 720;
   display: grid;
@@ -3485,11 +3547,10 @@ body.is-project-open {
 
 .sandbox-preview-poster-image {
   display: block;
-  width: min(72%, 300px);
-  height: 88%;
-  object-fit: contain;
-  filter: contrast(1.04);
-  mix-blend-mode: multiply;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.02);
 }
 
 .sandbox-body {
@@ -3665,6 +3726,13 @@ body.is-project-open {
   min-height: 520px;
   overflow: hidden;
   color: #050505;
+  outline: none;
+  touch-action: none;
+}
+
+.poster-installation:focus-visible::before {
+  border-color: rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 0 2px rgba(242, 240, 229, 0.8);
 }
 
 .poster-installation::before {
@@ -3708,11 +3776,11 @@ body.is-project-open {
   left: 50%;
   top: 50%;
   z-index: 4;
-  width: min(68vw, 720px);
-  height: min(88vh, 880px);
+  width: min(58vw, 820px);
+  height: min(90vh, 920px);
   transform: translate(-50%, -50%);
   filter: blur(0.85px) contrast(1.06);
-  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 .poster-sand-stage::after {
@@ -3734,56 +3802,149 @@ body.is-project-open {
   opacity: 0.96;
 }
 
-.poster-type {
+.gravity-readout,
+.gravity-controls {
   position: absolute;
-  z-index: 5;
-  margin: 0;
+  z-index: 6;
   font-family: "DM Mono", monospace;
-  font-size: clamp(11px, 1vw, 15px);
-  font-weight: 500;
-  line-height: 1.58;
-  letter-spacing: 0;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
+  color: #151817;
 }
 
-.poster-type--left {
-  left: clamp(28px, 3vw, 48px);
-  top: clamp(78px, 10vh, 108px);
-  font-size: clamp(18px, 2vw, 28px);
-  line-height: 1.2;
+.gravity-readout--time {
+  left: clamp(72px, 8vw, 132px);
+  top: 43%;
+  width: min(25vw, 320px);
+  transform: translateY(-50%);
 }
 
-.poster-type--right {
-  right: clamp(28px, 3vw, 52px);
-  top: clamp(34px, 4vh, 60px);
-  font-size: clamp(17px, 2vw, 26px);
-  line-height: 1.18;
+.gravity-time {
+  display: block;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(52px, 6vw, 92px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "zero" 0;
 }
 
-.poster-type--lower-left {
-  left: clamp(82px, 7.2vw, 118px);
-  bottom: clamp(34px, 6vh, 86px);
-  max-height: min(46vh, 470px);
+.gravity-instruction {
+  max-width: 21ch;
+  margin: clamp(28px, 4vh, 44px) 0 0;
+  font-size: clamp(13px, 1.35vw, 20px);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
 }
 
-.poster-type--lower-right {
-  right: clamp(82px, 7.5vw, 128px);
-  bottom: clamp(34px, 6vh, 84px);
-  max-height: min(38vh, 390px);
+.gravity-readout--accuracy {
+  right: clamp(72px, 9vw, 150px);
+  top: 45%;
+  width: min(19vw, 230px);
+  transform: translateY(-50%);
 }
 
-@keyframes poster-sand-breathe {
-  0%,
-  100% {
-    transform: translate(-50%, -48%) scale(1);
-    filter: blur(0.25px) contrast(1.06);
-  }
+.gravity-label {
+  display: block;
+  margin-bottom: 18px;
+  font-size: clamp(10px, 0.86vw, 13px);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
 
-  50% {
-    transform: translate(-50%, -48%) scale(1.012, 0.996);
-    filter: blur(0.55px) contrast(1.02);
-  }
+.gravity-accuracy {
+  display: block;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(32px, 3.4vw, 52px);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "zero" 0;
+  letter-spacing: -0.025em;
+}
+
+.gravity-readout--accuracy::after {
+  content: "";
+  display: block;
+  width: 38px;
+  margin-top: 22px;
+  border-top: 2px solid currentColor;
+}
+
+.gravity-controls {
+  left: clamp(58px, 6.5vw, 106px);
+  right: clamp(58px, 6.5vw, 106px);
+  bottom: clamp(46px, 5.8vh, 76px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: clamp(10px, 0.9vw, 13px);
+  color: rgba(21, 24, 23, 0.55);
+}
+
+.gravity-controls > span,
+.gravity-controls button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gravity-controls__actions {
+  gap: clamp(18px, 2.5vw, 38px) !important;
+}
+
+.gravity-controls button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.gravity-controls button:hover,
+.gravity-controls button:focus-visible {
+  color: #050505;
+}
+
+.gravity-controls button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 5px;
+}
+
+.gravity-controls kbd {
+  display: inline-flex;
+  min-width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.52);
+  border-radius: 0;
+  background: rgba(242, 240, 229, 0.46);
+  color: #151817;
+  font: inherit;
+}
+
+.gravity-controls [data-hourglass-restart] {
+  opacity: 0.72;
+}
+
+[data-hourglass-status] {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 @keyframes poster-grain-drift {
@@ -4353,38 +4514,75 @@ body.is-project-open {
   }
 
   .poster-sand-stage {
-    width: 92vw;
-    height: 74vh;
-    transform: translate(-50%, -48%);
+    top: 53%;
+    width: 104vw;
+    height: 70vh;
+    transform: translate(-50%, -50%);
   }
 
-  .poster-type {
+  .gravity-readout--time {
+    left: 24px;
+    top: 84px;
+    width: 46vw;
+    transform: none;
+  }
+
+  .gravity-time {
+    font-size: clamp(38px, 13vw, 58px);
+  }
+
+  .gravity-instruction {
+    margin-top: 12px;
     font-size: 10px;
-    line-height: 1.42;
+    line-height: 1.45;
   }
 
-  .poster-type--left {
-    left: 20px;
-    top: 72px;
-    font-size: 16px;
+  .gravity-readout--accuracy {
+    top: 88px;
+    right: 24px;
+    width: auto;
+    transform: none;
+    text-align: right;
   }
 
-  .poster-type--right {
-    right: 22px;
-    top: 62px;
-    font-size: 15px;
+  .gravity-label {
+    margin-bottom: 10px;
+    font-size: 9px;
   }
 
-  .poster-type--lower-left {
-    left: 58px;
-    bottom: 24px;
-    max-height: 34vh;
+  .gravity-accuracy {
+    font-size: clamp(25px, 8vw, 36px);
   }
 
-  .poster-type--lower-right {
-    right: 22px;
-    bottom: 24px;
-    max-height: 30vh;
+  .gravity-readout--accuracy::after {
+    width: 24px;
+    margin: 12px 0 0 auto;
+    border-top-width: 1px;
+  }
+
+  .gravity-controls {
+    left: 24px;
+    right: 24px;
+    bottom: 26px;
+    align-items: flex-end;
+    font-size: 9px;
+  }
+
+  .gravity-controls > span:first-child {
+    max-width: 116px;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .gravity-controls__actions {
+    flex-direction: column-reverse;
+    align-items: flex-end !important;
+    gap: 12px !important;
+  }
+
+  .gravity-controls kbd {
+    min-width: 24px;
+    height: 24px;
   }
 }
 

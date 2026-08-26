@@ -1,0 +1,305 @@
+:root {
+  color-scheme: light;
+  --page: #f1f1f0;
+  --paper: #d9d8d1;
+  --ink: #181712;
+  --muted-ink: #5d5b54;
+  --focus: #c84f18;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100dvh;
+  color: var(--ink);
+  background: var(--page);
+  font-family: "Courier New", Courier, monospace;
+}
+
+body.scene-open {
+  overflow: hidden;
+}
+
+.portfolio-back {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 40;
+  padding: 3px 0;
+  border-bottom: 1px solid currentColor;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+
+.portfolio-back:hover {
+  color: var(--focus);
+}
+
+.portfolio-back:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+body.scene-open .portfolio-back {
+  opacity: 0;
+  pointer-events: none;
+}
+
+button {
+  font: inherit;
+}
+
+.page-shell {
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  padding: clamp(12px, 2.6vw, 36px);
+}
+
+.poster-wrap {
+  width: min(100%, calc((100dvh - 112px) * 1200 / 1558));
+  margin: 0;
+}
+
+.poster-stage {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1200 / 1558;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: var(--page);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.poster-stage:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.poster-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 10px;
+  color: var(--muted-ink);
+  font-size: clamp(10px, 1.2vw, 12px);
+  line-height: 1.4;
+}
+
+.replay-button {
+  flex: 0 0 auto;
+  padding: 4px 0 3px;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  border-radius: 0;
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+}
+
+.replay-button:hover {
+  color: var(--focus);
+}
+
+.replay-button:active {
+  transform: translateY(1px);
+}
+
+.replay-button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.cloud-takeover[hidden] {
+  display: none;
+}
+
+.cloud-takeover {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position: var(--cloud-bg-x, 50%) var(--cloud-bg-y, 50%);
+  background-size: var(--cloud-bg-width, cover) var(--cloud-bg-height, auto);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cloud-takeover:focus-visible {
+  outline: 0;
+}
+
+.cloud-mosaic {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  pointer-events: none;
+}
+
+.cloud-piece {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  background-color: var(--paper);
+  background-repeat: no-repeat;
+  opacity: 0;
+  clip-path: var(--piece-clip);
+  animation: cloud-piece-build 440ms steps(5, end) var(--piece-delay) forwards;
+  will-change: clip-path, opacity;
+}
+
+.cloud-piece.is-instant {
+  opacity: 1;
+  clip-path: inset(0);
+  animation: none;
+}
+
+.cloud-anchor {
+  position: absolute;
+  z-index: 3;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.cloud-takeover.mosaic-complete {
+  background: var(--paper);
+  background-image: url("assets/cloud-continuation-fine-screen-v2.png");
+  background-repeat: no-repeat;
+  background-position: var(--cloud-bg-x) var(--cloud-bg-y);
+  background-size: var(--cloud-bg-width) var(--cloud-bg-height);
+}
+
+.takeover-rocket {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 4;
+  display: block;
+  width: clamp(76px, 9vw, 132px);
+  aspect-ratio: 0.31;
+  overflow: hidden;
+  opacity: 0;
+  transform: translate3d(-50%, 0, 0);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.takeover-rocket-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  image-rendering: pixelated;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.cloud-takeover.rocket-ready .takeover-rocket {
+  animation: rocket-emerge 4.8s cubic-bezier(0.22, 0.72, 0.18, 1) forwards;
+}
+
+@keyframes cloud-piece-build {
+  0% {
+    opacity: 0;
+    clip-path: var(--piece-clip);
+  }
+  28% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0);
+  }
+}
+
+@keyframes rocket-emerge {
+  0% {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
+  }
+  14% {
+    opacity: 1;
+    transform: translate3d(-50%, -8%, 0);
+  }
+  32% {
+    transform: translate3d(-50%, -40%, 0);
+  }
+  66% {
+    transform: translate3d(-50%, -106%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(-50%, -168%, 0);
+  }
+}
+
+@media (max-width: 520px) {
+  .page-shell {
+    padding: 48px 10px 10px;
+  }
+
+  .poster-wrap {
+    width: 100%;
+  }
+
+  .controls {
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud-piece {
+    opacity: 1;
+    clip-path: inset(0);
+    animation: none;
+  }
+
+  .cloud-takeover.rocket-ready .takeover-rocket {
+    animation: none;
+  }
+
+  .cloud-takeover.rocket-ready .takeover-rocket {
+    opacity: 1;
+    transform: translate3d(-50%, -112%, 0);
+  }
+}

@@ -1,383 +1,478 @@
 (() => {
+  const root = document.querySelector("[data-hourglass-game]");
   const canvas = document.querySelector("[data-hourglass-sand]");
-
-  if (!canvas) {
-    return;
-  }
+  if (!root || !canvas) return;
 
   const context = canvas.getContext("2d", { alpha: true });
-  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const durationMs = 60000;
-  const resetPauseMs = 1400;
+  const timeOutput = root.querySelector("[data-hourglass-time]");
+  const accuracyOutput = root.querySelector("[data-hourglass-accuracy]");
+  const instructionOutput = root.querySelector("[data-hourglass-instruction]");
+  const statusOutput = root.querySelector("[data-hourglass-status]");
+  const pauseButton = root.querySelector("[data-hourglass-pause]");
+  const restartButton = root.querySelector("[data-hourglass-restart]");
+  const pauseLabel = pauseButton.querySelector("span");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const noiseCanvas = document.createElement("canvas");
   const noiseContext = noiseCanvas.getContext("2d");
+  const durationMs = 60000;
+  const frameInterval = 1000 / 30;
+  const params = new URLSearchParams(window.location.search);
+  const progressParam = params.get("hourglassProgress");
+  const tiltParam = params.get("hourglassTilt");
+  const requestedProgress = progressParam === null ? NaN : Number(progressParam);
+  const requestedTilt = tiltParam === null ? NaN : Number(tiltParam);
+
+  function clamp(value, min = 0, max = 1) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function mix(start, end, progress) {
+    return start + (end - start) * progress;
+  }
+
+  function easeInOut(value) {
+    return value * value * (3 - 2 * value);
+  }
+
+  function easeOut(value) {
+    return 1 - Math.pow(1 - value, 3);
+  }
+
   const state = {
+    accuracyTotal: 0,
     animationFrame: 0,
-    debugProgress: null,
+    cleaned: false,
+    debugProgress: Number.isFinite(requestedProgress) ? clamp(requestedProgress) : null,
     dpr: 1,
+    elapsedMs: Number.isFinite(requestedProgress) ? clamp(requestedProgress) * durationMs : 0,
     height: 0,
-    lastNoise: 0,
+    keyDirection: 0,
     lastRender: 0,
-    reducedMotion: mediaQuery.matches,
-    startTime: performance.now(),
+    lastTick: 0,
+    lastNoise: 0,
+    lastTimeText: "",
+    phase: Number.isFinite(requestedProgress) ? (clamp(requestedProgress) >= 1 ? "finished" : "preview") : "ready",
+    pointerActive: false,
+    pointerId: null,
+    reducedMotion: reduceMotion.matches,
+    scoreWeight: 0,
+    tilt: Number.isFinite(requestedTilt) ? clamp(requestedTilt, -1, 1) : 0,
+    tiltTarget: Number.isFinite(requestedTilt) ? clamp(requestedTilt, -1, 1) : 0,
     width: 0,
   };
 
-  const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
-  const easeInOut = (value) => value * value * (3 - 2 * value);
-  const easeOut = (value) => 1 - Math.pow(1 - value, 3);
-  const mix = (start, end, progress) => start + (end - start) * progress;
-  const requestedProgress = new URLSearchParams(window.location.search).get("hourglassProgress");
-
-  if (requestedProgress !== null && Number.isFinite(Number(requestedProgress))) {
-    state.debugProgress = clamp(Number(requestedProgress));
+  function getProgress() {
+    return state.debugProgress === null ? clamp(state.elapsedMs / durationMs) : state.debugProgress;
   }
 
-  const getProgress = (time = performance.now()) => {
-    if (state.debugProgress !== null) {
-      return state.debugProgress;
-    }
-
-    if (state.reducedMotion) {
-      return 0.5;
-    }
-
-    const cycleTime = (time - state.startTime) % (durationMs + resetPauseMs);
-
-    if (cycleTime >= durationMs) {
-      return 1;
-    }
-
-    return clamp(cycleTime / durationMs);
-  };
-
-  const getGeometry = () => {
+  function getGeometry() {
     const width = state.width;
     const height = state.height;
     const centerX = width * 0.5;
-    const topY = height * 0.075;
-    const neckY = height * 0.5;
-    const bottomY = height * 0.925;
-    const chamberHeight = (bottomY - topY) * 0.5;
-    const halfWidth = Math.min(width * 0.41, chamberHeight * 0.94);
-    const scale = Math.min(width / 720, height / 820);
-    const neckHalfWidth = Math.max(4.5, 8 * scale);
-
+    const topY = height * 0.07;
+    const neckY = height * 0.46;
+    const bottomY = height * 0.93;
+    const chamberHeight = Math.min((neckY - topY) * 1.08, (bottomY - neckY) * 0.92);
+    const halfWidth = Math.min(width * 0.34, chamberHeight * 1.03);
+    const scale = Math.min(width / 820, height / 920);
+    const neckHalfWidth = Math.max(4, 7 * scale);
+    const gateY = neckY + chamberHeight * 0.16;
+    const gateTravel = halfWidth * 0.33;
+    const gameTime = state.debugProgress === null ? state.elapsedMs : state.debugProgress * durationMs;
+    const gateOffset = state.reducedMotion ? 0 : Math.sin(gameTime * 0.00105) * gateTravel + Math.sin(gameTime * 0.00031) * gateTravel * 0.24;
     return {
       bottomY,
       centerX,
       chamberHeight,
+      gateCenterX: centerX + gateOffset,
+      gateHalfGap: Math.max(15, halfWidth * 0.075),
+      gateY,
       halfWidth,
       neckHalfWidth,
       neckY,
       scale,
       topY,
     };
-  };
+  }
 
-  const traceTopChamber = (geometry) => {
-    const { centerX, halfWidth, neckHalfWidth, neckY, topY } = geometry;
-
+  function traceTopChamber(g) {
     context.beginPath();
-    context.moveTo(centerX - halfWidth, topY + geometry.chamberHeight * 0.055);
-    context.quadraticCurveTo(centerX, topY - geometry.chamberHeight * 0.04, centerX + halfWidth, topY);
-    context.bezierCurveTo(
-      centerX + halfWidth * 0.72,
-      topY + geometry.chamberHeight * 0.27,
-      centerX + neckHalfWidth * 2.4,
-      neckY - geometry.chamberHeight * 0.12,
-      centerX + neckHalfWidth,
-      neckY
-    );
-    context.lineTo(centerX - neckHalfWidth, neckY);
-    context.bezierCurveTo(
-      centerX - neckHalfWidth * 2.4,
-      neckY - geometry.chamberHeight * 0.12,
-      centerX - halfWidth * 0.74,
-      topY + geometry.chamberHeight * 0.3,
-      centerX - halfWidth,
-      topY + geometry.chamberHeight * 0.055
-    );
+    context.moveTo(g.centerX - g.halfWidth, g.topY + g.chamberHeight * 0.04);
+    context.quadraticCurveTo(g.centerX, g.topY - g.chamberHeight * 0.035, g.centerX + g.halfWidth, g.topY);
+    context.bezierCurveTo(g.centerX + g.halfWidth * 0.7, g.topY + g.chamberHeight * 0.26, g.centerX + g.neckHalfWidth * 2.5, g.neckY - g.chamberHeight * 0.1, g.centerX + g.neckHalfWidth, g.neckY);
+    context.lineTo(g.centerX - g.neckHalfWidth, g.neckY);
+    context.bezierCurveTo(g.centerX - g.neckHalfWidth * 2.5, g.neckY - g.chamberHeight * 0.1, g.centerX - g.halfWidth * 0.72, g.topY + g.chamberHeight * 0.28, g.centerX - g.halfWidth, g.topY + g.chamberHeight * 0.04);
     context.closePath();
-  };
+  }
 
-  const traceBottomChamber = (geometry) => {
-    const { bottomY, centerX, halfWidth, neckHalfWidth, neckY } = geometry;
-
+  function traceBottomChamber(g) {
     context.beginPath();
-    context.moveTo(centerX - neckHalfWidth, neckY);
-    context.bezierCurveTo(
-      centerX - neckHalfWidth * 2.4,
-      neckY + geometry.chamberHeight * 0.12,
-      centerX - halfWidth * 0.98,
-      bottomY - geometry.chamberHeight * 0.26,
-      centerX - halfWidth * 0.72,
-      bottomY - geometry.chamberHeight * 0.06
-    );
-    context.quadraticCurveTo(centerX, bottomY + geometry.chamberHeight * 0.035, centerX + halfWidth * 0.72, bottomY - geometry.chamberHeight * 0.06);
-    context.bezierCurveTo(
-      centerX + halfWidth * 0.98,
-      bottomY - geometry.chamberHeight * 0.26,
-      centerX + neckHalfWidth * 2.4,
-      neckY + geometry.chamberHeight * 0.12,
-      centerX + neckHalfWidth,
-      neckY
-    );
+    context.moveTo(g.centerX - g.neckHalfWidth, g.neckY);
+    context.bezierCurveTo(g.centerX - g.neckHalfWidth * 2.2, g.neckY + g.chamberHeight * 0.13, g.centerX - g.halfWidth * 0.96, g.bottomY - g.chamberHeight * 0.28, g.centerX - g.halfWidth * 0.74, g.bottomY - g.chamberHeight * 0.05);
+    context.quadraticCurveTo(g.centerX, g.bottomY + g.chamberHeight * 0.035, g.centerX + g.halfWidth * 0.74, g.bottomY - g.chamberHeight * 0.05);
+    context.bezierCurveTo(g.centerX + g.halfWidth * 0.96, g.bottomY - g.chamberHeight * 0.28, g.centerX + g.neckHalfWidth * 2.2, g.neckY + g.chamberHeight * 0.13, g.centerX + g.neckHalfWidth, g.neckY);
     context.closePath();
-  };
+  }
 
-  const buildNoise = (time, force = false) => {
-    if (!force && time - state.lastNoise < 240) {
-      return;
-    }
-
+  function buildNoise(time, force = false) {
+    if (!force && (state.reducedMotion || time - state.lastNoise < 190)) return;
     state.lastNoise = time;
     const image = noiseContext.createImageData(noiseCanvas.width, noiseCanvas.height);
-
     for (let index = 0; index < image.data.length; index += 4) {
       const grain = Math.random();
-      const value = grain > 0.88 ? 4 : grain > 0.56 ? 20 : 48;
+      const value = grain > 0.9 ? 2 : grain > 0.58 ? 18 : 48;
       image.data[index] = value;
       image.data[index + 1] = value + 3;
       image.data[index + 2] = value + 2;
-      image.data[index + 3] = grain > 0.42 ? 78 : 24;
+      image.data[index + 3] = grain > 0.4 ? 84 : 18;
     }
-
     noiseContext.putImageData(image, 0, 0);
-  };
+  }
 
-  const drawNoise = (alpha, time) => {
+  function drawNoise(alpha, time) {
     context.save();
     context.globalAlpha = alpha;
     context.globalCompositeOperation = "multiply";
-    context.drawImage(
-      noiseCanvas,
-      Math.sin(time * 0.00021) * -12,
-      Math.cos(time * 0.00017) * -9,
-      state.width * 1.08,
-      state.height * 1.08
-    );
+    context.drawImage(noiseCanvas, state.reducedMotion ? 0 : Math.sin(time * 0.00021) * -10, state.reducedMotion ? 0 : Math.cos(time * 0.00017) * -8, state.width * 1.06, state.height * 1.06);
     context.restore();
-  };
+  }
 
-  const drawTopMass = (geometry, progress, time) => {
+  function drawTopMass(g, progress, time) {
     const remaining = 1 - progress;
     const density = easeInOut(remaining);
-    const surfaceY = mix(
-      geometry.topY - geometry.chamberHeight * 0.015,
-      geometry.neckY - geometry.neckHalfWidth * 1.1,
-      easeInOut(progress)
-    );
-    const gradient = context.createLinearGradient(geometry.centerX, surfaceY, geometry.centerX, geometry.neckY);
-
-    gradient.addColorStop(0, `rgba(2, 4, 4, ${0.95 * density})`);
-    gradient.addColorStop(0.5, `rgba(6, 11, 11, ${0.88 * density})`);
-    gradient.addColorStop(1, `rgba(32, 43, 42, ${0.5 * density})`);
-
+    const surfaceY = mix(g.topY - g.chamberHeight * 0.02, g.neckY - g.neckHalfWidth * 1.2, easeInOut(progress));
+    const gradient = context.createLinearGradient(g.centerX, surfaceY, g.centerX, g.neckY);
+    gradient.addColorStop(0, `rgba(7, 9, 9, ${0.78 * density})`);
+    gradient.addColorStop(0.42, `rgba(2, 4, 4, ${0.96 * density})`);
+    gradient.addColorStop(1, `rgba(25, 31, 30, ${0.68 * density})`);
     context.save();
-    traceTopChamber(geometry);
+    traceTopChamber(g);
     context.clip();
-    context.filter = `blur(${Math.max(9, 15 * geometry.scale)}px)`;
+    context.filter = `blur(${Math.max(7, 12 * g.scale)}px)`;
     context.fillStyle = gradient;
-    context.fillRect(
-      geometry.centerX - geometry.halfWidth - 30,
-      surfaceY - 20,
-      geometry.halfWidth * 2 + 60,
-      geometry.neckY - surfaceY + 42
-    );
+    context.fillRect(g.centerX - g.halfWidth - 30, surfaceY - 18, g.halfWidth * 2 + 60, g.neckY - surfaceY + 36);
     context.filter = "none";
     context.beginPath();
-    context.rect(0, surfaceY - 12, state.width, geometry.neckY - surfaceY + 24);
+    context.rect(0, surfaceY - 14, state.width, g.neckY - surfaceY + 26);
     context.clip();
-    drawNoise(0.3 * density, time);
+    drawNoise(0.39 * density, time);
     context.restore();
+  }
 
-    if (remaining > 0.015) {
-      context.save();
-      context.globalAlpha = 0.3 * density;
-      context.filter = `blur(${Math.max(5, 8 * geometry.scale)}px)`;
-      context.fillStyle = "#050707";
-      context.beginPath();
-      context.ellipse(
-        geometry.centerX + Math.sin(time * 0.00034) * 4,
-        surfaceY,
-        geometry.halfWidth * mix(0.92, 0.08, progress),
-        Math.max(4, geometry.chamberHeight * 0.03),
-        -0.025,
-        0,
-        Math.PI * 2
-      );
-      context.fill();
-      context.restore();
-    }
-
-    return surfaceY;
-  };
-
-  const drawBottomMass = (geometry, progress, time) => {
+  function drawBottomMass(g, progress, time) {
     const fill = easeOut(progress);
-    const surfaceY = mix(
-      geometry.bottomY + geometry.chamberHeight * 0.02,
-      geometry.neckY + geometry.neckHalfWidth * 1.35,
-      fill
-    );
-    const gradient = context.createLinearGradient(geometry.centerX, surfaceY, geometry.centerX, geometry.bottomY);
-
-    gradient.addColorStop(0, `rgba(31, 43, 42, ${0.46 + fill * 0.24})`);
-    gradient.addColorStop(0.42, `rgba(8, 13, 13, ${0.66 + fill * 0.28})`);
-    gradient.addColorStop(1, `rgba(1, 3, 3, ${0.82 + fill * 0.16})`);
-
+    const surfaceY = mix(g.bottomY + g.chamberHeight * 0.025, g.neckY + g.neckHalfWidth * 1.45, fill);
+    const pileOffset = state.tilt * g.halfWidth * 0.08;
+    const gradient = context.createLinearGradient(g.centerX, surfaceY, g.centerX, g.bottomY);
+    gradient.addColorStop(0, `rgba(26, 34, 33, ${0.48 + fill * 0.2})`);
+    gradient.addColorStop(0.4, `rgba(7, 10, 10, ${0.72 + fill * 0.22})`);
+    gradient.addColorStop(1, `rgba(1, 2, 2, ${0.88 + fill * 0.1})`);
     context.save();
-    traceBottomChamber(geometry);
+    traceBottomChamber(g);
     context.clip();
-    context.filter = `blur(${Math.max(9, 15 * geometry.scale)}px)`;
+    context.filter = `blur(${Math.max(8, 13 * g.scale)}px)`;
     context.fillStyle = gradient;
-    context.fillRect(
-      geometry.centerX - geometry.halfWidth - 30,
-      surfaceY - 16,
-      geometry.halfWidth * 2 + 60,
-      geometry.bottomY - surfaceY + 44
-    );
+    context.beginPath();
+    context.ellipse(g.centerX + pileOffset, g.bottomY - g.chamberHeight * 0.02, g.halfWidth * (0.58 + fill * 0.35), g.bottomY - surfaceY + g.chamberHeight * 0.05, state.tilt * -0.025, Math.PI, Math.PI * 2);
+    context.lineTo(g.centerX + g.halfWidth, g.bottomY + 30);
+    context.lineTo(g.centerX - g.halfWidth, g.bottomY + 30);
+    context.closePath();
+    context.fill();
     context.filter = "none";
     context.beginPath();
-    context.rect(0, surfaceY - 10, state.width, geometry.bottomY - surfaceY + 24);
+    context.rect(0, surfaceY - 16, state.width, g.bottomY - surfaceY + 40);
     context.clip();
-    drawNoise(0.34 * fill, time + 640);
+    drawNoise(0.38 * Math.max(0.12, fill), time + 510);
     context.restore();
-
-    if (progress > 0.008) {
-      context.save();
-      context.globalAlpha = 0.18 + fill * 0.24;
-      context.filter = `blur(${Math.max(5, 8 * geometry.scale)}px)`;
-      context.fillStyle = "#111817";
-      context.beginPath();
-      context.ellipse(
-        geometry.centerX + Math.cos(time * 0.00029) * 3,
-        surfaceY,
-        geometry.halfWidth * (0.045 + Math.sin(Math.PI * fill) * 0.88),
-        Math.max(4, geometry.chamberHeight * 0.026),
-        0.018,
-        0,
-        Math.PI * 2
-      );
-      context.fill();
-      context.restore();
-    }
-
     return surfaceY;
-  };
+  }
 
-  const drawStream = (geometry, progress, bottomSurfaceY, time) => {
-    if (progress >= 0.997) {
-      return;
-    }
+  function getStreamX(g) {
+    return g.centerX + state.tilt * g.halfWidth * 0.46;
+  }
 
-    const streamEndY = Math.max(geometry.neckY + geometry.neckHalfWidth * 2, bottomSurfaceY - 2);
-    const streamWidth = Math.max(1.4, geometry.neckHalfWidth * 0.36);
-    const sway = Math.sin(time * 0.0021) * geometry.neckHalfWidth * 0.22;
-    const gradient = context.createLinearGradient(geometry.centerX, geometry.neckY, geometry.centerX, streamEndY);
+  function getHitQuality(g) {
+    return clamp(1 - Math.abs(getStreamX(g) - g.gateCenterX) / (g.gateHalfGap * 2.6));
+  }
 
-    gradient.addColorStop(0, "rgba(2, 5, 5, 0.86)");
-    gradient.addColorStop(0.54, "rgba(22, 32, 31, 0.48)");
-    gradient.addColorStop(1, "rgba(3, 6, 6, 0.68)");
-
+  function drawGate(g, quality) {
+    const lineLength = g.halfWidth * 0.24;
+    const leftEdge = g.gateCenterX - g.gateHalfGap;
+    const rightEdge = g.gateCenterX + g.gateHalfGap;
     context.save();
-    context.globalAlpha = clamp((1 - progress) / 0.025);
-    context.filter = `blur(${Math.max(1.8, 3.5 * geometry.scale)}px)`;
-    context.strokeStyle = gradient;
-    context.lineWidth = streamWidth;
-    context.lineCap = "round";
+    context.strokeStyle = `rgba(9, 12, 12, ${0.72 + quality * 0.18})`;
+    context.lineWidth = Math.max(1.4, 2.2 * g.scale);
+    context.lineCap = "square";
     context.beginPath();
-    context.moveTo(geometry.centerX, geometry.neckY - 1);
-    context.bezierCurveTo(
-      geometry.centerX + sway,
-      mix(geometry.neckY, streamEndY, 0.34),
-      geometry.centerX - sway * 0.52,
-      mix(geometry.neckY, streamEndY, 0.72),
-      geometry.centerX,
-      streamEndY
-    );
+    context.moveTo(leftEdge - lineLength, g.gateY);
+    context.lineTo(leftEdge, g.gateY);
+    context.moveTo(rightEdge, g.gateY);
+    context.lineTo(rightEdge + lineLength, g.gateY);
+    context.stroke();
+    context.globalAlpha = 0.16;
+    context.lineWidth = 1;
+    context.beginPath();
+    context.moveTo(rightEdge + lineLength, g.gateY + 2);
+    context.bezierCurveTo(rightEdge + lineLength + g.halfWidth * 0.18, g.gateY + g.chamberHeight * 0.12, g.centerX + g.halfWidth * 0.68, g.bottomY - g.chamberHeight * 0.18, g.centerX + g.halfWidth * 0.68, g.bottomY - g.chamberHeight * 0.02);
     context.stroke();
     context.restore();
+  }
 
+  function drawStream(g, progress, bottomSurfaceY, time) {
+    if (progress >= 0.999) return;
+    const streamX = getStreamX(g);
+    const streamEndY = Math.max(g.gateY + 20, bottomSurfaceY - 2);
+    const quality = getHitQuality(g);
+    const missDirection = Math.sign(streamX - g.gateCenterX) || 1;
+    const impactX = quality > 0.2 ? streamX : streamX + missDirection * g.gateHalfGap * 0.8;
+    const gradient = context.createLinearGradient(g.centerX, g.neckY, impactX, streamEndY);
+    gradient.addColorStop(0, "rgba(3, 5, 5, 0.9)");
+    gradient.addColorStop(0.58, "rgba(20, 27, 26, 0.58)");
+    gradient.addColorStop(1, "rgba(3, 6, 6, 0.74)");
     context.save();
-    context.globalAlpha = 0.2 + Math.sin(time * 0.005) * 0.04;
-    context.filter = `blur(${Math.max(5, 8 * geometry.scale)}px)`;
-    context.fillStyle = "#151d1c";
+    context.filter = `blur(${Math.max(1.1, 2.4 * g.scale)}px)`;
+    context.strokeStyle = gradient;
+    context.lineWidth = Math.max(1.4, g.neckHalfWidth * 0.44);
+    context.lineCap = "round";
     context.beginPath();
-    context.ellipse(
-      geometry.centerX,
-      streamEndY,
-      geometry.halfWidth * mix(0.035, 0.12, progress),
-      geometry.chamberHeight * 0.018,
-      0,
-      0,
-      Math.PI * 2
-    );
-    context.fill();
+    context.moveTo(g.centerX, g.neckY - 2);
+    context.bezierCurveTo(mix(g.centerX, streamX, 0.34), mix(g.neckY, g.gateY, 0.45), mix(g.centerX, streamX, 0.78), g.gateY - 24, streamX, g.gateY);
+    context.bezierCurveTo(streamX + Math.sin(time * 0.003) * 2, mix(g.gateY, streamEndY, 0.36), impactX - state.tilt * 3, mix(g.gateY, streamEndY, 0.76), impactX, streamEndY);
+    context.stroke();
     context.restore();
-  };
-
-  const drawAmbientDust = (geometry, progress, time) => {
     context.save();
-    context.fillStyle = "#0c1110";
-
-    for (let index = 0; index < 34; index += 1) {
-      const seed = Math.sin((index + 1) * 91.73) * 43758.5453;
+    context.fillStyle = "#101514";
+    for (let index = 0; index < 30; index += 1) {
+      const seed = Math.sin((index + 1) * 83.17) * 43758.5453;
       const unit = seed - Math.floor(seed);
-      const drift = (time * (0.000012 + unit * 0.000016) + unit * 7) % 1;
-      const x = geometry.centerX + (unit - 0.5) * geometry.halfWidth * 2.15;
-      const y = mix(geometry.topY, geometry.bottomY, drift);
-      const proximity = 1 - clamp(Math.abs(x - geometry.centerX) / (geometry.halfWidth * 1.2));
-
-      context.globalAlpha = 0.018 + proximity * 0.035 * (0.65 + Math.sin(index + progress * Math.PI) * 0.2);
+      const travel = (unit + time * (0.00055 + unit * 0.00026)) % 1;
+      const y = mix(g.neckY, streamEndY, travel);
+      const bend = clamp((y - g.neckY) / Math.max(1, g.gateY - g.neckY));
+      const x = mix(g.centerX, impactX, clamp(bend * 0.88)) + (unit - 0.5) * 7;
+      context.globalAlpha = 0.17 + unit * 0.34;
       context.beginPath();
-      context.arc(x, y, 0.4 + unit * 1.1, 0, Math.PI * 2);
+      context.arc(x, y, 0.45 + unit * 0.9, 0, Math.PI * 2);
       context.fill();
     }
-
     context.restore();
-  };
+    drawGate(g, quality);
+  }
 
-  const draw = (time) => {
-    if (!state.reducedMotion && time - state.lastRender < 34) {
-      state.animationFrame = requestAnimationFrame(draw);
-      return;
+  function drawAmbientDust(g, time) {
+    if (state.reducedMotion) return;
+    context.save();
+    context.fillStyle = "#0c1110";
+    for (let index = 0; index < 28; index += 1) {
+      const seed = Math.sin((index + 1) * 91.73) * 43758.5453;
+      const unit = seed - Math.floor(seed);
+      const drift = (time * (0.000012 + unit * 0.000015) + unit * 7) % 1;
+      const x = g.centerX + (unit - 0.5) * g.halfWidth * 2.2;
+      const y = mix(g.topY, g.bottomY, drift);
+      context.globalAlpha = 0.015 + (1 - clamp(Math.abs(x - g.centerX) / g.halfWidth)) * 0.04;
+      context.beginPath();
+      context.arc(x, y, 0.4 + unit, 0, Math.PI * 2);
+      context.fill();
     }
+    context.restore();
+  }
 
-    state.lastRender = time;
+  function updateOutputs() {
+    const remaining = Math.max(0, Math.ceil((durationMs - state.elapsedMs) / 1000));
+    const timeText = `${String(Math.floor(remaining / 60)).padStart(2, "0")}:${String(remaining % 60).padStart(2, "0")}`;
+    const accuracy = state.scoreWeight > 0
+      ? (state.accuracyTotal / state.scoreWeight) * 100
+      : state.phase === "preview"
+        ? getHitQuality(getGeometry()) * 100
+        : null;
+    if (timeText !== state.lastTimeText) {
+      timeOutput.textContent = timeText;
+      state.lastTimeText = timeText;
+    }
+    accuracyOutput.textContent = accuracy === null ? "--.-%" : `${accuracy.toFixed(1)}%`;
+    root.dataset.gamePhase = state.phase;
+    if (state.phase === "ready") {
+      instructionOutput.textContent = "Press, click, or tap to begin.";
+      pauseLabel.textContent = "pause";
+      pauseButton.disabled = true;
+    } else if (state.phase === "paused") {
+      instructionOutput.textContent = "Paused. Press P to continue.";
+      pauseLabel.textContent = "resume";
+      pauseButton.disabled = false;
+    } else if (state.phase === "finished") {
+      instructionOutput.textContent = "Time settled. Press R to try again.";
+      pauseLabel.textContent = "pause";
+      pauseButton.disabled = true;
+    } else {
+      instructionOutput.textContent = "Tilt left or right to guide the sand.";
+      pauseLabel.textContent = "pause";
+      pauseButton.disabled = state.phase === "preview";
+    }
+  }
+
+  function render(time) {
     buildNoise(time);
-
-    const progress = getProgress(time);
+    const progress = getProgress();
     const geometry = getGeometry();
     context.clearRect(0, 0, state.width, state.height);
     drawTopMass(geometry, progress, time);
     const bottomSurfaceY = drawBottomMass(geometry, progress, time);
     drawStream(geometry, progress, bottomSurfaceY, time);
-    drawAmbientDust(geometry, progress, time);
-
+    drawAmbientDust(geometry, time);
+    updateOutputs();
     canvas.dataset.progress = progress.toFixed(3);
-    canvas.dataset.durationSeconds = "60";
+    canvas.dataset.tilt = state.tilt.toFixed(3);
+    canvas.dataset.phase = state.phase;
+  }
 
-    if (!state.reducedMotion && state.debugProgress === null) {
-      state.animationFrame = requestAnimationFrame(draw);
-      return;
+  function announce(message) {
+    statusOutput.textContent = message;
+  }
+
+  function tick(time) {
+    if (state.cleaned) return;
+    const delta = state.lastTick ? Math.min(100, time - state.lastTick) : 0;
+    state.lastTick = time;
+    if (state.phase === "running") {
+      state.elapsedMs = Math.min(durationMs, state.elapsedMs + delta);
+      const geometry = getGeometry();
+      const tiltEase = state.reducedMotion ? 1 : 1 - Math.pow(0.001, delta / 1000);
+      state.tilt = mix(state.tilt, state.tiltTarget, tiltEase);
+      const quality = getHitQuality(geometry);
+      state.accuracyTotal += quality * delta;
+      state.scoreWeight += delta;
+      if (state.elapsedMs >= durationMs) {
+        state.phase = "finished";
+        announce(`Round complete. Accuracy ${((state.accuracyTotal / Math.max(1, state.scoreWeight)) * 100).toFixed(1)} percent.`);
+      }
     }
-
-    state.animationFrame = 0;
-  };
-
-  const startDrawing = () => {
-    if (state.animationFrame) {
-      cancelAnimationFrame(state.animationFrame);
+    if (!state.lastRender || time - state.lastRender >= (state.reducedMotion ? 200 : frameInterval)) {
+      state.lastRender = time;
+      render(time);
     }
+    state.animationFrame = state.phase === "running" ? requestAnimationFrame(tick) : 0;
+  }
 
-    state.animationFrame = 0;
-    state.lastRender = 0;
-    draw(performance.now());
-  };
+  function requestTick() {
+    if (!state.animationFrame && !state.cleaned) {
+      state.lastTick = 0;
+      state.animationFrame = requestAnimationFrame(tick);
+    }
+  }
 
-  const resize = () => {
+  function start() {
+    if (state.phase !== "ready") return;
+    state.phase = "running";
+    announce("Round started. Guide the sand through the moving gate.");
+    updateOutputs();
+    requestTick();
+  }
+
+  function restart() {
+    state.accuracyTotal = 0;
+    state.debugProgress = null;
+    state.elapsedMs = 0;
+    state.lastTimeText = "";
+    state.phase = "ready";
+    state.scoreWeight = 0;
+    state.tilt = 0;
+    state.tiltTarget = 0;
+    announce("Gravity Keeper is ready.");
+    render(performance.now());
+  }
+
+  function togglePause() {
+    if (state.phase === "ready") return start();
+    if (state.phase === "running") {
+      state.phase = "paused";
+      announce("Round paused.");
+      updateOutputs();
+    } else if (state.phase === "paused" && state.debugProgress === null) {
+      state.phase = "running";
+      announce("Round resumed.");
+      updateOutputs();
+      requestTick();
+    }
+  }
+
+  function setTiltFromPointer(event) {
+    const rect = root.getBoundingClientRect();
+    state.tiltTarget = clamp(((event.clientX - rect.left) / rect.width - 0.5) * 2.25, -1, 1);
+    if (state.reducedMotion) {
+      state.tilt = state.tiltTarget;
+      render(performance.now());
+    }
+  }
+
+  function handlePointerDown(event) {
+    if (event.target.closest("a, button")) return;
+    root.focus({ preventScroll: true });
+    state.pointerActive = true;
+    state.pointerId = event.pointerId;
+    root.setPointerCapture?.(event.pointerId);
+    setTiltFromPointer(event);
+    start();
+  }
+
+  function handlePointerMove(event) {
+    if (!state.pointerActive || event.pointerId !== state.pointerId) return;
+    setTiltFromPointer(event);
+  }
+
+  function handlePointerUp(event) {
+    if (event.pointerId !== state.pointerId) return;
+    state.pointerActive = false;
+    state.pointerId = null;
+    root.releasePointerCapture?.(event.pointerId);
+  }
+
+  function handleKeyDown(event) {
+    if (event.target.closest("a, button") && !["p", "P", "r", "R"].includes(event.key)) return;
+    if (["ArrowLeft", "a", "A"].includes(event.key)) {
+      event.preventDefault();
+      state.keyDirection = -1;
+      state.tiltTarget = -1;
+      start();
+    } else if (["ArrowRight", "d", "D"].includes(event.key)) {
+      event.preventDefault();
+      state.keyDirection = 1;
+      state.tiltTarget = 1;
+      start();
+    } else if ([" ", "Enter"].includes(event.key)) {
+      event.preventDefault();
+      start();
+    } else if (["p", "P"].includes(event.key)) {
+      event.preventDefault();
+      togglePause();
+    } else if (["r", "R"].includes(event.key)) {
+      event.preventDefault();
+      restart();
+    } else if (event.key === "Escape") {
+      window.location.href = "./index.html#experiments";
+    }
+  }
+
+  function handleKeyUp(event) {
+    if ((state.keyDirection === -1 && ["ArrowLeft", "a", "A"].includes(event.key)) || (state.keyDirection === 1 && ["ArrowRight", "d", "D"].includes(event.key))) {
+      state.keyDirection = 0;
+      state.tiltTarget = 0;
+    }
+  }
+
+  function handleVisibility() {
+    if (document.hidden && state.phase === "running") {
+      state.phase = "paused";
+      announce("Round paused because the page is hidden.");
+      updateOutputs();
+    }
+  }
+
+  function handleMotionChange(event) {
+    state.reducedMotion = event.matches;
+    root.dataset.reducedMotion = String(event.matches);
+    render(performance.now());
+  }
+
+  function resize() {
     const rect = canvas.getBoundingClientRect();
     state.dpr = Math.min(window.devicePixelRatio || 1, 1.6);
     state.width = Math.max(1, Math.round(rect.width));
@@ -386,39 +481,68 @@
     canvas.height = Math.round(state.height * state.dpr);
     context.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
     noiseCanvas.width = 190;
-    noiseCanvas.height = Math.max(240, Math.round(190 * (state.height / Math.max(state.width, 1))));
+    noiseCanvas.height = Math.max(230, Math.round(190 * (state.height / Math.max(state.width, 1))));
     buildNoise(performance.now(), true);
-  };
+    render(performance.now());
+  }
 
-  const restart = () => {
-    state.startTime = performance.now();
-    state.debugProgress = null;
-    startDrawing();
-  };
+  function cleanup() {
+    if (state.cleaned) return;
+    state.cleaned = true;
+    cancelAnimationFrame(state.animationFrame);
+    resizeObserver.disconnect();
+    root.removeEventListener("pointerdown", handlePointerDown);
+    root.removeEventListener("pointermove", handlePointerMove);
+    root.removeEventListener("pointerup", handlePointerUp);
+    root.removeEventListener("pointercancel", handlePointerUp);
+    root.removeEventListener("keydown", handleKeyDown);
+    root.removeEventListener("keyup", handleKeyUp);
+    pauseButton.removeEventListener("click", togglePause);
+    restartButton.removeEventListener("click", restart);
+    document.removeEventListener("visibilitychange", handleVisibility);
+    window.removeEventListener("pagehide", cleanup);
+    reduceMotion.removeEventListener("change", handleMotionChange);
+  }
 
-  const setProgress = (progress) => {
-    state.debugProgress = clamp(progress);
-    startDrawing();
-  };
-
+  const resizeObserver = new ResizeObserver(resize);
+  resizeObserver.observe(canvas);
+  root.addEventListener("pointerdown", handlePointerDown);
+  root.addEventListener("pointermove", handlePointerMove);
+  root.addEventListener("pointerup", handlePointerUp);
+  root.addEventListener("pointercancel", handlePointerUp);
+  root.addEventListener("keydown", handleKeyDown);
+  root.addEventListener("keyup", handleKeyUp);
+  pauseButton.addEventListener("click", togglePause);
+  restartButton.addEventListener("click", restart);
+  document.addEventListener("visibilitychange", handleVisibility);
+  window.addEventListener("pagehide", cleanup);
+  reduceMotion.addEventListener("change", handleMotionChange);
+  root.dataset.reducedMotion = String(state.reducedMotion);
   resize();
-  startDrawing();
+  requestTick();
 
-  window.__hourglassSand = {
+  window.__hourglassGame = {
     durationMs,
-    getProgress,
+    finish() {
+      state.debugProgress = null;
+      state.elapsedMs = durationMs;
+      state.phase = "finished";
+      render(performance.now());
+    },
+    getState() {
+      return {
+        accuracy: state.scoreWeight > 0 ? state.accuracyTotal / state.scoreWeight : null,
+        elapsedMs: state.elapsedMs,
+        phase: state.phase,
+        tilt: state.tilt,
+      };
+    },
     restart,
-    setProgress,
+    setProgress(progress) {
+      state.debugProgress = clamp(progress);
+      state.elapsedMs = state.debugProgress * durationMs;
+      state.phase = "preview";
+      render(performance.now());
+    },
   };
-
-  window.addEventListener("resize", () => {
-    resize();
-    startDrawing();
-  });
-
-  mediaQuery.addEventListener("change", (event) => {
-    state.reducedMotion = event.matches;
-    resize();
-    startDrawing();
-  });
 })();

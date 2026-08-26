@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./style.css?v=sandbox-project-pages-1" />
+    <link rel="stylesheet" href="./style.css?v=gravity-keeper-4" />
 
-    <title>One-Minute Hourglass | Jason Tello Portfolio</title>
+    <title>Gravity Keeper | Jason Tello Portfolio</title>
 
     <link rel="icon" type="image/png" href="./images/favicon-head.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,18 +14,34 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   </head>
   <body class="sandbox-body sandbox-ready">
-    <main class="sandbox-page" aria-label="One-minute hourglass sandbox project">
+    <main class="sandbox-page" aria-label="Gravity Keeper interactive experiment">
       <a class="sandbox-back" href="./index.html#experiments" aria-label="Return to experiments">Back</a>
-      <section class="sandbox-installation sandbox-installation--poster" aria-label="Animated one-minute hourglass installation">
-        <div class="poster-installation">
+      <section class="sandbox-installation sandbox-installation--poster" aria-label="Gravity Keeper one-minute sand game">
+        <div class="poster-installation" data-hourglass-game tabindex="0" aria-describedby="gravity-instructions gravity-controls">
           <div class="poster-grain" aria-hidden="true"></div>
           <div class="poster-sand-stage" aria-hidden="true">
             <canvas class="poster-sand-canvas" data-hourglass-sand></canvas>
           </div>
+          <div class="gravity-readout gravity-readout--time">
+            <output class="gravity-time" data-hourglass-time aria-label="Time remaining">01:00</output>
+            <p class="gravity-instruction" id="gravity-instructions" data-hourglass-instruction>Press, click, or tap to begin.</p>
+          </div>
+          <div class="gravity-readout gravity-readout--accuracy">
+            <span class="gravity-label">Accuracy</span>
+            <output class="gravity-accuracy" data-hourglass-accuracy aria-label="Current accuracy">--.-%</output>
+          </div>
+          <div class="gravity-controls" id="gravity-controls">
+            <span><kbd>A</kbd><span>/</span><kbd>D</kbd><span>or drag to tilt</span></span>
+            <span class="gravity-controls__actions">
+              <button type="button" data-hourglass-restart><kbd>R</kbd><span>restart</span></button>
+              <button type="button" data-hourglass-pause><kbd>P</kbd><span>pause</span></button>
+            </span>
+          </div>
+          <p class="sr-only" data-hourglass-status aria-live="polite">Gravity Keeper is ready.</p>
         </div>
       </section>
     </main>
-    <script src="./hourglass-sand.js?v=hourglass-study-3"></script>
+    <script src="./hourglass-sand.js?v=gravity-keeper-6"></script>
     <!-- Cloudflare Web Analytics -->
     <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"b487877912b34d169c3745d5bd3cfb90"}'></script>
     <!-- End Cloudflare Web Analytics -->
