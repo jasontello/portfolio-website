@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-01T18:37:51.905Z",
+  "updatedAt": "2026-09-02T18:47:16.373Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -95,14 +95,15 @@
       "spotifyUrl": "https://open.spotify.com/track/0dz1fnXbc6ZHxmZjAtuozd"
     },
     {
-      "id": "7xSm07mkWui2K3XkwUTgFi",
-      "name": "NO LUCK",
+      "id": "7ESzs3aspRXYL1vRpPIiMD",
+      "name": "KANSAS (MONOLID Flip)",
       "artists": [
-        "Tiffany Day"
+        "Tiffany Day",
+        "MONOLID"
       ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/7xSm07mkWui2K3XkwUTgFi"
+      "album": "LOVER TOFU FRUIT (MONOLID Flips)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c5edde01f8755270d0e73257",
+      "spotifyUrl": "https://open.spotify.com/track/7ESzs3aspRXYL1vRpPIiMD"
     }
   ]
 }
