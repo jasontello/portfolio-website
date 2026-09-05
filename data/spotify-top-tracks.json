@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-04T18:28:41.343Z",
+  "updatedAt": "2026-09-05T17:23:41.497Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -55,6 +55,16 @@
       "spotifyUrl": "https://open.spotify.com/track/7AaCqnFCdfEKesBwSzS8NQ"
     },
     {
+      "id": "3vt2JsfvpAvlxfIcFO7lZe",
+      "name": "PRETTY4U",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/3vt2JsfvpAvlxfIcFO7lZe"
+    },
+    {
       "id": "7ESzs3aspRXYL1vRpPIiMD",
       "name": "KANSAS (MONOLID Flip)",
       "artists": [
@@ -64,16 +74,6 @@
       "album": "LOVER TOFU FRUIT (MONOLID Flips)",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273c5edde01f8755270d0e73257",
       "spotifyUrl": "https://open.spotify.com/track/7ESzs3aspRXYL1vRpPIiMD"
-    },
-    {
-      "id": "3vt2JsfvpAvlxfIcFO7lZe",
-      "name": "PRETTY4U",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/3vt2JsfvpAvlxfIcFO7lZe"
     },
     {
       "id": "3SqnwMW6Xcldf9KYgL8UOD",
@@ -96,14 +96,14 @@
       "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
     },
     {
-      "id": "0dz1fnXbc6ZHxmZjAtuozd",
-      "name": "bodies - Live at AT&T Block Party 2026",
+      "id": "7xSm07mkWui2K3XkwUTgFi",
+      "name": "NO LUCK",
       "artists": [
-        "keshi"
+        "Tiffany Day"
       ],
-      "album": "bodies (Live at AT&T Block Party 2026)",
-      "albumImage": "https://i.scdn.co/image/ab6742d3000053b7daf80151c0258cb1edc0730a",
-      "spotifyUrl": "https://open.spotify.com/track/0dz1fnXbc6ZHxmZjAtuozd"
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/7xSm07mkWui2K3XkwUTgFi"
     }
   ]
 }
