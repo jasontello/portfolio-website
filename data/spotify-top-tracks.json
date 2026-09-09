@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-08T18:47:12.465Z",
+  "updatedAt": "2026-09-09T18:41:43.604Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -12,16 +12,6 @@
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
       "spotifyUrl": "https://open.spotify.com/track/40p1AU9WjnKzgUTQu3FBEN"
-    },
-    {
-      "id": "0FyhBw60Tk0UyVqJEJqn9N",
-      "name": "DOIT4ME",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/0FyhBw60Tk0UyVqJEJqn9N"
     },
     {
       "id": "3Nkw1nmtFnx6adWNWOnPsB",
@@ -56,6 +46,16 @@
       "spotifyUrl": "https://open.spotify.com/track/7ESzs3aspRXYL1vRpPIiMD"
     },
     {
+      "id": "0FyhBw60Tk0UyVqJEJqn9N",
+      "name": "DOIT4ME",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/0FyhBw60Tk0UyVqJEJqn9N"
+    },
+    {
       "id": "0dz1fnXbc6ZHxmZjAtuozd",
       "name": "bodies - Live at AT&T Block Party 2026",
       "artists": [
@@ -64,26 +64,6 @@
       "album": "bodies (Live at AT&T Block Party 2026)",
       "albumImage": "https://i.scdn.co/image/ab6742d3000053b7daf80151c0258cb1edc0730a",
       "spotifyUrl": "https://open.spotify.com/track/0dz1fnXbc6ZHxmZjAtuozd"
-    },
-    {
-      "id": "5PYrRnaRsCOOE0c65L4y2M",
-      "name": "SAME LA",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/5PYrRnaRsCOOE0c65L4y2M"
-    },
-    {
-      "id": "57aMyrC1ts3HlTSwBk2BIZ",
-      "name": "COPYCAT",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
     },
     {
       "id": "7kqywgz6h3s9l1sIHnoE3s",
@@ -96,14 +76,34 @@
       "spotifyUrl": "https://open.spotify.com/track/7kqywgz6h3s9l1sIHnoE3s"
     },
     {
-      "id": "3SqnwMW6Xcldf9KYgL8UOD",
-      "name": "BREAKUP",
+      "id": "5PYrRnaRsCOOE0c65L4y2M",
+      "name": "SAME LA",
       "artists": [
         "Tiffany Day"
       ],
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/3SqnwMW6Xcldf9KYgL8UOD"
+      "spotifyUrl": "https://open.spotify.com/track/5PYrRnaRsCOOE0c65L4y2M"
+    },
+    {
+      "id": "1T0sT2TVNCvc1jqGBs9qTf",
+      "name": "Closer",
+      "artists": [
+        "JIHYO"
+      ],
+      "album": "ZONE",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733230765b6902f7572d2fdddc",
+      "spotifyUrl": "https://open.spotify.com/track/1T0sT2TVNCvc1jqGBs9qTf"
+    },
+    {
+      "id": "57aMyrC1ts3HlTSwBk2BIZ",
+      "name": "COPYCAT",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/57aMyrC1ts3HlTSwBk2BIZ"
     }
   ]
 }
