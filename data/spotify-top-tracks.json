@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11T18:38:39.784Z",
+  "updatedAt": "2026-09-12T17:45:41.536Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -46,16 +46,6 @@
       "spotifyUrl": "https://open.spotify.com/track/7ESzs3aspRXYL1vRpPIiMD"
     },
     {
-      "id": "0dz1fnXbc6ZHxmZjAtuozd",
-      "name": "bodies - Live at AT&T Block Party 2026",
-      "artists": [
-        "keshi"
-      ],
-      "album": "bodies (Live at AT&T Block Party 2026)",
-      "albumImage": "https://i.scdn.co/image/ab6742d3000053b7daf80151c0258cb1edc0730a",
-      "spotifyUrl": "https://open.spotify.com/track/0dz1fnXbc6ZHxmZjAtuozd"
-    },
-    {
       "id": "7kqywgz6h3s9l1sIHnoE3s",
       "name": "One Last Kiss",
       "artists": [
@@ -76,24 +66,14 @@
       "spotifyUrl": "https://open.spotify.com/track/7Jpb9OejYYIwsBIVQwceRy"
     },
     {
-      "id": "1T0sT2TVNCvc1jqGBs9qTf",
-      "name": "Closer",
+      "id": "0dz1fnXbc6ZHxmZjAtuozd",
+      "name": "bodies - Live at AT&T Block Party 2026",
       "artists": [
-        "JIHYO"
+        "keshi"
       ],
-      "album": "ZONE",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733230765b6902f7572d2fdddc",
-      "spotifyUrl": "https://open.spotify.com/track/1T0sT2TVNCvc1jqGBs9qTf"
-    },
-    {
-      "id": "3SqnwMW6Xcldf9KYgL8UOD",
-      "name": "BREAKUP",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/3SqnwMW6Xcldf9KYgL8UOD"
+      "album": "bodies (Live at AT&T Block Party 2026)",
+      "albumImage": "https://i.scdn.co/image/ab6742d3000053b7daf80151c0258cb1edc0730a",
+      "spotifyUrl": "https://open.spotify.com/track/0dz1fnXbc6ZHxmZjAtuozd"
     },
     {
       "id": "6XkJZduRsBmjjOCrilV9Io",
@@ -104,6 +84,26 @@
       "album": "Hush",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273ea4729d0fc9ab5b6f27ed20a",
       "spotifyUrl": "https://open.spotify.com/track/6XkJZduRsBmjjOCrilV9Io"
+    },
+    {
+      "id": "0FyhBw60Tk0UyVqJEJqn9N",
+      "name": "DOIT4ME",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/0FyhBw60Tk0UyVqJEJqn9N"
+    },
+    {
+      "id": "3jueKDWC9DmTfnU2jMxE8U",
+      "name": "rendezvous 18.6y",
+      "artists": [
+        "LOONA/yyxy"
+      ],
+      "album": "beauty&thebeat",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27319f29ba212fa38eb88cf3643",
+      "spotifyUrl": "https://open.spotify.com/track/3jueKDWC9DmTfnU2jMxE8U"
     }
   ]
 }
