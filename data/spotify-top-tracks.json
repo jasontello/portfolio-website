@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-12T17:45:41.536Z",
+  "updatedAt": "2026-09-13T18:14:29.624Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -86,6 +86,16 @@
       "spotifyUrl": "https://open.spotify.com/track/6XkJZduRsBmjjOCrilV9Io"
     },
     {
+      "id": "3SqnwMW6Xcldf9KYgL8UOD",
+      "name": "BREAKUP",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/3SqnwMW6Xcldf9KYgL8UOD"
+    },
+    {
       "id": "0FyhBw60Tk0UyVqJEJqn9N",
       "name": "DOIT4ME",
       "artists": [
@@ -94,16 +104,6 @@
       "album": "HALO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
       "spotifyUrl": "https://open.spotify.com/track/0FyhBw60Tk0UyVqJEJqn9N"
-    },
-    {
-      "id": "3jueKDWC9DmTfnU2jMxE8U",
-      "name": "rendezvous 18.6y",
-      "artists": [
-        "LOONA/yyxy"
-      ],
-      "album": "beauty&thebeat",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27319f29ba212fa38eb88cf3643",
-      "spotifyUrl": "https://open.spotify.com/track/3jueKDWC9DmTfnU2jMxE8U"
     }
   ]
 }
