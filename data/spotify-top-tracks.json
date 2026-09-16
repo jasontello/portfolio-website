@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-15T19:04:41.511Z",
+  "updatedAt": "2026-09-16T18:56:02.144Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -23,17 +23,6 @@
       "album": "Requiem",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273617997bc09bb7fa23624eff5",
       "spotifyUrl": "https://open.spotify.com/track/7AaCqnFCdfEKesBwSzS8NQ"
-    },
-    {
-      "id": "3Nkw1nmtFnx6adWNWOnPsB",
-      "name": "Bellafonte (feat. Tkay Maidza)",
-      "artists": [
-        "Jenevieve",
-        "Tkay Maidza"
-      ],
-      "album": "CRYSALIS (CODA)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27303f01f495ed76d0c668e17e5",
-      "spotifyUrl": "https://open.spotify.com/track/3Nkw1nmtFnx6adWNWOnPsB"
     },
     {
       "id": "40p1AU9WjnKzgUTQu3FBEN",
@@ -86,14 +75,15 @@
       "spotifyUrl": "https://open.spotify.com/track/3GMlnnGGqhPG792cpArVjl"
     },
     {
-      "id": "3SqnwMW6Xcldf9KYgL8UOD",
-      "name": "BREAKUP",
+      "id": "3Nkw1nmtFnx6adWNWOnPsB",
+      "name": "Bellafonte (feat. Tkay Maidza)",
       "artists": [
-        "Tiffany Day"
+        "Jenevieve",
+        "Tkay Maidza"
       ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/3SqnwMW6Xcldf9KYgL8UOD"
+      "album": "CRYSALIS (CODA)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27303f01f495ed76d0c668e17e5",
+      "spotifyUrl": "https://open.spotify.com/track/3Nkw1nmtFnx6adWNWOnPsB"
     },
     {
       "id": "2K7L7Qpfv26WSIm3tlMDEz",
@@ -104,6 +94,16 @@
       "album": "LOVER TOFU FRUIT",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b2731c6094405c2608eeaf506edb",
       "spotifyUrl": "https://open.spotify.com/track/2K7L7Qpfv26WSIm3tlMDEz"
+    },
+    {
+      "id": "3SqnwMW6Xcldf9KYgL8UOD",
+      "name": "BREAKUP",
+      "artists": [
+        "Tiffany Day"
+      ],
+      "album": "HALO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
+      "spotifyUrl": "https://open.spotify.com/track/3SqnwMW6Xcldf9KYgL8UOD"
     }
   ]
 }
