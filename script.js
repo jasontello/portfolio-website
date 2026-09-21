@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSandboxTransition();
   initBizznestThumbAnimation();
   initFullscreenLayout();
+  initLocalOnlyProjects();
   initVoidCardPreview();
   initWorkFilters();
   initSpotifyTopTracks();
@@ -494,11 +495,42 @@ function normalizePath(pathname) {
   return withoutTrailingSlash;
 }
 
+function initLocalOnlyProjects() {
+  const localOnlyCards = document.querySelectorAll("[data-local-only-project]");
+  const hostname = window.location.hostname.toLowerCase();
+  const isPrivateNetwork = (
+    /^10\./.test(hostname) ||
+    /^192\.168\./.test(hostname) ||
+    /^172\.(1[6-9]|2\d|3[01])\./.test(hostname)
+  );
+  const isLocalPreview = (
+    window.location.protocol === "file:" ||
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname === "::1" ||
+    hostname.endsWith(".local") ||
+    isPrivateNetwork
+  );
+
+  if (isLocalPreview) {
+    return;
+  }
+
+  localOnlyCards.forEach((card) => {
+    card.classList.add("is-production-hidden", "is-filtered-out");
+    card.setAttribute("aria-hidden", "true");
+  });
+}
+
 function initVoidCardPreview() {
   const root = document.querySelector("[data-void-card-preview]");
   const canvas = root?.querySelector("[data-void-card-canvas]");
 
-  if (!(root instanceof HTMLElement) || !(canvas instanceof HTMLCanvasElement)) {
+  if (
+    !(root instanceof HTMLElement) ||
+    !(canvas instanceof HTMLCanvasElement) ||
+    root.closest(".is-production-hidden")
+  ) {
     return;
   }
 
@@ -798,7 +830,8 @@ function initWorkFilters() {
 
   const setFilter = (filter) => {
     cards.forEach((card) => {
-      const isVisible = card.dataset.workCategory === filter;
+      const isProductionHidden = card.classList.contains("is-production-hidden");
+      const isVisible = !isProductionHidden && card.dataset.workCategory === filter;
       const video = card.querySelector("video");
 
       card.classList.toggle("is-filtered-out", !isVisible);
