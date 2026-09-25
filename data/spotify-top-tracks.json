@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T19:17:28.928Z",
+  "updatedAt": "2026-09-25T19:19:46.420Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -55,6 +55,18 @@
       "spotifyUrl": "https://open.spotify.com/track/6XkJZduRsBmjjOCrilV9Io"
     },
     {
+      "id": "5M8eNQ6wLYPT9D60hbcxVU",
+      "name": "How To Pray",
+      "artists": [
+        "Dahi",
+        "Kendrick Lamar",
+        "Amber Mark"
+      ],
+      "album": "Black Boy (Alternative)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273381f5fc3ad9bc29496c16ca0",
+      "spotifyUrl": "https://open.spotify.com/track/5M8eNQ6wLYPT9D60hbcxVU"
+    },
+    {
       "id": "40p1AU9WjnKzgUTQu3FBEN",
       "name": "EVERYTHING I'VE EVER WANTED",
       "artists": [
@@ -85,24 +97,14 @@
       "spotifyUrl": "https://open.spotify.com/track/0USn5f2VZGbHjHkbjcijzU"
     },
     {
-      "id": "0FyhBw60Tk0UyVqJEJqn9N",
-      "name": "DOIT4ME",
+      "id": "4J79sUP2a1FlG7f80M4enw",
+      "name": "Love Child",
       "artists": [
-        "Tiffany Day"
+        "tripleS"
       ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/0FyhBw60Tk0UyVqJEJqn9N"
-    },
-    {
-      "id": "3AYAaws2tjaV4ESGrwb1fa",
-      "name": "Labyrinth",
-      "artists": [
-        "Metro-Ongen"
-      ],
-      "album": "Eden",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273979b5327af8707f38092034c",
-      "spotifyUrl": "https://open.spotify.com/track/3AYAaws2tjaV4ESGrwb1fa"
+      "album": "<ASSEMBLE25>",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738f233fd369e5a47b637d00c6",
+      "spotifyUrl": "https://open.spotify.com/track/4J79sUP2a1FlG7f80M4enw"
     }
   ]
 }
