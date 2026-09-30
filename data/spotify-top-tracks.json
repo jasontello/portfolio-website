@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-29T20:02:04.262Z",
+  "updatedAt": "2026-09-30T20:07:26.577Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -99,14 +99,14 @@
       "spotifyUrl": "https://open.spotify.com/track/0USn5f2VZGbHjHkbjcijzU"
     },
     {
-      "id": "4J79sUP2a1FlG7f80M4enw",
-      "name": "Love Child",
+      "id": "3AYAaws2tjaV4ESGrwb1fa",
+      "name": "Labyrinth",
       "artists": [
-        "tripleS"
+        "Metro-Ongen"
       ],
-      "album": "<ASSEMBLE25>",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738f233fd369e5a47b637d00c6",
-      "spotifyUrl": "https://open.spotify.com/track/4J79sUP2a1FlG7f80M4enw"
+      "album": "Eden",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273979b5327af8707f38092034c",
+      "spotifyUrl": "https://open.spotify.com/track/3AYAaws2tjaV4ESGrwb1fa"
     }
   ]
 }
