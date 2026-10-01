@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-30T20:07:26.577Z",
+  "updatedAt": "2026-10-01T20:22:37.441Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -13,6 +13,18 @@
       "album": "The Boy Who Played the Harp",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273fecaa7826bb0cbe139a8cb83",
       "spotifyUrl": "https://open.spotify.com/track/3oTuTpF1F3A7rEC6RKsMRz"
+    },
+    {
+      "id": "5M8eNQ6wLYPT9D60hbcxVU",
+      "name": "How To Pray",
+      "artists": [
+        "Dahi",
+        "Kendrick Lamar",
+        "Amber Mark"
+      ],
+      "album": "Black Boy (Alternative)",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ff2e94b4994ffedbadc418f2",
+      "spotifyUrl": "https://open.spotify.com/track/5M8eNQ6wLYPT9D60hbcxVU"
     },
     {
       "id": "7Jpb9OejYYIwsBIVQwceRy",
@@ -45,18 +57,6 @@
       "spotifyUrl": "https://open.spotify.com/track/3tqUaq6JjHcN34WZb70FyY"
     },
     {
-      "id": "5M8eNQ6wLYPT9D60hbcxVU",
-      "name": "How To Pray",
-      "artists": [
-        "Dahi",
-        "Kendrick Lamar",
-        "Amber Mark"
-      ],
-      "album": "Black Boy (Alternative)",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273ff2e94b4994ffedbadc418f2",
-      "spotifyUrl": "https://open.spotify.com/track/5M8eNQ6wLYPT9D60hbcxVU"
-    },
-    {
       "id": "3h5T5JypYU7huFiVYhv1dr",
       "name": "BbY WOW",
       "artists": [
@@ -67,26 +67,6 @@
       "album": "NO ME ARREPIENTO DE SENTIR TANTO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27321deb742375f88edfb2e7368",
       "spotifyUrl": "https://open.spotify.com/track/3h5T5JypYU7huFiVYhv1dr"
-    },
-    {
-      "id": "2K7L7Qpfv26WSIm3tlMDEz",
-      "name": "KANSAS",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "LOVER TOFU FRUIT",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731c6094405c2608eeaf506edb",
-      "spotifyUrl": "https://open.spotify.com/track/2K7L7Qpfv26WSIm3tlMDEz"
-    },
-    {
-      "id": "40p1AU9WjnKzgUTQu3FBEN",
-      "name": "EVERYTHING I'VE EVER WANTED",
-      "artists": [
-        "Tiffany Day"
-      ],
-      "album": "HALO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273b5b273ebd1632a05019cd75c",
-      "spotifyUrl": "https://open.spotify.com/track/40p1AU9WjnKzgUTQu3FBEN"
     },
     {
       "id": "0USn5f2VZGbHjHkbjcijzU",
@@ -107,6 +87,26 @@
       "album": "Eden",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273979b5327af8707f38092034c",
       "spotifyUrl": "https://open.spotify.com/track/3AYAaws2tjaV4ESGrwb1fa"
+    },
+    {
+      "id": "4J79sUP2a1FlG7f80M4enw",
+      "name": "Love Child",
+      "artists": [
+        "tripleS"
+      ],
+      "album": "<ASSEMBLE25>",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738f233fd369e5a47b637d00c6",
+      "spotifyUrl": "https://open.spotify.com/track/4J79sUP2a1FlG7f80M4enw"
+    },
+    {
+      "id": "04d5HlcQX6zH5MMqffXOon",
+      "name": "MATADORA",
+      "artists": [
+        "KAROL G"
+      ],
+      "album": "NO ME ARREPIENTO DE SENTIR TANTO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27321deb742375f88edfb2e7368",
+      "spotifyUrl": "https://open.spotify.com/track/04d5HlcQX6zH5MMqffXOon"
     }
   ]
 }
