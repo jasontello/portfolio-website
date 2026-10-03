@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-02T19:59:03.749Z",
+  "updatedAt": "2026-10-03T18:43:11.752Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -37,16 +37,6 @@
       "spotifyUrl": "https://open.spotify.com/track/3GMlnnGGqhPG792cpArVjl"
     },
     {
-      "id": "7Jpb9OejYYIwsBIVQwceRy",
-      "name": "SUN KISS",
-      "artists": [
-        "TUIDE"
-      ],
-      "album": "TUNE & PLAY",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739ee310150eb907c28c40397a",
-      "spotifyUrl": "https://open.spotify.com/track/7Jpb9OejYYIwsBIVQwceRy"
-    },
-    {
       "id": "3tqUaq6JjHcN34WZb70FyY",
       "name": "Winter",
       "artists": [
@@ -67,6 +57,16 @@
       "album": "NO ME ARREPIENTO DE SENTIR TANTO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27321deb742375f88edfb2e7368",
       "spotifyUrl": "https://open.spotify.com/track/3h5T5JypYU7huFiVYhv1dr"
+    },
+    {
+      "id": "7Jpb9OejYYIwsBIVQwceRy",
+      "name": "SUN KISS",
+      "artists": [
+        "TUIDE"
+      ],
+      "album": "TUNE & PLAY",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739ee310150eb907c28c40397a",
+      "spotifyUrl": "https://open.spotify.com/track/7Jpb9OejYYIwsBIVQwceRy"
     },
     {
       "id": "04d5HlcQX6zH5MMqffXOon",
