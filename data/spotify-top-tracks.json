@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-03T18:43:11.752Z",
+  "updatedAt": "2026-10-04T18:40:02.218Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -79,14 +79,14 @@
       "spotifyUrl": "https://open.spotify.com/track/04d5HlcQX6zH5MMqffXOon"
     },
     {
-      "id": "0USn5f2VZGbHjHkbjcijzU",
-      "name": "Pop Off Pop Off",
+      "id": "2LQJZcCEfTG1v087gaaMMj",
+      "name": "A Long Dream",
       "artists": [
-        "KiiiKiii"
+        "SE SO NEON"
       ],
-      "album": "WhyKiiiKiii",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2734571e5501977b5cddac93a7c",
-      "spotifyUrl": "https://open.spotify.com/track/0USn5f2VZGbHjHkbjcijzU"
+      "album": "A Long Dream",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27309bb32c7dcbbaca083c070ab",
+      "spotifyUrl": "https://open.spotify.com/track/2LQJZcCEfTG1v087gaaMMj"
     },
     {
       "id": "3AYAaws2tjaV4ESGrwb1fa",
