@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T18:40:02.218Z",
+  "updatedAt": "2026-10-05T22:04:10.545Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -79,16 +79,6 @@
       "spotifyUrl": "https://open.spotify.com/track/04d5HlcQX6zH5MMqffXOon"
     },
     {
-      "id": "2LQJZcCEfTG1v087gaaMMj",
-      "name": "A Long Dream",
-      "artists": [
-        "SE SO NEON"
-      ],
-      "album": "A Long Dream",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27309bb32c7dcbbaca083c070ab",
-      "spotifyUrl": "https://open.spotify.com/track/2LQJZcCEfTG1v087gaaMMj"
-    },
-    {
       "id": "3AYAaws2tjaV4ESGrwb1fa",
       "name": "Labyrinth",
       "artists": [
@@ -99,14 +89,26 @@
       "spotifyUrl": "https://open.spotify.com/track/3AYAaws2tjaV4ESGrwb1fa"
     },
     {
-      "id": "4J79sUP2a1FlG7f80M4enw",
-      "name": "Love Child",
+      "id": "2LQJZcCEfTG1v087gaaMMj",
+      "name": "A Long Dream",
       "artists": [
-        "tripleS"
+        "SE SO NEON"
       ],
-      "album": "<ASSEMBLE25>",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738f233fd369e5a47b637d00c6",
-      "spotifyUrl": "https://open.spotify.com/track/4J79sUP2a1FlG7f80M4enw"
+      "album": "A Long Dream",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27309bb32c7dcbbaca083c070ab",
+      "spotifyUrl": "https://open.spotify.com/track/2LQJZcCEfTG1v087gaaMMj"
+    },
+    {
+      "id": "0uI8zAUhinOJDIfWYam8lX",
+      "name": "Bye Bye Inhibitions",
+      "artists": [
+        "Alok",
+        "NAYEON",
+        "TWICE"
+      ],
+      "album": "Bye Bye Inhibitions",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c993c7006209b7f529199207",
+      "spotifyUrl": "https://open.spotify.com/track/0uI8zAUhinOJDIfWYam8lX"
     }
   ]
 }
