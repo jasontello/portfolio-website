@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-05T22:04:10.545Z",
+  "updatedAt": "2026-10-06T20:23:05.466Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -59,6 +59,18 @@
       "spotifyUrl": "https://open.spotify.com/track/3h5T5JypYU7huFiVYhv1dr"
     },
     {
+      "id": "0uI8zAUhinOJDIfWYam8lX",
+      "name": "Bye Bye Inhibitions",
+      "artists": [
+        "Alok",
+        "NAYEON",
+        "TWICE"
+      ],
+      "album": "Bye Bye Inhibitions",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c993c7006209b7f529199207",
+      "spotifyUrl": "https://open.spotify.com/track/0uI8zAUhinOJDIfWYam8lX"
+    },
+    {
       "id": "7Jpb9OejYYIwsBIVQwceRy",
       "name": "SUN KISS",
       "artists": [
@@ -79,6 +91,17 @@
       "spotifyUrl": "https://open.spotify.com/track/04d5HlcQX6zH5MMqffXOon"
     },
     {
+      "id": "3ieVRTL0jHyZD6AAjcoeQa",
+      "name": "Wings",
+      "artists": [
+        "So!YoON!",
+        "Phum Viphurit"
+      ],
+      "album": "Wings",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27364dabd743f933ba2bfee3fa8",
+      "spotifyUrl": "https://open.spotify.com/track/3ieVRTL0jHyZD6AAjcoeQa"
+    },
+    {
       "id": "3AYAaws2tjaV4ESGrwb1fa",
       "name": "Labyrinth",
       "artists": [
@@ -87,28 +110,6 @@
       "album": "Eden",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273979b5327af8707f38092034c",
       "spotifyUrl": "https://open.spotify.com/track/3AYAaws2tjaV4ESGrwb1fa"
-    },
-    {
-      "id": "2LQJZcCEfTG1v087gaaMMj",
-      "name": "A Long Dream",
-      "artists": [
-        "SE SO NEON"
-      ],
-      "album": "A Long Dream",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27309bb32c7dcbbaca083c070ab",
-      "spotifyUrl": "https://open.spotify.com/track/2LQJZcCEfTG1v087gaaMMj"
-    },
-    {
-      "id": "0uI8zAUhinOJDIfWYam8lX",
-      "name": "Bye Bye Inhibitions",
-      "artists": [
-        "Alok",
-        "NAYEON",
-        "TWICE"
-      ],
-      "album": "Bye Bye Inhibitions",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c993c7006209b7f529199207",
-      "spotifyUrl": "https://open.spotify.com/track/0uI8zAUhinOJDIfWYam8lX"
     }
   ]
 }
