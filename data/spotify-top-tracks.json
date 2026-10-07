@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-06T20:23:05.466Z",
+  "updatedAt": "2026-10-07T20:39:44.490Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -71,16 +71,6 @@
       "spotifyUrl": "https://open.spotify.com/track/0uI8zAUhinOJDIfWYam8lX"
     },
     {
-      "id": "7Jpb9OejYYIwsBIVQwceRy",
-      "name": "SUN KISS",
-      "artists": [
-        "TUIDE"
-      ],
-      "album": "TUNE & PLAY",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2739ee310150eb907c28c40397a",
-      "spotifyUrl": "https://open.spotify.com/track/7Jpb9OejYYIwsBIVQwceRy"
-    },
-    {
       "id": "04d5HlcQX6zH5MMqffXOon",
       "name": "MATADORA",
       "artists": [
@@ -110,6 +100,16 @@
       "album": "Eden",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273979b5327af8707f38092034c",
       "spotifyUrl": "https://open.spotify.com/track/3AYAaws2tjaV4ESGrwb1fa"
+    },
+    {
+      "id": "2LQJZcCEfTG1v087gaaMMj",
+      "name": "A Long Dream",
+      "artists": [
+        "SE SO NEON"
+      ],
+      "album": "A Long Dream",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27309bb32c7dcbbaca083c070ab",
+      "spotifyUrl": "https://open.spotify.com/track/2LQJZcCEfTG1v087gaaMMj"
     }
   ]
 }
