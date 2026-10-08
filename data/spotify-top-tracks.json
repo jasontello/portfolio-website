@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-07T20:39:44.490Z",
+  "updatedAt": "2026-10-08T20:42:54.623Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -47,18 +47,6 @@
       "spotifyUrl": "https://open.spotify.com/track/3tqUaq6JjHcN34WZb70FyY"
     },
     {
-      "id": "3h5T5JypYU7huFiVYhv1dr",
-      "name": "BbY WOW",
-      "artists": [
-        "KAROL G",
-        "Judeline",
-        "rusowsky"
-      ],
-      "album": "NO ME ARREPIENTO DE SENTIR TANTO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27321deb742375f88edfb2e7368",
-      "spotifyUrl": "https://open.spotify.com/track/3h5T5JypYU7huFiVYhv1dr"
-    },
-    {
       "id": "0uI8zAUhinOJDIfWYam8lX",
       "name": "Bye Bye Inhibitions",
       "artists": [
@@ -69,6 +57,18 @@
       "album": "Bye Bye Inhibitions",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273c993c7006209b7f529199207",
       "spotifyUrl": "https://open.spotify.com/track/0uI8zAUhinOJDIfWYam8lX"
+    },
+    {
+      "id": "3h5T5JypYU7huFiVYhv1dr",
+      "name": "BbY WOW",
+      "artists": [
+        "KAROL G",
+        "Judeline",
+        "rusowsky"
+      ],
+      "album": "NO ME ARREPIENTO DE SENTIR TANTO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27321deb742375f88edfb2e7368",
+      "spotifyUrl": "https://open.spotify.com/track/3h5T5JypYU7huFiVYhv1dr"
     },
     {
       "id": "04d5HlcQX6zH5MMqffXOon",
@@ -92,16 +92,6 @@
       "spotifyUrl": "https://open.spotify.com/track/3ieVRTL0jHyZD6AAjcoeQa"
     },
     {
-      "id": "3AYAaws2tjaV4ESGrwb1fa",
-      "name": "Labyrinth",
-      "artists": [
-        "Metro-Ongen"
-      ],
-      "album": "Eden",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273979b5327af8707f38092034c",
-      "spotifyUrl": "https://open.spotify.com/track/3AYAaws2tjaV4ESGrwb1fa"
-    },
-    {
       "id": "2LQJZcCEfTG1v087gaaMMj",
       "name": "A Long Dream",
       "artists": [
@@ -110,6 +100,16 @@
       "album": "A Long Dream",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27309bb32c7dcbbaca083c070ab",
       "spotifyUrl": "https://open.spotify.com/track/2LQJZcCEfTG1v087gaaMMj"
+    },
+    {
+      "id": "3AYAaws2tjaV4ESGrwb1fa",
+      "name": "Labyrinth",
+      "artists": [
+        "Metro-Ongen"
+      ],
+      "album": "Eden",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273979b5327af8707f38092034c",
+      "spotifyUrl": "https://open.spotify.com/track/3AYAaws2tjaV4ESGrwb1fa"
     }
   ]
 }
