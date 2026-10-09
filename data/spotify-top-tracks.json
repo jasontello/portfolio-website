@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08T20:42:54.623Z",
+  "updatedAt": "2026-10-09T20:08:54.319Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -27,6 +27,18 @@
       "spotifyUrl": "https://open.spotify.com/track/5M8eNQ6wLYPT9D60hbcxVU"
     },
     {
+      "id": "0uI8zAUhinOJDIfWYam8lX",
+      "name": "Bye Bye Inhibitions",
+      "artists": [
+        "Alok",
+        "NAYEON",
+        "TWICE"
+      ],
+      "album": "Bye Bye Inhibitions",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c993c7006209b7f529199207",
+      "spotifyUrl": "https://open.spotify.com/track/0uI8zAUhinOJDIfWYam8lX"
+    },
+    {
       "id": "3GMlnnGGqhPG792cpArVjl",
       "name": "Nanai",
       "artists": [
@@ -45,18 +57,6 @@
       "album": "Nonadaptation",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273a1d9d786d8abe0f1db3552e4",
       "spotifyUrl": "https://open.spotify.com/track/3tqUaq6JjHcN34WZb70FyY"
-    },
-    {
-      "id": "0uI8zAUhinOJDIfWYam8lX",
-      "name": "Bye Bye Inhibitions",
-      "artists": [
-        "Alok",
-        "NAYEON",
-        "TWICE"
-      ],
-      "album": "Bye Bye Inhibitions",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273c993c7006209b7f529199207",
-      "spotifyUrl": "https://open.spotify.com/track/0uI8zAUhinOJDIfWYam8lX"
     },
     {
       "id": "3h5T5JypYU7huFiVYhv1dr",
@@ -102,14 +102,14 @@
       "spotifyUrl": "https://open.spotify.com/track/2LQJZcCEfTG1v087gaaMMj"
     },
     {
-      "id": "3AYAaws2tjaV4ESGrwb1fa",
-      "name": "Labyrinth",
+      "id": "4J79sUP2a1FlG7f80M4enw",
+      "name": "Love Child",
       "artists": [
-        "Metro-Ongen"
+        "tripleS"
       ],
-      "album": "Eden",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273979b5327af8707f38092034c",
-      "spotifyUrl": "https://open.spotify.com/track/3AYAaws2tjaV4ESGrwb1fa"
+      "album": "<ASSEMBLE25>",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738f233fd369e5a47b637d00c6",
+      "spotifyUrl": "https://open.spotify.com/track/4J79sUP2a1FlG7f80M4enw"
     }
   ]
 }
