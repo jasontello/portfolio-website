@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T20:08:54.319Z",
+  "updatedAt": "2026-10-10T19:21:29.240Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -39,16 +39,6 @@
       "spotifyUrl": "https://open.spotify.com/track/0uI8zAUhinOJDIfWYam8lX"
     },
     {
-      "id": "3GMlnnGGqhPG792cpArVjl",
-      "name": "Nanai",
-      "artists": [
-        "Amaia"
-      ],
-      "album": "Si Abro Los Ojos No Es Real",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27316741627edccbb6323aa000b",
-      "spotifyUrl": "https://open.spotify.com/track/3GMlnnGGqhPG792cpArVjl"
-    },
-    {
       "id": "3tqUaq6JjHcN34WZb70FyY",
       "name": "Winter",
       "artists": [
@@ -69,6 +59,16 @@
       "album": "NO ME ARREPIENTO DE SENTIR TANTO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27321deb742375f88edfb2e7368",
       "spotifyUrl": "https://open.spotify.com/track/3h5T5JypYU7huFiVYhv1dr"
+    },
+    {
+      "id": "3GMlnnGGqhPG792cpArVjl",
+      "name": "Nanai",
+      "artists": [
+        "Amaia"
+      ],
+      "album": "Si Abro Los Ojos No Es Real",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27316741627edccbb6323aa000b",
+      "spotifyUrl": "https://open.spotify.com/track/3GMlnnGGqhPG792cpArVjl"
     },
     {
       "id": "04d5HlcQX6zH5MMqffXOon",
@@ -102,14 +102,14 @@
       "spotifyUrl": "https://open.spotify.com/track/2LQJZcCEfTG1v087gaaMMj"
     },
     {
-      "id": "4J79sUP2a1FlG7f80M4enw",
-      "name": "Love Child",
+      "id": "5CZntgbEJobN4qj5mHFVll",
+      "name": "Trokita blin’",
       "artists": [
-        "tripleS"
+        "Alanis Yuki"
       ],
-      "album": "<ASSEMBLE25>",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2738f233fd369e5a47b637d00c6",
-      "spotifyUrl": "https://open.spotify.com/track/4J79sUP2a1FlG7f80M4enw"
+      "album": "Veintidos",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27305e413870125c1ecaa30ddf0",
+      "spotifyUrl": "https://open.spotify.com/track/5CZntgbEJobN4qj5mHFVll"
     }
   ]
 }
