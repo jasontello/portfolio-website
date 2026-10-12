@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-11T19:35:46.624Z",
+  "updatedAt": "2026-10-12T22:30:58.834Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -61,16 +61,6 @@
       "spotifyUrl": "https://open.spotify.com/track/3h5T5JypYU7huFiVYhv1dr"
     },
     {
-      "id": "3GMlnnGGqhPG792cpArVjl",
-      "name": "Nanai",
-      "artists": [
-        "Amaia"
-      ],
-      "album": "Si Abro Los Ojos No Es Real",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27316741627edccbb6323aa000b",
-      "spotifyUrl": "https://open.spotify.com/track/3GMlnnGGqhPG792cpArVjl"
-    },
-    {
       "id": "04d5HlcQX6zH5MMqffXOon",
       "name": "MATADORA",
       "artists": [
@@ -100,6 +90,16 @@
       "album": "A Long Dream",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27309bb32c7dcbbaca083c070ab",
       "spotifyUrl": "https://open.spotify.com/track/2LQJZcCEfTG1v087gaaMMj"
+    },
+    {
+      "id": "3GMlnnGGqhPG792cpArVjl",
+      "name": "Nanai",
+      "artists": [
+        "Amaia"
+      ],
+      "album": "Si Abro Los Ojos No Es Real",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27316741627edccbb6323aa000b",
+      "spotifyUrl": "https://open.spotify.com/track/3GMlnnGGqhPG792cpArVjl"
     },
     {
       "id": "5CZntgbEJobN4qj5mHFVll",
