@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-13T20:43:37.203Z",
+  "updatedAt": "2026-10-14T19:28:23.326Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -49,6 +49,17 @@
       "spotifyUrl": "https://open.spotify.com/track/3tqUaq6JjHcN34WZb70FyY"
     },
     {
+      "id": "3ieVRTL0jHyZD6AAjcoeQa",
+      "name": "Wings",
+      "artists": [
+        "So!YoON!",
+        "Phum Viphurit"
+      ],
+      "album": "Wings",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27364dabd743f933ba2bfee3fa8",
+      "spotifyUrl": "https://open.spotify.com/track/3ieVRTL0jHyZD6AAjcoeQa"
+    },
+    {
       "id": "3h5T5JypYU7huFiVYhv1dr",
       "name": "BbY WOW",
       "artists": [
@@ -71,17 +82,6 @@
       "spotifyUrl": "https://open.spotify.com/track/04d5HlcQX6zH5MMqffXOon"
     },
     {
-      "id": "3ieVRTL0jHyZD6AAjcoeQa",
-      "name": "Wings",
-      "artists": [
-        "So!YoON!",
-        "Phum Viphurit"
-      ],
-      "album": "Wings",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27364dabd743f933ba2bfee3fa8",
-      "spotifyUrl": "https://open.spotify.com/track/3ieVRTL0jHyZD6AAjcoeQa"
-    },
-    {
       "id": "2LQJZcCEfTG1v087gaaMMj",
       "name": "A Long Dream",
       "artists": [
@@ -92,24 +92,24 @@
       "spotifyUrl": "https://open.spotify.com/track/2LQJZcCEfTG1v087gaaMMj"
     },
     {
-      "id": "5CZntgbEJobN4qj5mHFVll",
-      "name": "Trokita blin’",
+      "id": "3GMlnnGGqhPG792cpArVjl",
+      "name": "Nanai",
       "artists": [
-        "Alanis Yuki"
+        "Amaia"
       ],
-      "album": "Veintidos",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27305e413870125c1ecaa30ddf0",
-      "spotifyUrl": "https://open.spotify.com/track/5CZntgbEJobN4qj5mHFVll"
+      "album": "Si Abro Los Ojos No Es Real",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27316741627edccbb6323aa000b",
+      "spotifyUrl": "https://open.spotify.com/track/3GMlnnGGqhPG792cpArVjl"
     },
     {
-      "id": "4c2Pc0NrfkesPR0jff6q3F",
-      "name": "KETU TeCRÉ",
+      "id": "5HSgjfgoollnsrfOFFhbIX",
+      "name": "Hollow",
       "artists": [
-        "Bad Bunny"
+        "Cochise"
       ],
-      "album": "DeBÍ TiRAR MáS FOToS",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273bbd45c8d36e0e045ef640411",
-      "spotifyUrl": "https://open.spotify.com/track/4c2Pc0NrfkesPR0jff6q3F"
+      "album": "Hijack",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731a1cc62fa72d18f263b1b4e6",
+      "spotifyUrl": "https://open.spotify.com/track/5HSgjfgoollnsrfOFFhbIX"
     }
   ]
 }
