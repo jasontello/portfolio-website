@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T18:50:30.738Z",
+  "updatedAt": "2026-10-17T17:52:19.009Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -39,14 +39,16 @@
       "spotifyUrl": "https://open.spotify.com/track/0uI8zAUhinOJDIfWYam8lX"
     },
     {
-      "id": "3tqUaq6JjHcN34WZb70FyY",
-      "name": "Winter",
+      "id": "3h5T5JypYU7huFiVYhv1dr",
+      "name": "BbY WOW",
       "artists": [
-        "SE SO NEON"
+        "KAROL G",
+        "Judeline",
+        "rusowsky"
       ],
-      "album": "Nonadaptation",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a1d9d786d8abe0f1db3552e4",
-      "spotifyUrl": "https://open.spotify.com/track/3tqUaq6JjHcN34WZb70FyY"
+      "album": "NO ME ARREPIENTO DE SENTIR TANTO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27321deb742375f88edfb2e7368",
+      "spotifyUrl": "https://open.spotify.com/track/3h5T5JypYU7huFiVYhv1dr"
     },
     {
       "id": "3ieVRTL0jHyZD6AAjcoeQa",
@@ -60,16 +62,14 @@
       "spotifyUrl": "https://open.spotify.com/track/3ieVRTL0jHyZD6AAjcoeQa"
     },
     {
-      "id": "3h5T5JypYU7huFiVYhv1dr",
-      "name": "BbY WOW",
+      "id": "3tqUaq6JjHcN34WZb70FyY",
+      "name": "Winter",
       "artists": [
-        "KAROL G",
-        "Judeline",
-        "rusowsky"
+        "SE SO NEON"
       ],
-      "album": "NO ME ARREPIENTO DE SENTIR TANTO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27321deb742375f88edfb2e7368",
-      "spotifyUrl": "https://open.spotify.com/track/3h5T5JypYU7huFiVYhv1dr"
+      "album": "Nonadaptation",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a1d9d786d8abe0f1db3552e4",
+      "spotifyUrl": "https://open.spotify.com/track/3tqUaq6JjHcN34WZb70FyY"
     },
     {
       "id": "04d5HlcQX6zH5MMqffXOon",
@@ -82,14 +82,14 @@
       "spotifyUrl": "https://open.spotify.com/track/04d5HlcQX6zH5MMqffXOon"
     },
     {
-      "id": "2LQJZcCEfTG1v087gaaMMj",
-      "name": "A Long Dream",
+      "id": "1uHS5PMWhHjun9kMJCnOQE",
+      "name": "Miamorcito Loco",
       "artists": [
-        "SE SO NEON"
+        "Ruzzi"
       ],
-      "album": "A Long Dream",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27309bb32c7dcbbaca083c070ab",
-      "spotifyUrl": "https://open.spotify.com/track/2LQJZcCEfTG1v087gaaMMj"
+      "album": "Mariana",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f03ffd4e42d6a783a3f58412",
+      "spotifyUrl": "https://open.spotify.com/track/1uHS5PMWhHjun9kMJCnOQE"
     },
     {
       "id": "3GMlnnGGqhPG792cpArVjl",
