@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-18T18:12:01.842Z",
+  "updatedAt": "2026-10-19T20:37:40.693Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -51,6 +51,16 @@
       "spotifyUrl": "https://open.spotify.com/track/3h5T5JypYU7huFiVYhv1dr"
     },
     {
+      "id": "5JDDrQN4rzCOo6UniZEwq0",
+      "name": "Need Your Company",
+      "artists": [
+        "LE SSERAFIM"
+      ],
+      "album": "'PUREFLOW', Pt. 1",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733fba33983638fcf9704c965d",
+      "spotifyUrl": "https://open.spotify.com/track/5JDDrQN4rzCOo6UniZEwq0"
+    },
+    {
       "id": "3ieVRTL0jHyZD6AAjcoeQa",
       "name": "Wings",
       "artists": [
@@ -100,16 +110,6 @@
       "album": "Si Abro Los Ojos No Es Real",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27316741627edccbb6323aa000b",
       "spotifyUrl": "https://open.spotify.com/track/3GMlnnGGqhPG792cpArVjl"
-    },
-    {
-      "id": "5HSgjfgoollnsrfOFFhbIX",
-      "name": "Hollow",
-      "artists": [
-        "Cochise"
-      ],
-      "album": "Hijack",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2731a1cc62fa72d18f263b1b4e6",
-      "spotifyUrl": "https://open.spotify.com/track/5HSgjfgoollnsrfOFFhbIX"
     }
   ]
 }
