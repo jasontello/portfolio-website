@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-19T20:37:40.693Z",
+  "updatedAt": "2026-10-20T19:22:27.227Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -13,6 +13,16 @@
       "album": "The Boy Who Played the Harp",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273fecaa7826bb0cbe139a8cb83",
       "spotifyUrl": "https://open.spotify.com/track/3oTuTpF1F3A7rEC6RKsMRz"
+    },
+    {
+      "id": "5JDDrQN4rzCOo6UniZEwq0",
+      "name": "Need Your Company",
+      "artists": [
+        "LE SSERAFIM"
+      ],
+      "album": "'PUREFLOW', Pt. 1",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733fba33983638fcf9704c965d",
+      "spotifyUrl": "https://open.spotify.com/track/5JDDrQN4rzCOo6UniZEwq0"
     },
     {
       "id": "5M8eNQ6wLYPT9D60hbcxVU",
@@ -51,16 +61,6 @@
       "spotifyUrl": "https://open.spotify.com/track/3h5T5JypYU7huFiVYhv1dr"
     },
     {
-      "id": "5JDDrQN4rzCOo6UniZEwq0",
-      "name": "Need Your Company",
-      "artists": [
-        "LE SSERAFIM"
-      ],
-      "album": "'PUREFLOW', Pt. 1",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b2733fba33983638fcf9704c965d",
-      "spotifyUrl": "https://open.spotify.com/track/5JDDrQN4rzCOo6UniZEwq0"
-    },
-    {
       "id": "3ieVRTL0jHyZD6AAjcoeQa",
       "name": "Wings",
       "artists": [
@@ -70,16 +70,6 @@
       "album": "Wings",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27364dabd743f933ba2bfee3fa8",
       "spotifyUrl": "https://open.spotify.com/track/3ieVRTL0jHyZD6AAjcoeQa"
-    },
-    {
-      "id": "3tqUaq6JjHcN34WZb70FyY",
-      "name": "Winter",
-      "artists": [
-        "SE SO NEON"
-      ],
-      "album": "Nonadaptation",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273a1d9d786d8abe0f1db3552e4",
-      "spotifyUrl": "https://open.spotify.com/track/3tqUaq6JjHcN34WZb70FyY"
     },
     {
       "id": "04d5HlcQX6zH5MMqffXOon",
@@ -110,6 +100,16 @@
       "album": "Si Abro Los Ojos No Es Real",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27316741627edccbb6323aa000b",
       "spotifyUrl": "https://open.spotify.com/track/3GMlnnGGqhPG792cpArVjl"
+    },
+    {
+      "id": "11ozIUBoXAgRTVWelDn4pL",
+      "name": "Lights",
+      "artists": [
+        "Ellie Goulding"
+      ],
+      "album": "An Introduction To Ellie Goulding EP",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27391538eb04634de568637b8be",
+      "spotifyUrl": "https://open.spotify.com/track/11ozIUBoXAgRTVWelDn4pL"
     }
   ]
 }
