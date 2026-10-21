@@ -54,14 +54,6 @@
         "Show me another portfolio experiment"
       ]
     },
-    "style-guide": {
-      "label": "STYLE GUIDE",
-      "starters": [
-        "What visual system does this site use?",
-        "What typography does the portfolio use?",
-        "Which projects show interaction design?"
-      ]
-    },
     "experiments": {
       "label": "EXPERIMENTS",
       "starters": [
@@ -220,16 +212,6 @@
         {"label": "Music", "href": "./music.html"}
       ],
       "project": {"label": "Open Music", "title": "Music", "href": "./music.html", "image": "./images/music/cd-transparent.png"}
-    },
-    {
-      "id": "visual-system",
-      "keywords": ["visual system", "style guide", "design system", "interaction design", "typography", "font", "colors", "portfolio style"],
-      "contexts": ["style-guide"],
-      "answer": "I wanted the portfolio to feel mostly monochrome without feeling flat. It uses Space Grotesk for the main interface type and DM Mono for the smaller metadata, then brings in the off-white paper texture, black ink, thin dividers, square geometry, and restrained motion. Most of the color stays inside the project imagery so it actually means something when it shows up.",
-      "sources": [
-        {"label": "Style Guide", "href": "./design-system.html"}
-      ],
-      "project": {"label": "View Style Guide", "title": "Portfolio Style Guide", "href": "./design-system.html", "image": "./images/face.png"}
     }
   ]
 }

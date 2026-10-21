@@ -107,7 +107,6 @@ function initPortfolioAssistant() {
     if (path.includes("open-source-san-jose-case-study")) return "open-source-san-jose";
     if (path.includes("bizznest-personal-links-builder")) return "bizznest";
     if (path.includes("music")) return "music";
-    if (path.includes("design-system")) return "style-guide";
     if (path.includes("sandbox") || path.includes("/void/")) return "experiments";
     if (hash === "#experiments" || document.body.dataset.workFilter === "experiments") return "experiments";
     if (path.endsWith("/") || path.endsWith("/index.html") || path.endsWith("index.html")) return "home";
