@@ -101,14 +101,11 @@ function initPortfolioAssistant() {
 
   function getPortfolioAssistantContext() {
     const path = window.location.pathname.toLowerCase();
-    const hash = window.location.hash.toLowerCase();
 
     if (path.includes("funfetti-events-case-study")) return "funfetti";
     if (path.includes("open-source-san-jose-case-study")) return "open-source-san-jose";
     if (path.includes("bizznest-personal-links-builder")) return "bizznest";
     if (path.includes("music")) return "music";
-    if (path.includes("sandbox") || path.includes("/void/")) return "experiments";
-    if (hash === "#experiments" || document.body.dataset.workFilter === "experiments") return "experiments";
     if (path.endsWith("/") || path.endsWith("/index.html") || path.endsWith("index.html")) return "home";
     return "global";
   }
@@ -374,9 +371,6 @@ function initPortfolioAssistant() {
     }
   });
 
-  document.querySelectorAll("[data-work-filter-button]").forEach((button) => {
-    button.addEventListener("click", () => window.requestAnimationFrame(updateContext));
-  });
   window.addEventListener("hashchange", updateContext);
 
   fetch(new URL("data/portfolio-assistant-knowledge.json?v=portfolio-agent-3", portfolioAssistantBase))

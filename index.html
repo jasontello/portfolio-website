@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   </head>
-  <body class="work-body" data-work-filter="work">
+  <body class="work-body">
     <div class="main-content">
       <header class="site-header">
         <a class="site-header__brand" href="./index.html" aria-label="Jason Tello home">Jason Tello</a>
@@ -35,9 +35,6 @@
             aria-hidden="true"
           >
         </button>
-        <p class="face-discovery" data-face-discovery aria-live="polite" hidden>
-          <a href="#experiments">Curious? Try the experiments.</a>
-        </p>
         <h1 id="portfolio-intro-title">Jason Tello is a Bay Area product designer focused on thoughtful interaction and clear visual systems.</h1>
         <p class="portfolio-intro__contact">
           <span>Available for new opportunities</span>
@@ -49,9 +46,8 @@
       </section>
 
       <section class="work-gallery" id="selected-work" aria-label="Portfolio work">
-        <div class="work-filter" role="tablist" aria-label="Project categories">
-          <button class="work-filter__tab is-active" type="button" role="tab" aria-selected="true" aria-controls="work-grid" data-work-filter-button="work">Work</button>
-          <button class="work-filter__tab" type="button" role="tab" aria-selected="false" aria-controls="work-grid" data-work-filter-button="experiments">Experiments</button>
+        <div class="work-gallery__header">
+          <h2>Work</h2>
         </div>
 
         <div class="work-grid" id="work-grid">
@@ -78,83 +74,6 @@
                 <span class="work-card__tags">Civic Tech - Case Study</span>
               </span>
               <span class="work-card__caption">A civic-tech homepage concept with clearer project discovery, stronger mobile navigation, and a code-rain visual system.</span>
-            </span>
-          </a>
-
-          <a class="work-card work-card--void is-filtered-out" data-work-category="experiments" data-local-only-project="void" href="./void/" aria-label="Open Void interactive experiment" aria-hidden="true">
-            <span class="work-card__preview void-card-preview" data-void-card-preview aria-hidden="true">
-              <img class="void-card-preview__fallback" src="./images/projects/void/preview.png?v=experiments-release-20260825-1" width="1076" height="720" loading="lazy" alt="">
-              <canvas class="void-card-preview__canvas" data-void-card-canvas></canvas>
-            </span>
-            <span class="work-card__meta">
-              <span class="work-card__meta-head">
-                <strong>Void</strong>
-                <span class="work-card__tags">Generative Type · Interaction</span>
-              </span>
-              <span class="work-card__caption">An interactive typographic field that shifts through pointer movement, touch, and changing editorial states.</span>
-            </span>
-          </a>
-
-          <a class="work-card work-card--rocket-pixel is-filtered-out" data-work-category="experiments" data-local-only-project="rocket-pixel" href="./experiments/rocket-pixel/" aria-label="Open Rocket Pixel interactive experiment" aria-hidden="true">
-            <span class="work-card__preview" aria-hidden="true">
-              <img class="rocket-pixel-preview" src="./experiments/rocket-pixel/assets/paradiso-poster-no-line.png" width="1200" height="1558" loading="lazy" alt="">
-            </span>
-            <span class="work-card__meta">
-              <span class="work-card__meta-head">
-                <strong>Rocket Pixel</strong>
-                <span class="work-card__tags">Interactive Poster - Motion Study</span>
-              </span>
-              <span class="work-card__caption">A Paradiso poster interaction where a halftone cloud assembles and reveals a monochrome pixel rocket.</span>
-            </span>
-          </a>
-
-          <a class="work-card work-card--rainbow is-filtered-out" data-work-category="experiments" href="https://jasontello.github.io/rainbow-square-lab/" aria-label="Open Rainbow Lab live project" aria-hidden="true">
-            <span class="work-card__preview" aria-hidden="true">
-              <span class="rainbow-thumb__brand">
-                <span class="rainbow-thumb__logo">
-                  <span class="rainbow-thumb__tile rainbow-thumb__tile--cyan"></span>
-                  <span class="rainbow-thumb__tile rainbow-thumb__tile--yellow"></span>
-                  <span class="rainbow-thumb__tile rainbow-thumb__tile--magenta"></span>
-                </span>
-                <span class="rainbow-thumb__word">
-                  <span>R</span><span>A</span><span>I</span><span>N</span><span>B</span><span>O</span><span>W</span>
-                  <span class="rainbow-thumb__space"></span>
-                  <span>L</span><span>A</span><span>B</span>
-                </span>
-              </span>
-            </span>
-            <span class="work-card__meta">
-              <span class="work-card__meta-head">
-                <strong>Rainbow Lab</strong>
-                <span class="work-card__tags">Color Tool - Live Project</span>
-              </span>
-              <span class="work-card__caption">An experimental browser tool for building and testing square-based color palettes.</span>
-            </span>
-          </a>
-
-          <a class="work-card work-card--ink is-filtered-out" data-work-category="experiments" href="./sandbox-ink.html" aria-label="Open Ink Symbiote experiment" aria-hidden="true">
-            <span class="work-card__preview" aria-hidden="true">
-              <span class="sandbox-preview-ink" data-ink-symbiote data-ink-preview></span>
-            </span>
-            <span class="work-card__meta">
-              <span class="work-card__meta-head">
-                <strong>Ink Symbiote</strong>
-                <span class="work-card__tags">WebGL - Interaction</span>
-              </span>
-              <span class="work-card__caption">A liquid ink field that reacts to pointer movement and touch.</span>
-            </span>
-          </a>
-
-          <a class="work-card work-card--hourglass is-filtered-out" data-work-category="experiments" data-local-only-project="gravity-keeper" href="./sandbox-poster.html?v=gravity-keeper-1" aria-label="Open Gravity Keeper experiment" aria-hidden="true">
-            <span class="work-card__preview" aria-hidden="true">
-              <img class="sandbox-preview-poster-image" src="./images/hourglass-preview.png?v=gravity-keeper-preview-1" alt="">
-            </span>
-            <span class="work-card__meta">
-              <span class="work-card__meta-head">
-                <strong>Gravity Keeper</strong>
-                <span class="work-card__tags">Canvas - One-Minute Game</span>
-              </span>
-              <span class="work-card__caption">Guide a falling sand stream through a moving gate before the minute runs out.</span>
             </span>
           </a>
 

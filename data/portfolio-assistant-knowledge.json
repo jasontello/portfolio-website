@@ -3,7 +3,7 @@
     "name": "Index",
     "description": "A grounded guide to Jason Tello's approved portfolio material, written in Jason's voice.",
     "welcome": "Ask me about my work, process, experience, or the tools I use.",
-    "fallback": "Honestly, I don't have that information in the portfolio, so I don't want to make something up. You could ask about my projects, experience, education, tools, how I use AI, or experiments instead."
+    "fallback": "Honestly, I don't have that information in the portfolio, so I don't want to make something up. You could ask about my projects, experience, education, tools, or how I use AI instead."
   },
   "contexts": {
     "global": {
@@ -19,7 +19,7 @@
       "starters": [
         "Which project shows UX thinking?",
         "Show me stakeholder feedback",
-        "What is Jason experimenting with?"
+        "What tools does Jason use?"
       ]
     },
     "funfetti": {
@@ -51,15 +51,7 @@
       "starters": [
         "What is this music page?",
         "Where can I see Jason's recent tracks?",
-        "Show me another portfolio experiment"
-      ]
-    },
-    "experiments": {
-      "label": "EXPERIMENTS",
-      "starters": [
-        "What does Jason do with creative coding?",
-        "Show me something experimental",
-        "What is Rainbow Lab?"
+        "Which project should I view first?"
       ]
     }
   },
@@ -190,18 +182,6 @@
       "sources": [
         {"label": "Resume", "href": "./documents/Jason_Tello_Resume.pdf"}
       ]
-    },
-    {
-      "id": "experiments",
-      "keywords": ["creative coding", "experiment", "experimenting", "experimental", "something weird", "surprise me", "rainbow lab", "ink symbiote", "hourglass"],
-      "contexts": ["experiments", "home", "global"],
-      "answer": "I like using the browser as a material and seeing what happens when the interaction itself becomes the project. Rainbow Lab explores square-based color palettes, Ink Symbiote is a pointer-reactive liquid ink field, and Hourglass Poster plays with falling sand, grain, and shifting mass.",
-      "sources": [
-        {"label": "Portfolio experiments", "href": "./index.html#experiments"},
-        {"label": "Ink Symbiote", "href": "./sandbox-ink.html"},
-        {"label": "Hourglass Poster", "href": "./sandbox-poster.html"}
-      ],
-      "project": {"label": "Open experiments", "title": "Portfolio Experiments", "href": "./sandbox.html", "image": "./images/hourglass-preview.png"}
     },
     {
       "id": "music",
