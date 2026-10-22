@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-21T19:22:16.990Z",
+  "updatedAt": "2026-10-22T19:16:33.761Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -72,14 +72,14 @@
       "spotifyUrl": "https://open.spotify.com/track/3ieVRTL0jHyZD6AAjcoeQa"
     },
     {
-      "id": "04d5HlcQX6zH5MMqffXOon",
-      "name": "MATADORA",
+      "id": "1uHS5PMWhHjun9kMJCnOQE",
+      "name": "Miamorcito Loco",
       "artists": [
-        "KAROL G"
+        "Ruzzi"
       ],
-      "album": "NO ME ARREPIENTO DE SENTIR TANTO",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b27321deb742375f88edfb2e7368",
-      "spotifyUrl": "https://open.spotify.com/track/04d5HlcQX6zH5MMqffXOon"
+      "album": "Mariana",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f03ffd4e42d6a783a3f58412",
+      "spotifyUrl": "https://open.spotify.com/track/1uHS5PMWhHjun9kMJCnOQE"
     },
     {
       "id": "3GMlnnGGqhPG792cpArVjl",
@@ -92,16 +92,6 @@
       "spotifyUrl": "https://open.spotify.com/track/3GMlnnGGqhPG792cpArVjl"
     },
     {
-      "id": "1uHS5PMWhHjun9kMJCnOQE",
-      "name": "Miamorcito Loco",
-      "artists": [
-        "Ruzzi"
-      ],
-      "album": "Mariana",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f03ffd4e42d6a783a3f58412",
-      "spotifyUrl": "https://open.spotify.com/track/1uHS5PMWhHjun9kMJCnOQE"
-    },
-    {
       "id": "6qQEJzrfwHtKtrC3abJY0C",
       "name": "Don't Forget About Me",
       "artists": [
@@ -110,6 +100,16 @@
       "album": "Petals to Thorns",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273e5ff1941799cd30cb2aa072b",
       "spotifyUrl": "https://open.spotify.com/track/6qQEJzrfwHtKtrC3abJY0C"
+    },
+    {
+      "id": "04d5HlcQX6zH5MMqffXOon",
+      "name": "MATADORA",
+      "artists": [
+        "KAROL G"
+      ],
+      "album": "NO ME ARREPIENTO DE SENTIR TANTO",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b27321deb742375f88edfb2e7368",
+      "spotifyUrl": "https://open.spotify.com/track/04d5HlcQX6zH5MMqffXOon"
     }
   ]
 }
