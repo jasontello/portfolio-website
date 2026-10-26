@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T18:26:55.740Z",
+  "updatedAt": "2026-10-26T20:35:47.162Z",
   "range": "short_term",
   "source": "spotify",
   "tracks": [
@@ -14,6 +14,16 @@
       "spotifyUrl": "https://open.spotify.com/track/5JDDrQN4rzCOo6UniZEwq0"
     },
     {
+      "id": "0Rt3ejQiStGoqH7yQDXSQI",
+      "name": "Crash Out",
+      "artists": [
+        "Tinashe"
+      ],
+      "album": "Popstar",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f8dc54881b35310061266cdf",
+      "spotifyUrl": "https://open.spotify.com/track/0Rt3ejQiStGoqH7yQDXSQI"
+    },
+    {
       "id": "3oTuTpF1F3A7rEC6RKsMRz",
       "name": "Raindance (feat. Tems)",
       "artists": [
@@ -23,16 +33,6 @@
       "album": "The Boy Who Played the Harp",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b273fecaa7826bb0cbe139a8cb83",
       "spotifyUrl": "https://open.spotify.com/track/3oTuTpF1F3A7rEC6RKsMRz"
-    },
-    {
-      "id": "0Rt3ejQiStGoqH7yQDXSQI",
-      "name": "Crash Out",
-      "artists": [
-        "Tinashe"
-      ],
-      "album": "Popstar",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f8dc54881b35310061266cdf",
-      "spotifyUrl": "https://open.spotify.com/track/0Rt3ejQiStGoqH7yQDXSQI"
     },
     {
       "id": "0uI8zAUhinOJDIfWYam8lX",
@@ -70,6 +70,16 @@
       "spotifyUrl": "https://open.spotify.com/track/5M8eNQ6wLYPT9D60hbcxVU"
     },
     {
+      "id": "1uHS5PMWhHjun9kMJCnOQE",
+      "name": "Miamorcito Loco",
+      "artists": [
+        "Ruzzi"
+      ],
+      "album": "Mariana",
+      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f03ffd4e42d6a783a3f58412",
+      "spotifyUrl": "https://open.spotify.com/track/1uHS5PMWhHjun9kMJCnOQE"
+    },
+    {
       "id": "3h5T5JypYU7huFiVYhv1dr",
       "name": "BbY WOW",
       "artists": [
@@ -80,16 +90,6 @@
       "album": "NO ME ARREPIENTO DE SENTIR TANTO",
       "albumImage": "https://i.scdn.co/image/ab67616d0000b27321deb742375f88edfb2e7368",
       "spotifyUrl": "https://open.spotify.com/track/3h5T5JypYU7huFiVYhv1dr"
-    },
-    {
-      "id": "1uHS5PMWhHjun9kMJCnOQE",
-      "name": "Miamorcito Loco",
-      "artists": [
-        "Ruzzi"
-      ],
-      "album": "Mariana",
-      "albumImage": "https://i.scdn.co/image/ab67616d0000b273f03ffd4e42d6a783a3f58412",
-      "spotifyUrl": "https://open.spotify.com/track/1uHS5PMWhHjun9kMJCnOQE"
     },
     {
       "id": "3GMlnnGGqhPG792cpArVjl",
